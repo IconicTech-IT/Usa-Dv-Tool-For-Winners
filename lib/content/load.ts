@@ -3,11 +3,21 @@ import { join } from "node:path";
 import { z } from "zod";
 
 import {
+  CarNeedScale,
   Checklist,
+  DocumentsFile,
   Eligibility,
+  FeesFile,
+  GlossaryFile,
+  InterviewFile,
+  JobFile,
+  JobPresetsFile,
   Metro,
+  ScamsFile,
   State,
   STATUSES,
+  StepsFile,
+  TaxBrackets,
   VERIFY_PERIODS,
   type Status,
 } from "@/content/_schema";
@@ -151,7 +161,13 @@ export function collectFields(): FieldRef[] {
  * اللغتين متساويتين في الموقع، فالنقص ده لازم يفضل مرصود.
  */
 export function collectMissingEnglish(): string[] {
+  return collectMissingText().en;
+}
+
+/** النصوص الناقصة في اللغتين، كل واحدة على حدة. */
+export function collectMissingText(): { ar: string[]; en: string[] } {
   const out: string[] = [];
+  const arMissing: string[] = [];
 
   const walk = (node: unknown, file: string) => {
     if (Array.isArray(node)) {
@@ -163,6 +179,7 @@ export function collectMissingEnglish(): string[] {
     const o = node as Record<string, unknown>;
     if (typeof o["ar"] === "string" && typeof o["en"] === "string") {
       if (o["ar"].trim() !== "" && o["en"].trim() === "") out.push(file);
+      if (o["ar"].trim() === "") arMissing.push(file);
       // مبنرجعش هنا — فيه أشكال (زي مصطلحات القاموس) فيها ar/en
       // وجواها كمان حقول مترجمة تانية.
     }
@@ -177,7 +194,7 @@ export function collectMissingEnglish(): string[] {
     walk(readJSON(join(CONTENT_DIR, file)), file);
   }
 
-  return out;
+  return { ar: arMissing, en: out };
 }
 
 export function countStatuses(fields: FieldRef[]): StatusCounts {
@@ -196,4 +213,50 @@ export function staleFields(fields: FieldRef[], today = new Date()): FieldRef[] 
     const age = (today.getTime() - last.getTime()) / 86_400_000;
     return age > days;
   });
+}
+
+/* ------------------------------------------------------------------ *
+ * باقي المحمّلات
+ * ------------------------------------------------------------------ */
+
+export function loadFees() {
+  return parseOrThrow(FeesFile, join(CONTENT_DIR, "fees.json")).fees;
+}
+
+export function loadSteps() {
+  return parseOrThrow(StepsFile, join(CONTENT_DIR, "steps.json")).steps.sort(
+    (a, b) => a.order - b.order,
+  );
+}
+
+export function loadDocuments() {
+  return parseOrThrow(DocumentsFile, join(CONTENT_DIR, "documents.json")).documents;
+}
+
+export function loadGlossary() {
+  return parseOrThrow(GlossaryFile, join(CONTENT_DIR, "glossary.json")).terms;
+}
+
+export function loadScams() {
+  return parseOrThrow(ScamsFile, join(CONTENT_DIR, "scams.json")).scams;
+}
+
+export function loadInterview() {
+  return parseOrThrow(InterviewFile, join(CONTENT_DIR, "interview-questions.json"));
+}
+
+export function loadJobPresets() {
+  return parseOrThrow(JobPresetsFile, join(CONTENT_DIR, "job-presets.json")).presets;
+}
+
+export function loadJobs() {
+  return listJSON("jobs").map((p) => parseOrThrow(JobFile, p));
+}
+
+export function loadTaxTables() {
+  return parseOrThrow(TaxBrackets, join(CONTENT_DIR, "tax-brackets.json"));
+}
+
+export function loadCarNeedScale() {
+  return parseOrThrow(CarNeedScale, join(CONTENT_DIR, "metros/_CAR-NEED-SCALE.json"));
 }

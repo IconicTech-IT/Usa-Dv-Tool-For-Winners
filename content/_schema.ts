@@ -37,6 +37,12 @@ export const LocalizedDraft = z.object({
   en: z.string(),
 });
 
+/** محتوى لسه ماتكتبش خالص — الاتنين ممكن يكونوا فاضيين. بيترصد في verify-content. */
+export const LocalizedPending = z.object({
+  ar: z.string(),
+  en: z.string(),
+});
+
 const ISO_DATE = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "التاريخ لازم يكون YYYY-MM-DD");
 
 /** كل قد إيه الحقل ده محتاج يتراجع. الscript بيحسب تاريخ المراجعة من `lastVerified`. */
@@ -129,6 +135,49 @@ export const Field = z.object(fieldShape).superRefine(applyStatusRules);
 
 export type FieldT = z.infer<typeof Field>;
 
+
+/** شريحة ضريبية واحدة. `upTo: null` يعني الشريحة الأخيرة المفتوحة. */
+export const Bracket = z.object({
+  upTo: z.number().nullable(),
+  rate: z.number().min(0).max(1),
+});
+
+/** حقل قيمته مصفوفة شرايح — نفس قواعد الحالات بالظبط. */
+export const BracketField = z
+  .object({
+    ...fieldShape,
+    value: z.array(Bracket).nullable(),
+  })
+  .superRefine(applyStatusRules);
+
+/**
+ * ⚠️ كل رقم ضريبي في المشروع بيتقرا من الملف ده. مفيش ولا رقم في الكود.
+ * وسنة الضرايب **داتا جوه الملف** مش في اسم متغير ولا كومنت — لأن
+ * رقم قديم بعنوان جديد بيتقرا كأنه صح والمستخدم بيحسب عليه فلوسه.
+ */
+export const TaxBrackets = z.object({
+  _note: z.string().optional(),
+  taxYear: Field,
+  federalBrackets: z.object({
+    single: BracketField,
+    married: BracketField,
+    headOfHousehold: BracketField,
+  }),
+  standardDeduction: z.object({
+    single: Field,
+    married: Field,
+    headOfHousehold: Field,
+  }),
+  socialSecurityRate: Field,
+  socialSecurityWageCap: Field,
+  medicareRate: Field,
+  childTaxCredit: Field,
+  irsMileageRate: Field,
+  selfEmploymentRate: Field,
+  federalPovertyLine: z.object({ base: Field, perPerson: Field }),
+  lastVerified: ISO_DATE,
+});
+
 /** ⚠️ الحاجة للعربية معلومة على مستوى المدينة مش الولاية.
  *  نيويورك ستيت: مدينة نيويورك = 1، بافالو = 4.
  *  فرجينيا: أرلينجتون = 2، ريتشموند = 5.
@@ -147,6 +196,8 @@ export const State = z.object({
   name: Localized,
   hasStateIncomeTax: Field,
   incomeTaxRate: Field,
+  /** الولايات التصاعدية (كاليفورنيا، نيويورك…) بتتملي هنا بدل النسبة الثابتة. */
+  incomeTaxBrackets: BracketField.optional(),
   noFaultInsurance: Field, // بيأثر على تكلفة تأمين العربية
   licenseProcess: Field,
   winterSeverity: Field,
@@ -169,6 +220,8 @@ export const Metro = z.object({
     groceriesPerAdult: Field,
     carInsurance: Field,
   }),
+  /** نيويورك وفيلادلفيا وديترويت وغيرهم بيفرضوا ضريبة دخل محلية فوق ضريبة الولاية. */
+  localIncomeTax: Field.optional(),
   work: z.object({
     gigDemand: Field,
     worksWithoutEnglish: Field,
@@ -215,7 +268,8 @@ export const Job = z.object({
   minCarYear: Field,
   needsEnglish: Field,
   activationDays: Field,
-  howItPays: LocalizedDraft,
+  /** لسه ماتكتبش لأي تطبيق — إزاي بيحسب الأرباح بيتغير وبيحتاج تأكيد من صفحة التطبيق */
+  howItPays: LocalizedPending,
   pros: z.array(LocalizedDraft),
   cons: z.array(LocalizedDraft),
   signupUrl: z.string().url(),
@@ -292,4 +346,105 @@ export const Eligibility = z.object({
   lastVerified: ISO_DATE,
   /** الملف ده بيتغير كل دورة — القيمة دي بتتقرا في الواجهة عشان تحسب التنبيه. */
   verifyIn: VerifyIn.default("each-cycle"),
+});
+
+/* ------------------------------------------------------------------ *
+ * أشكال الملفات نفسها (الwrapper اللي فيه _note والمصفوفة)
+ * ------------------------------------------------------------------ */
+
+export const FeesFile = z.object({
+  _note: z.string().optional(),
+  fees: z.array(Fee),
+});
+
+export const StepsFile = z.object({
+  _note: z.string().optional(),
+  steps: z.array(Step),
+});
+
+export const Document = z.object({
+  id: z.string(),
+  name: LocalizedDraft,
+  /** "everyone" أو حالة معينة — الشيك ليست بتترشح بيها */
+  appliesTo: z.string(),
+  why: LocalizedDraft,
+  watchOut: LocalizedDraft,
+  needsTranslation: z.boolean(),
+  validity: Field,
+});
+
+export const DocumentsFile = z.object({
+  _note: z.string().optional(),
+  documents: z.array(Document),
+});
+
+export const GlossaryFile = z.object({
+  _note: z.string().optional(),
+  terms: z.array(GlossaryTerm),
+});
+
+export const Scam = z.object({
+  id: z.string(),
+  title: LocalizedDraft,
+  how: LocalizedDraft,
+  truth: LocalizedDraft,
+  redFlags: z.array(LocalizedDraft),
+});
+
+export const ScamsFile = z.object({
+  _note: z.string().optional(),
+  scams: z.array(Scam),
+});
+
+export const InterviewQuestion = z.object({
+  q: LocalizedDraft,
+  /** بيسأل عشان إيه — عشان المستخدم يفهم القصد مش يحفظ إجابة */
+  why: LocalizedDraft,
+  prepare: LocalizedDraft,
+});
+
+export const InterviewFile = z.object({
+  _note: z.string().optional(),
+  /** ⚠️ المبدأ: علّم الناس تجاوب بصدق. ممنوع أي محتوى بيعلّم حد يجمّل إجابة. */
+  principle: Localized,
+  categories: z.array(
+    z.object({
+      id: z.string(),
+      name: LocalizedDraft,
+      questions: z.array(InterviewQuestion),
+    }),
+  ),
+});
+
+export const JobPresetsFile = z.object({
+  _note: z.string().optional(),
+  presets: z.array(
+    z.object({
+      id: z.string(),
+      name: LocalizedDraft,
+      medianSalary: Field,
+      needsLicense: Field,
+    }),
+  ),
+});
+
+export const JobFile = Job.extend({
+  _note: z.string().optional(),
+  summary: LocalizedDraft,
+  requiresSSN: Field,
+  beginnerTips: z.array(LocalizedDraft),
+  lastVerified: ISO_DATE,
+});
+
+export const CarNeedScale = z.object({
+  _note: z.string().optional(),
+  scale: z.array(
+    z.object({
+      value: z.number(),
+      ar: z.string(),
+      en: z.string(),
+      meaning: LocalizedDraft.optional(),
+    }).passthrough(),
+  ),
+  plannerRule: z.string(),
 });

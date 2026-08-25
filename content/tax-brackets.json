@@ -1,0 +1,202 @@
+{
+  "_note": "⚠️ كل رقم ضريبي في المشروع بيتقرا من هنا. مفيش ولا رقم في الكود. وسنة الضرايب داتا جوه الملف مش في اسم متغير — لأن رقم قديم بعنوان جديد بيتقرا كأنه صح والناس بتحسب عليه فلوسها. لو taxYear مش السنة الحالية، الحاسبة بتعرض تنبيه فوق النتيجة.",
+  "taxYear": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "سنة الضرايب اللي الأرقام دي بتاعتها — من irs.gov",
+    "unit": "year"
+  },
+  "federalBrackets": {
+    "single": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "شرايح ضريبة الدخل الفيدرالية — أعزب. الشكل: [{upTo, rate}] و upTo:null للشريحة الأخيرة"
+    },
+    "married": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "شرايح ضريبة الدخل الفيدرالية — متجوز وبيقدّم مع بعض"
+    },
+    "headOfHousehold": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "شرايح ضريبة الدخل الفيدرالية — عائل أسرة"
+    }
+  },
+  "standardDeduction": {
+    "single": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "الخصم القياسي — أعزب",
+      "unit": "USD"
+    },
+    "married": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "الخصم القياسي — متجوز وبيقدّم مع بعض",
+      "unit": "USD"
+    },
+    "headOfHousehold": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "الخصم القياسي — عائل أسرة",
+      "unit": "USD"
+    }
+  },
+  "socialSecurityRate": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "نسبة الضمان الاجتماعي على الموظف",
+    "unit": "rate"
+  },
+  "socialSecurityWageCap": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "سقف الدخل اللي بيتحسب عليه الضمان الاجتماعي",
+    "unit": "USD"
+  },
+  "medicareRate": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "نسبة الميديكير على الموظف",
+    "unit": "rate"
+  },
+  "childTaxCredit": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "إعفاء الطفل",
+    "unit": "USD"
+  },
+  "irsMileageRate": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "نسبة خصم الميل الرسمية — بتتغير كل سنة وبتفرق كتير في حاسبة الجيج",
+    "unit": "USD/mile"
+  },
+  "selfEmploymentRate": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [
+      {
+        "label": "IRS",
+        "url": "https://www.irs.gov/"
+      }
+    ],
+    "lastVerified": "2026-08-25",
+    "note": "نسبة ضريبة العمل الحر",
+    "unit": "rate"
+  },
+  "federalPovertyLine": {
+    "base": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "خط الفقر الفيدرالي — فرد واحد. من aspe.hhs.gov أو healthcare.gov",
+      "unit": "USD"
+    },
+    "perPerson": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [
+        {
+          "label": "IRS",
+          "url": "https://www.irs.gov/"
+        }
+      ],
+      "lastVerified": "2026-08-25",
+      "note": "الزيادة لكل فرد إضافي في الأسرة",
+      "unit": "USD"
+    }
+  },
+  "lastVerified": "2026-08-25"
+}
