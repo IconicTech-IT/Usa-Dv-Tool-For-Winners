@@ -30,5 +30,360 @@
     "dataEstimated": "Estimate",
     "dataJudgment": "Subjective ranking",
     "dataNeedsVerification": "Needs verification"
+  },
+  "eligibility": {
+    "title": "Am I even eligible?",
+    "lead": "Before anything else: the lottery has three requirements. Know them before you spend time or money.",
+    "staleWarning": "This was last checked on the date shown and some time has passed. The rules change every cycle — check the official page yourself.",
+    "officialTitle": "The final word",
+    "lastVerified": "Last checked:",
+    "disclaimer": "This site is not legal advice. It explains and organises; the official site is the final word.",
+    "fields": {
+      "eligibleCountries": "Eligible countries this cycle",
+      "spouseParentException": "Spouse or parent exception",
+      "educationRequirement": "Education requirement",
+      "experienceRequirement": "Work experience route",
+      "registrationWindow": "Registration window",
+      "registrationFee": "Registration fee"
+    }
+  },
+  "planner": {
+    "title": "Money plan",
+    "lead": "Tell us what you have. We'll tell you how many months it lasts, in which city, and what to do first.",
+    "disclaimer": "These are estimates based on the site's data, not a promise. This site is not legal or financial advice.",
+    "direction": {
+      "have": "What I have",
+      "need": "What I need"
+    },
+    "back": "Back",
+    "next": "Next",
+    "seePlan": "See the plan",
+    "savedLocally": "Every answer is saved on your device immediately. No account, no server.",
+    "editAnswers": "Edit your answers",
+    "liveUpdate": "The plan updates live as you change anything.",
+    "questions": {
+      "yes": "Yes",
+      "no": "No",
+      "money": {
+        "q": "How much do you have in US dollars right now?",
+        "hint": "What will actually be in hand when you land."
+      },
+      "moneyIncludesTravel": {
+        "q": "Does that include flights and visa fees?"
+      },
+      "monthlyIncomeFromHome": {
+        "q": "Will you keep any monthly income from home?",
+        "hint": "Remote work, rent, family support — anything steady."
+      },
+      "monthlyDebt": {
+        "q": "Do you have debts or monthly commitments?"
+      },
+      "travellingAlone": {
+        "q": "Going alone or with family?",
+        "alone": "Alone",
+        "family": "With family"
+      },
+      "family": {
+        "q": "How many people?",
+        "adults": "Adults",
+        "kids": "Children"
+      },
+      "spouseWillWork": {
+        "q": "Will your spouse work?"
+      },
+      "plannedArrival": {
+        "q": "Roughly when do you plan to travel?",
+        "hint": "Completely optional — skip it if you don't know yet.",
+        "skip": "I don't know yet"
+      },
+      "host": {
+        "q": "Do you know anyone in the US?",
+        "hint": "Somewhere to stay for the first weeks changes the plan a lot.",
+        "none": "No one"
+      },
+      "hostNights": {
+        "q": "How many nights could they host you?"
+      },
+      "englishLevel": {
+        "q": "How is your English?",
+        "l0": "None",
+        "l1": "Weak",
+        "l2": "Moderate",
+        "l3": "Good",
+        "l4": "Excellent"
+      },
+      "drivingYears": {
+        "q": "How many years have you held a driving licence?"
+      },
+      "profession": {
+        "q": "What is your profession?"
+      },
+      "openToPhysicalWork": {
+        "q": "Open to physical work at first?",
+        "hint": "There is no wrong answer. It only changes which cities are suggested."
+      },
+      "priorities": {
+        "q": "What matters most in your first year?",
+        "hint": "Tap in order, most important first.",
+        "fastIncome": "Income fastest",
+        "lowCost": "Cheapest living",
+        "schools": "Schools",
+        "community": "Arab community",
+        "career": "My career path"
+      }
+    },
+    "result": {
+      "verdict": "The verdict",
+      "goAlone": "With this money, go alone first",
+      "goTogether": "You can bring the family",
+      "months": "months",
+      "tier": "Tier",
+      "monthlyBurn": "Monthly spend",
+      "landingCost": "Landing cost",
+      "recommended": "3 suggested cities",
+      "lastsHere": "Your money lasts",
+      "avoid": "Cities to avoid for now",
+      "onlyLasts": "Your money would last",
+      "balance": "Your balance month by month",
+      "balanceAria": "Projected balance across 12 months under three scenarios",
+      "moneyRunsOut": "Your money runs out here",
+      "scenarioSlow": "Slow income",
+      "scenarioExpected": "Expected income",
+      "scenarioFast": "Fast income",
+      "weekByWeek": "First 8 weeks",
+      "week": "Week",
+      "risks": "Warnings",
+      "unverifiedTitle": "Numbers this plan relied on that still need verification",
+      "unverifiedLead": "{count} fields are still unconfirmed. The plan was calculated without them, so the numbers may change once they are filled."
+    },
+    "need": {
+      "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",
+      "city": "City",
+      "adults": "Adults",
+      "kids": "Children",
+      "months": "Months without work",
+      "includeTravel": "Include flights",
+      "youNeed": "You need",
+      "breakdown": "Breakdown",
+      "breakdownHint": "That's landing costs plus {months} months of living with no income.",
+      "unverified": "{count} numbers in this calculation still need verification."
+    }
+  },
+  "timeline": {
+    "title": "The journey map",
+    "lead": "From registration to the card arriving. This page opens ready — you don't need to enter anything.",
+    "startTracking": "I'm actually in this process",
+    "stopTracking": "Hide tracking",
+    "trackingHint": "Optional. Turn it on to mark your stage, add your dates, and export them to your calendar.",
+    "iAmHere": "I'm here",
+    "days": "days",
+    "exportIcs": "Export dates to your calendar (.ics)",
+    "estimateWarning": "These durations are estimates and vary a lot by case and by consulate.",
+    "disclaimer": "This site is not legal advice. Durations and steps are for orientation; the official site is the reference."
+  },
+  "checklist": {
+    "stepsTitle": "Steps checklist",
+    "stepsLead": "Every step in order. Tick what's done — progress saves on your device.",
+    "progress": "{done} of {total} done",
+    "disclaimer": "This site is not legal advice."
+  },
+  "documents": {
+    "title": "Documents checklist",
+    "lead": "For each document: why you need it, how long it's valid, and the common mistakes.",
+    "prefilled": "We filled the filters from your data — you can change them.",
+    "filterMarried": "Married",
+    "filterKids": "I have children",
+    "validity": "Valid for:",
+    "needsTranslation": "Needs certified translation",
+    "disclaimer": "This site is not legal advice. Confirm requirements with the consulate itself."
+  },
+  "vault": {
+    "title": "Document dates",
+    "lead": "Record when your documents expire and we'll tell you what's coming up.",
+    "localOnly": "⚠️ No file uploads. Names and dates only, stored on your own device — no server receives anything.",
+    "docType": "Document name",
+    "issued": "Issued",
+    "expires": "Expires",
+    "add": "Add",
+    "empty": "Nothing added yet.",
+    "daysLeft": "days left",
+    "remove": "Remove",
+    "disclaimer": "This site is not legal advice."
+  },
+  "interview": {
+    "title": "Consulate questions",
+    "lead": "For each question: why it's asked, and what to have ready.",
+    "openSimulator": "Try the interview simulator",
+    "whyAsked": "Asked to check:",
+    "prepare": "Prepare:",
+    "disclaimer": "This site is not legal advice, and it does not tell you what to say — it helps you prepare your honest answer."
+  },
+  "simulator": {
+    "title": "Interview simulator",
+    "lead": "A random question and a time limit. Practise telling the truth clearly.",
+    "honestyTitle": "What this tool is for",
+    "honesty": "Practising saying the truth clearly and confidently. It does not tell you what to say, and there is nothing here that teaches you to dress up an answer or leave something out. Honesty isn't moral advice here — it's the only safe approach.",
+    "start": "Start",
+    "stop": "Stop",
+    "seconds": "seconds",
+    "nextQuestion": "Another question",
+    "noSpeech": "Your browser doesn't support speech capture. You can still use this — read the question, answer out loud, and time yourself.",
+    "whatYouSaid": "What you said:",
+    "feedback": "Feedback",
+    "length": "Length:",
+    "tooLong": "a bit long — tighten it",
+    "tooShort": "too short",
+    "goodLength": "good length",
+    "words": "Word count:",
+    "selfCheck": "Ask yourself: did you answer the question actually asked? And was everything you said true?",
+    "disclaimer": "This site is not legal advice."
+  },
+  "compareCities": {
+    "title": "Compare cities",
+    "lead": "First question: can I live without a car? That's the biggest line in your first-year budget.",
+    "carFilter": "Can I live without a car?",
+    "sortBy": "Sort by",
+    "compare": "Compare",
+    "sideBySide": "Side by side",
+    "carLevel": {
+      "1": "Cities needing no car at all",
+      "2": "Up to mostly car-free cities",
+      "3": "Up to moderate",
+      "4": "Up to car-dependent",
+      "5": "All cities"
+    },
+    "columns": {
+      "city": "City",
+      "carNeed": "Car need",
+      "roomRent": "Room rent",
+      "apt1br": "1-bed rent",
+      "carInsurance": "Car insurance",
+      "transitScore": "Transit network",
+      "monthlyTransitPass": "Transit pass"
+    },
+    "disclaimer": "These are estimates and they change. Check the source before deciding on them."
+  },
+  "compareStates": {
+    "title": "Compare states",
+    "lead": "The state decides taxes, licensing, and the insurance system.",
+    "cityWarning": "⚠️ Car need, rent, and community are not state data — they're city data. New York State contains New York City (no car needed) and Buffalo (car needed). For those, use the city comparison.",
+    "columns": {
+      "state": "State",
+      "incomeTax": "Income tax",
+      "salesTax": "Sales tax",
+      "noFault": "No-fault system",
+      "license": "Licence"
+    },
+    "disclaimer": "This site is not legal or tax advice."
+  },
+  "calculators": {
+    "missingLead": "{count} numbers in this calculation still need verification. They were left out — the result may change.",
+    "staleTaxYear": "⚠️ The tax numbers on this site are for {year}. Check them before deciding on anything."
+  },
+  "takeHome": {
+    "title": "Take-home pay",
+    "lead": "You've been offered a salary — what actually reaches your hand?",
+    "salary": "Annual salary",
+    "filing": "Filing status",
+    "dependents": "Dependents",
+    "state": "State",
+    "city": "City",
+    "noCity": "None / not relevant",
+    "filingOptions": {
+      "single": "Single",
+      "married": "Married filing jointly",
+      "headOfHousehold": "Head of household"
+    },
+    "inYourHand": "What reaches your hand",
+    "perMonth": "per month",
+    "breakdown": "Breakdown",
+    "gross": "Gross",
+    "net": "Net annual",
+    "effectiveRate": "Effective tax rate: {rate}%",
+    "healthTitle": "Health insurance",
+    "povertyLine": "Your income is about {pct}% of the federal poverty line.",
+    "healthHint": "A rough pointer to go and ask — not a decision. Medicaid rules differ by state.",
+    "disclaimer": "Estimates, not tax advice. The reference is irs.gov and your state tax authority."
+  },
+  "gig": {
+    "title": "Delivery app earnings",
+    "lead": "The gross the app shows you is not what reaches you.",
+    "realHourly": "Your real hourly wage",
+    "realHourlyHint": "After fuel, depreciation, insurance and tax. This is the only number worth deciding on.",
+    "city": "City",
+    "gross": "Monthly gross from the app",
+    "workMiles": "Work miles per month",
+    "totalMiles": "Total car miles",
+    "milesPerHour": "Average miles per hour",
+    "carPrice": "Car price",
+    "down": "Down payment",
+    "apr": "Interest rate",
+    "mpg": "Fuel economy (MPG)",
+    "fuel": "Price per gallon",
+    "whereItGoes": "Where the money goes",
+    "lines": {
+      "gross": "Gross",
+      "carShare": "Work's share of car costs",
+      "selfEmploymentTax": "Self-employment tax",
+      "net": "Net"
+    },
+    "mileageNote": "The mileage deduction saved you ${amount} of taxable income.",
+    "disclaimer": "Estimates, not tax advice."
+  },
+  "arrival": {
+    "title": "Landing cost",
+    "lead": "Everything you pay on arrival, before any income starts.",
+    "landingCost": "Landing cost",
+    "hint": "Flights + first month's housing + deposit + setup + food",
+    "prefilled": "We filled this from your data — you can change it.",
+    "city": "City",
+    "adults": "Adults",
+    "kids": "Children",
+    "breakdown": "Breakdown",
+    "disclaimer": "Estimates based on the site's data."
+  },
+  "runway": {
+    "title": "How long your money lasts",
+    "lead": "The same calculation as the plan, for one city.",
+    "lasts": "Your money lasts",
+    "months": "months",
+    "money": "How much you have",
+    "income": "Monthly income from home",
+    "city": "City",
+    "monthByMonth": "Balance month by month",
+    "month": "Month",
+    "disclaimer": "Estimates based on the site's data."
+  },
+  "car": {
+    "calcTitle": "The true cost of a car",
+    "calcLead": "The price is not the cost. Here's the full calculation, compared against renting one from the app.",
+    "trueMonthly": "True monthly cost",
+    "perMonth": "per month",
+    "aprWarningTitle": "Interest rates for a new immigrant",
+    "aprWarning": "With no US credit history, your rate will be far higher than anyone else's. That's normal, not an exception — know it before you walk into a dealership, not while you're signing.",
+    "canDelay": "In your city you can delay buying",
+    "canDelayHint": "Transit covers you here. Delaying a purchase by months saves thousands in your first year.",
+    "city": "City",
+    "price": "Car price",
+    "down": "Down payment",
+    "apr": "Interest rate",
+    "months": "Loan months",
+    "miles": "Miles per month",
+    "mpg": "Fuel economy (MPG)",
+    "fuel": "Price per gallon",
+    "rentAlternative": "Monthly app car rental",
+    "breakdown": "Breakdown",
+    "lines": {
+      "loanPayment": "Loan payment",
+      "insurance": "Insurance",
+      "fuel": "Fuel",
+      "maintenance": "Maintenance reserve",
+      "registration": "Registration"
+    },
+    "vsRenting": "Buy or rent?",
+    "breakEvenAfter": "Buying pays off after",
+    "monthsWord": "months",
+    "neverBreakEven": "With these numbers renting wins — buying never breaks even.",
+    "disclaimer": "Estimates, not financial advice."
   }
 }

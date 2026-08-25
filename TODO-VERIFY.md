@@ -1370,13 +1370,28 @@
 
 ## 🌐 الإنجليزي الناقص
 
-73 نص عربي جاهز والإنجليزي بتاعه لسه فاضي. اللغتين المفروض متساويتين — مفيش لغة "أصلية" ولغة "ترجمة".
+93 نص عربي جاهز والإنجليزي بتاعه لسه فاضي. اللغتين المفروض متساويتين — مفيش لغة "أصلية" ولغة "ترجمة".
 
 | الملف | العدد |
 |---|---|
 | `job-presets.json` | 14 |
+| `scams.json` | 20 |
 | `checklists/arrival.json` | 22 |
 | `checklists/pre-travel.json` | 30 |
+| `jobs/amazon-flex.json` | 1 |
+| `jobs/doordash.json` | 1 |
+| `jobs/instacart.json` | 1 |
+| `jobs/lyft.json` | 1 |
+| `jobs/uber-eats.json` | 1 |
+| `jobs/uber.json` | 1 |
+| `jobs/walmart-spark.json` | 1 |
+
+## ✍️ محتوى لسه ماتكتبش
+
+7 نص فاضي في اللغتين — دي حاجات محتاجة تتكتب من الأول مش تترجم. أوضحهم `howItPays` في ملفات `jobs/`: إزاي كل تطبيق بيحسب أرباحه.
+
+| الملف | العدد |
+|---|---|
 | `jobs/amazon-flex.json` | 1 |
 | `jobs/doordash.json` | 1 |
 | `jobs/instacart.json` | 1 |

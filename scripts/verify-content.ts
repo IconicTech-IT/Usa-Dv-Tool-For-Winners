@@ -10,12 +10,22 @@ import { join } from "node:path";
 
 import {
   collectFields,
-  collectMissingEnglish,
+  collectMissingText,
   countStatuses,
+  loadCarNeedScale,
   loadChecklists,
+  loadDocuments,
   loadEligibility,
+  loadFees,
+  loadGlossary,
+  loadInterview,
+  loadJobPresets,
+  loadJobs,
   loadMetros,
+  loadScams,
   loadStates,
+  loadSteps,
+  loadTaxTables,
   staleFields,
   type FieldRef,
 } from "@/lib/content/load";
@@ -92,6 +102,16 @@ function main() {
   const states = loadStates();
   const checklists = loadChecklists();
   loadEligibility();
+  loadFees();
+  loadSteps();
+  loadDocuments();
+  loadGlossary();
+  loadScams();
+  loadInterview();
+  loadJobPresets();
+  loadJobs();
+  loadTaxTables();
+  loadCarNeedScale();
 
   // ٢. الإحصاء
   const fields = collectFields();
@@ -101,7 +121,8 @@ function main() {
   const byFile = groupByFile(needs);
 
   const judgmentFields = fields.filter((f) => f.status === "judgment");
-  const missingEnglish = collectMissingEnglish();
+  const missingText = collectMissingText();
+  const missingEnglish = missingText.en;
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -220,6 +241,25 @@ function main() {
     p("| الملف | العدد |");
     p("|---|---|");
     for (const [file, n] of missingEnglish
+      .reduce((m, f) => m.set(f, (m.get(f) ?? 0) + 1), new Map<string, number>())
+      .entries()) {
+      p(`| \`${file}\` | ${n} |`);
+    }
+  }
+  p();
+  p("## ✍️ محتوى لسه ماتكتبش");
+  p();
+  if (missingText.ar.length === 0) {
+    p("مفيش. ✅");
+  } else {
+    p(
+      `${missingText.ar.length} نص فاضي في اللغتين — دي حاجات محتاجة تتكتب من الأول ` +
+        "مش تترجم. أوضحهم `howItPays` في ملفات `jobs/`: إزاي كل تطبيق بيحسب أرباحه.",
+    );
+    p();
+    p("| الملف | العدد |");
+    p("|---|---|");
+    for (const [file, n] of missingText.ar
       .reduce((m, f) => m.set(f, (m.get(f) ?? 0) + 1), new Map<string, number>())
       .entries()) {
       p(`| \`${file}\` | ${n} |`);
