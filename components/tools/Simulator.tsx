@@ -117,7 +117,7 @@ export function Simulator({ questions }: { questions: SimQuestion[] }) {
             </button>
           </div>
 
-          {!supported && <p className="text-sm text-[var(--signal)]">{t("noSpeech")}</p>}
+          {!supported && <p className="text-sm text-warn">{t("noSpeech")}</p>}
 
           {transcript && (
             <div className="space-y-2">

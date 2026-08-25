@@ -82,6 +82,7 @@ export function PlannerWizard({
       <div
         className="h-1.5 rounded-full bg-[color-mix(in_srgb,var(--slate)_20%,transparent)]"
         role="progressbar"
+        aria-label={tc("progressLabel")}
         aria-valuenow={Math.round(progress)}
         aria-valuemin={0}
         aria-valuemax={100}

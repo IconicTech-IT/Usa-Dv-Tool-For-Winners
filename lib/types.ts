@@ -80,6 +80,9 @@ export interface RequiredAmountInput {
 }
 
 export interface RequiredAmountResult {
+  /** نفس قاعدة PlanResult — من غير الأرقام الأساسية مفيش مبلغ */
+  computable: boolean;
+  missingEssential: string[];
   metro: string;
   /** المبلغ المطلوب إجمالًا — ده أكبر رقم في الصفحة */
   totalNeeded: number;
@@ -93,6 +96,16 @@ export interface RequiredAmountResult {
 }
 
 export interface PlanResult {
+  /**
+   * ⚠️ هل الأرقام الأساسية موجودة أصلًا؟
+   * لو لأ، الواجهة **ممنوع** تعرض runway ولا مصاريف شهرية — لأن
+   * الحقول الناقصة بتتشال من الجمع، والناتج بيطلع متفائل بشكل كاذب
+   * (مصاريف $150 في الشهر و"فلوسك تكفي ٣٠ شهر"). رقم مغلوط أسوأ
+   * من مفيش رقم، والقاعدة دي بتتفرض هنا مش في الواجهة بس.
+   */
+  computable: boolean;
+  /** الحقول اللي غيابها هو اللي منع الحسبة */
+  missingEssential: string[];
   tier: Tier;
   runwayMonths: number;
   landingCost: number;

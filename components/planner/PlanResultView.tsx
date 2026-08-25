@@ -21,6 +21,30 @@ export function PlanResultView({ plan }: { plan: PlanResult }) {
   const t = useTranslations("planner.result");
   const locale = useLocale() as "ar" | "en";
 
+  /**
+   * ⚠️ من غير أرقام السكن والأكل، الحسبة بتطلع متفائلة بشكل كاذب
+   * (مصاريف $150 في الشهر → "فلوسك تكفي ٣٠ شهر"). ساعتها الصفحة
+   * **بترفض تعرض رقم** وتقول اللي ناقص بالظبط.
+   */
+  if (!plan.computable) {
+    return (
+      <Card status="danger">
+        <div className="p-6 space-y-3">
+          <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
+          <p>{t("cannotComputeWhy")}</p>
+          <ul className="flex flex-wrap gap-2">
+            {plan.missingEssential.map((f) => (
+              <li key={f} className="badge badge--needs-verification">
+                <span className="num">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-[var(--slate)]">{t("cannotComputeHint")}</p>
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <div className="space-y-8">
       {/* كارت الحُكم */}

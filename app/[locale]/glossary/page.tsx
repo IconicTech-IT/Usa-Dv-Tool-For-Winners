@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Card } from "@/components/Card";
 import { PageHeader } from "@/components/ui";
 import { loadGlossary } from "@/lib/content/load";
 import { routing } from "@/i18n/routing";
@@ -24,11 +23,13 @@ export default async function GlossaryPage({
     <div className="space-y-6">
       <PageHeader title={t("title")} lead={t("lead")} />
 
+      {/* ⚠️ مفيش <Card> هنا بقصد: الكارت بيلف المحتوى في div جواه div،
+          والـ<dt>/<dd> ساعتها بيبعدوا عن الـ<dl> بمستويين وده بيكسر
+          بنية قايمة التعريفات. فبنستخدم كلاس الكارت على div واحد. */}
       <dl className="space-y-3">
         {terms.map((term) => (
-          <Card key={term.term} as="section">
-            <div className="p-4 space-y-1.5">
-              <dt className="flex flex-wrap items-baseline gap-3">
+          <div key={term.term} className="card card--list p-4 space-y-1.5">
+            <dt className="flex flex-wrap items-baseline gap-3">
                 <span className="font-bold" dir="ltr">{term.term}</span>
                 <span className="text-sm text-[var(--slate)]" dir="ltr">
                   {term.pronunciation}
@@ -41,9 +42,8 @@ export default async function GlossaryPage({
                     ? term.whyItMatters[lang]
                     : term.whyItMatters.ar}
                 </p>
-              </dd>
-            </div>
-          </Card>
+            </dd>
+          </div>
         ))}
       </dl>
     </div>

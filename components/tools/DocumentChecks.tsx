@@ -7,6 +7,9 @@ import { FieldValue, localized } from "@/components/FieldValue";
 import { useUser } from "@/lib/store/user-store";
 import type { Field, Localized } from "@/lib/types";
 
+/** ⚠️ نفس سبب Checklist.tsx — مرجع ثابت بدل object جديد كل render. */
+const NO_CHECKS: Record<string, boolean> = {};
+
 export interface DocView {
   id: string;
   name: Localized;
@@ -25,7 +28,7 @@ export function DocumentChecks({ docs }: { docs: DocView[] }) {
   const t = useTranslations("documents");
   const locale = useLocale() as "ar" | "en";
   const profile = useUser((s) => s.profile);
-  const checks = useUser((s) => s.checklists["documents"] ?? {});
+  const checks = useUser((s) => s.checklists["documents"]) ?? NO_CHECKS;
   const toggle = useUser((s) => s.toggleCheck);
 
   const [married, setMarried] = useState(profile.travellingAlone === false);
@@ -73,7 +76,7 @@ export function DocumentChecks({ docs }: { docs: DocView[] }) {
               </label>
 
               <p className="text-sm">{localized(d.why, locale)}</p>
-              <p className="text-sm text-[var(--signal)]">{localized(d.watchOut, locale)}</p>
+              <p className="text-sm text-warn">{localized(d.watchOut, locale)}</p>
 
               <div className="flex flex-wrap gap-4 pt-1 text-sm text-[var(--slate)]">
                 <span>

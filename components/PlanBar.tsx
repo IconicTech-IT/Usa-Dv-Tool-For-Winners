@@ -71,7 +71,7 @@ export function PlanBar() {
     <div className="plan-bar">
       <span>💰 <Money value={money} /></span>
 
-      {plan ? (
+      {plan?.computable ? (
         <>
           <span className="plan-bar__sep">←→</span>
           <span>
