@@ -1,11 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card } from "@/components/Card";
 import { Num, Money } from "@/components/Num";
 import { CountUp } from "@/components/CountUp";
 import { Section, Bullets } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
+import { useInView, useReducedMotion, DURATION } from "@/lib/motion";
 import type { PlanResult } from "@/lib/types";
 
 /**
@@ -140,8 +142,10 @@ export function PlanResultView({ plan }: { plan: PlanResult }) {
  */
 function BalanceChart({ plan }: { plan: PlanResult }) {
   const t = useTranslations("planner.result");
+  const reduced = useReducedMotion();
+  const { ref, inView } = useInView<HTMLDivElement>();
+  const expectedPath = useRef<SVGPathElement>(null);
   const data = plan.monthlyProjection;
-  if (data.length === 0) return null;
 
   const W = 640;
   const H = 220;
@@ -161,10 +165,33 @@ function BalanceChart({ plan }: { plan: PlanResult }) {
   // أول شهر الرصيد بيلمس الصفر في السيناريو المتوقع
   const zeroIndex = data.findIndex((d) => d.expected <= 0);
 
+  // الخط بيترسم من أول الشهور لآخرها. الرسم ده أهم من إنه شكل حلو:
+  // بيخلي عين المستخدم تمشي مع الرصيد وهو بينزل لحد ما يلمس الصفر.
+  useEffect(() => {
+    const el = expectedPath.current;
+    if (!el) return;
+    const length = el.getTotalLength();
+
+    if (reduced || !inView) {
+      el.style.strokeDasharray = "none";
+      el.style.strokeDashoffset = "0";
+      return;
+    }
+
+    el.style.strokeDasharray = String(length);
+    el.style.strokeDashoffset = String(length);
+    el.getBoundingClientRect(); // إجبار reflow قبل ما الانتقال يبدأ
+    el.style.transition = `stroke-dashoffset ${DURATION.chart}ms ease-out`;
+    el.style.strokeDashoffset = "0";
+  }, [inView, reduced, data]);
+
+  // ⚠️ الخروج بدري لازم يبقى بعد كل الhooks — مش قبلهم
+  if (data.length === 0) return null;
+
   return (
     <Section title={t("balance")}>
       <Card>
-        <div className="p-4 overflow-x-auto">
+        <div ref={ref} className="p-4 overflow-x-auto">
           <svg
             viewBox={`0 0 ${W} ${H}`}
             className="w-full min-w-[520px]"
@@ -183,17 +210,36 @@ function BalanceChart({ plan }: { plan: PlanResult }) {
             />
             <path d={line("slow")} fill="none" stroke="var(--slate)" strokeWidth="1.5" opacity="0.6" />
             <path d={line("fast")} fill="none" stroke="var(--seal)" strokeWidth="1.5" opacity="0.6" />
-            <path d={line("expected")} fill="none" stroke="var(--signal)" strokeWidth="2.5" />
+            <path
+              ref={expectedPath}
+              d={line("expected")}
+              fill="none"
+              stroke="var(--signal)"
+              strokeWidth="2.5"
+            />
 
             {zeroIndex >= 0 && (
               <>
-                <circle cx={x(zeroIndex)} cy={y(0)} r="5" fill="var(--alert)" />
+                <circle
+                  cx={x(zeroIndex)}
+                  cy={y(0)}
+                  r="5"
+                  fill="var(--alert)"
+                  style={{
+                    opacity: reduced || inView ? 1 : 0,
+                    transition: `opacity 300ms ease ${DURATION.chart}ms`,
+                  }}
+                />
                 <text
                   x={x(zeroIndex)}
                   y={y(0) - 10}
                   textAnchor="middle"
                   fill="var(--alert)"
                   fontSize="12"
+                  style={{
+                    opacity: reduced || inView ? 1 : 0,
+                    transition: `opacity 400ms ease ${DURATION.chart}ms`,
+                  }}
                 >
                   {t("moneyRunsOut")}
                 </text>

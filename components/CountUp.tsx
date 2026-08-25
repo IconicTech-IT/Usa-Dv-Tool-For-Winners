@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
-import { useReducedMotion, DURATION } from "@/lib/motion";
+import { useReducedMotion, useInView, DURATION } from "@/lib/motion";
 import { Num } from "./Num";
 
 /**
@@ -21,6 +21,7 @@ export function CountUp({
   prefix?: string;
 }) {
   const reduced = useReducedMotion();
+  const { ref, inView } = useInView<HTMLSpanElement>();
   const [shown, setShown] = useState(reduced ? value : 0);
   const proxy = useRef({ n: 0 });
 
@@ -29,6 +30,7 @@ export function CountUp({
       setShown(value);
       return;
     }
+    if (!inView) return;
 
     const obj = proxy.current;
     const animation = animate(obj, {
@@ -42,10 +44,10 @@ export function CountUp({
     return () => {
       animation.pause();
     };
-  }, [value, reduced]);
+  }, [value, reduced, inView]);
 
   return (
-    <Num>
+    <Num ref={ref}>
       {prefix}
       {shown.toFixed(decimals)}
       {suffix}

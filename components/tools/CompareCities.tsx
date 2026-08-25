@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Card } from "@/components/Card";
 import { FieldValue, localized } from "@/components/FieldValue";
 import { CarNeedBar } from "@/components/ui";
-import { display } from "@/lib/content/field";
 import type { PlannerMetro } from "@/lib/planner/metro";
 
 type SortKey = "carNeed" | "roomRent" | "apt1br" | "carInsurance" | "transitScore";
@@ -116,9 +115,7 @@ export function CompareCities({ metros }: { metros: PlannerMetro[] }) {
       )}
 
       <ul className="space-y-3">
-        {rows.map((m) => {
-          const carNeed = display(m.carNeed);
-          return (
+        {rows.map((m) => (
             <Card key={m.slug} as="li">
               <div className="p-4 space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -153,8 +150,7 @@ export function CompareCities({ metros }: { metros: PlannerMetro[] }) {
                 </dl>
               </div>
             </Card>
-          );
-        })}
+        ))}
       </ul>
     </div>
   );

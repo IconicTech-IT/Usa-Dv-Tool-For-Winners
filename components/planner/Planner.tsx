@@ -130,7 +130,9 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
   const [includeTravel, setIncludeTravel] = useState(true);
 
   const adults = profile.adults ?? 1;
-  const kids = profile.kidsAges ?? [];
+  // ⚠️ من غير useMemo، المصفوفة دي بتتعمل من الأول كل render
+  // فالحسبة تحت بتعيد نفسها كل مرة من غير داعي
+  const kids = useMemo(() => profile.kidsAges ?? [], [profile.kidsAges]);
 
   const result = useMemo(
     () =>

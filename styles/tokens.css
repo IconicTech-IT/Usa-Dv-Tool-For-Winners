@@ -22,9 +22,10 @@
   --foil-strength:   0.14;
 
   /* type */
-  --font-sans-ar: "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --font-sans-en: "IBM Plex Sans", system-ui, sans-serif;
-  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+  /* الخطوط بتتحمّل بـnext/font/google وبتتقدم من نفس الدومين */
+  --font-sans-ar: var(--font-plex-arabic), system-ui, sans-serif;
+  --font-sans-en: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono:    var(--font-plex-mono), ui-monospace, monospace;
 
   /* scale */
   --radius:   12px;

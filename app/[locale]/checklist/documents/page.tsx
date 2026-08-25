@@ -1,7 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Card } from "@/components/Card";
 import { PageHeader, ToolDisclaimer } from "@/components/ui";
-import { FieldValue } from "@/components/FieldValue";
 import { DocumentChecks } from "@/components/tools/DocumentChecks";
 import { loadDocuments } from "@/lib/content/load";
 import { routing } from "@/i18n/routing";
@@ -18,7 +16,6 @@ export default async function DocumentsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("documents");
-  const lang = locale as "ar" | "en";
   const docs = loadDocuments();
 
   return (

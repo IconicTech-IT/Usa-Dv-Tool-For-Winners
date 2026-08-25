@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { animate } from "animejs";
 import { useLocale } from "next-intl";
 import { useUser } from "@/lib/store/user-store";
 
@@ -72,3 +73,42 @@ export const DURATION = {
   counter: 1200,
   chart: 1200,
 } as const;
+
+/**
+ * بيقول إذا كان العنصر دخل الشاشة. أساس العدادات ورسم الchart.
+ * بيطلّق بعد أول مرة — الحركة بتحصل مرة واحدة، مش كل ما تعدي عليها.
+ */
+export function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "-10% 0px" },
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return { ref, inView };
+}
+
+/** اهتزاز حقل الخطأ. بيتعطل مع reduced-motion وتفضل الرسالة بس. */
+export function shake(el: HTMLElement | null, reduced: boolean) {
+  if (!el || reduced) return;
+  animate(el, { x: [0, -6, 6, -6, 0], duration: DURATION.micro, ease: "outQuad" });
+}

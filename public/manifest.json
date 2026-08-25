@@ -1,0 +1,10 @@
+{
+  "name": "DV Compass",
+  "short_name": "DV Compass",
+  "description": "موقع مجاني بيحسبلك تكلفة الهجرة لأمريكا ويرتبلك خطوتك الجاية",
+  "start_url": "/ar",
+  "display": "standalone",
+  "background_color": "#F4F6F5",
+  "theme_color": "#0F2438",
+  "icons": []
+}
