@@ -154,7 +154,10 @@
       "week": "Week",
       "risks": "Warnings",
       "unverifiedTitle": "Numbers this plan relied on that still need verification",
-      "unverifiedLead": "{count} fields are still unconfirmed. The plan was calculated without them, so the numbers may change once they are filled."
+      "unverifiedLead": "{count} fields are still unconfirmed. The plan was calculated without them, so the numbers may change once they are filled.",
+      "cannotCompute": "We can't work this out yet",
+      "cannotComputeWhy": "To tell you how long your money lasts we need this city's rent and food costs. Those numbers aren't confirmed yet, and calculating without them would give you a falsely optimistic figure — which is more dangerous than not answering.",
+      "cannotComputeHint": "Try another city, or see the sources page to find out where these numbers come from."
     },
     "need": {
       "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",
@@ -166,8 +169,11 @@
       "youNeed": "You need",
       "breakdown": "Breakdown",
       "breakdownHint": "That's landing costs plus {months} months of living with no income.",
-      "unverified": "{count} numbers in this calculation still need verification."
-    }
+      "unverified": "{count} numbers in this calculation still need verification.",
+      "cannotCompute": "We can't work this out yet",
+      "cannotComputeWhy": "To tell you how long your money lasts we need this city's rent and food costs. Those numbers aren't confirmed yet, and calculating without them would give you a falsely optimistic figure — which is more dangerous than not answering."
+    },
+    "progressLabel": "Progress through the questions"
   },
   "timeline": {
     "title": "The journey map",

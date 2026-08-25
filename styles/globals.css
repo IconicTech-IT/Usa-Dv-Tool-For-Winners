@@ -61,12 +61,20 @@ html[lang="ar"] body {
   white-space: nowrap;
 }
 .badge--estimated {
-  color: var(--slate);
+  color: var(--badge-estimated-fg);
+  border-color: color-mix(in srgb, var(--slate) 55%, transparent);
   background: color-mix(in srgb, var(--slate) 8%, transparent);
 }
 .badge--needs-verification {
-  color: var(--signal);
+  color: var(--badge-needs-fg);
+  border-color: color-mix(in srgb, var(--signal) 65%, transparent);
   background: color-mix(in srgb, var(--signal) 10%, transparent);
+}
+
+/* نص تحذيري داخل المحتوى. مش --signal مباشرة لنفس سبب البادج:
+   --signal مظبوط كإطار (٣:١) وواقع كنص (٣.٣:١ على خلفية فاتحة). */
+.text-warn {
+  color: var(--badge-needs-fg);
 }
 
 /* ---------- شريط الخطة ---------- */

@@ -9,6 +9,14 @@ import { useUser } from "@/lib/store/user-store";
 import { useReducedMotion } from "@/lib/motion";
 import type { Localized } from "@/lib/types";
 
+/**
+ * ⚠️ مرجع ثابت مقصود.
+ * `s.checklists[id] ?? {}` بيعمل object جديد كل render، وzustand
+ * بيقارن بالمرجع فبيفتكرها قيمة اتغيرت → render تاني → object جديد →
+ * حلقة لا نهائية (React error #185). الثابت ده بيقفل الحلقة دي.
+ */
+const NO_CHECKS: Record<string, boolean> = {};
+
 export interface ChecklistItemView {
   id: string;
   title: Localized;
@@ -33,7 +41,7 @@ export function Checklist({
   const t = useTranslations("checklist");
   const tb = useTranslations("badges");
   const locale = useLocale() as "ar" | "en";
-  const checks = useUser((s) => s.checklists[listId] ?? {});
+  const checks = useUser((s) => s.checklists[listId]) ?? NO_CHECKS;
   const toggle = useUser((s) => s.toggleCheck);
   const reduced = useReducedMotion();
 

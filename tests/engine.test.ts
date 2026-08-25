@@ -234,3 +234,61 @@ describe("⚠️ الأحكام الذاتية في الترشيح الحقيق�
     expect(plan.recommendedMetros[0]!.slug).toBe("cheap");
   });
 });
+
+describe("⚠️ رفض الحسبة من غير الأرقام الأساسية", () => {
+  it("مدينة من غير إيجار = مفيش رقم، مش رقم متفائل", () => {
+    const noRent = metro("no-rent", { roomRent: nullField });
+    const plan = computePlan(input, [noRent]);
+    expect(plan.computable).toBe(false);
+    expect(plan.missingEssential).toContain("roomRent");
+  });
+
+  it("مدينة من غير أكل = مفيش رقم", () => {
+    const noFood = metro("no-food", { groceriesPerAdult: nullField });
+    const plan = computePlan(input, [noFood]);
+    expect(plan.computable).toBe(false);
+    expect(plan.missingEssential).toContain("groceriesPerAdult");
+  });
+
+  it("الحالة اللي كانت بتكذب: كل الأرقام ناقصة = ٣٠ شهر وهمية", () => {
+    const empty = metro("empty", {
+      roomRent: nullField,
+      apt1br: nullField,
+      apt2br: nullField,
+      utilities: nullField,
+      groceriesPerAdult: nullField,
+      monthlyTransitPass: nullField,
+      carInsurance: nullField,
+      securityDeposit: nullField,
+    });
+    const plan = computePlan({ ...input, money: 6000 }, [empty]);
+
+    // المحرك لسه بيحسب رقم كبير — ده متوقع لأن البنود اتشالت…
+    expect(plan.runwayMonths).toBeGreaterThan(20);
+    // …بس بيقول صراحة إن الرقم ده مينفعش يتعرض
+    expect(plan.computable).toBe(false);
+  });
+
+  it("عيلة: بيدوّر على إيجار الشقة مش الغرفة", () => {
+    const noApt = metro("no-apt", { apt2br: nullField });
+    const plan = computePlan(
+      { ...input, travellingAlone: false, adults: 2, kidsAges: [6, 9], money: 40000 },
+      [noApt],
+    );
+    expect(plan.missingEssential).toContain("apt2br");
+  });
+
+  it("كل الأرقام موجودة = الحسبة مسموحة", () => {
+    const plan = computePlan(input, [metro("full")]);
+    expect(plan.computable).toBe(true);
+    expect(plan.missingEssential).toHaveLength(0);
+  });
+
+  it("اتجاه محتاج كام؟ بيرفض بنفس القاعدة", () => {
+    const r = computeRequired(
+      { metro: "x", adults: 1, kidsAges: [], monthsWithoutWork: 3, includeTravel: true, monthlyIncomeFromHome: 0 },
+      [metro("x", { roomRent: nullField })],
+    );
+    expect(r!.computable).toBe(false);
+  });
+});

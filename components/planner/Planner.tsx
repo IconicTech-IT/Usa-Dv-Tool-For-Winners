@@ -80,17 +80,25 @@ function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
   const t = useTranslations("planner");
   const profile = useUser((s) => s.profile);
   const setPlan = useUser((s) => s.setPlan);
-  const [showResult, setShowResult] = useState(false);
+  /**
+   * ⚠️ الحالة دي مشتقة مش مجمّدة.
+   * zustand بيرجّع الداتا من localStorage **بعد** أول render، فلو
+   * جمّدنا القرار في useState الأولاني هيتحسب والstore لسه فاضي،
+   * وحد راجع وبياناته محفوظة هيلاقي الأسئلة من الأول تاني.
+   * فبنمسك "بيعدّل دلوقتي؟" بس، والباقي بيتحسب من الstore كل render.
+   */
+  const [editing, setEditing] = useState(false);
+  const showResult = Boolean(profile.money) && !editing;
 
   const plan = useMemo(() => computePlan(fill(profile), metros), [profile, metros]);
 
   // الخطة بتتحدث لحظيًا مع أي تعديل، وبتتحفظ عشان شريط الخطة يقراها
   const done = () => {
     setPlan(plan);
-    setShowResult(true);
+    setEditing(false);
   };
 
-  if (!showResult && !profile.money) {
+  if (!showResult) {
     return <PlannerWizard metros={metros} onDone={done} />;
   }
 
@@ -99,18 +107,14 @@ function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
       <div className="flex flex-wrap items-center gap-3">
         <button
           type="button"
-          onClick={() => setShowResult(false)}
+          onClick={() => setEditing(true)}
           className="text-sm underline underline-offset-4"
         >
           {t("editAnswers")}
         </button>
         <span className="text-sm text-[var(--slate)]">{t("liveUpdate")}</span>
       </div>
-      {!showResult ? (
-        <PlannerWizard metros={metros} onDone={done} />
-      ) : (
-        <PlanResultView plan={plan} />
-      )}
+      <PlanResultView plan={plan} />
     </div>
   );
 }
@@ -220,7 +224,23 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
         </div>
       </Card>
 
-      {result && (
+      {result && !result.computable && (
+        <Card status="danger">
+          <div className="p-6 space-y-3">
+            <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
+            <p>{t("cannotComputeWhy")}</p>
+            <ul className="flex flex-wrap gap-2">
+              {result.missingEssential.map((f) => (
+                <li key={f} className="badge badge--needs-verification">
+                  <span className="num">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Card>
+      )}
+
+      {result && result.computable && (
         <>
           <Card status="done">
             <div className="p-6 space-y-2">

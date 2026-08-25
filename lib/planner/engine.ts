@@ -330,6 +330,29 @@ export function scoreMetros(
   return rankWithJudgment(scored).map(({ factual: _f, judgment: _j, ...rest }) => rest);
 }
 
+/**
+ * الحقول اللي من غيرها الحسبة مالهاش معنى.
+ * السكن والأكل لوحدهم أغلب المصاريف — لو ناقصين، الرقم الناتج بيبقى
+ * كذب متفائل مش تقدير ناقص.
+ */
+export const ESSENTIAL_FIELDS = ["housing", "groceriesPerAdult"] as const;
+
+function essentialMissing(
+  m: PlannerMetro,
+  goAlone: boolean,
+  people: number,
+): string[] {
+  const missing: string[] = [];
+
+  const housing = goAlone || people === 1 ? m.roomRent : people <= 3 ? m.apt1br : m.apt2br;
+  if (typeof housing.value !== "number") {
+    missing.push(goAlone || people === 1 ? "roomRent" : people <= 3 ? "apt1br" : "apt2br");
+  }
+  if (typeof m.groceriesPerAdult.value !== "number") missing.push("groceriesPerAdult");
+
+  return missing;
+}
+
 /* ------------------------------------------------------------------ *
  * الخطة
  * ------------------------------------------------------------------ */
@@ -503,7 +526,12 @@ export function computePlan(
   const sources: Source[] = [];
   const unverified = missing.list().filter((f) => f.startsWith(chosen.slug));
 
+  const people = goAlone ? 1 : input.adults + input.kidsAges.length;
+  const missingEssential = essentialMissing(chosen, goAlone, people);
+
   return {
+    computable: missingEssential.length === 0,
+    missingEssential,
     tier: policy.tier,
     runwayMonths,
     landingCost: landing.total,
@@ -554,8 +582,12 @@ export function computeRequired(
 
   const net = Math.max(0, burn.total - input.monthlyIncomeFromHome);
   const months = Math.max(0, input.monthsWithoutWork);
+  const people = goAlone ? 1 : input.adults + input.kidsAges.length;
+  const missingEssential = essentialMissing(m, goAlone, people);
 
   return {
+    computable: missingEssential.length === 0,
+    missingEssential,
     metro: m.slug,
     totalNeeded: Math.round(landing.total + net * months),
     landingCost: Math.round(landing.total),
