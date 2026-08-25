@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { PlanBar } from "@/components/PlanBar";
 import { AppBackground } from "@/components/AppBackground";
+import { Footer } from "@/components/Footer";
 import "@/styles/globals.css";
 
 export function generateStaticParams() {
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
             <Header />
             <PlanBar />
             <main className="measure mx-auto px-4 py-10">{children}</main>
+            <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

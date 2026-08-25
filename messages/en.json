@@ -385,5 +385,532 @@
     "monthsWord": "months",
     "neverBreakEven": "With these numbers renting wins — buying never breaks even.",
     "disclaimer": "Estimates, not financial advice."
+  },
+  "pages": {
+    "first30Days": {
+      "title": "Your first 30 days",
+      "lead": "The order here isn't arbitrary. Each step unlocks the next, and doing them out of order costs you weeks for no reason.",
+      "sections": [
+        {
+          "h": "Why the order matters",
+          "p": "American paperwork is chained together. The bank wants an address, the licence wants a Social Security number, and work apps want a bank account. Start at the wrong end and you go in circles. This order breaks the circle."
+        },
+        {
+          "h": "1. Social Security number (SSN)",
+          "p": "This is the first and most important document. Without it there's no formal work and, in most states, no licence. If you requested it on your DS-260 it usually arrives by post without you doing anything. If you didn't, you can go to a Social Security office yourself.",
+          "list": [
+            "Go early — a delay here delays everything after it",
+            "Take your passport and visa",
+            "The card arrives by post, so you need a stable address first"
+          ]
+        },
+        {
+          "h": "2. A US phone number",
+          "p": "The cheapest and fastest thing, and everything after it asks for one. Prepaid lines don't need credit history or a contract.",
+          "list": [
+            "Most prepaid lines don't require an SSN",
+            "This number becomes your contact on every application you make"
+          ]
+        },
+        {
+          "h": "3. A bank account",
+          "p": "Some banks open an account with just a passport and visa; others want an SSN. Ask at two branches before deciding.",
+          "list": [
+            "Ask about monthly fees and minimum balances — these quietly eat money",
+            "Bring proof of address if you have it"
+          ]
+        },
+        {
+          "h": "4. A stable address",
+          "p": "Even if you haven't settled, you need somewhere that receives your post. Post isn't optional here — official cards and letters arrive that way.",
+          "list": [
+            "A friend's address or where you're staying works temporarily",
+            "When you move, forward your post officially"
+          ]
+        },
+        {
+          "h": "5. Driving licence or State ID",
+          "p": "Even if you won't drive soon, a state ID makes everything easier because it's accepted identification everywhere. Licence procedures and requirements vary by state — see the state comparison page.",
+          "list": [
+            "Some states have a waiting period after you arrive",
+            "Ask whether the test is available in your language"
+          ]
+        },
+        {
+          "h": "What can wait",
+          "p": "Buying a car, long-term subscriptions, and any 12-month contract. In your first month you don't yet know where you'll settle or what you'll do — a long commitment now closes off your options.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "housing": {
+      "title": "Your first home",
+      "lead": "The hard part isn't the price — it's convincing someone to rent to you when you have no history in the country.",
+      "sections": [
+        {
+          "h": "The real problem",
+          "p": "Management companies look at your credit and rental history, and you have neither yet. This isn't personal rejection — the system simply can't see you. The answer isn't to fight the system, it's to come in through a different door."
+        },
+        {
+          "h": "Doors that open without credit",
+          "p": "Easiest and cheapest first:",
+          "list": [
+            "A room in a shared flat with people already living there — fastest route, and the agreement is with them",
+            "Renting from an individual landlord rather than a management company — more flexible, and they'll actually listen",
+            "A short-term rental for a month or two until you find work and know where to settle",
+            "Offering several months upfront instead of credit history — but budget carefully, it eats into your early money"
+          ]
+        },
+        {
+          "h": "What to ask before signing",
+          "p": "Contracts here are enforced literally. Read it, and if something is unclear ask before signing, not after.",
+          "list": [
+            "Lease length, how to break it early, and what that costs",
+            "Whether utilities are included",
+            "How much the deposit is and when it's returned",
+            "Guest and occupancy policy"
+          ]
+        },
+        {
+          "h": "Scam listings",
+          "p": "This is where newcomers get scammed most, and the signs are consistent:",
+          "list": [
+            "Priced far below the market",
+            "The 'landlord' is abroad and you can't see the place before paying",
+            "Asks for a wire transfer or gift cards before any viewing",
+            "Rushes you and says others are waiting",
+            "Won't meet you or show you inside"
+          ]
+        },
+        {
+          "h": "The one rule you never break",
+          "p": "Never pay anything before you've seen the place with your own eyes and seen a written lease. Anyone pressuring you to pay before that is running a scam, however right everything else looks.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "credit": {
+      "title": "Building credit from zero",
+      "lead": "A credit score is a number telling lenders whether you pay people back. You arrive with no number at all — not good, not bad, nothing.",
+      "sections": [
+        {
+          "h": "Why this matters quickly",
+          "p": "That number sets your car loan rate, sometimes your car insurance, and whether flats accept you. The gap between thin credit and good credit is measured in thousands of dollars on a single car loan. That's why it's worth starting in month one even if you don't need to borrow."
+        },
+        {
+          "h": "From zero: the first 6 months",
+          "p": "The usual path is simple, slow, and has no shortcut:",
+          "list": [
+            "A secured credit card: you deposit money that becomes your limit — the bank takes no risk, so they accept you with no history",
+            "Use it for small regular expenses like fuel or your phone bill",
+            "Pay the balance **in full** every month, before the due date",
+            "Don't use more than a small share of your limit",
+            "Don't open several cards at once"
+          ]
+        },
+        {
+          "h": "The two biggest mistakes",
+          "p": "These do more damage than anything else: paying late even by a day, and using your whole limit every month. The score is built from consistency, not from amounts — a small card you pay exactly on time beats a large one you pay late."
+        },
+        {
+          "h": "Never pay anyone to 'fix' your credit",
+          "p": "Nobody can build you a credit history for money. Companies promising this take your money and nothing else. History is built with time and consistency, and there is no substitute for that.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "health": {
+      "title": "Health insurance",
+      "lead": "Care here is shockingly expensive. Having insurance isn't a luxury — one uninsured emergency visit can wipe out months of budget.",
+      "sections": [
+        {
+          "h": "What's available to you",
+          "p": "As a permanent resident you have more than one route, and which fits depends on your income and your state. The two main paths are government coverage for lower incomes, and a marketplace where you buy a plan with subsidies based on income. Rules vary substantially by state, and some states extend coverage further than others."
+        },
+        {
+          "h": "When you can sign up",
+          "p": "The marketplace opens for a set period each year, but newly arriving in the country counts as a circumstance that opens a special enrolment window for you. So don't wait for the general period — ask as soon as you arrive.",
+          "list": [
+            "Ask specifically about the special enrolment period for new arrivals",
+            "Estimate your likely subsidy with the take-home calculator"
+          ]
+        },
+        {
+          "h": "Emergency room or urgent care?",
+          "p": "This is where the biggest savings are. The emergency room is for genuinely serious cases and bills many times more. Urgent care handles the middle ground — bad colds, minor cuts, small fractures — at a fraction of the cost.",
+          "list": [
+            "Chest pain, trouble breathing, heavy bleeding, major injury → emergency room",
+            "Fever, minor cut, infection, bad cough → urgent care"
+          ]
+        },
+        {
+          "h": "If you're not insured yet",
+          "p": "Community health centres charge on a sliding scale based on income, and hospitals have financial assistance programmes. Ask about these **before** treatment, not after the bill arrives — they're completely different processes.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "taxes": {
+      "title": "Your first year of taxes",
+      "lead": "If you worked even one month, you probably owe a return. It's simpler than it looks, but ignoring it makes it bigger.",
+      "sections": [
+        {
+          "h": "W-2 or 1099?",
+          "p": "This distinction changes everything. As an employee, the company withholds tax from your pay and gives you a W-2 at year end. Working delivery apps, you are legally self-employed: nobody withholds anything, and you're responsible for the whole amount — including self-employment tax, which is higher than people expect."
+        },
+        {
+          "h": "Doing gig work? Set money aside from day one",
+          "p": "The most common trap for newcomers: earning well for months, spending all of it, then facing a tax bill at year end with nothing put by. Put a share of every payment into a separate account from the start.",
+          "list": [
+            "Log your work mileage daily — that deduction is worth a lot",
+            "Keep receipts for work expenses",
+            "The gig calculator on this site shows the share you should be setting aside"
+          ]
+        },
+        {
+          "h": "Free filing",
+          "p": "There are programmes that let you file for free below a certain income, and centres that help people in person for free — many offering help in several languages. Don't pay anyone to file a return you can file for nothing."
+        },
+        {
+          "h": "Don't delay, and don't panic",
+          "p": "If your income is small and the process confuses you, that's not a reason to ignore it. Delay adds penalties, and filing is usually simpler than the fear of it.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "credentials": {
+      "title": "Your qualifications and profession",
+      "lead": "Your degree doesn't get cancelled at the border — but it isn't automatically accepted either. Credential evaluation and professional licensing are two different things.",
+      "sections": [
+        {
+          "h": "Credential evaluation",
+          "p": "Specialised organisations take your qualification and issue a report saying what it's equivalent to in the US system. That's what most employers and universities ask for. It's not a government process — these are companies, with different prices and turnaround times, so compare before choosing."
+        },
+        {
+          "h": "Professional licensing — the big one",
+          "p": "Some professions can't legally be practised without a licence from the state itself: medicine, nursing, pharmacy, law, engineering, teaching and others. And licensing **varies by state** — which means choosing a city isn't only a cost-of-living decision, it's a career decision.",
+          "list": [
+            "Find out early: does your profession need a licence in the state you're heading to?",
+            "These processes take months, sometimes years, and exams",
+            "Some professions have a shorter route for foreign-trained graduates"
+          ]
+        },
+        {
+          "h": "Planning the time",
+          "p": "The reality is licensing takes time and you need income now. Most people work something interim while moving through licensing in parallel. That isn't giving up — it's the sensible order."
+        },
+        {
+          "h": "Something to do before you leave",
+          "p": "Get official copies of your certificates, transcripts and experience letters before you travel, with certified translations. Requesting these from abroad afterwards is far harder.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "greenCard": {
+      "title": "Keeping your residency",
+      "lead": "A green card is permanent residence — but 'permanent' is conditional on actually living here.",
+      "sections": [
+        {
+          "h": "The basic principle",
+          "p": "Your status as a permanent resident rests on the US being your actual home. Long or repeated absences can be read as abandoning residence, even while the card itself is still valid. The exact absence limits and conditions must be confirmed from the official source before any long trip."
+        },
+        {
+          "h": "If you need to be away a long time",
+          "p": "There's a process you file **before** travelling that protects your status for longer. The important word is 'before' — travel first and try to fix it afterwards, and your options shrink sharply.",
+          "list": [
+            "Ask about this process before you book",
+            "Keep anything proving your life is here: lease, work, tax return, bank account"
+          ]
+        },
+        {
+          "h": "The path to citizenship",
+          "p": "After a set period of residence you can apply for citizenship, and the requirements include a residence period, continuous presence, and a test. The exact periods come from the official authority — but what matters now is that long absences affect this too, so what you do in your first years matters later."
+        },
+        {
+          "h": "Two things people overlook",
+          "p": "First: file a tax return every year even if your income is small — it's part of proving you live here. Second: report address changes within the required window; that's a formal obligation, not a detail.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "family": {
+      "title": "Family and children",
+      "lead": "Children adapt far faster than you do. The hard part at first is the paperwork and the school.",
+      "sections": [
+        {
+          "h": "School is a right, not a privilege",
+          "p": "Public education is free and available to all resident children, regardless of their parents' status. Your school is determined by your home address — which is why choosing a neighbourhood is not a small detail when you have children."
+        },
+        {
+          "h": "Enrolment: what's usually asked for",
+          "p": "It varies by district, but most ask for:",
+          "list": [
+            "Proof of address (lease or utility bill)",
+            "The child's birth certificate",
+            "Immunisation records",
+            "A language assessment to place them in the right programme"
+          ]
+        },
+        {
+          "h": "Immunisations",
+          "p": "Schools require certain immunisations before starting. If you have your child's records from home, bring them translated — it avoids repeating vaccinations and saves time. Anything missing gets completed here."
+        },
+        {
+          "h": "Language support exists and is free",
+          "p": "Schools run programmes for children whose first language isn't English, and this is the child's right, not an extra service. Ask for it by name at enrolment."
+        },
+        {
+          "h": "What parents forget",
+          "p": "Children pick up the language fast and become the family's translator. That's convenient at first but puts a weight on them that isn't theirs — build your own language independence in parallel, however slowly.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    },
+    "carGuide": {
+      "title": "Buying a car from scratch",
+      "lead": "If your city needs a car, this is the biggest financial decision of your first year. Read this before walking into any dealership.",
+      "sections": [
+        {
+          "h": "First: do you even need one?",
+          "p": "Before anything else, check your city's car need on the city comparison page. If your city is one you can live in without a car, delaying a purchase by months saves thousands — the single biggest difference you can make to your first-year budget."
+        },
+        {
+          "h": "Financing with no credit history",
+          "p": "Without credit, the interest rate you're offered will be far higher than anyone else's. That's normal, not an exception. An $8,000 car can cost substantially more than that over the loan. The car calculator on this site shows you that gap in actual numbers."
+        },
+        {
+          "h": "The title type — the most important word in the listing",
+          "p": "The title is the car's ownership document, and its condition is recorded on it:",
+          "list": [
+            "clean — no major accident history. This is what you want",
+            "salvage — the car was written off as a total loss. Stay away",
+            "rebuilt / reconstructed — was salvage and was repaired. Much cheaper, much riskier, and insuring it is a problem",
+            "flood — water damage. The electrical faults appear later and never really go away"
+          ]
+        },
+        {
+          "h": "Dealer or private sale?",
+          "p": "A dealer costs more but has clearer paperwork and sometimes a short warranty. A private sale is cheaper but everything is on you: you check the paperwork, you arrange the inspection, and there's no going back after payment."
+        },
+        {
+          "h": "Pre-purchase inspection (PPI)",
+          "p": "This is the step that separates a good car from a disaster. You take the car to a mechanic **you** chose — not one the seller recommended — and they inspect it for a small fee. Any seller who refuses this has answered your question.",
+          "list": [
+            "Choose the mechanic yourself",
+            "Ask for a written report",
+            "If the seller refuses, walk away — whatever the price"
+          ]
+        },
+        {
+          "h": "The true cost isn't the price",
+          "p": "The price is one part of the calculation. Add insurance (very expensive for a driver with no US driving history), registration, fuel and maintenance. Use the car calculator to see the real monthly figure, and compare it against renting one from an app."
+        },
+        {
+          "h": "If someone rushes you, here's your answer",
+          "p": "There is no 'bargain that's about to go'. Urgency is the pressure tactic bad cars are sold with. A real bargain is one where the seller is willing to wait while you get it inspected.",
+          "warn": true
+        }
+      ],
+      "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+    }
+  },
+  "jobs": {
+    "title": "Work",
+    "lead": "These apps are the fastest income for most people in the early months. Here's the comparison.",
+    "filterNoCar": "No car",
+    "filterNoEnglish": "No English",
+    "categories": {
+      "food-delivery": "Food delivery",
+      "rideshare": "Rideshare",
+      "package-delivery": "Package delivery",
+      "grocery": "Grocery",
+      "warehouse": "Warehouse"
+    },
+    "needsCar": "Needs a car",
+    "needsEnglish": "English level",
+    "activation": "Activation time",
+    "minCarYear": "Oldest model accepted",
+    "requiresSSN": "Needs an SSN",
+    "howItPays": "How it pays",
+    "pros": "Pros",
+    "cons": "Cons",
+    "tips": "Beginner tips",
+    "officialSignup": "Official signup page",
+    "disclaimer": "Requirements change and vary by city. Confirm them on the app's official page for your city."
+  },
+  "listingCheck": {
+    "title": "Car listing checker",
+    "lead": "Paste a listing and we'll show you what should worry you in it.",
+    "paste": "Listing text",
+    "localOnly": "The check runs entirely on your device. Nothing is sent anywhere.",
+    "extracted": "What we read from it",
+    "year": "Model year",
+    "miles": "Mileage",
+    "price": "Price",
+    "flags": "Warning signs",
+    "noFlags": "No clear warning signs in the text. That doesn't mean the car is good — it still needs a mechanical inspection before you buy.",
+    "rules": {
+      "dangerWords": "⛔ The listing contains words like salvage, rebuilt or as-is. These mean the car was written off or is sold with no guarantee at all. Not a first car.",
+      "scamPattern": "⛔ The listing uses a known scam pattern: seller abroad, payment by gift card or wire, or 'shipping the car' to you. These aren't real ways of selling cars.",
+      "tooLowMiles": "⚠️ The mileage is very low for the model year. Either the number has been tampered with, or the car sat unused for years — both are problems.",
+      "tooHighMiles": "⚠️ The mileage is very high for the model year. Not automatically a no, but expect far more maintenance.",
+      "suspiciouslyCheap": "⛔ The price is below any reasonable level. A price that's too good isn't a bargain — it's the most common scam bait.",
+      "rushPressure": "⚠️ The listing is rushing you. Urgency is a pressure tactic, not a circumstance.",
+      "noPrice": "⚠️ No clear price in the listing."
+    },
+    "inspectionTitle": "The rule you never break",
+    "inspection": "However clean the listing looks, never buy a used car without a mechanic you chose inspecting it before you pay. If the seller refuses that — walk away.",
+    "disclaimer": "This tool only reads text. It is not a substitute for a mechanical inspection."
+  },
+  "scams": {
+    "title": "Scam detector",
+    "lead": "Lottery selectees are a favourite target. Here are the common methods and how to recognise them.",
+    "goldenRuleTitle": "The golden rule",
+    "goldenRule": "Every official step in this process happens on government sites, and its fees are paid to the official body itself. Anyone asking you for money to 'improve your chances', 'speed up your case', or 'register you' is lying. Nobody can influence the result.",
+    "truth": "The truth:",
+    "redFlags": "How to spot it",
+    "disclaimer": "This site is not legal advice. It explains and organises; the official authorities are always the final word."
+  },
+  "glossary": {
+    "title": "Glossary",
+    "lead": "For each term: how it's pronounced, what it means, and why it matters to you specifically."
+  },
+  "sources": {
+    "title": "Sources and data status",
+    "lead": "Every number on the site and its status. This page deliberately shows the least recently checked data first.",
+    "statuses": {
+      "verified": "Verified against an official source",
+      "estimated": "Estimate (with its basis stated)",
+      "judgment": "Subjective ranking (shown as a description, not a number)",
+      "needsVerification": "Needs verification — shown as a badge instead of a number"
+    },
+    "officialSources": "The official sources this site relies on",
+    "staleTitle": "Past its review date",
+    "staleLead": "{count} fields are past their scheduled review date.",
+    "oldestTitle": "Least recently checked",
+    "oldestLead": "This is what should be reviewed first."
+  },
+  "about": {
+    "title": "About",
+    "free": "This site is completely free, forever. No subscriptions, no ads, no affiliate links, no login, not even a donate button. Nobody earns anything from it.",
+    "privacy": "No data is collected. Everything you enter stays on your own device in your browser, and no server receives anything from you.",
+    "humanEffort": "This content is human work and can be wrong. Any number not confirmed from an official source is marked 'needs verification' rather than presented as fact — because a wrong number is worse than no number.",
+    "legalTitle": "Note",
+    "legal": "This site is not legal or financial advice. It explains, organises and calculates, but the official US sites are always the final word.",
+    "openSource": "The code is open source so the site can stay running and updated even if its author gets busy."
+  },
+  "search": {
+    "title": "Search",
+    "lead": "Search everything on the site — in Arabic or English.",
+    "placeholder": "Search a city, term, work app, step…",
+    "noResults": "No results.",
+    "kinds": {
+      "city": "City",
+      "state": "State",
+      "term": "Term",
+      "job": "Work",
+      "scam": "Scam",
+      "step": "Step",
+      "document": "Document"
+    }
+  },
+  "myPlan": {
+    "title": "My plan",
+    "lead": "All your progress in one place.",
+    "loadedFromLink": "We loaded the plan from the link you arrived with.",
+    "summary": "Summary",
+    "money": "You have",
+    "runway": "Your money lasts",
+    "months": "months",
+    "checked": "Items completed",
+    "documents": "Documents recorded",
+    "backup": "Backup",
+    "backupHint": "Your data lives only on this device. Clearing browser data deletes it — export it if it matters.",
+    "export": "Export a file",
+    "import": "Import a file",
+    "print": "Print or save as PDF",
+    "importOk": "Loaded.",
+    "importBad": "That file isn't in the right format.",
+    "share": "Share your plan",
+    "shareWarning": "⚠️ This link contains all your financial data. Send it only to someone you trust — never post it in a public group.",
+    "makeLink": "Create a link",
+    "dangerZone": "Delete data",
+    "clearAll": "Delete all my data",
+    "clearConfirm": "Are you sure? This deletes everything saved on this device and cannot be undone."
+  },
+  "start": {
+    "title": "Start here",
+    "lead": "Tell us where you are and we'll point you at what helps. There's no wrong answer, and nothing is locked.",
+    "paths": {
+      "exploring": {
+        "label": "Just exploring, haven't won",
+        "hint": "Start with eligibility — can you even enter?"
+      },
+      "planning": {
+        "label": "I want to know what it costs",
+        "hint": "Go to the money plan — it works whether or not you've won."
+      },
+      "applied": {
+        "label": "Entered and waiting for the result",
+        "hint": "See the whole journey map without entering anything."
+      },
+      "selected": {
+        "label": "Selected and preparing",
+        "hint": "Start with the documents checklist."
+      }
+    },
+    "noWrongAnswer": "Every page on this site is open all the time. This choice only saves you some browsing."
+  },
+  "nav": {
+    "groups": {
+      "plan": "Plan",
+      "calculators": "Calculators",
+      "prepare": "Prepare",
+      "arrive": "On arrival",
+      "work": "Work and cars",
+      "site": "Site"
+    },
+    "links": {
+      "/planner": "Money plan",
+      "/timeline": "Journey map",
+      "/my-plan": "My plan",
+      "/compare/cities": "Compare cities",
+      "/compare/states": "Compare states",
+      "/calculators/arrival": "Landing cost",
+      "/calculators/runway": "How long money lasts",
+      "/calculators/take-home": "Take-home pay",
+      "/calculators/gig": "App earnings",
+      "/calculators/car": "Car cost",
+      "/eligibility": "Am I eligible?",
+      "/checklist/documents": "Documents",
+      "/checklist/steps": "Steps",
+      "/interview": "Consulate questions",
+      "/vault": "Document dates",
+      "/first-30-days": "First 30 days",
+      "/housing": "Housing",
+      "/credit": "Building credit",
+      "/health": "Health insurance",
+      "/taxes": "Taxes",
+      "/family": "Family",
+      "/jobs": "Work apps",
+      "/car": "Car guide",
+      "/car/listing-check": "Listing checker",
+      "/credentials": "Qualifications",
+      "/green-card": "Keeping residency",
+      "/scams": "Scam detector",
+      "/glossary": "Glossary",
+      "/search": "Search",
+      "/sources": "Sources",
+      "/about": "About"
+    },
+    "footerNote": "Free forever · No account · No ads · All your data stays on your device"
   }
 }
