@@ -1,0 +1,191 @@
+{
+  "_note": "من أرخص المدن، مواصلات شبه معدومة",
+  "slug": "oklahoma-city-ok",
+  "name": {
+    "ar": "أوكلاهوما سيتي",
+    "en": "Oklahoma City"
+  },
+  "state": "OK",
+  "car": {
+    "carNeed": {
+      "value": 5,
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5",
+      "note": "١ = مش محتاج عربية خالص · ٥ = مستحيل من غيرها. أكّده من Walk Score وموقع هيئة المواصلات.",
+      "basis": {
+        "ar": "تقدير مبدئي من معرفة عامة بشبكة المواصلات في المدينة — مش من قياس. لازم يتأكد من Walk Score وموقع هيئة المواصلات.",
+        "en": "Initial estimate from general knowledge of the city's transit network, not from measurement. Needs checking against Walk Score and the local transit authority."
+      },
+      "verifyIn": "1-year"
+    },
+    "carNeedLabel": {
+      "ar": "مستحيل من غير عربية",
+      "en": "Car essential"
+    },
+    "transitSystem": {
+      "value": "EMBARK",
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "text",
+      "basis": {
+        "ar": "اسم شبكة المواصلات الرئيسية في المدينة، من معرفة عامة مستقرة.",
+        "en": "Name of the city's main transit network, from stable general knowledge."
+      },
+      "verifyIn": "2-years"
+    },
+    "transitScore": {
+      "value": 1,
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5",
+      "basis": {
+        "ar": "تقدير لتغطية شبكة المواصلات من معرفة عامة — مش من قياس.",
+        "en": "Estimate of transit coverage from general knowledge, not from measurement."
+      },
+      "verifyIn": "1-year"
+    },
+    "carFreeNeighborhoods": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "text",
+      "note": "أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية"
+    },
+    "monthlyTransitPass": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month"
+    }
+  },
+  "costs": {
+    "roomRent": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month",
+      "note": "أهم رقم لأصحاب الميزانيات الصغيرة"
+    },
+    "apt1br": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month"
+    },
+    "apt2br": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month"
+    },
+    "securityDeposit": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "months of rent",
+      "note": "من غير credit غالبًا بيطلبوا أكتر"
+    },
+    "utilities": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month"
+    },
+    "groceriesPerAdult": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month"
+    },
+    "carInsurance": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "USD/month",
+      "note": "غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي"
+    }
+  },
+  "work": {
+    "gigDemand": {
+      "value": 3,
+      "status": "judgment",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "internal-rank",
+      "label": {
+        "ar": "طلب توصيل متوسط",
+        "en": "Moderate delivery demand"
+      },
+      "note": "⚠️ حكم شخصي مش قياس — مفيش مصدر بيرتب ده رقميًا. الرقم داخلي للترتيب بس وممنوع يتعرض للمستخدم؛ اللي بيتعرض هو label."
+    },
+    "worksWithoutEnglish": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5"
+    },
+    "warehouseJobs": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5"
+    }
+  },
+  "life": {
+    "arabCommunity": {
+      "value": 2,
+      "status": "judgment",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "internal-rank",
+      "label": {
+        "ar": "جالية عربية صغيرة",
+        "en": "Small Arab community"
+      },
+      "note": "⚠️ حكم شخصي مش قياس — مفيش مصدر بيرتب ده رقميًا. الرقم داخلي للترتيب بس وممنوع يتعرض للمستخدم؛ اللي بيتعرض هو label."
+    },
+    "halalAccess": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5"
+    },
+    "schoolQuality": {
+      "value": null,
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5"
+    },
+    "winterSeverity": {
+      "value": 2,
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "unit": "1-5",
+      "note": "٥ = شتا قاسي — تدفئة أغلى وقيادة أصعب",
+      "basis": {
+        "ar": "تقدير من المناخ المعروف للمنطقة — مش من بيانات أرصاد.",
+        "en": "Estimate from the region's known climate, not from weather data."
+      },
+      "verifyIn": "2-years"
+    }
+  },
+  "lastVerified": "2026-08-25"
+}

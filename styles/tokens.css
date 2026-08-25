@@ -1,0 +1,141 @@
+/* ============================================================
+   DV Compass — design tokens
+   الفكرة: عالم المستندات الرسمية. الكارت = جراب مستند لامع،
+   واللمعة اللي بتتحرك مع الماوس = انعكاس هولوجرام الفيزا.
+   ============================================================ */
+
+:root {
+  /* ☀️ light */
+  --paper:    #F4F6F5;
+  --ink:      #0F2438;
+  --slate:    #5A6B78;
+  --seal:     #1F6F5C;
+  --signal:   #B8791F;
+  --alert:    #A3232B;
+
+  --glass-bg:        rgba(255, 255, 255, 0.62);
+  --glass-border:    rgba(15, 36, 56, 0.10);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-shadow:    0 8px 32px rgba(15, 36, 56, 0.10);
+  --glass-blur:      14px;
+  --foil-blend:      overlay;
+  --foil-strength:   0.14;
+
+  /* type */
+  --font-sans-ar: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-sans-en: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  /* scale */
+  --radius:   12px;
+  --radius-sm: 6px;
+  --measure:  68ch;
+  --tilt-max: 6deg;
+}
+
+.dark {
+  /* 🌙 dark — مش أسود، كحلي غامق عشان الglass يبان */
+  --paper:    #0C1620;
+  --ink:      #E8EDF0;
+  --slate:    #93A5B3;
+  --seal:     #3FA88C;
+  --signal:   #E8A33D;
+  --alert:    #E06B72;
+
+  --glass-bg:        rgba(255, 255, 255, 0.055);
+  --glass-border:    rgba(255, 255, 255, 0.10);
+  --glass-highlight: rgba(255, 255, 255, 0.16);
+  --glass-shadow:    0 8px 32px rgba(0, 0, 0, 0.40);
+  --glass-blur:      18px;
+  --foil-blend:      soft-light;
+  --foil-strength:   0.20;
+}
+
+/* ---------- الخلفية اللي الglass بيعمللها blur ----------
+   من غير الطبقة دي الglass بيبقى مجرد كارت باهت. */
+.app-bg {
+  position: fixed; inset: 0; z-index: -1;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 27px,
+      color-mix(in srgb, var(--ink) 4%, transparent) 27px 28px
+    ),
+    var(--paper);
+}
+.app-bg__glow {
+  position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--seal) 18%, transparent), transparent 65%);
+  filter: blur(60px);
+  /* GSAP بيحركها ببطء شديد — ٤٠ ثانية للدورة */
+}
+
+/* ---------- الكارت الزجاجي ---------- */
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid var(--glass-border);
+  border-inline-start: 3px solid var(--card-status, var(--slate));
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+  transform-style: preserve-3d;
+  transition: box-shadow .25s ease;
+}
+
+/* كروت القوايم الطويلة: blur أخف عشان الموبايل ميهنجش */
+.card--list { --glass-blur: 6px; }
+
+/* حالة الكارت = معلومة مش زينة */
+.card--done    { --card-status: var(--seal); }
+.card--now     { --card-status: var(--signal); }
+.card--later   { --card-status: var(--slate); }
+.card--danger  { --card-status: var(--alert); }
+
+/* الهولوجرام — بيتبع الماوس عن طريق --mx/--my */
+.card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, var(--foil-strength)),
+    transparent 42%
+  );
+  mix-blend-mode: var(--foil-blend);
+  opacity: 0; transition: opacity .28s ease; pointer-events: none;
+}
+.card:hover::after,
+.card:focus-within::after { opacity: 1; }
+
+/* المحتوى بيطلع لقدام شوية فيحصل parallax خفيف */
+.card__inner { transform: translateZ(14px); }
+
+/* fallback لو المتصفح مش بيدعم backdrop-filter */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card { background: color-mix(in srgb, var(--paper) 92%, var(--ink)); }
+}
+
+/* أجهزة ضعيفة: JS بيحط .no-glass على <html> */
+.no-glass .card {
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  background: color-mix(in srgb, var(--paper) 94%, var(--ink));
+}
+.no-glass .card::after { display: none; }
+
+/* الأرقام دايمًا mono وLTR */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  direction: ltr; unicode-bidi: isolate;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .card::after { display: none; }
+  .app-bg__glow { display: none; }
+}

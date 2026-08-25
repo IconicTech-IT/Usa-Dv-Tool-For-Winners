@@ -1,0 +1,83 @@
+{
+  "_note": "معيشة رخيصة جدًا",
+  "code": "KY",
+  "name": {
+    "ar": "كنتاكي",
+    "en": "Kentucky"
+  },
+  "hasStateIncomeTax": {
+    "value": true,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "boolean",
+    "note": "أكّد من موقع مصلحة ضرايب الولاية. لو فيه ضريبة، ضيف الشرايح.",
+    "basis": {
+      "ar": "معلومة عامة مستقرة عن الولاية — تتأكد من مصلحة ضرايب الولاية.",
+      "en": "Stable general knowledge about the state — confirm with the state tax authority."
+    },
+    "verifyIn": "1-year"
+  },
+  "incomeTaxRate": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "%",
+    "note": "الشرايح والنسب — من موقع الولاية"
+  },
+  "noFaultInsurance": {
+    "value": false,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "boolean",
+    "note": "نظام no-fault بيخلي تأمين العربية أغلى عادةً. أكّده من هيئة التأمين في الولاية.",
+    "basis": {
+      "ar": "نظام تأمين العربيات في الولاية من معرفة عامة — يتأكد من هيئة التأمين في الولاية.",
+      "en": "The state's auto insurance system from general knowledge — confirm with the state insurance department."
+    },
+    "verifyIn": "1-year"
+  },
+  "licenseProcess": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "text",
+    "note": "محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية."
+  },
+  "winterSeverity": {
+    "value": 3,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "1-5",
+    "note": "٥ = شتا قاسي",
+    "basis": {
+      "ar": "تقدير من المناخ المعروف للمنطقة — مش من بيانات أرصاد.",
+      "en": "Estimate from the region's known climate, not from weather data."
+    },
+    "verifyIn": "2-years"
+  },
+  "arabCommunity": {
+    "value": 2,
+    "status": "judgment",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "internal-rank",
+    "note": "⚠️ حكم شخصي مش قياس — مفيش مصدر بيرتب ده رقميًا. الرقم داخلي للترتيب بس وممنوع يتعرض للمستخدم؛ اللي بيتعرض هو label.",
+    "label": {
+      "ar": "جالية عربية صغيرة",
+      "en": "Small Arab community"
+    }
+  },
+  "salesTax": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "unit": "%"
+  },
+  "lastVerified": "2026-08-25"
+}

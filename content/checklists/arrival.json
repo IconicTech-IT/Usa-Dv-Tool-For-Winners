@@ -1,0 +1,200 @@
+{
+  "_note": "الترتيب ده مهم — كل خطوة بتفتح اللي بعدها.",
+  "id": "arrival",
+  "name": {
+    "ar": "أول ٩٠ يوم بعد الوصول",
+    "en": "First 90 days"
+  },
+  "items": [
+    {
+      "id": "ssn",
+      "title": {
+        "ar": "استخراج رقم الضمان الاجتماعي (SSN)",
+        "en": ""
+      },
+      "detail": {
+        "ar": "المفتاح لكل حاجة: البنك، الشغل، بناء التاريخ الائتماني. قدّم فور وصولك.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "phone",
+      "title": {
+        "ar": "تفعيل خط تليفون أمريكي",
+        "en": ""
+      },
+      "detail": {
+        "ar": "رقم أمريكي ضروري للتوظيف والبنوك وتطبيقات التوصيل. فيه شركات رخيصة جدًا.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "bank",
+      "title": {
+        "ar": "فتح حساب بنكي",
+        "en": ""
+      },
+      "detail": {
+        "ar": "خد الباسبور والعنوان الجديد. بعض البنوك بتقبل من غير SSN.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "أكّد أنهي بنوك بتقبل من غير SSN — ده بيتغير."
+    },
+    {
+      "id": "housing",
+      "title": {
+        "ar": "توقيع عقد إيجار",
+        "en": ""
+      },
+      "detail": {
+        "ar": "هتحتاج إثبات دخل + تأمين + أول شهر. من غير credit ممكن يطلبوا أكتر.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "راجع صفحة /housing — الشروط بتختلف من مدينة لمدينة."
+    },
+    {
+      "id": "license",
+      "title": {
+        "ar": "استخراج رخصة القيادة",
+        "en": ""
+      },
+      "detail": {
+        "ar": "من الـDMV في ولايتك. هتحتاج SSN + باسبور + إثبات عنوان.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "الإجراءات وفترة الانتظار بتختلف بين الولايات — املا licenseProcess في content/states/."
+    },
+    {
+      "id": "secured-card",
+      "title": {
+        "ar": "التقديم على بطاقة ائتمان مضمونة",
+        "en": ""
+      },
+      "detail": {
+        "ar": "تودع مبلغ كضمان، تستخدمها شهريًا وتدفع الرصيد كامل. ده أسهل طريق لبناء الcredit من الصفر.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "health",
+      "title": {
+        "ar": "التسجيل في تأمين صحي",
+        "en": ""
+      },
+      "detail": {
+        "ar": "لو عندك شغل، سجّل في تأمين صاحب العمل. لو لأ، شوف خياراتك على healthcare.gov.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "car",
+      "title": {
+        "ar": "شرا أو تمويل عربية",
+        "en": ""
+      },
+      "detail": {
+        "ar": "في أغلب المدن العربية ضرورية. قارن أسعار التأمين **قبل** ما تشتري مش بعدها.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "اربطه بـcar.carNeed بتاع مدينته — لو carNeed ≤ 2 البند ده يتأجل أو يتشال."
+    },
+    {
+      "id": "emergency-fund",
+      "title": {
+        "ar": "بناء صندوق طوارئ",
+        "en": ""
+      },
+      "detail": {
+        "ar": "ادخر ما يعادل ٣ شهور مصاريف في حساب منفصل. ده أول شبكة أمان ليك.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "check-credit",
+      "title": {
+        "ar": "التحقق من الcredit score",
+        "en": ""
+      },
+      "detail": {
+        "ar": "بعد شهور من استخدام البطاقة المضمونة، تابع درجتك من خدمة مجانية.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "taxes",
+      "title": {
+        "ar": "تقديم الإقرار الضريبي",
+        "en": ""
+      },
+      "detail": {
+        "ar": "قدّم في موعده. ممكن يرجعلك فلوس (Tax Refund).",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "أكّد الموعد النهائي كل سنة من irs.gov."
+    }
+  ],
+  "lastVerified": "2026-08-25"
+}

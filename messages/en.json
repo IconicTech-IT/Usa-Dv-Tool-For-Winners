@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "title": "DV Compass — your guide to the visa lottery",
+    "description": "A free tool that works out what moving to the US actually costs and what to do next. No account, and you don't need to have won."
+  },
+  "header": {
+    "brand": "DV Compass",
+    "toggleTheme": "Toggle theme"
+  },
+  "planBar": {
+    "emptyPrompt": "How much do you have? We'll work out how long it lasts",
+    "calculate": "Calculate",
+    "runway": "Your money lasts {months} months",
+    "finishPlan": "Finish your plan"
+  },
+  "badges": {
+    "estimated": "Estimate",
+    "needsVerification": "Needs verification"
+  },
+  "home": {
+    "title": "What does starting in the US actually cost?",
+    "lead": "This site works out the real cost, tells you how many months your money lasts, and orders the steps for you. No account needed.",
+    "notWonYet": "Haven't won yet? Everything here still works. Financial planning is more useful before you win — that's when there's still time to save.",
+    "startPlanner": "Start the money plan",
+    "checkEligibility": "Am I even eligible?",
+    "phaseNoteTitle": "Phase 0 is done",
+    "phaseNote": "The foundation works: both languages, both themes, the glass card, the plan bar, and the data status system. The tools themselves come in Phase 1.",
+    "dataTitle": "Where the data stands",
+    "dataVerified": "Verified against an official source",
+    "dataEstimated": "Estimate",
+    "dataJudgment": "Subjective ranking",
+    "dataNeedsVerification": "Needs verification"
+  }
+}
