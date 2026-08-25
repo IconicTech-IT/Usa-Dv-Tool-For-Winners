@@ -1,0 +1,383 @@
+{
+  "_note": "المستخدم يختار مهنته فتيجيله نقطة بداية بدل ما يخمّن مرتب. المرتبات كلها null — تتعبى من مصدر رسمي (BLS) وتتعدّل بالمدينة.",
+  "presets": [
+    {
+      "id": "swe",
+      "name": {
+        "ar": "مهندس برمجيات",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "it_support",
+      "name": {
+        "ar": "دعم فني",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "nurse",
+      "name": {
+        "ar": "ممرض/ممرضة",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "medical_asst",
+      "name": {
+        "ar": "مساعد طبي",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "cdl",
+      "name": {
+        "ar": "سائق شاحنات CDL",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "rideshare",
+      "name": {
+        "ar": "سائق توصيل دوام كامل",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "electrician",
+      "name": {
+        "ar": "فني كهربا/سباكة/صيانة",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "mechanic",
+      "name": {
+        "ar": "ميكانيكي عربيات",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "accountant",
+      "name": {
+        "ar": "محاسب",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "customer_service",
+      "name": {
+        "ar": "خدمة عملاء/إداري",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "warehouse",
+      "name": {
+        "ar": "عامل مخازن/تجزئة",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "teacher",
+      "name": {
+        "ar": "مدرس",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "pharmacist",
+      "name": {
+        "ar": "صيدلي",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    },
+    {
+      "id": "custom",
+      "name": {
+        "ar": "مهنة تانية",
+        "en": ""
+      },
+      "medianSalary": {
+        "value": null,
+        "unit": "USD/year",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Bureau of Labor Statistics",
+            "url": "https://www.bls.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الوسيط القومي — الحاسبة تعدّله بمعامل المدينة"
+      },
+      "needsLicense": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "محتاج ترخيص أمريكي؟ اربطه بصفحة /credentials"
+      }
+    }
+  ]
+}

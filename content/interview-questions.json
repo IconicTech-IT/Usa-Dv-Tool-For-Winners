@@ -1,0 +1,35 @@
+{
+  "_note": "الهدف من الملف ده: المستخدم يجهز نفسه ويجاوب بصدق ووضوح. ممنوع تمامًا إضافة 'إجابات نموذجية' أو نصايح لتجميل الإجابة.",
+  "principle": {
+    "ar": "الأسئلة دي مش امتحان محتاج إجابات محفوظة. الهدف إنك تعرف هيسألوك في إيه فتجهز أوراقك وتفتكر تفاصيلك، وتجاوب بصدق ووضوح. أي اختلاف بين كلامك وورقك هو اللي بيعمل المشكلة، مش الإجابة البسيطة.",
+    "en": "Prepare your documents and recall your own details, then answer truthfully and clearly. Inconsistency between your answers and your paperwork is the real problem."
+  },
+  "categories": [
+    { "id": "personal", "name": { "ar": "عن نفسك", "en": "About you" },
+      "questions": [
+        { "q": { "ar": "عرّفني بنفسك", "en": "Tell me about yourself" }, "why": { "ar": "بيتأكد إن كلامك متطابق مع الـDS-260", "en": "Checking consistency with your DS-260" }, "prepare": { "ar": "افتكر التواريخ والأماكن اللي كتبتها في الاستمارة", "en": "Review the dates and places you entered on the form" } },
+        { "q": { "ar": "حالتك الاجتماعية إيه؟", "en": "What is your marital status?" }, "why": { "ar": "بيأثر على مين ينفع يدخل معاك", "en": "Determines who can accompany you" }, "prepare": { "ar": "جهّز وثيقة الزواج مترجمة لو متجوز", "en": "Bring a translated marriage certificate if married" } }
+      ] },
+    { "id": "education", "name": { "ar": "التعليم", "en": "Education" },
+      "questions": [
+        { "q": { "ar": "إيه آخر مؤهل دراسي؟", "en": "What is your highest education?" }, "why": { "ar": "شرط أساسي للأهلية", "en": "A core eligibility requirement" }, "prepare": { "ar": "الشهادة الأصلية وكشف الدرجات مترجمين", "en": "Original certificate and transcripts, translated" } }
+      ] },
+    { "id": "work", "name": { "ar": "الشغل", "en": "Work" },
+      "questions": [
+        { "q": { "ar": "شغلك إيه ومن إمتى؟", "en": "What is your job and since when?" }, "why": { "ar": "بيتطابق مع اللي كتبته", "en": "Cross-checked against your application" }, "prepare": { "ar": "شهادة خبرة أو بطاقة تأمين اجتماعي", "en": "Experience letter or social insurance record" } }
+      ] },
+    { "id": "family", "name": { "ar": "العيلة", "en": "Family" },
+      "questions": [
+        { "q": { "ar": "مين اللي داخل معاك؟", "en": "Who is travelling with you?" }, "why": { "ar": "بيتأكد إن كل فرد متسجل صح", "en": "Verifying each dependent is properly filed" }, "prepare": { "ar": "شهادات ميلاد الأطفال مترجمة", "en": "Translated birth certificates" } }
+      ] },
+    { "id": "plans", "name": { "ar": "خططك في أمريكا", "en": "Plans in the U.S." },
+      "questions": [
+        { "q": { "ar": "هتعيش فين؟", "en": "Where will you live?" }, "why": { "ar": "بيتأكد إن عندك خطة واقعية", "en": "Checking you have a realistic plan" }, "prepare": { "ar": "اعرف المدينة اللي اخترتها وليه", "en": "Know your chosen city and why" } },
+        { "q": { "ar": "هتشتغل إيه؟", "en": "What will you do for work?" }, "why": { "ar": "بيتأكد إن عندك تصور", "en": "Checking you have thought it through" }, "prepare": { "ar": "خطتك من صفحة الخطة", "en": "Your plan from the planner page" } }
+      ] },
+    { "id": "documents", "name": { "ar": "الأوراق", "en": "Documents" },
+      "questions": [
+        { "q": { "ar": "معاك الأصول كلها؟", "en": "Do you have all originals?" }, "why": { "ar": "الصور مش بتتقبل", "en": "Copies are not accepted" }, "prepare": { "ar": "راجع شيك ليست الأوراق ليلة المقابلة", "en": "Review the document checklist the night before" } }
+      ] }
+  ]
+}

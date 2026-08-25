@@ -1,0 +1,276 @@
+{
+  "_note": "البنود المعلّمة NEEDS_VERIFICATION فيها معلومات لازم تتأكد منها من مصدر رسمي قبل ما تنزل.",
+  "id": "pre-travel",
+  "name": {
+    "ar": "من القرعة للطيارة",
+    "en": "From the lottery to the plane"
+  },
+  "items": [
+    {
+      "id": "check-result",
+      "title": {
+        "ar": "التحقق من نتيجة القرعة على الموقع الرسمي",
+        "en": ""
+      },
+      "detail": {
+        "ar": "ادخل على الموقع الرسمي بس واحفظ رقم التأكيد. متشاركش بياناتك مع حد. خد بالك من المواقع المزيفة.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "ds260",
+      "title": {
+        "ar": "تعبئة نموذج DS-260",
+        "en": ""
+      },
+      "detail": {
+        "ar": "نموذج إلكتروني مفصّل فيه بياناتك الشخصية والتعليمية والوظيفية. خد وقتك وادقق — تقدر تحفظ وترجع تاني.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "core-docs",
+      "title": {
+        "ar": "تجهيز المستندات الأساسية",
+        "en": ""
+      },
+      "detail": {
+        "ar": "شهادة الميلاد الأصلية + المؤهل الدراسي + جواز السفر. ترجمة معتمدة للأوراق العربية.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "الأصل كان مكتوب فيه إن الباسبور لازم ساري ٦ شهور — شرط الصلاحية لفيزا الهجرة مختلف عن ده. أكّده من travel.state.gov قبل ما تنشره."
+    },
+    {
+      "id": "police",
+      "title": {
+        "ar": "استخراج شهادة عدم محكومية (الفيش والتشبيه)",
+        "en": ""
+      },
+      "detail": {
+        "ar": "من الجهة الأمنية في بلدك. بعض الدول بتاخد وقت طويل فابدأ بدري. مطلوبة من كل دولة أقمت فيها فترة طويلة بعد سن ١٦.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "أكّد المدة والسن بالظبط من تعليمات بلدك في قسم Reciprocity."
+    },
+    {
+      "id": "medical",
+      "title": {
+        "ar": "الفحص الطبي عند طبيب معتمد",
+        "en": ""
+      },
+      "detail": {
+        "ar": "لازم عند طبيب معتمد من السفارة بس. بيشمل تحاليل وتطعيمات وفحص عام. احجز بدري لأن المواعيد بتمتلي بسرعة.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "vaccines",
+      "title": {
+        "ar": "استكمال التطعيمات المطلوبة",
+        "en": ""
+      },
+      "detail": {
+        "ar": "قايمة التطعيمات بتتغير. الطبيب المعتمد هو اللي هيحدد الناقص. خد معاك سجل تطعيماتك القديم لو متوفر.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "savings",
+      "title": {
+        "ar": "ادخار رأس مال الانتقال",
+        "en": ""
+      },
+      "detail": {
+        "ar": "هتحتاج: تذاكر + إيجار أول شهرين + تأمين + مصاريف معيشة أول ٣ شهور. كل ما تدخر أكتر كل ما تبدأ أقوى.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "الأصل كان بيحط رقم ثابت. سيبه للحاسبة تحسبه من مدينته وعدد أفراد عيلته بدل رقم واحد للكل."
+    },
+    {
+      "id": "sponsor",
+      "title": {
+        "ar": "سؤال الكفالة المالية",
+        "en": ""
+      },
+      "detail": {
+        "ar": "لو السفارة طلبت إثبات إعالة، اعرف بالظبط إيه المطلوب منك.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "⚠️ أهم بند لازم يتراجع. الأصل كان بيقول إنك 'هتحتاج شخص في أمريكا يوقّع كفالة' كأنها خطوة إجبارية — ده غالبًا مش صح للـDV. أكّد المطلوب فعلًا من travel.state.gov قبل ما تنشر البند ده، لأنه بيخوّف ناس من غير داعي."
+    },
+    {
+      "id": "interview-prep",
+      "title": {
+        "ar": "التحضير لمقابلة السفارة",
+        "en": ""
+      },
+      "detail": {
+        "ar": "راجع مستنداتك كلها. اتدرب على الأسئلة الشائعة. البس رسمي. كن صادق ومباشر. وصّل بدري.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "interview",
+      "title": {
+        "ar": "حضور المقابلة وتسليم المستندات",
+        "en": ""
+      },
+      "detail": {
+        "ar": "خد الأصول كلها + صور. ادفع رسوم الفيزا. النتيجة إما موافقة فورية أو طلب مستندات إضافية (Administrative Processing).",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "visa-packet",
+      "title": {
+        "ar": "استلام الفيزا والمظروف المختوم",
+        "en": ""
+      },
+      "detail": {
+        "ar": "الفيزا بتتلزق في الباسبور + مظروف مختوم **ممنوع تفتحه أبدًا** — بيتسلّم لضابط الهجرة في المطار.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "flight",
+      "title": {
+        "ar": "حجز تذكرة طيران ذهاب",
+        "en": ""
+      },
+      "detail": {
+        "ar": "تذكرة ذهاب بس. أفضل وقت للحجز قبل السفر بشهر لشهرين. اختار مطار قريب من مدينتك المستهدفة.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "temp-housing",
+      "title": {
+        "ar": "سكن مؤقت لأول أسبوعين",
+        "en": ""
+      },
+      "detail": {
+        "ar": "احجز سكن مؤقت لأول أسبوعين. **متمضيش عقد إيجار قبل ما تشوف الحي والشقة بنفسك.**",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    },
+    {
+      "id": "packing",
+      "title": {
+        "ar": "تجهيز الشنط",
+        "en": ""
+      },
+      "detail": {
+        "ar": "المستندات الأصلية في شنطة اليد مش الشنطة الكبيرة. هدوم لأول شهر. أدويتك. محوّل كهربا أمريكي.",
+        "en": ""
+      },
+      "status": "NEEDS_VERIFICATION",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "verifyNote": "الأصل كان فيه حد للكاش المسموح — أكّد الرقم والإجراء من موقع الجمارك الأمريكية."
+    },
+    {
+      "id": "arrival-plan",
+      "title": {
+        "ar": "خطة يوم الوصول",
+        "en": ""
+      },
+      "detail": {
+        "ar": "في المطار: سلّم المظروف ← ختم الدخول ← استلم شنطك ← روح السكن المؤقت. أول يوم عمل: ابدأ بالـSSN وفتح البنك.",
+        "en": ""
+      },
+      "status": "estimated",
+      "sources": [],
+      "lastVerified": "2026-08-25",
+      "basis": {
+        "ar": "وصف إجرائي عام للخطوة، مكتوب من معرفة بالعملية مش منقول من صفحة رسمية.",
+        "en": "General procedural description of the step, written from knowledge of the process rather than copied from an official page."
+      },
+      "verifyIn": "1-year"
+    }
+  ],
+  "lastVerified": "2026-08-25"
+}

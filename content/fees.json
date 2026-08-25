@@ -1,0 +1,203 @@
+{
+  "_note": "الأرقام دي اتجمعت من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) في 2026-08-25 ولسه محتاجة تأكيد من الصفحة الرسمية نفسها. راجعها قبل ما الموقع ينزل.",
+  "fees": [
+    {
+      "id": "dv-registration",
+      "name": {
+        "ar": "رسم التسجيل في القرعة",
+        "en": "DV registration fee"
+      },
+      "who": {
+        "ar": "كل واحد بيسجل في القرعة",
+        "en": "Every registrant"
+      },
+      "when": {
+        "ar": "وقت إرسال طلب القرعة نفسه",
+        "en": "At entry submission"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": 1,
+        "unit": "USD",
+        "status": "estimated",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "بدأ سنة 2025 لدورة DV-2027. أكّده من صفحة DV على travel.state.gov.",
+        "basis": {
+          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
+          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
+        },
+        "verifyIn": "6-months"
+      }
+    },
+    {
+      "id": "dv-visa-application",
+      "name": {
+        "ar": "رسم طلب فيزا الهجرة",
+        "en": "DV immigrant visa application fee"
+      },
+      "who": {
+        "ar": "الفائز وكل فرد في العيلة داخل معاه",
+        "en": "Winner and each accompanying family member"
+      },
+      "when": {
+        "ar": "يوم المقابلة في السفارة",
+        "en": "At the consular interview"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": 330,
+        "unit": "USD",
+        "status": "estimated",
+        "sources": [
+          {
+            "label": "U.S. Department of State — visa fees",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "لكل فرد. عيلة من ٤ = الرقم × ٤. أكّده من صفحة رسوم الفيزا الرسمية.",
+        "basis": {
+          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
+          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
+        },
+        "verifyIn": "6-months"
+      }
+    },
+    {
+      "id": "uscis-immigrant-fee",
+      "name": {
+        "ar": "رسم USCIS للجرين كارد",
+        "en": "USCIS Immigrant Fee"
+      },
+      "who": {
+        "ar": "كل واحد اتصدرتله فيزا هجرة",
+        "en": "Everyone issued an immigrant visa"
+      },
+      "when": {
+        "ar": "بعد استلام الفيزا وقبل السفر",
+        "en": "After visa issuance, before travel"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": 235,
+        "unit": "USD",
+        "status": "estimated",
+        "sources": [
+          {
+            "label": "USCIS Immigrant Fee",
+            "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "من غيره الكارت البلاستيك مش هيتبعتلك، بس ده مش بيأثر على وضعك القانوني. فيه استثناءات مذكورة في الصفحة الرسمية.",
+        "basis": {
+          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
+          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
+        },
+        "verifyIn": "6-months"
+      }
+    },
+    {
+      "id": "medical-exam",
+      "name": {
+        "ar": "الفحص الطبي",
+        "en": "Medical examination"
+      },
+      "who": {
+        "ar": "كل فرد",
+        "en": "Each applicant"
+      },
+      "when": {
+        "ar": "قبل المقابلة",
+        "en": "Before the interview"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": null,
+        "unit": "USD",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "بيختلف حسب الدولة والعيادة المعتمدة، وبيزيد بالتطعيمات الناقصة. اتصل بالعيادة المعتمدة في بلدك واكتب نطاق مش رقم واحد."
+      }
+    },
+    {
+      "id": "police-certificate",
+      "name": {
+        "ar": "الفيش والتشبيه",
+        "en": "Police certificate"
+      },
+      "who": {
+        "ar": "كل فرد فوق ١٦ سنة",
+        "en": "Each applicant 16+"
+      },
+      "when": {
+        "ar": "قبل المقابلة",
+        "en": "Before the interview"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": null,
+        "unit": "USD",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "بيختلف حسب البلد. راجع تعليمات بلدك في قسم Reciprocity على travel.state.gov."
+      }
+    },
+    {
+      "id": "translation-authentication",
+      "name": {
+        "ar": "الترجمة والتصديق",
+        "en": "Translation and authentication"
+      },
+      "who": {
+        "ar": "حسب أوراقك",
+        "en": "Depends on documents"
+      },
+      "when": {
+        "ar": "قبل رفع الأوراق",
+        "en": "Before submitting documents"
+      },
+      "perPerson": false,
+      "amount": {
+        "value": null,
+        "unit": "USD",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "اكتبها كنطاق حسب عدد الأوراق."
+      }
+    },
+    {
+      "id": "flight",
+      "name": {
+        "ar": "تذكرة الطيران",
+        "en": "Flight ticket"
+      },
+      "who": {
+        "ar": "كل فرد",
+        "en": "Each traveler"
+      },
+      "when": {
+        "ar": "بعد استلام الفيزا",
+        "en": "After visa issuance"
+      },
+      "perPerson": true,
+      "amount": {
+        "value": null,
+        "unit": "USD",
+        "status": "NEEDS_VERIFICATION",
+        "sources": [],
+        "lastVerified": "2026-08-25",
+        "note": "بيختلف جدًا بالموسم والمدينة. الحاسبة لازم تاخده كمُدخل من المستخدم مش كرقم ثابت."
+      }
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "_note": "شروط الأهلية بتتغير سنويًا — وقايمة الدول تحديدًا بتتغير كل دورة. لازم lastVerified يظهر للمستخدم على الصفحة نفسها، ولينك مباشر للمصدر الرسمي.",
+  "criteria": [
+    {
+      "id": "country",
+      "name": {
+        "ar": "شرط بلد الميلاد",
+        "en": "Country of birth"
+      },
+      "explain": {
+        "ar": "الأهلية بتتحدد ببلد الميلاد مش بلد الإقامة ولا الجنسية. وفيه استثناءات ممكن تخليك مؤهل من خلال بلد ميلاد الزوج/الزوجة أو الأب/الأم في حالات معينة — دي نقطة بتفوت ناس كتير وممكن تخليهم يتصوروا إنهم مش مؤهلين وهما مؤهلين.",
+        "en": "Eligibility is decided by country of birth — not by where you live or what passport you hold. There are exceptions that can qualify you through a spouse's or parent's country of birth in certain cases. Plenty of people miss this and assume they are ineligible when they are not."
+      },
+      "eligibleCountries": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "قايمة الدول المؤهلة للدورة الحالية — بتتغير كل سنة، انسخها من الصفحة الرسمية"
+      },
+      "spouseParentException": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "الشروط الدقيقة للاستثناء عن طريق الزوج/الزوجة أو الوالدين"
+      }
+    },
+    {
+      "id": "education",
+      "name": {
+        "ar": "شرط التعليم أو الخبرة",
+        "en": "Education or work experience"
+      },
+      "explain": {
+        "ar": "في مسارين للأهلية: مؤهل دراسي معين، أو خبرة عملية في مهنة معينة بشروط محددة. مسار الخبرة شروطه أضيق بكتير من مسار التعليم وناس بتفتكره باب مفتوح وهو مش كده.",
+        "en": "There are two routes: a specific level of schooling, or qualifying work experience in a specific occupation under strict conditions. The work-experience route is far narrower than people assume — it is not an open door."
+      },
+      "educationRequirement": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "المؤهل المطلوب بالظبط"
+      },
+      "experienceRequirement": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "شروط مسار الخبرة العملية — المهن المؤهلة ومدة الخبرة والفترة الزمنية"
+      }
+    },
+    {
+      "id": "registration",
+      "name": {
+        "ar": "التسجيل نفسه",
+        "en": "Registration"
+      },
+      "explain": {
+        "ar": "التسجيل بيفتح فترة محدودة كل سنة على الموقع الرسمي بس. أي موقع تاني بياخد منك فلوس عشان يسجلك = نصب. احتفظ برقم التأكيد لأنه الطريقة الوحيدة تشوف بيها النتيجة.",
+        "en": "Registration opens for a limited window each year, on the official site only. Any other site charging you to register is a scam. Keep your confirmation number — it is the only way to check your result."
+      },
+      "registrationWindow": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "مواعيد فتح وقفل التسجيل للدورة الحالية"
+      },
+      "registrationFee": {
+        "value": null,
+        "status": "NEEDS_VERIFICATION",
+        "sources": [
+          {
+            "label": "U.S. Department of State — DV program",
+            "url": "https://travel.state.gov/"
+          }
+        ],
+        "lastVerified": "2026-08-25",
+        "note": "رسم التسجيل الحالي"
+      }
+    }
+  ],
+  "disclaimer": {
+    "ar": "الأداة دي بتوضّح الشروط بس. المرجع النهائي هو الموقع الرسمي، والشروط بتتغير كل دورة.",
+    "en": "This tool explains the requirements only. The official site is the final word, and the rules change every cycle."
+  },
+  "lastVerified": "2026-08-25"
+}

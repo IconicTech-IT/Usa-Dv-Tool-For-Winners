@@ -1,0 +1,53 @@
+{
+  "_note": "الشروط بتتغير وبتختلف من مدينة لمدينة. أكّد كل حقل من صفحة التسجيل الرسمية للمدينة نفسها.",
+  "slug": "doordash",
+  "name": "DoorDash",
+  "category": "food-delivery",
+  "summary": {
+    "ar": "من أكبر تطبيقات توصيل الأكل",
+    "en": ""
+  },
+  "needsCar": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "note": "بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها"
+  },
+  "minCarYear": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "note": "بيختلف من مدينة لمدينة"
+  },
+  "needsEnglish": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "note": "مستوى الإنجليزي المطلوب فعليًا للشغل"
+  },
+  "activationDays": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25",
+    "note": "مدة فحص الخلفية والتفعيل"
+  },
+  "requiresSSN": {
+    "value": null,
+    "status": "NEEDS_VERIFICATION",
+    "sources": [],
+    "lastVerified": "2026-08-25"
+  },
+  "howItPays": {
+    "ar": "",
+    "en": ""
+  },
+  "pros": [],
+  "cons": [],
+  "beginnerTips": [],
+  "signupUrl": "https://www.doordash.com/",
+  "lastVerified": "2026-08-25"
+}

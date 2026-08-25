@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* الثيم بيتحط كـclass على <html> عن طريق next-themes */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-seal: var(--seal);
+  --color-signal: var(--signal);
+  --color-alert: var(--alert);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans-en);
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-sans-ar);
+}
+
+/* عمود القراية */
+.measure {
+  max-width: var(--measure);
+}
+
+/* focus ظاهر في كل حتة — شرط في WCAG AA */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- البادچات: ٣ بس ----------
+   verified  → من غير بادج (المصدر في الفوتنوت)
+   judgment  → من غير بادج (بيتعرض كوصف مش رقم)
+   estimated → "تقديري"
+   NEEDS_VERIFICATION → "محتاج تأكيد" */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.3em 0.6em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.badge--estimated {
+  color: var(--slate);
+  background: color-mix(in srgb, var(--slate) 8%, transparent);
+}
+.badge--needs-verification {
+  color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 10%, transparent);
+}
+
+/* ---------- شريط الخطة ---------- */
+.plan-bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-block-end: 1px solid var(--glass-border);
+}
+.plan-bar__sep {
+  color: var(--slate);
+  opacity: 0.6;
+}
