@@ -378,6 +378,27 @@ export function monthlyBurn(
   const utilities = utilitiesInRent ? 0 : val(m, "utilities", missing, overrides);
   const transit = val(m, "monthlyTransitPass", missing, overrides);
   const insurance = opts.needsCar ? val(m, "carInsurance", missing, overrides) : null;
+
+  /**
+   * ⚠️ البند ده بيعرض حاجتين في سطر واحد: "تأمين العربية والبنزين".
+   * والمحرر بياخد رقم واحد. فلما المستخدم كتب **٠** كان البنزين لسه
+   * بيتضاف فوقه ويطلع ١٢٠ — يعني كتب صفر وشاف ١٢٠.
+   *
+   * نفس غلطة التأمين بالظبط: اللي بيتعرض واللي المحرر بياخده لازم
+   * يكونوا نفس الحاجة. فرقم المستخدم (أو "مش هحتاجه") بقى هو **السطر
+   * كله**، والبنزين بيتضاف على رقمنا إحنا بس.
+   */
+  const carSource = sourceOf(
+    m,
+    opts.needsCar ? "carInsurance" : "monthlyTransitPass",
+    overrides,
+  );
+  const userSetCar = carSource === "user" || carSource === "skipped";
+  const carLine = opts.needsCar
+    ? userSetCar
+      ? (insurance ?? 0)
+      : (insurance ?? 0) + FUEL_PER_CAR_MONTH
+    : (transit ?? 0) * adults;
   const phone = globalCost("phone", PHONE_PER_ADULT * adults, m.slug, overrides);
 
   const rows: CostBreakdown[] = [
@@ -413,13 +434,16 @@ export function monthlyBurn(
         ar: opts.needsCar ? "تأمين العربية والبنزين" : "المواصلات",
         en: opts.needsCar ? "Car insurance and fuel" : "Transit",
       },
-      // البنزين تقدير ثابت بسيط لحد ما حاسبة العربية تدخل في الحسبة
-      amount: opts.needsCar
-        ? (insurance ?? 0) + FUEL_PER_CAR_MONTH
-        : (transit ?? 0) * adults,
-      incomplete: opts.needsCar ? insurance === null : transit === null,
-      source: sourceOf(m, opts.needsCar ? "carInsurance" : "monthlyTransitPass", overrides),
-      ...fieldMeta(m, (opts.needsCar ? "carInsurance" : "monthlyTransitPass"), opts.needsCar ? (insurance ?? 0) + FUEL_PER_CAR_MONTH : (transit ?? 0) * adults),
+      amount: carLine,
+      incomplete: opts.needsCar
+        ? carSource === "site" && insurance === null
+        : transit === null,
+      source: carSource,
+      ...fieldMeta(
+        m,
+        opts.needsCar ? "carInsurance" : "monthlyTransitPass",
+        carLine,
+      ),
     },
     {
       key: "phone",

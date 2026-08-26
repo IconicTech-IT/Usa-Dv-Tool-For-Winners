@@ -1,9 +1,11 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Card } from "@/components/Card";
 import { Num } from "@/components/Num";
+import { humanField } from "@/lib/content/labels";
+import type { Localized } from "@/lib/types";
 
 export function CalcField({
   label,
@@ -82,8 +84,16 @@ export function BigResult({
 }
 
 /** الحقول اللي الحسبة اعتمدت عليها وهي ناقصة — بتتقال صراحة. */
-export function MissingNote({ fields }: { fields: string[] }) {
+export function MissingNote({
+  fields,
+  cities,
+}: {
+  fields: string[];
+  /** slug المدينة → اسمها. لو اتبعت، اسم المدينة بيظهر بدل الـslug. */
+  cities?: Record<string, Localized>;
+}) {
   const t = useTranslations("calculators");
+  const locale = useLocale() as "ar" | "en";
   if (fields.length === 0) return null;
   return (
     <Card status="now">
@@ -92,7 +102,7 @@ export function MissingNote({ fields }: { fields: string[] }) {
         <ul className="flex flex-wrap gap-2">
           {fields.map((f) => (
             <li key={f} className="badge badge--needs-verification">
-              <span className="num">{f}</span>
+              <span>{humanField(f, locale, cities)}</span>
             </li>
           ))}
         </ul>

@@ -48,7 +48,7 @@ const COLS = [
 type Row = Record<(typeof COLS)[number], string>;
 
 function parseCSV(text: string): Row[] {
-  const clean = text.replace(/^﻿/, "");
+  const clean = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
   const lines: string[][] = [];
   let row: string[] = [];
   let cell = "";
@@ -80,6 +80,16 @@ function parseCSV(text: string): Row[] {
 
   if (lines.length === 0) return [];
   const header = (lines[0] ?? []).map((h) => h.trim());
+
+  // ⚠️ لو حد غيّر اسم عمود أو مسحه، الاستيراد كان هيعدّي ويسيب الحقل فاضي
+  // من غير ما يقول. الأحسن يقف ويقول العمود الناقص إيه.
+  const missingCols = COLS.filter((c) => !header.includes(c));
+  if (missingCols.length) {
+    console.error(`\n❌ الملف ناقصه أعمدة: ${missingCols.join(" · ")}`);
+    console.error("   رجّع أسماء الأعمدة زي ما هي — الاستيراد بيدوّر عليها بالاسم.\n");
+    process.exit(1);
+  }
+
   return lines
     .slice(1)
     .filter((l) => l.some((c) => c.trim() !== ""))

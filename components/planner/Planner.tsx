@@ -7,6 +7,7 @@ import { Money, Num } from "@/components/Num";
 import { CountUp } from "@/components/CountUp";
 import { Section } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
+import { humanField } from "@/lib/content/labels";
 import { useUser } from "@/lib/store/user-store";
 import { computePlan, computeRequired } from "@/lib/planner/engine";
 import type { PlannerMetro } from "@/lib/planner/metro";
@@ -141,6 +142,12 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
   const profile = useUser((s) => s.profile);
   const setProfile = useUser((s) => s.setProfile);
   const overrides = useUser((s) => s.overrides);
+
+  // slug → اسم المدينة، عشان قايمة الأرقام الناقصة تقول اسم مدينة مش slug
+  const cityNames = useMemo(
+    () => Object.fromEntries(metros.map((m) => [m.slug, m.name])),
+    [metros],
+  );
 
   const [metro, setMetro] = useState(metros[0]?.slug ?? "");
   const [months, setMonths] = useState(3);
@@ -315,7 +322,7 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
                 <ul className="flex flex-wrap gap-2">
                   {result.unverifiedFields.map((f) => (
                     <li key={f} className="badge badge--needs-verification">
-                      <span className="num">{f}</span>
+                      <span>{humanField(f, locale, cityNames)}</span>
                     </li>
                   ))}
                 </ul>

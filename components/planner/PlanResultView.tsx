@@ -7,6 +7,7 @@ import { Num, Money } from "@/components/Num";
 import { CountUp } from "@/components/CountUp";
 import { Section, Bullets } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
+import { humanField } from "@/lib/content/labels";
 import { useInView, useReducedMotion, DURATION } from "@/lib/motion";
 import type { PlanResult } from "@/lib/types";
 import { CostEditor } from "./CostEditor";
@@ -171,7 +172,7 @@ export function PlanResultView({
               <ul className="flex flex-wrap gap-2">
                 {plan.unverifiedFields.slice(0, 12).map((f) => (
                   <li key={f} className="badge badge--needs-verification">
-                    <span className="num">{f}</span>
+                    <span>{humanField(f, locale)}</span>
                   </li>
                 ))}
               </ul>

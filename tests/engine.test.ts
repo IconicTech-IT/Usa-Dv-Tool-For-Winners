@@ -594,3 +594,33 @@ describe("⚠️ وحدة التأمين: رقمنا مضاعف ورقم الم�
     expect(total).toBeLessThan(20_000);
   });
 });
+
+describe("⚠️ سطر العربية بيعرض حاجتين، فرقم المستخدم لازم يغطي السطر كله", () => {
+  const t = () => ({ add: () => {}, list: () => [] });
+  const opts = { adults: 1, kidsAges: [] as number[], goAlone: true, needsCar: true };
+  const carRow = (over?: Parameters<typeof monthlyBurn>[3]) =>
+    monthlyBurn(metro("x", { carInsurance: verified(200) }), opts, t(), over).breakdown.find(
+      (r) => r.key === "carInsurance",
+    );
+
+  it("رقمنا إحنا: التأمين + البنزين", () => {
+    // 200 تأمين + 120 بنزين
+    expect(carRow()?.amount).toBe(320);
+  });
+
+  it("المستخدم كتب صفر → صفر، مش ١٢٠", () => {
+    // الباج القديم: كتب 0 وشاف 120 لأن البنزين كان بيتضاف فوق رقمه
+    const row = carRow({ x: { carInsurance: { mode: "custom", value: 0 } } });
+    expect(row?.amount).toBe(0);
+  });
+
+  it("المستخدم كتب رقمه → رقمه زي ما هو", () => {
+    const row = carRow({ x: { carInsurance: { mode: "custom", value: 250 } } });
+    expect(row?.amount).toBe(250);
+  });
+
+  it('"مش هحتاجه" → صفر', () => {
+    const row = carRow({ x: { carInsurance: { mode: "skip" } } });
+    expect(row?.amount).toBe(0);
+  });
+});
