@@ -66,26 +66,58 @@
   },
   "costs": {
     "roomRent": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
+      "value": 760,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
       "unit": "USD/month",
-      "note": "أهم رقم لأصحاب الميزانيات الصغيرة"
+      "basis": {
+        "ar": "إيجار شقة ٣ غرف في منطقة شيكاغو حسب HUD لسنة 2026 ($2,294) مقسوم على ٣ ساكنين = $760 للشخص.",
+        "en": "HUD FY2026 Fair Market Rent for a 3-bedroom unit in the Chicago-Joliet-Naperville, IL HUD Metro FMR Area ($2,294) divided by 3 sharers = $760 per person."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ حاجتين لازم تعرفهم عن الرقم ده قبل ما تعدّله: (١) HUD بياخد الشريحة ٤٠٪ من السوق، يعني الإعلانات اللي هتلاقيها فعلًا غالبًا أغلى — خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، فالرقم ده الحد الأدنى مش المتوسط. (٢) الإيجار العادل عند HUD شامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت) — فلو حطيت رقم في utilities من غير ما تنقص من هنا، الخطة هتحسب الفواتير مرتين. أحسن حاجة: استبدله بمتوسط إعلانات فعلية لغرف مشتركة في المدينة."
     },
     "apt1br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 1581,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفة واحدة في منطقة شيكاغو حسب HUD لسنة 2026.",
+        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in the Chicago-Joliet-Naperville, IL HUD Metro FMR Area."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده \"الإيجار العادل\" عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت). يعني (١) الإعلانات الحقيقية غالبًا أغلى، خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، و(٢) لو حطيت رقم في utilities هيتحسب مرتين."
     },
     "apt2br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 1781,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفتين في منطقة شيكاغو حسب HUD لسنة 2026.",
+        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in the Chicago-Joliet-Naperville, IL HUD Metro FMR Area."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده \"الإيجار العادل\" عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت). يعني (١) الإعلانات الحقيقية غالبًا أغلى، خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، و(٢) لو حطيت رقم في utilities هيتحسب مرتين."
     },
     "securityDeposit": {
       "value": null,
@@ -100,14 +132,26 @@
       "status": "NEEDS_VERIFICATION",
       "sources": [],
       "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "unit": "USD/month",
+      "note": "⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين."
     },
     "groceriesPerAdult": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 296,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "USDA Food Plans — Monthly Cost of Food, June 2026 (Low-Cost Plan)",
+          "url": "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "basis": {
+        "ar": "خطة \"التكلفة المنخفضة\" من وزارة الزراعة الأمريكية، تقرير يونيو 2026، لبالغ من ٢٠ لـ٥٠ سنة — متوسط الست ($275.50) والراجل ($316.80).",
+        "en": "USDA Low-Cost Food Plan, June 2026 report, adult aged 20–50 — average of female ($275.50) and male ($316.80)."
+      },
+      "verifyIn": "6-months",
+      "note": "⚠️ USDA بتنشر رقم واحد لكل أمريكا القارية ومبتفرقش بين المدن — فالرقم ده هو هو في التمن مدن، وده مش صح على طول (الأكل في نيويورك أغلى من كولومبوس). وهو كمان بيفترض إن كل الأكل بيتطبخ في البيت. لو لقيت مصدر بيقارن مستوى الأسعار بين المدن، عدّله لكل مدينة."
     },
     "carInsurance": {
       "value": null,
