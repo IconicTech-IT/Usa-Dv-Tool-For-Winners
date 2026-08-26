@@ -1,0 +1,1105 @@
+{
+ "_note": "الداتا الخام اللي اتجمعت يوم 2026-08-26 والأرقام في content/metros/ اتحسبت منها. الملف ده مرجع مش مصدر — الموقع بيقرا من content/ مش من هنا. لو حدّثت الأرقام، حدّث الملف ده معاها عشان يفضل ممكن تراجع منين جه كل رقم.",
+ "collectedAt": "2026-08-26",
+ "sources": {
+  "hud": "HUD FY2026 Fair Market Rents — https://www.huduser.gov/portal/datasets/fmr.html (رسمي، ٥٠ مدينة، بيشمل الفواتير، الشريحة ٤٠٪)",
+  "zillow": "Zillow Observed Rent Index, يوليو 2026 — https://files.zillowstatic.com/research/public_csvs/zori/ (٥٠ مدينة)",
+  "spareroom": "SpareRoom rooms-for-rent listings — https://www.spareroom.com/rooms-for-rent/ (٣٤ مدينة، وسيط إعلانات فعلية)"
+ },
+ "derivation": {
+  "roomRentMeasured": "٣٤ مدينة: وسيط كل إعلانات الأوض في الصفحة الأولى لحد ٨ صفحات.",
+  "roomRentPredicted": "١٦ مدينة مفيهاش تغطية: roomRent = 391.4 + 0.2986 × HUD_2BR — انحدار خطي متعلّم من الـ٣٤ مدينة. تحقق leave-one-out: خطأ متوسط ١١.٦٪، أسوأ حالة ٢٧.٢٪.",
+  "whyNotAFlatRatio": "النسبة الثابتة (٠.٥٢٥) اترفضت: النسبة بتقل كل ما المدينة تغلى (ارتباط −0.59). أغلى ٨ مدن ٠.٤٦ وأرخص ٨ ٠.٦٤. بالنسبة الثابتة سان فرانسيسكو كانت بتطلع أغلى من نيويورك.",
+  "apartments": "apt1br و apt2br = HUD br1 و br2 مباشرة لكل الـ٥٠."
+ },
+ "metros": {
+  "arlington-va": {
+   "hud": {
+    "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+    "br0": 1953,
+    "br1": 2015,
+    "br2": 2246,
+    "br3": 2835,
+    "br4": 3332,
+    "name": "Arlington County"
+   },
+   "zillow": {
+    "allTypes": 2456,
+    "apartments": 2296,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "atlanta-ga": {
+   "hud": {
+    "area": "Atlanta-Sandy Springs-Roswell, GA HUD Metro FMR Area",
+    "br0": 1585,
+    "br1": 1660,
+    "br2": 1820,
+    "br3": 2182,
+    "br4": 2605,
+    "name": "Fulton County"
+   },
+   "zillow": {
+    "allTypes": 1855,
+    "apartments": 1665,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 900,
+    "medianBillsExcluded": 1142,
+    "nExcl": 16,
+    "medianBillsIncluded": 900,
+    "nIncl": 50
+   }
+  },
+  "austin-tx": {
+   "hud": {
+    "area": "Austin-Round Rock-San Marcos, TX MSA",
+    "br0": 1474,
+    "br1": 1562,
+    "br2": 1852,
+    "br3": 2347,
+    "br4": 2760,
+    "name": "Travis County"
+   },
+   "zillow": {
+    "allTypes": 1647,
+    "apartments": 1459,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 755,
+    "medianBillsExcluded": 650,
+    "nExcl": 25,
+    "medianBillsIncluded": 830,
+    "nIncl": 41
+   }
+  },
+  "baltimore-md": {
+   "hud": {
+    "area": "Baltimore-Columbia-Towson, MD MSA",
+    "br0": 1362,
+    "br1": 1511,
+    "br2": 1857,
+    "br3": 2358,
+    "br4": 2611,
+    "name": "Baltimore city"
+   },
+   "zillow": {
+    "allTypes": 1946,
+    "apartments": 1799,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 825,
+    "medianBillsExcluded": 800,
+    "nExcl": 37,
+    "medianBillsIncluded": 850,
+    "nIncl": 23
+   }
+  },
+  "boston-ma": {
+   "hud": {
+    "area": "Boston-Cambridge-Quincy, MA-NH HUD Metro FMR Area",
+    "br0": 2359,
+    "br1": 2476,
+    "br2": 2941,
+    "br3": 3526,
+    "br4": 3894,
+    "name": "Boston city"
+   },
+   "zillow": {
+    "allTypes": 3165,
+    "apartments": 3118,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 154,
+    "medianAll": 1313,
+    "medianBillsExcluded": 1310,
+    "nExcl": 108,
+    "medianBillsIncluded": 1315,
+    "nIncl": 46
+   }
+  },
+  "buffalo-ny": {
+   "hud": {
+    "area": "Buffalo-Cheektowaga, NY MSA",
+    "br0": 1105,
+    "br1": 1139,
+    "br2": 1343,
+    "br3": 1640,
+    "br4": 1869,
+    "name": "Erie County"
+   },
+   "zillow": {
+    "allTypes": 1446,
+    "apartments": 1402,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 59,
+    "medianAll": 765,
+    "medianBillsExcluded": 800,
+    "nExcl": 19,
+    "medianBillsIncluded": 700,
+    "nIncl": 40
+   }
+  },
+  "charlotte-nc": {
+   "hud": {
+    "area": "Charlotte-Concord-Gastonia, NC-SC HUD Metro FMR Area",
+    "br0": 1469,
+    "br1": 1538,
+    "br2": 1686,
+    "br3": 2076,
+    "br4": 2637,
+    "name": "Mecklenburg County"
+   },
+   "zillow": {
+    "allTypes": 1756,
+    "apartments": 1582,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 80,
+    "medianAll": 795,
+    "medianBillsExcluded": 800,
+    "nExcl": 5,
+    "medianBillsIncluded": 775,
+    "nIncl": 75
+   }
+  },
+  "chicago-il": {
+   "hud": {
+    "area": "Chicago-Joliet-Naperville, IL HUD Metro FMR Area",
+    "br0": 1480,
+    "br1": 1581,
+    "br2": 1781,
+    "br3": 2294,
+    "br4": 2653,
+    "name": "Cook County"
+   },
+   "zillow": {
+    "allTypes": 2253,
+    "apartments": 2176,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 88,
+    "medianAll": 1095,
+    "medianBillsExcluded": 975,
+    "nExcl": 24,
+    "medianBillsIncluded": 1160,
+    "nIncl": 64
+   }
+  },
+  "cincinnati-oh": {
+   "hud": {
+    "area": "Cincinnati, OH-KY-IN HUD Metro FMR Area",
+    "br0": 958,
+    "br1": 1051,
+    "br2": 1353,
+    "br3": 1785,
+    "br4": 1976,
+    "name": "Hamilton County"
+   },
+   "zillow": {
+    "allTypes": 1552,
+    "apartments": 1413,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 55,
+    "medianAll": 750,
+    "medianBillsExcluded": 764,
+    "nExcl": 34,
+    "medianBillsIncluded": 675,
+    "nIncl": 21
+   }
+  },
+  "cleveland-oh": {
+   "hud": {
+    "area": "Cleveland, OH HUD Metro FMR Area",
+    "br0": 933,
+    "br1": 1058,
+    "br2": 1279,
+    "br3": 1646,
+    "br4": 1760,
+    "name": "Cuyahoga County"
+   },
+   "zillow": {
+    "allTypes": 1476,
+    "apartments": 1310,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 44,
+    "medianAll": 800,
+    "medianBillsExcluded": 800,
+    "nExcl": 26,
+    "medianBillsIncluded": 798,
+    "nIncl": 18
+   }
+  },
+  "columbus-oh": {
+   "hud": {
+    "area": "Columbus, OH HUD Metro FMR Area",
+    "br0": 1111,
+    "br1": 1194,
+    "br2": 1430,
+    "br3": 1715,
+    "br4": 1927,
+    "name": "Franklin County"
+   },
+   "zillow": {
+    "allTypes": 1519,
+    "apartments": 1398,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 73,
+    "medianAll": 900,
+    "medianBillsExcluded": 800,
+    "nExcl": 33,
+    "medianBillsIncluded": 1000,
+    "nIncl": 40
+   }
+  },
+  "dallas-tx": {
+   "hud": {
+    "area": "Dallas, TX HUD Metro FMR Area",
+    "br0": 1582,
+    "br1": 1648,
+    "br2": 1931,
+    "br3": 2431,
+    "br4": 3091,
+    "name": "Dallas County"
+   },
+   "zillow": {
+    "allTypes": 1667,
+    "apartments": 1504,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 813,
+    "medianBillsExcluded": 620,
+    "nExcl": 15,
+    "medianBillsIncluded": 832,
+    "nIncl": 51
+   }
+  },
+  "dearborn-mi": {
+   "hud": {
+    "area": "Detroit-Warren-Livonia, MI HUD Metro FMR Area",
+    "br0": 1009,
+    "br1": 1122,
+    "br2": 1411,
+    "br3": 1724,
+    "br4": 1868,
+    "name": "Wayne County"
+   },
+   "zillow": {
+    "allTypes": 1531,
+    "apartments": 1422,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 80,
+    "medianAll": 800,
+    "medianBillsExcluded": 730,
+    "nExcl": 23,
+    "medianBillsIncluded": 800,
+    "nIncl": 57
+   }
+  },
+  "denver-co": {
+   "hud": {
+    "area": "Denver-Aurora-Centennial, CO MSA",
+    "br0": 1643,
+    "br1": 1754,
+    "br2": 2089,
+    "br3": 2734,
+    "br4": 3049,
+    "name": "Denver County"
+   },
+   "zillow": {
+    "allTypes": 1930,
+    "apartments": 1774,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 950,
+    "medianBillsExcluded": 730,
+    "nExcl": 25,
+    "medianBillsIncluded": 1000,
+    "nIncl": 35
+   }
+  },
+  "des-moines-ia": {
+   "hud": {
+    "area": "Des Moines-West Des Moines, IA HUD Metro FMR Area",
+    "br0": 1063,
+    "br1": 1109,
+    "br2": 1318,
+    "br3": 1794,
+    "br4": 1841,
+    "name": "Polk County"
+   },
+   "zillow": {
+    "allTypes": 1311,
+    "apartments": 1196,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "hartford-ct": {
+   "hud": {
+    "area": "Hartford-West Hartford-East Hartford, CT MSA",
+    "br0": 1286,
+    "br1": 1477,
+    "br2": 1865,
+    "br3": 2236,
+    "br4": 2537,
+    "name": "Hartford MSA"
+   },
+   "zillow": {
+    "allTypes": 2020,
+    "apartments": 1921,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "houston-tx": {
+   "hud": {
+    "area": "Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area",
+    "br0": 1280,
+    "br1": 1323,
+    "br2": 1573,
+    "br3": 2116,
+    "br4": 2639,
+    "name": "Harris County"
+   },
+   "zillow": {
+    "allTypes": 1654,
+    "apartments": 1427,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 88,
+    "medianAll": 800,
+    "medianBillsExcluded": 860,
+    "nExcl": 11,
+    "medianBillsIncluded": 800,
+    "nIncl": 77
+   }
+  },
+  "indianapolis-in": {
+   "hud": {
+    "area": "Indianapolis-Carmel, IN HUD Metro FMR Area",
+    "br0": 1118,
+    "br1": 1267,
+    "br2": 1473,
+    "br3": 1907,
+    "br4": 2338,
+    "name": "Marion County"
+   },
+   "zillow": {
+    "allTypes": 1571,
+    "apartments": 1434,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 59,
+    "medianAll": 800,
+    "medianBillsExcluded": 694,
+    "nExcl": 20,
+    "medianBillsIncluded": 850,
+    "nIncl": 39
+   }
+  },
+  "jersey-city-nj": {
+   "hud": {
+    "area": "Jersey City, NJ HUD Metro FMR Area",
+    "br0": 2407,
+    "br1": 2458,
+    "br2": 2763,
+    "br3": 3367,
+    "br4": 3955,
+    "name": "Hudson County"
+   },
+   "zillow": {
+    "allTypes": 3627,
+    "apartments": 3597,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "kansas-city-mo": {
+   "hud": {
+    "area": "Kansas City, MO-KS HUD Metro FMR Area",
+    "br0": 1095,
+    "br1": 1197,
+    "br2": 1358,
+    "br3": 1769,
+    "br4": 2103,
+    "name": "Jackson County"
+   },
+   "zillow": {
+    "allTypes": 1546,
+    "apartments": 1409,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "las-vegas-nv": {
+   "hud": {
+    "area": "Las Vegas-Henderson-North Las Vegas, NV MSA",
+    "br0": 1333,
+    "br1": 1478,
+    "br2": 1735,
+    "br3": 2413,
+    "br4": 2764,
+    "name": "Clark County"
+   },
+   "zillow": {
+    "allTypes": 1747,
+    "apartments": 1523,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "los-angeles-ca": {
+   "hud": {
+    "area": "Los Angeles-Long Beach-Glendale, CA HUD Metro FMR Area",
+    "br0": 1863,
+    "br1": 2085,
+    "br2": 2601,
+    "br3": 3298,
+    "br4": 3672,
+    "name": "Los Angeles County"
+   },
+   "zillow": {
+    "allTypes": 2944,
+    "apartments": 2710,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "louisville-ky": {
+   "hud": {
+    "area": "Louisville, KY-IN HUD Metro FMR Area",
+    "br0": 966,
+    "br1": 1047,
+    "br2": 1272,
+    "br3": 1625,
+    "br4": 1891,
+    "name": "Jefferson County"
+   },
+   "zillow": {
+    "allTypes": 1357,
+    "apartments": 1267,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 50,
+    "medianAll": 849,
+    "medianBillsExcluded": 825,
+    "nExcl": 16,
+    "medianBillsIncluded": 850,
+    "nIncl": 34
+   }
+  },
+  "memphis-tn": {
+   "hud": {
+    "area": "Memphis, TN-MS-AR HUD Metro FMR Area",
+    "br0": 1060,
+    "br1": 1154,
+    "br2": 1274,
+    "br3": 1683,
+    "br4": 1959,
+    "name": "Shelby County"
+   },
+   "zillow": {
+    "allTypes": 1422,
+    "apartments": 1259,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 54,
+    "medianAll": 800,
+    "medianBillsExcluded": 775,
+    "nExcl": 25,
+    "medianBillsIncluded": 828,
+    "nIncl": 29
+   }
+  },
+  "miami-fl": {
+   "hud": {
+    "area": "Miami-Miami Beach-Kendall, FL HUD Metro FMR Area",
+    "br0": 1828,
+    "br1": 1995,
+    "br2": 2436,
+    "br3": 3127,
+    "br4": 3613,
+    "name": "Miami-Dade County"
+   },
+   "zillow": {
+    "allTypes": 2677,
+    "apartments": 2486,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 154,
+    "medianAll": 1275,
+    "medianBillsExcluded": 1650,
+    "nExcl": 23,
+    "medianBillsIncluded": 1200,
+    "nIncl": 131
+   }
+  },
+  "milwaukee-wi": {
+   "hud": {
+    "area": "Milwaukee-Waukesha, WI MSA",
+    "br0": 1027,
+    "br1": 1119,
+    "br2": 1338,
+    "br3": 1648,
+    "br4": 1784,
+    "name": "Milwaukee County"
+   },
+   "zillow": {
+    "allTypes": 1545,
+    "apartments": 1482,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 28,
+    "medianAll": 778,
+    "medianBillsExcluded": 775,
+    "nExcl": 17,
+    "medianBillsIncluded": 850,
+    "nIncl": 11
+   }
+  },
+  "minneapolis-mn": {
+   "hud": {
+    "area": "Minneapolis-St. Paul-Bloomington, MN-WI HUD Metro FMR Area",
+    "br0": 1242,
+    "br1": 1405,
+    "br2": 1709,
+    "br3": 2262,
+    "br4": 2531,
+    "name": "Hennepin County"
+   },
+   "zillow": {
+    "allTypes": 1725,
+    "apartments": 1630,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 59,
+    "medianAll": 800,
+    "medianBillsExcluded": 800,
+    "nExcl": 31,
+    "medianBillsIncluded": 850,
+    "nIncl": 28
+   }
+  },
+  "nashville-tn": {
+   "hud": {
+    "area": "Nashville-Davidson--Murfreesboro--Franklin, TN HUD Metro FMR Area",
+    "br0": 1507,
+    "br1": 1578,
+    "br2": 1730,
+    "br3": 2211,
+    "br4": 2696,
+    "name": "Davidson County"
+   },
+   "zillow": {
+    "allTypes": 1820,
+    "apartments": 1665,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 1084,
+    "medianBillsExcluded": 1000,
+    "nExcl": 26,
+    "medianBillsIncluded": 1096,
+    "nIncl": 34
+   }
+  },
+  "nyc-ny": {
+   "hud": {
+    "area": "New York, NY HUD Metro FMR Area",
+    "br0": 2529,
+    "br1": 2655,
+    "br2": 2910,
+    "br3": 3644,
+    "br4": 3959,
+    "name": "New York County"
+   },
+   "zillow": {
+    "allTypes": 3627,
+    "apartments": 3597,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 88,
+    "medianAll": 1590,
+    "medianBillsExcluded": 1580,
+    "nExcl": 63,
+    "medianBillsIncluded": 1930,
+    "nIncl": 25
+   }
+  },
+  "oklahoma-city-ok": {
+   "hud": {
+    "area": "Oklahoma City, OK HUD Metro FMR Area",
+    "br0": 939,
+    "br1": 1017,
+    "br2": 1244,
+    "br3": 1675,
+    "br4": 1857,
+    "name": "Oklahoma County"
+   },
+   "zillow": {
+    "allTypes": 1390,
+    "apartments": 1157,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "omaha-ne": {
+   "hud": {
+    "area": "Omaha-Council Bluffs, NE-IA HUD Metro FMR Area",
+    "br0": 1090,
+    "br1": 1148,
+    "br2": 1368,
+    "br3": 1813,
+    "br4": 2046,
+    "name": "Douglas County"
+   },
+   "zillow": {
+    "allTypes": 1420,
+    "apartments": 1309,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "orlando-fl": {
+   "hud": {
+    "area": "Orlando-Kissimmee-Sanford, FL MSA",
+    "br0": 1650,
+    "br1": 1731,
+    "br2": 1972,
+    "br3": 2476,
+    "br4": 2924,
+    "name": "Orange County"
+   },
+   "zillow": {
+    "allTypes": 1959,
+    "apartments": 1788,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 900,
+    "medianBillsExcluded": 875,
+    "nExcl": 11,
+    "medianBillsIncluded": 900,
+    "nIncl": 55
+   }
+  },
+  "paterson-nj": {
+   "hud": {
+    "area": "Bergen-Passaic, NJ HUD Metro FMR Area",
+    "br0": 1778,
+    "br1": 2024,
+    "br2": 2324,
+    "br3": 2835,
+    "br4": 3618,
+    "name": "Passaic County"
+   },
+   "zillow": {
+    "allTypes": 3627,
+    "apartments": 3597,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "philadelphia-pa": {
+   "hud": {
+    "area": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD MSA",
+    "br0": 1397,
+    "br1": 1520,
+    "br2": 1810,
+    "br3": 2170,
+    "br4": 2423,
+    "name": "Philadelphia County"
+   },
+   "zillow": {
+    "allTypes": 1925,
+    "apartments": 1835,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 80,
+    "medianAll": 950,
+    "medianBillsExcluded": 866,
+    "nExcl": 33,
+    "medianBillsIncluded": 1000,
+    "nIncl": 47
+   }
+  },
+  "phoenix-az": {
+   "hud": {
+    "area": "Phoenix-Mesa-Chandler, AZ MSA",
+    "br0": 1457,
+    "br1": 1583,
+    "br2": 1839,
+    "br3": 2452,
+    "br4": 2720,
+    "name": "Maricopa County"
+   },
+   "zillow": {
+    "allTypes": 1727,
+    "apartments": 1519,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 865,
+    "medianBillsExcluded": 900,
+    "nExcl": 12,
+    "medianBillsIncluded": 856,
+    "nIncl": 54
+   }
+  },
+  "pittsburgh-pa": {
+   "hud": {
+    "area": "Pittsburgh, PA HUD Metro FMR Area",
+    "br0": 1001,
+    "br1": 1077,
+    "br2": 1299,
+    "br3": 1661,
+    "br4": 1789,
+    "name": "Allegheny County"
+   },
+   "zillow": {
+    "allTypes": 1499,
+    "apartments": 1418,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 36,
+    "medianAll": 964,
+    "medianBillsExcluded": 1000,
+    "nExcl": 24,
+    "medianBillsIncluded": 864,
+    "nIncl": 12
+   }
+  },
+  "portland-or": {
+   "hud": {
+    "area": "Portland-Vancouver-Hillsboro, OR-WA MSA",
+    "br0": 1570,
+    "br1": 1677,
+    "br2": 1922,
+    "br3": 2619,
+    "br4": 3109,
+    "name": "Multnomah County"
+   },
+   "zillow": {
+    "allTypes": 1810,
+    "apartments": 1687,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 871,
+    "medianBillsExcluded": 850,
+    "nExcl": 34,
+    "medianBillsIncluded": 900,
+    "nIncl": 26
+   }
+  },
+  "raleigh-nc": {
+   "hud": {
+    "area": "Raleigh-Cary, NC MSA",
+    "br0": 1524,
+    "br1": 1596,
+    "br2": 1750,
+    "br3": 2196,
+    "br4": 2936,
+    "name": "Wake County"
+   },
+   "zillow": {
+    "allTypes": 1683,
+    "apartments": 1487,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 723,
+    "medianBillsExcluded": 1150,
+    "nExcl": 1,
+    "medianBillsIncluded": 720,
+    "nIncl": 59
+   }
+  },
+  "richmond-va": {
+   "hud": {
+    "area": "Richmond, VA HUD Metro FMR Area",
+    "br0": 1442,
+    "br1": 1507,
+    "br2": 1655,
+    "br3": 2072,
+    "br4": 2553,
+    "name": "Richmond city"
+   },
+   "zillow": {
+    "allTypes": 1751,
+    "apartments": 1640,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 25,
+    "medianAll": 1200,
+    "medianBillsExcluded": 900,
+    "nExcl": 3,
+    "medianBillsIncluded": 1200,
+    "nIncl": 22
+   }
+  },
+  "sacramento-ca": {
+   "hud": {
+    "area": "Sacramento--Roseville--Arden-Arcade, CA HUD Metro FMR Area",
+    "br0": 1748,
+    "br1": 1832,
+    "br2": 2255,
+    "br3": 3002,
+    "br4": 3460,
+    "name": "Sacramento County"
+   },
+   "zillow": {
+    "allTypes": 2296,
+    "apartments": 1996,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 152,
+    "medianAll": 950,
+    "medianBillsExcluded": 1000,
+    "nExcl": 58,
+    "medianBillsIncluded": 950,
+    "nIncl": 94
+   }
+  },
+  "salt-lake-city-ut": {
+   "hud": {
+    "area": "Salt Lake City, UT HUD Metro FMR Area",
+    "br0": 1259,
+    "br1": 1456,
+    "br2": 1747,
+    "br3": 2333,
+    "br4": 2666,
+    "name": "Salt Lake County"
+   },
+   "zillow": {
+    "allTypes": 1647,
+    "apartments": 1511,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "san-antonio-tx": {
+   "hud": {
+    "area": "San Antonio-New Braunfels, TX HUD Metro FMR Area",
+    "br0": 1077,
+    "br1": 1177,
+    "br2": 1426,
+    "br3": 1830,
+    "br4": 2132,
+    "name": "Bexar County"
+   },
+   "zillow": {
+    "allTypes": 1425,
+    "apartments": 1252,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "san-diego-ca": {
+   "hud": {
+    "area": "San Diego-Chula Vista-Carlsbad, CA MSA",
+    "br0": 2288,
+    "br1": 2459,
+    "br2": 3001,
+    "br3": 3998,
+    "br4": 4845,
+    "name": "San Diego County"
+   },
+   "zillow": {
+    "allTypes": 3008,
+    "apartments": 2727,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "san-francisco-ca": {
+   "hud": {
+    "area": "San Francisco, CA HUD Metro FMR Area",
+    "br0": 2485,
+    "br1": 2977,
+    "br2": 3604,
+    "br3": 4604,
+    "br4": 4772,
+    "name": "San Francisco County"
+   },
+   "zillow": {
+    "allTypes": 3372,
+    "apartments": 3106,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "seattle-wa": {
+   "hud": {
+    "area": "Seattle-Bellevue, WA HUD Metro FMR Area",
+    "br0": 2074,
+    "br1": 2146,
+    "br2": 2501,
+    "br3": 3272,
+    "br4": 3847,
+    "name": "King County"
+   },
+   "zillow": {
+    "allTypes": 2282,
+    "apartments": 2096,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 60,
+    "medianAll": 945,
+    "medianBillsExcluded": 780,
+    "nExcl": 29,
+    "medianBillsIncluded": 985,
+    "nIncl": 31
+   }
+  },
+  "silver-spring-md": {
+   "hud": {
+    "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+    "br0": 1953,
+    "br1": 2015,
+    "br2": 2246,
+    "br3": 2835,
+    "br4": 3332,
+    "name": "Montgomery County"
+   },
+   "zillow": {
+    "allTypes": 2456,
+    "apartments": 2296,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  },
+  "st-louis-mo": {
+   "hud": {
+    "area": "St. Louis, MO-IL HUD Metro FMR Area",
+    "br0": 955,
+    "br1": 995,
+    "br2": 1218,
+    "br3": 1568,
+    "br4": 1812,
+    "name": "St. Louis city"
+   },
+   "zillow": {
+    "allTypes": 1445,
+    "apartments": 1362,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 54,
+    "medianAll": 900,
+    "medianBillsExcluded": 925,
+    "nExcl": 22,
+    "medianBillsIncluded": 888,
+    "nIncl": 32
+   }
+  },
+  "tampa-fl": {
+   "hud": {
+    "area": "Tampa-St. Petersburg-Clearwater, FL MSA",
+    "br0": 1593,
+    "br1": 1696,
+    "br2": 1977,
+    "br3": 2527,
+    "br4": 3077,
+    "name": "Hillsborough County"
+   },
+   "zillow": {
+    "allTypes": 2013,
+    "apartments": 1809,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 66,
+    "medianAll": 945,
+    "medianBillsExcluded": 938,
+    "nExcl": 16,
+    "medianBillsIncluded": 945,
+    "nIncl": 50
+   }
+  },
+  "tucson-az": {
+   "hud": {
+    "area": "Tucson, AZ MSA",
+    "br0": 967,
+    "br1": 1081,
+    "br2": 1402,
+    "br3": 1950,
+    "br4": 2245,
+    "name": "Pima County"
+   },
+   "zillow": {
+    "allTypes": 1483,
+    "apartments": 1217,
+    "month": "2026-07"
+   },
+   "spareroom": {
+    "sample": 36,
+    "medianAll": 800,
+    "medianBillsExcluded": 750,
+    "nExcl": 20,
+    "medianBillsIncluded": 875,
+    "nIncl": 16
+   }
+  },
+  "virginia-beach-va": {
+   "hud": {
+    "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+    "br0": 1492,
+    "br1": 1512,
+    "br2": 1713,
+    "br3": 2376,
+    "br4": 2797,
+    "name": "Virginia Beach city"
+   },
+   "zillow": {
+    "allTypes": 1877,
+    "apartments": 1725,
+    "month": "2026-07"
+   },
+   "spareroom": null
+  }
+ }
+}

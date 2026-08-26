@@ -44,13 +44,16 @@ export function FieldValue({
     ) : null;
 
   if (d.kind === "number") {
+    // ⚠️ لو عندنا نطاق، بنعرضه بدل الرقم الواحد. الرقم الواحد بيوحي بدقة
+    // مش موجودة — والفرق بين "$800" و"$620 إلى $980" هو الفرق بين إن
+    // المستخدم يخطط برقم ويصدمه السوق، وإنه يخطط بمدى ويبقى مستعد.
+    const body = d.range
+      ? `${prefix ?? ""}${Math.round(d.range[0]).toLocaleString("en-US")}–${prefix ?? ""}${Math.round(d.range[1]).toLocaleString("en-US")}${unit ?? ""}`
+      : `${prefix ?? ""}${d.value.toLocaleString("en-US")}${unit ?? ""}`;
+
     return (
       <span className="inline-flex items-center gap-2">
-        <Num>
-          {prefix ?? ""}
-          {d.value.toLocaleString("en-US")}
-          {unit ?? ""}
-        </Num>
+        <Num>{body}</Num>
         {badge}
       </span>
     );

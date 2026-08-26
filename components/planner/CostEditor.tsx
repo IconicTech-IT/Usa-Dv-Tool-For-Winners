@@ -165,6 +165,17 @@ function CostRow({
         </span>
       </div>
 
+      {/* ⚠️ النطاق قبل الشرح: الرقم الواحد بيوحي بدقة مش موجودة، واللي
+          بيخطط بالوسيط لوحده ممكن يتصدم بمئات الدولارات في الشهر. */}
+      {showEstimate && row.range && (
+        <p className="text-xs text-[var(--slate)]">
+          {t("mostAreBetween")}{" "}
+          <Money value={Math.round(row.range[0])} />
+          {" – "}
+          <Money value={Math.round(row.range[1])} />
+        </p>
+      )}
+
       {showEstimate && basisText && (
         <p className="text-xs text-[var(--slate)]">{basisText}</p>
       )}

@@ -135,17 +135,39 @@ export interface CostBreakdown {
    */
   estimated?: boolean;
   basis?: Localized;
+  /**
+   * نطاق السعر بنفس مقياس `amount`.
+   *
+   * ⚠️ الرقم الواحد بيوحي بدقة مش موجودة. الأوضة في نيويورك وسيطها
+   * $1,590 بس نص الإعلانات بين $1,350 و$1,980 — اللي بيخطط بالوسيط
+   * لوحده ممكن يتصدم بفرق ٤٠٠ دولار في الشهر.
+   */
+  range?: [number, number];
 }
 
-/** حالة الحقل والbasis — لبند مربوط بمدينة أو بند عام. */
+/**
+ * حالة الحقل والbasis والنطاق — لبند مربوط بمدينة أو بند عام.
+ *
+ * `amount` بيتبعت عشان النطاق يتقاس بنفس مقياس المبلغ المعروض: بند الأكل
+ * مثلًا بيتضرب في عدد الأفراد، فالنطاق لازم يتضرب معاه — وإلا هيبان
+ * نطاق فرد واحد جنب مبلغ عيلة.
+ */
 function fieldMeta(
   m: PlannerMetro,
   key: CostKey,
-): { estimated: boolean; basis?: Localized } {
+  amount?: number,
+): { estimated: boolean; basis?: Localized; range?: [number, number] } {
   const f =
     ((m as unknown as Record<string, unknown>)[key] as Field<number> | undefined) ??
     GLOBAL_COST_FIELDS[key];
-  return { estimated: f?.status === "estimated", basis: f?.basis };
+
+  let range: [number, number] | undefined;
+  if (f?.range && typeof f.value === "number" && f.value > 0) {
+    const k = amount === undefined ? 1 : amount / f.value;
+    if (Number.isFinite(k) && k > 0) range = [f.range[0] * k, f.range[1] * k];
+  }
+
+  return { estimated: f?.status === "estimated", basis: f?.basis, range };
 }
 
 /** الرقم ده جه منين لبند مربوط بمدينة. */
@@ -288,7 +310,7 @@ export function landingCost(
       amount: travel.amount,
       incomplete: false,
       source: travel.source,
-      ...fieldMeta(m, "travel"),
+      ...fieldMeta(m, "travel", travel.amount),
     },
     {
       key: housing.kind,
@@ -296,7 +318,7 @@ export function landingCost(
       amount: firstRent ?? 0,
       incomplete: firstRent === null,
       source: src(housing.kind),
-      ...fieldMeta(m, housing.kind),
+      ...fieldMeta(m, housing.kind, firstRent ?? 0),
     },
     {
       key: "securityDeposit",
@@ -304,7 +326,7 @@ export function landingCost(
       amount: depositAmount,
       incomplete: depositSource === "site" && (deposit === null || housing.amount === null),
       source: depositSource,
-      ...fieldMeta(m, "securityDeposit"),
+      ...fieldMeta(m, "securityDeposit", depositAmount),
     },
     {
       key: "setup",
@@ -312,7 +334,7 @@ export function landingCost(
       amount: setup.amount,
       incomplete: false,
       source: setup.source,
-      ...fieldMeta(m, "setup"),
+      ...fieldMeta(m, "setup", setup.amount),
     },
     {
       key: "groceriesPerAdult",
@@ -321,7 +343,7 @@ export function landingCost(
         groceries !== null ? groceries * eatingUnits(adults, opts.goAlone ? [] : opts.kidsAges) : 0,
       incomplete: groceries === null,
       source: src("groceriesPerAdult"),
-      ...fieldMeta(m, "groceriesPerAdult"),
+      ...fieldMeta(m, "groceriesPerAdult", groceries !== null ? groceries * eatingUnits(adults, opts.goAlone ? [] : opts.kidsAges) : 0),
     },
     {
       key: "utilities",
@@ -365,7 +387,7 @@ export function monthlyBurn(
       amount: housing.amount ?? 0,
       incomplete: housing.amount === null,
       source: sourceOf(m, housing.kind, overrides),
-      ...fieldMeta(m, housing.kind),
+      ...fieldMeta(m, housing.kind, housing.amount ?? 0),
     },
     {
       key: "groceriesPerAdult",
@@ -373,7 +395,7 @@ export function monthlyBurn(
       amount: groceries !== null ? groceries * eatingUnits(adults, kidsAges) : 0,
       incomplete: groceries === null,
       source: sourceOf(m, "groceriesPerAdult", overrides),
-      ...fieldMeta(m, "groceriesPerAdult"),
+      ...fieldMeta(m, "groceriesPerAdult", groceries !== null ? groceries * eatingUnits(adults, kidsAges) : 0),
     },
     {
       key: "utilities",
@@ -397,7 +419,7 @@ export function monthlyBurn(
         : (transit ?? 0) * adults,
       incomplete: opts.needsCar ? insurance === null : transit === null,
       source: sourceOf(m, opts.needsCar ? "carInsurance" : "monthlyTransitPass", overrides),
-      ...fieldMeta(m, (opts.needsCar ? "carInsurance" : "monthlyTransitPass")),
+      ...fieldMeta(m, (opts.needsCar ? "carInsurance" : "monthlyTransitPass"), opts.needsCar ? (insurance ?? 0) + FUEL_PER_CAR_MONTH : (transit ?? 0) * adults),
     },
     {
       key: "phone",
@@ -405,7 +427,7 @@ export function monthlyBurn(
       amount: phone.amount,
       incomplete: false,
       source: phone.source,
-      ...fieldMeta(m, "phone"),
+      ...fieldMeta(m, "phone", phone.amount),
     },
   ];
 

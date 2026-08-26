@@ -215,8 +215,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -229,8 +229,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -243,8 +243,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -257,8 +257,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -271,8 +271,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -285,8 +285,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -299,8 +299,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -313,8 +313,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -327,8 +327,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -341,8 +341,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -355,8 +355,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -369,8 +369,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -383,8 +383,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -397,8 +397,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -411,8 +411,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -425,8 +425,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -439,8 +439,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -453,8 +453,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -467,8 +467,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -481,8 +481,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -495,8 +495,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -509,8 +509,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -523,8 +523,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -537,8 +537,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -551,8 +551,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -565,8 +565,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -579,8 +579,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -593,8 +593,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -607,8 +607,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -621,8 +621,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -635,8 +635,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -649,8 +649,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -663,8 +663,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -677,8 +677,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -691,8 +691,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -705,8 +705,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -719,8 +719,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -733,8 +733,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -747,8 +747,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -761,8 +761,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -775,8 +775,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -789,8 +789,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -803,8 +803,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -817,8 +817,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -831,8 +831,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -845,8 +845,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -859,8 +859,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -873,8 +873,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -887,8 +887,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -901,8 +901,8 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
-- `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
+- `costs.utilities`
+- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
