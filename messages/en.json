@@ -935,5 +935,15 @@
     "close": "Done",
     "resetAll": "Reset all numbers ({count} changed)",
     "forCity": "These are {city}'s numbers — change city and the numbers change with it."
+  },
+  "fees": {
+    "title": "Official fees",
+    "lead": "These come from the official pages themselves — the U.S. Department of State and USCIS. The ones without a figure vary by country and by case, so we leave them blank rather than post an estimate that reads like a fixed price.",
+    "who": "Who pays:",
+    "when": "When:",
+    "perPerson": "Per person",
+    "oncePerFamily": "Once per family",
+    "perPersonTotal": "Confirmed fees per accompanying person:",
+    "totalNote": "Fees still needing verification are not in this total. Fees paid once per family are excluded here because they are not multiplied by household size."
   }
 }

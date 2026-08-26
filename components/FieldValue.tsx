@@ -14,9 +14,12 @@ import { Num } from "./Num";
 export function FieldValue({
   field,
   unit,
+  prefix,
 }: {
   field: Field<number | string | boolean>;
   unit?: string;
+  /** بيتحط قبل الرقم — للعملة. الرقم من غيره بيتقرا كعدد مش كفلوس. */
+  prefix?: string;
 }) {
   const t = useTranslations("badges");
   const locale = useLocale() as "ar" | "en";
@@ -44,6 +47,7 @@ export function FieldValue({
     return (
       <span className="inline-flex items-center gap-2">
         <Num>
+          {prefix ?? ""}
           {d.value.toLocaleString("en-US")}
           {unit ?? ""}
         </Num>

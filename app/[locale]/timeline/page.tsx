@@ -1,7 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHeader, ToolDisclaimer } from "@/components/ui";
 import { Timeline } from "@/components/tools/Timeline";
-import { loadSteps } from "@/lib/content/load";
+import { Fees, type FeeRow } from "@/components/tools/Fees";
+import { loadFees, loadSteps } from "@/lib/content/load";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -25,10 +26,14 @@ export default async function TimelinePage({
     durationDays: s.durationDays as never,
   }));
 
+  // الرسوم مكانها الطبيعي هنا — جنب المرحلة اللي بتتدفع فيها.
+  const fees = loadFees() as unknown as FeeRow[];
+
   return (
     <div className="space-y-6">
       <PageHeader title={t("title")} lead={t("lead")} />
       <Timeline steps={steps} />
+      <Fees fees={fees} />
       <ToolDisclaimer text={t("disclaimer")} />
     </div>
   );
