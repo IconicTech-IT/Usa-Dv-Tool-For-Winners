@@ -87,7 +87,7 @@ export function Timeline({ steps }: { steps: TimelineStep[] }) {
                       dir="ltr"
                       value={date ?? ""}
                       onChange={(e) => setDate(s.id, e.target.value)}
-                      className="num rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-1"
+                      className="num rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-1"
                     />
                   </div>
                 )}

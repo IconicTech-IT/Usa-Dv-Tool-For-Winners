@@ -26,7 +26,7 @@ export function Search({ docs }: { docs: SearchDoc[] }) {
         onChange={(e) => setQ(e.target.value)}
         placeholder={t("placeholder")}
         aria-label={t("placeholder")}
-        className="w-full rounded-sm border border-[var(--glass-border)] bg-transparent px-4 py-3"
+        className="w-full rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-4 py-3"
       />
 
       {q.trim() && results.length === 0 && <p className="text-[var(--slate)]">{t("noResults")}</p>}

@@ -188,7 +188,7 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
             <select
               value={metro}
               onChange={(e) => setMetro(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
             >
               {metros.map((m) => (
                 <option key={m.slug} value={m.slug}>
@@ -206,7 +206,7 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
               min={1}
               value={adults}
               onChange={(e) => setProfile({ adults: Number(e.target.value) })}
-              className="num w-20 rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+              className="num w-20 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
             />
             <span className="text-sm">{t("kids")}</span>
             <input
@@ -219,7 +219,7 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
                   kidsAges: Array.from({ length: Math.max(0, Number(e.target.value)) }, () => 8),
                 })
               }
-              className="num w-20 rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+              className="num w-20 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
             />
           </label>
 

@@ -120,7 +120,7 @@ export function MyPlan() {
             value={shareUrl}
             rows={3}
             dir="ltr"
-            className="w-full rounded-sm border border-[var(--glass-border)] bg-transparent p-3 text-xs num"
+            className="w-full rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] p-3 text-xs num"
           />
         )}
       </Section>

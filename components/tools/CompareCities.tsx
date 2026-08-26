@@ -68,7 +68,7 @@ export function CompareCities({ metros }: { metros: PlannerMetro[] }) {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-1"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-1"
             >
               {(["carNeed", "roomRent", "apt1br", "carInsurance", "transitScore"] as SortKey[]).map(
                 (k) => (

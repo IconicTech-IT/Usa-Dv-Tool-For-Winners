@@ -20,6 +20,12 @@
   --badge-estimated-fg: #4A5964;
   --badge-needs-fg:     #7A5210;
 
+  /* ⚠️ خلفية عناصر الإدخال.
+     كل input و select كانوا bg-transparent — والselect بالذات لما
+     بيفتح قايمته، المتصفح بيرسمها بخلفية النظام ونصها بلون العنصر،
+     فالنص الفاتح في الدارك كان بيقع على أبيض. اللون هنا صريح في
+     الثيمين، وبيدي كمان إحساس إن الخانة محفورة مش مجرد إطار. */
+  --field-bg:        #FFFFFF;
   --glass-bg:        rgba(255, 255, 255, 0.62);
   --glass-border:    rgba(15, 36, 56, 0.10);
   --glass-highlight: rgba(255, 255, 255, 0.85);
@@ -53,6 +59,7 @@
   --badge-estimated-fg: #A6B7C4;
   --badge-needs-fg:     #F0B65A;
 
+  --field-bg:        #16232F;
   --glass-bg:        rgba(255, 255, 255, 0.055);
   --glass-border:    rgba(255, 255, 255, 0.10);
   --glass-highlight: rgba(255, 255, 255, 0.16);

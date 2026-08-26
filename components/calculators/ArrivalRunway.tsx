@@ -56,7 +56,7 @@ export function ArrivalCalc({ metros }: { metros: PlannerMetro[] }) {
             <select
               value={metro}
               onChange={(e) => setMetro(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               {metros.map((m) => (
                 <option key={m.slug} value={m.slug}>
@@ -163,7 +163,7 @@ export function RunwayCalc({ metros }: { metros: PlannerMetro[] }) {
             <select
               value={metro}
               onChange={(e) => setMetro(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               {metros.map((m) => (
                 <option key={m.slug} value={m.slug}>

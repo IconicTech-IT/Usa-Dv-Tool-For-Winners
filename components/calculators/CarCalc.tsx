@@ -85,7 +85,7 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
             <select
               value={metroSlug}
               onChange={(e) => setMetroSlug(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               {metros.map((m) => (
                 <option key={m.slug} value={m.slug}>

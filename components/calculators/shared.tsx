@@ -42,7 +42,7 @@ export function NumInput({
         step={step}
         value={Number.isFinite(value) ? value : ""}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="num w-32 rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+        className="num w-32 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
       />
       {suffix && <span className="text-sm text-[var(--slate)]">{suffix}</span>}
     </span>

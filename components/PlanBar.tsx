@@ -54,7 +54,7 @@ export function PlanBar() {
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="$"
-            className="num w-28 rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-1"
+            className="num w-28 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-1"
           />
           <button
             type="submit"

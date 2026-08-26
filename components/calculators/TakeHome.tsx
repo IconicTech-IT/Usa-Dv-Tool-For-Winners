@@ -86,7 +86,7 @@ export function TakeHome({
             <select
               value={filing}
               onChange={(e) => setFiling(e.target.value as FilingStatus)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               {(["single", "married", "headOfHousehold"] as FilingStatus[]).map((f) => (
                 <option key={f} value={f}>
@@ -107,7 +107,7 @@ export function TakeHome({
                 setStateCode(e.target.value);
                 setMetroSlug("");
               }}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               {states.map((s) => (
                 <option key={s.code} value={s.code}>
@@ -121,7 +121,7 @@ export function TakeHome({
             <select
               value={metroSlug}
               onChange={(e) => setMetroSlug(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-1.5"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-1.5"
             >
               <option value="">{t("noCity")}</option>
               {cityOptions.map((m) => (

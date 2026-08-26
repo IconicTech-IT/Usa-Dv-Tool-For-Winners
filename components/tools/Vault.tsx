@@ -50,7 +50,7 @@ export function Vault() {
               placeholder={t("docType")}
               value={docType}
               onChange={(e) => setDocType(e.target.value)}
-              className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+              className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
             />
             <label className="flex items-center gap-2 text-sm">
               {t("issued")}
@@ -59,7 +59,7 @@ export function Vault() {
                 dir="ltr"
                 value={issuedAt}
                 onChange={(e) => setIssuedAt(e.target.value)}
-                className="num rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-2"
+                className="num rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-2"
               />
             </label>
             <label className="flex items-center gap-2 text-sm">
@@ -69,7 +69,7 @@ export function Vault() {
                 dir="ltr"
                 value={expiresAt}
                 onChange={(e) => setExpiresAt(e.target.value)}
-                className="num rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-2"
+                className="num rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-2"
               />
             </label>
             <button type="submit" className="rounded-sm border border-[var(--glass-border)] px-4 py-2">

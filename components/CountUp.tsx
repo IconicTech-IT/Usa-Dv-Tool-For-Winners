@@ -46,10 +46,17 @@ export function CountUp({
     };
   }, [value, reduced, inView]);
 
+  // ⚠️ `toFixed` لوحدها بتطلع "5974" جنب تفصيل مكتوب فيه "$3,468" —
+  // نفس الصفحة ونفس نوع الرقم بشكلين. كل رقم فلوس في الموقع بفاصلة آلاف.
+  const text = shown.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+
   return (
     <Num ref={ref}>
       {prefix}
-      {shown.toFixed(decimals)}
+      {text}
       {suffix}
     </Num>
   );

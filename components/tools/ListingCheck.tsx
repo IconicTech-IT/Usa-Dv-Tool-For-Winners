@@ -34,7 +34,7 @@ export function ListingCheck() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={8}
-              className="w-full rounded-sm border border-[var(--glass-border)] bg-transparent p-3"
+              className="w-full rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] p-3"
             />
           </label>
           <p className="text-sm text-[var(--slate)]">{t("localOnly")}</p>

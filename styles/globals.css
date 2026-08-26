@@ -97,3 +97,21 @@ html[lang="ar"] body {
   color: var(--slate);
   opacity: 0.6;
 }
+
+/* ---------- عناصر الإدخال ----------
+   ⚠️ كانت كلها `bg-transparent`. الشكل المقفول كان تمام لأن الكارت
+   وراه، بس قايمة الـ<select> لما بتفتح المتصفح بيرسمها بخلفية النظام
+   وبيسيب لون النص زي ما هو — فالنص الفاتح بتاع الدارك كان بيقع على
+   أبيض. دلوقتي الخلفية واللون صريحين في الثيمين، وللـoption كمان
+   عشان القايمة المفتوحة متعتمدش على المتصفح. */
+select option,
+select optgroup {
+  background-color: var(--field-bg);
+  color: var(--ink);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--slate);
+  opacity: 1; /* فايرفوكس بيخففها لـ0.54 فالتباين بيقع */
+}

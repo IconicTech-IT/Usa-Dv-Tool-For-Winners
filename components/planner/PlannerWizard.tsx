@@ -153,7 +153,7 @@ function NumberField({
         dir="ltr"
         value={value ?? ""}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="num w-40 rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+        className="num w-40 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
       />
     </label>
   );
@@ -283,7 +283,7 @@ function QuestionBody({
             dir="ltr"
             value={profile.plannedArrival ?? ""}
             onChange={(e) => set({ plannedArrival: e.target.value })}
-            className="num rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+            className="num rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
           />
           <button
             type="button"
@@ -300,7 +300,7 @@ function QuestionBody({
         <select
           value={profile.hostCity ?? ""}
           onChange={(e) => set({ hostCity: e.target.value || null })}
-          className="rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2 max-w-full"
+          className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2 max-w-full"
         >
           <option value="">{t("host.none")}</option>
           {metros.map((m) => (
@@ -339,7 +339,7 @@ function QuestionBody({
           type="text"
           value={profile.profession ?? ""}
           onChange={(e) => set({ profession: e.target.value })}
-          className="w-full rounded-sm border border-[var(--glass-border)] bg-transparent px-3 py-2"
+          className="w-full rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2"
         />
       );
 
