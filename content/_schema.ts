@@ -81,6 +81,18 @@ export const fieldShape = {
    * "جالية عربية كبيرة" — مش "٤ من ٥".
    */
   label: LocalizedDraft.optional(),
+
+  /**
+   * ⚠️ لبنود السكن بس: الرقم ده شامل الفواتير جواه.
+   *
+   * مصادر زي HUD Fair Market Rent بتحسب الإيجار + المياه والكهربا والتدفئة
+   * كرقم واحد. لو البند متعلّم كده والمحرك ضاف `utilities` فوقه، الفواتير
+   * بتتحسب مرتين — والخطة بتقول للمستخدم إن فلوسه تكفيه أقل من الحقيقة.
+   *
+   * العلامة دي **مش تعليق** — المحرك بيقراها ويتخطى بند الفواتير،
+   * والschema بيفشل الbuild لو حد ملا `utilities` لنفس المدينة.
+   */
+  includesUtilities: z.boolean().optional(),
 } as const;
 
 type FieldLike = {
@@ -206,6 +218,9 @@ export const State = z.object({
   lastVerified: ISO_DATE,
 });
 
+/** بنود السكن اللي ممكن يكون سعرها شامل الفواتير. */
+export const HOUSING_KEYS = ["roomRent", "apt1br", "apt2br"] as const;
+
 export const Metro = z.object({
   slug: z.string(),
   name: Localized,
@@ -233,6 +248,47 @@ export const Metro = z.object({
     schoolQuality: Field,
     winterSeverity: Field, // ٥ = شتا قاسي
   }),
+  lastVerified: ISO_DATE,
+})
+  /**
+   * ⚠️ الفواتير مينفعش تتحسب مرتين.
+   *
+   * لو بند سكن متعلّم `includesUtilities` (يعني رقمه جاي من مصدر زي HUD
+   * شامل المياه والكهربا)، يبقى `costs.utilities` لازم يفضل `null`.
+   * الحتة دي مكتوبة كقاعدة بتفشل الbuild مش كملاحظة في JSON — لأن
+   * الملاحظة مش بتوقف حد بعد ٦ شهور بيملا حقل ناقص بحسن نية.
+   */
+  .superRefine((m, ctx) => {
+    if (m.costs.utilities.value === null) return;
+
+    for (const key of HOUSING_KEYS) {
+      if (!m.costs[key].includesUtilities) continue;
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["costs", "utilities", "value"],
+        message:
+          `costs.${key} متعلّم includesUtilities — يعني سعره شامل الفواتير. ` +
+          `لو حطيت رقم في costs.utilities كمان، الفواتير هتتحسب مرتين. ` +
+          `يا تسيب utilities بـnull، يا تشيل includesUtilities من costs.${key} ` +
+          `بعد ما تستبدل رقمه بإيجار فعلي من غير فواتير.`,
+      });
+    }
+  });
+
+/**
+ * ⚠️ البنود المش مربوطة بمدينة — طيران، تأسيس، تليفون، بنزين.
+ *
+ * كانت أرقام ثابتة جوه `lib/planner/engine.ts` وبتظهر للمستخدم كإنها
+ * حقيقة مؤكدة. مكانها هنا عشان تاخد حالة وbasis زي أي رقم تاني في الموقع.
+ */
+export const ArrivalCosts = z.object({
+  _note: z.string().optional(),
+  travelPerAdult: Field,
+  travelPerKid: Field,
+  setupPerHousehold: Field,
+  setupPerExtraPerson: Field,
+  phonePerAdult: Field,
+  fuelPerCarMonth: Field,
   lastVerified: ISO_DATE,
 });
 

@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { z } from "zod";
 
 import {
+  ArrivalCosts,
   CarNeedScale,
   Checklist,
   DocumentsFile,
@@ -101,6 +102,7 @@ function contentFiles(): string[] {
     ...listJSON("checklists"),
     join(CONTENT_DIR, "fees.json"),
     join(CONTENT_DIR, "tax-brackets.json"),
+    join(CONTENT_DIR, "arrival-costs.json"),
     join(CONTENT_DIR, "steps.json"),
     join(CONTENT_DIR, "documents.json"),
     join(CONTENT_DIR, "eligibility.json"),
@@ -298,6 +300,14 @@ export function loadJobs() {
 
 export function loadTaxTables() {
   return parseOrThrow(TaxBrackets, join(CONTENT_DIR, "tax-brackets.json"));
+}
+
+/**
+ * البنود المش مربوطة بمدينة. المحرك بيستوردها مباشرة كـJSON عشان يشتغل
+ * على المتصفح كمان — والدالة دي هي اللي بتتحقق منها بالschema وقت الbuild.
+ */
+export function loadArrivalCosts() {
+  return parseOrThrow(ArrivalCosts, join(CONTENT_DIR, "arrival-costs.json"));
 }
 
 export function loadCarNeedScale() {

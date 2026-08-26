@@ -76,12 +76,13 @@
       ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
+      "includesUtilities": true,
       "basis": {
-        "ar": "إيجار شقة ٣ غرف في منطقة هيوستن حسب HUD لسنة 2026 ($2,116) مقسوم على ٣ ساكنين = $710 للشخص.",
-        "en": "HUD FY2026 Fair Market Rent for a 3-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area ($2,116) divided by 3 sharers = $710 per person."
+        "ar": "إيجار شقة ٣ غرف في منطقة هيوستن حسب HUD لسنة 2026 ($2,116) مقسوم على ٣ ساكنين = $710 للشخص، شامل المياه والكهربا والتدفئة. ⚠️ الرقم ده الأرجح أقل من اللي هتلاقيه فعلًا، لسببين في نفس الاتجاه: HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، والغرفة في شقة مشتركة بتتأجر أغلى من تلت شقة ٣ غرف لأنك بتدفع زيادة مقابل إنها مفروشة ومن غير عقد سنة ولا فحص ائتماني. اعتبره الحد الأدنى وحط رقمك من إعلان فعلي.",
+        "en": "HUD FY2026 Fair Market Rent for a 3-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area ($2,116) divided by 3 sharers = $710 per person, water, electricity and heating included. ⚠️ The real price is likely higher, for two reasons pointing the same way: HUD uses the 40th percentile of the market rather than the median, and a room in a shared apartment rents at a premium over one third of a 3-bedroom lease — you pay extra for furnished, month-to-month, no credit check. Treat this as a floor and replace it with a figure from a real listing."
       },
       "verifyIn": "1-year",
-      "note": "⚠️ حاجتين لازم تعرفهم عن الرقم ده قبل ما تعدّله: (١) HUD بياخد الشريحة ٤٠٪ من السوق، يعني الإعلانات اللي هتلاقيها فعلًا غالبًا أغلى — خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، فالرقم ده الحد الأدنى مش المتوسط. (٢) الإيجار العادل عند HUD شامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت) — فلو حطيت رقم في utilities من غير ما تنقص من هنا، الخطة هتحسب الفواتير مرتين. أحسن حاجة: استبدله بمتوسط إعلانات فعلية لغرف مشتركة في المدينة."
+      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
     },
     "apt1br": {
       "value": 1323,
@@ -94,12 +95,13 @@
       ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
+      "includesUtilities": true,
       "basis": {
-        "ar": "الإيجار العادل لشقة غرفة واحدة في منطقة هيوستن حسب HUD لسنة 2026.",
-        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area."
+        "ar": "الإيجار العادل لشقة غرفة واحدة في منطقة هيوستن حسب HUD لسنة 2026، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى من ده عادةً — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area, water, electricity and heating included. ⚠️ HUD uses the 40th percentile of the market rather than the median, and a new arrival with no credit history usually pays more than this — treat it as a floor."
       },
       "verifyIn": "1-year",
-      "note": "⚠️ ده \"الإيجار العادل\" عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت). يعني (١) الإعلانات الحقيقية غالبًا أغلى، خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، و(٢) لو حطيت رقم في utilities هيتحسب مرتين."
+      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
     },
     "apt2br": {
       "value": 1573,
@@ -112,12 +114,13 @@
       ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
+      "includesUtilities": true,
       "basis": {
-        "ar": "الإيجار العادل لشقة غرفتين في منطقة هيوستن حسب HUD لسنة 2026.",
-        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area."
+        "ar": "الإيجار العادل لشقة غرفتين في منطقة هيوستن حسب HUD لسنة 2026، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى من ده عادةً — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in the Houston-The Woodlands-Sugar Land, TX HUD Metro FMR Area, water, electricity and heating included. ⚠️ HUD uses the 40th percentile of the market rather than the median, and a new arrival with no credit history usually pays more than this — treat it as a floor."
       },
       "verifyIn": "1-year",
-      "note": "⚠️ ده \"الإيجار العادل\" عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير (مياه وكهربا وتدفئة، مش تليفون ولا نت). يعني (١) الإعلانات الحقيقية غالبًا أغلى، خصوصًا لواحد لسه واصل ومالوش تاريخ ائتماني، و(٢) لو حطيت رقم في utilities هيتحسب مرتين."
+      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
     },
     "securityDeposit": {
       "value": null,
@@ -133,7 +136,7 @@
       "sources": [],
       "lastVerified": "2026-08-25",
       "unit": "USD/month",
-      "note": "⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين."
+      "note": "الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول."
     },
     "groceriesPerAdult": {
       "value": 296,

@@ -27,6 +27,8 @@ export interface Field<T = number> {
   verifyIn?: string;
   /** مع `judgment`: الوصف اللي بيتعرض **مكان** الرقم. */
   label?: Localized;
+  /** لبنود السكن بس: السعر ده شامل الفواتير، فالمحرك بيتخطى بند الفواتير. */
+  includesUtilities?: boolean;
 }
 
 /** مُدخلات الخطة — دي بالظبط اللي بتتحفظ في localStorage.

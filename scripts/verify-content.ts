@@ -12,6 +12,7 @@ import {
   collectFields,
   collectMissingText,
   countStatuses,
+  loadArrivalCosts,
   loadCarNeedScale,
   loadChecklists,
   loadDocuments,
@@ -111,6 +112,7 @@ function main() {
   loadJobPresets();
   loadJobs();
   loadTaxTables();
+  loadArrivalCosts();
   loadCarNeedScale();
 
   // ٢. الإحصاء

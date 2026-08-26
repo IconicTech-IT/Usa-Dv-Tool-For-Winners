@@ -6,12 +6,12 @@
 
 **آخر تحديث للملف ده:** 2026-08-26
 
-**الحالة دلوقتي:** 30 ولاية · 50 مدينة · 2 شيك ليست — إجمالي 1296 حقل.
+**الحالة دلوقتي:** 30 ولاية · 50 مدينة · 2 شيك ليست — إجمالي 1302 حقل.
 
 | الحالة | العدد | معناها في الواجهة |
 |---|---|---|
 | `verified` | 18 | من غير بادج، المصدر في الفوتنوت |
-| `estimated` | 338 | بادج "تقديري"، والbasis في tooltip |
+| `estimated` | 344 | بادج "تقديري"، والbasis في tooltip |
 | `judgment` | 130 | من غير بادج — بيتعرض كوصف مش كرقم |
 | `NEEDS_VERIFICATION` | 810 | بادج "محتاج تأكيد"، ومفيش رقم |
 
@@ -323,7 +323,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -337,7 +337,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -387,7 +387,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -419,7 +419,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -487,7 +487,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -519,7 +519,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -695,7 +695,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -781,7 +781,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — ⚠️ لو roomRent لسه مبني على HUD، الرقم ده متحسوب جواه — راجع ملاحظة roomRent قبل ما تحط قيمة هنا عشان متتحسبش مرتين.
+- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`

@@ -1,0 +1,77 @@
+{
+  "_note": "⚠️ البنود دي كانت أرقام ثابتة مكتوبة جوه lib/planner/engine.ts، وكانت بتظهر للمستخدم كإنها حقيقة مؤكدة من غير بادج. نقلناها هنا عشان تتعلّم تقديري، ويبان الافتراض اللي وراها، ويقدر المستخدم يغيّرها. مفيش رقم منهم عليه مصدر رسمي — دي افتراضات معلنة مش قياسات، والطيران بالذات المستخدم أعرف بيه مننا لأنه شايف عرض تذكرته.",
+  "travelPerAdult": {
+    "value": 900,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: تذكرة درجة اقتصادية في اتجاه واحد من مصر لمدينة أمريكية كبيرة في موسم عادي. السعر بيختلف جدًا بالموسم وبالمدينة — لو معاك عرض فعلي حطه بدل الرقم ده.",
+      "en": "Assumption: a one-way economy ticket from Egypt to a major U.S. city in an ordinary season. Prices vary a lot by season and destination — replace this with a real quote if you have one."
+    },
+    "verifyIn": "6-months",
+    "note": "أول بند في محرر التكاليف بقصد — ده أكتر رقم المستخدم بيعرفه أحسن مننا."
+  },
+  "travelPerKid": {
+    "value": 700,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: تذكرة طفل في نفس الرحلة، أرخص شوية من تذكرة البالغ.",
+      "en": "Assumption: a child fare on the same flight, somewhat cheaper than an adult ticket."
+    },
+    "verifyIn": "6-months"
+  },
+  "setupPerHousehold": {
+    "value": 600,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: مرتبة وأغطية وأواني وأدوات أساسية ومصاريف أول أسبوع لأسرة واحدة، بشرا مستعمل ورخيص.",
+      "en": "Assumption: a mattress, bedding, kitchenware, basic tools and first-week odds and ends for one household, buying used and cheap."
+    },
+    "verifyIn": "1-year"
+  },
+  "setupPerExtraPerson": {
+    "value": 150,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: الزيادة لكل فرد إضافي — سرير وأغطية وحاجته الشخصية.",
+      "en": "Assumption: the increment per additional person — a bed, bedding and personal basics."
+    },
+    "verifyIn": "1-year"
+  },
+  "phonePerAdult": {
+    "value": 30,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD/month",
+    "basis": {
+      "ar": "افتراض: خط بريبيد بباقة داتا من مشغل اقتصادي — ده اللي أغلب الواصلين الجداد بيبدأوا بيه قبل ما يبقى ليهم تاريخ ائتماني.",
+      "en": "Assumption: a prepaid line with a data bundle from a budget carrier — what most new arrivals start on before they have any credit history."
+    },
+    "verifyIn": "1-year"
+  },
+  "fuelPerCarMonth": {
+    "value": 120,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD/month",
+    "basis": {
+      "ar": "افتراض: بنزين شهري لسواقة يومية متوسطة. بيتحسب مع تأمين العربية في بند واحد، وبيتشال لو المدينة مش محتاجة عربية.",
+      "en": "Assumption: monthly fuel for average daily driving. It is bundled with car insurance in one line, and drops out when the city does not need a car."
+    },
+    "verifyIn": "6-months"
+  },
+  "lastVerified": "2026-08-26"
+}

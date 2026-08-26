@@ -15,6 +15,7 @@
  */
 
 import type {
+  Field,
   Localized,
   MetroScore,
   PlanResult,
@@ -24,6 +25,7 @@ import type {
   Source,
   Tier,
 } from "@/lib/types";
+import arrivalCosts from "@/content/arrival-costs.json";
 import type { PlannerMetro } from "./metro";
 import { tierFor, type TierPolicy } from "./tiers";
 import { capJudgment, rankWithJudgment } from "./judgment";
@@ -89,11 +91,32 @@ export function eatingUnits(adults: number, kidsAges: number[]): number {
  * التكاليف
  * ------------------------------------------------------------------ */
 
-export const TRAVEL_COST_PER_ADULT = 900;
-export const TRAVEL_COST_PER_KID = 700;
-/** تأسيس أساسي: مرتبة، أغطية، أواني، تليفون، شريحة، مصاريف أول أسبوع. */
-export const SETUP_PER_HOUSEHOLD = 600;
-export const SETUP_PER_EXTRA_PERSON = 150;
+/**
+ * ⚠️ البنود المش مربوطة بمدينة بتتقرا من `content/arrival-costs.json` —
+ * **مفيش ولا رقم منهم مكتوب هنا**.
+ *
+ * كانوا ثوابت في الملف ده، وكانوا بيوصلوا للمستخدم كـ"تذاكر السفر $900"
+ * من غير بادج تقديري ومن غير ما يقولوا الافتراض اللي وراهم. أي رقم بيتعرض
+ * لازم يكون معاه حالته — والملف ده مش المكان الصح لأرقام فلوس.
+ *
+ * الاستيراد مباشر (فوق مع باقي الimports) عشان المحرك بيشتغل على المتصفح
+ * كمان؛ و`loadArrivalCosts()` هي اللي بتتحقق من الملف بالschema وقت الbuild.
+ */
+const globalField = (f: { value: number | null }): number => f.value ?? 0;
+
+export const TRAVEL_COST_PER_ADULT = globalField(arrivalCosts.travelPerAdult);
+export const TRAVEL_COST_PER_KID = globalField(arrivalCosts.travelPerKid);
+export const SETUP_PER_HOUSEHOLD = globalField(arrivalCosts.setupPerHousehold);
+export const SETUP_PER_EXTRA_PERSON = globalField(arrivalCosts.setupPerExtraPerson);
+export const PHONE_PER_ADULT = globalField(arrivalCosts.phonePerAdult);
+export const FUEL_PER_CAR_MONTH = globalField(arrivalCosts.fuelPerCarMonth);
+
+/** الحالة والbasis بتاعة كل بند عام — الواجهة بتعرضهم زي أي حقل تاني. */
+export const GLOBAL_COST_FIELDS: Partial<Record<CostKey, Field<number>>> = {
+  travel: arrivalCosts.travelPerAdult as Field<number>,
+  setup: arrivalCosts.setupPerHousehold as Field<number>,
+  phone: arrivalCosts.phonePerAdult as Field<number>,
+};
 
 export interface CostBreakdown {
   key: string;
@@ -103,6 +126,26 @@ export interface CostBreakdown {
   incomplete: boolean;
   /** جه منين: رقم المستخدم · قال مش محتاجه · رقم الموقع · ناقص */
   source: ValueSource;
+  /**
+   * حالة الحقل والbasis بتاعه.
+   *
+   * ⚠️ من غيرهم محرر التكاليف كان بيعرض كل رقم بنفس الشكل — تقديرنا
+   * المتفائل بيتقرا زي رقم مؤكد. `basis` هو اللي بيوصل للمستخدم في
+   * الtooltip، مش `note` (ده للمراجع).
+   */
+  estimated?: boolean;
+  basis?: Localized;
+}
+
+/** حالة الحقل والbasis — لبند مربوط بمدينة أو بند عام. */
+function fieldMeta(
+  m: PlannerMetro,
+  key: CostKey,
+): { estimated: boolean; basis?: Localized } {
+  const f =
+    ((m as unknown as Record<string, unknown>)[key] as Field<number> | undefined) ??
+    GLOBAL_COST_FIELDS[key];
+  return { estimated: f?.status === "estimated", basis: f?.basis };
 }
 
 /** الرقم ده جه منين لبند مربوط بمدينة. */
@@ -128,6 +171,38 @@ function globalCost(
   const { value, source } = resolveCost(fallback, getOverride(overrides, key, metroSlug));
   return { amount: value ?? 0, source };
 }
+
+/**
+ * ⚠️ الفواتير داخلة في الإيجار ولا لأ.
+ *
+ * مصادر زي HUD Fair Market Rent بتدي الإيجار + المياه والكهربا والتدفئة
+ * كرقم واحد. لو ضفنا بند الفواتير فوق رقم زي ده، بيتحسب مرتين والخطة
+ * بتقول للمستخدم إن فلوسه تكفيه أقل من الحقيقة.
+ *
+ * بس ده بيسري على **رقمنا** بس. أول ما المستخدم يحط رقم إيجار من إعلان
+ * فعلي، الرقم بتاعه غالبًا من غير فواتير — فبنرجّع البند تاني.
+ */
+export function utilitiesIncludedInRent(
+  m: PlannerMetro,
+  housing: CostKey,
+  overrides: CostOverrides | undefined,
+): boolean {
+  if (sourceOf(m, housing, overrides) !== "site") return false;
+  const f = (m as unknown as Record<string, unknown>)[housing] as
+    | { includesUtilities?: boolean }
+    | undefined;
+  return f?.includesUtilities === true;
+}
+
+const UTILITIES_IN_RENT: Localized = {
+  ar: "الفواتير (داخلة في الإيجار)",
+  en: "Utilities (included in rent)",
+};
+
+const UTILITIES_IN_RENT_BASIS: Localized = {
+  ar: "رقم الإيجار اللي عندنا للمدينة دي شامل المياه والكهربا والتدفئة، فمحسوبناش الفواتير تاني. لو حطيت إيجار من إعلان فعلي، البند هيرجع يظهر لأن إعلانات كتير بتكون من غير فواتير.",
+  en: "Our rent figure for this city already includes water, electricity and heating, so we do not add utilities on top. If you enter a rent from a real listing, this line comes back — most listings exclude utilities.",
+};
 
 /** الإيجار المناسب لحجم العيلة — غرفة للفرد، شقة للعيلة. */
 export function housingKey(people: number, goAlone: boolean): CostKey {
@@ -165,9 +240,27 @@ export function landingCost(
   const housing = housingMonthly(m, people, opts.goAlone, missing, overrides);
   const deposit = val(m, "securityDeposit", missing, overrides);
   const groceries = val(m, "groceriesPerAdult", missing, overrides);
-  const utilities = val(m, "utilities", missing, overrides);
+  const utilitiesInRent = utilitiesIncludedInRent(m, housing.kind, overrides);
+  const utilities = utilitiesInRent ? 0 : val(m, "utilities", missing, overrides);
 
   const src = (key: CostKey): ValueSource => sourceOf(m, key, overrides);
+
+  /**
+   * ⚠️ التأمين عندنا **مضاعف للإيجار** (١ = إيجار شهر)، بس اللي بيتعرض
+   * للمستخدم دولارات، والمحرر بياخد منه دولارات كمان.
+   *
+   * قبل كده كنا بنضرب رقم المستخدم في الإيجار زي ما بنعمل مع رقمنا —
+   * فواحد كتب 1400 (يقصد $1,400) على إيجار $1,200 طلعله تأمين
+   * **$1,680,000** وإجمالي وصول بالمليون. الرقم المعروض ودخل المحرر
+   * لازم يكونوا بنفس الوحدة: رقمنا مضاعف، ورقمه دولار.
+   */
+  const depositSource = src("securityDeposit");
+  const depositAmount =
+    depositSource === "user"
+      ? (deposit ?? 0)
+      : deposit !== null && housing.amount !== null
+        ? deposit * housing.amount
+        : 0;
 
   const travel = globalCost(
     "travel",
@@ -195,6 +288,7 @@ export function landingCost(
       amount: travel.amount,
       incomplete: false,
       source: travel.source,
+      ...fieldMeta(m, "travel"),
     },
     {
       key: housing.kind,
@@ -202,15 +296,15 @@ export function landingCost(
       amount: firstRent ?? 0,
       incomplete: firstRent === null,
       source: src(housing.kind),
+      ...fieldMeta(m, housing.kind),
     },
     {
       key: "securityDeposit",
       label: { ar: "تأمين السكن", en: "Security deposit" },
-      // التأمين بيتقاس كمضاعف للإيجار
-      amount:
-        deposit !== null && housing.amount !== null ? deposit * housing.amount : 0,
-      incomplete: deposit === null || housing.amount === null,
-      source: src("securityDeposit"),
+      amount: depositAmount,
+      incomplete: depositSource === "site" && (deposit === null || housing.amount === null),
+      source: depositSource,
+      ...fieldMeta(m, "securityDeposit"),
     },
     {
       key: "setup",
@@ -218,6 +312,7 @@ export function landingCost(
       amount: setup.amount,
       incomplete: false,
       source: setup.source,
+      ...fieldMeta(m, "setup"),
     },
     {
       key: "groceriesPerAdult",
@@ -226,13 +321,19 @@ export function landingCost(
         groceries !== null ? groceries * eatingUnits(adults, opts.goAlone ? [] : opts.kidsAges) : 0,
       incomplete: groceries === null,
       source: src("groceriesPerAdult"),
+      ...fieldMeta(m, "groceriesPerAdult"),
     },
     {
       key: "utilities",
-      label: { ar: "فواتير أول شهر", en: "First month's utilities" },
-      amount: utilities ?? 0,
-      incomplete: utilities === null,
-      source: src("utilities"),
+      label: utilitiesInRent
+        ? UTILITIES_IN_RENT
+        : { ar: "فواتير أول شهر", en: "First month's utilities" },
+      amount: utilitiesInRent ? 0 : (utilities ?? 0),
+      incomplete: utilitiesInRent ? false : utilities === null,
+      source: utilitiesInRent ? "site" : src("utilities"),
+      ...(utilitiesInRent
+        ? { estimated: false, basis: UTILITIES_IN_RENT_BASIS }
+        : fieldMeta(m, "utilities")),
     },
   ];
 
@@ -251,10 +352,11 @@ export function monthlyBurn(
 
   const housing = housingMonthly(m, people, opts.goAlone, missing, overrides);
   const groceries = val(m, "groceriesPerAdult", missing, overrides);
-  const utilities = val(m, "utilities", missing, overrides);
+  const utilitiesInRent = utilitiesIncludedInRent(m, housing.kind, overrides);
+  const utilities = utilitiesInRent ? 0 : val(m, "utilities", missing, overrides);
   const transit = val(m, "monthlyTransitPass", missing, overrides);
   const insurance = opts.needsCar ? val(m, "carInsurance", missing, overrides) : null;
-  const phone = globalCost("phone", 30 * adults, m.slug, overrides);
+  const phone = globalCost("phone", PHONE_PER_ADULT * adults, m.slug, overrides);
 
   const rows: CostBreakdown[] = [
     {
@@ -263,6 +365,7 @@ export function monthlyBurn(
       amount: housing.amount ?? 0,
       incomplete: housing.amount === null,
       source: sourceOf(m, housing.kind, overrides),
+      ...fieldMeta(m, housing.kind),
     },
     {
       key: "groceriesPerAdult",
@@ -270,13 +373,17 @@ export function monthlyBurn(
       amount: groceries !== null ? groceries * eatingUnits(adults, kidsAges) : 0,
       incomplete: groceries === null,
       source: sourceOf(m, "groceriesPerAdult", overrides),
+      ...fieldMeta(m, "groceriesPerAdult"),
     },
     {
       key: "utilities",
-      label: { ar: "الفواتير", en: "Utilities" },
-      amount: utilities ?? 0,
-      incomplete: utilities === null,
-      source: sourceOf(m, "utilities", overrides),
+      label: utilitiesInRent ? UTILITIES_IN_RENT : { ar: "الفواتير", en: "Utilities" },
+      amount: utilitiesInRent ? 0 : (utilities ?? 0),
+      incomplete: utilitiesInRent ? false : utilities === null,
+      source: utilitiesInRent ? "site" : sourceOf(m, "utilities", overrides),
+      ...(utilitiesInRent
+        ? { estimated: false, basis: UTILITIES_IN_RENT_BASIS }
+        : fieldMeta(m, "utilities")),
     },
     {
       key: opts.needsCar ? "carInsurance" : "monthlyTransitPass",
@@ -285,9 +392,12 @@ export function monthlyBurn(
         en: opts.needsCar ? "Car insurance and fuel" : "Transit",
       },
       // البنزين تقدير ثابت بسيط لحد ما حاسبة العربية تدخل في الحسبة
-      amount: opts.needsCar ? (insurance ?? 0) + 120 : (transit ?? 0) * adults,
+      amount: opts.needsCar
+        ? (insurance ?? 0) + FUEL_PER_CAR_MONTH
+        : (transit ?? 0) * adults,
       incomplete: opts.needsCar ? insurance === null : transit === null,
       source: sourceOf(m, opts.needsCar ? "carInsurance" : "monthlyTransitPass", overrides),
+      ...fieldMeta(m, (opts.needsCar ? "carInsurance" : "monthlyTransitPass")),
     },
     {
       key: "phone",
@@ -295,6 +405,7 @@ export function monthlyBurn(
       amount: phone.amount,
       incomplete: false,
       source: phone.source,
+      ...fieldMeta(m, "phone"),
     },
   ];
 

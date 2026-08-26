@@ -485,3 +485,112 @@ describe("⚠️ اختيار المدينة بيفضّل اللي عندنا أ
     expect(plan.chosenMetro).toBe("mine");
   });
 });
+
+describe("⚠️ الفواتير مبتتحسبش مرتين", () => {
+  const t = () => ({ add: () => {}, list: () => [] });
+  const opts = { adults: 1, kidsAges: [], goAlone: true, needsCar: false };
+
+  /** إيجار جاي من مصدر شامل الفواتير (زي HUD Fair Market Rent). */
+  const inclusive = metro("inc", {
+    roomRent: { ...verified(700), includesUtilities: true },
+    utilities: nullField,
+  });
+
+  it("الإيجار الشامل بيشيل بند الفواتير من الحسبة", () => {
+    const withFlag = monthlyBurn(inclusive, opts, t());
+    const plain = monthlyBurn(
+      metro("plain", { roomRent: verified(700), utilities: verified(150) }),
+      opts,
+      t(),
+    );
+    expect(plain.total - withFlag.total).toBe(150);
+
+    const row = withFlag.breakdown.find((r) => r.key === "utilities");
+    expect(row?.amount).toBe(0);
+    // مش "ناقص" — دي معلومة، والمستخدم لازم يشوف السبب
+    expect(row?.incomplete).toBe(false);
+    expect(row?.basis?.ar).toContain("شامل");
+  });
+
+  it("بند فواتير ناقص مع إيجار شامل مبيتسجلش كحقل ناقص", () => {
+    const missing: string[] = [];
+    const tracker = { add: (_m: string, f: string) => void missing.push(f), list: () => missing };
+    monthlyBurn(inclusive, opts, tracker);
+    expect(missing).not.toContain("utilities");
+  });
+
+  it("أول ما المستخدم يحط إيجاره بنفسه، الفواتير بترجع", () => {
+    // رقم من إعلان فعلي غالبًا من غير فواتير — فالعلامة بتاعتنا مبقتش سارية
+    const overrides = { inc: { roomRent: { mode: "custom" as const, value: 700 } } };
+    const withUserRent = monthlyBurn(
+      metro("inc", {
+        roomRent: { ...verified(700), includesUtilities: true },
+        utilities: verified(150),
+      }),
+      opts,
+      t(),
+      overrides,
+    );
+    expect(withUserRent.breakdown.find((r) => r.key === "utilities")?.amount).toBe(150);
+  });
+
+  it("تكلفة الوصول كمان مبتحسبش فواتير أول شهر مرتين", () => {
+    const landing = landingCost(
+      inclusive,
+      { adults: 1, kidsAges: [], goAlone: true, includeTravel: false, hostNights: 0 },
+      t(),
+    );
+    expect(landing.breakdown.find((r) => r.key === "utilities")?.amount).toBe(0);
+  });
+});
+
+describe("⚠️ الأرقام العامة جاية من المحتوى مش من الكود", () => {
+  it("كل بند عام معاه حالته وbasis بتاعه", () => {
+    const landing = landingCost(
+      metro("x"),
+      { adults: 1, kidsAges: [], goAlone: true, includeTravel: true, hostNights: 0 },
+      { add: () => {}, list: () => [] },
+    );
+    const travel = landing.breakdown.find((r) => r.key === "travel");
+    // من غير الحتة دي، رقم مخترع بيتعرض للمستخدم كإنه حقيقة مؤكدة
+    expect(travel?.estimated).toBe(true);
+    expect(travel?.basis?.ar.length ?? 0).toBeGreaterThan(0);
+    expect(travel?.basis?.en.length ?? 0).toBeGreaterThan(0);
+  });
+});
+
+describe("⚠️ وحدة التأمين: رقمنا مضاعف ورقم المستخدم دولار", () => {
+  const t = () => ({ add: () => {}, list: () => [] });
+  const opts = {
+    adults: 1,
+    kidsAges: [] as number[],
+    goAlone: true,
+    includeTravel: false,
+    hostNights: 0,
+  };
+
+  it("رقمنا بيتضرب في الإيجار", () => {
+    const m = metro("x", { roomRent: verified(1200), securityDeposit: verified(1) });
+    const row = landingCost(m, opts, t()).breakdown.find(
+      (r) => r.key === "securityDeposit",
+    );
+    expect(row?.amount).toBe(1200);
+  });
+
+  it("رقم المستخدم بيتاخد زي ما هو — مش بيتضرب", () => {
+    // الباج القديم: 1400 × إيجار 1200 = 1,680,000 وإجمالي وصول بالمليون
+    const m = metro("x", { roomRent: verified(1200), securityDeposit: verified(1) });
+    const overrides = { x: { securityDeposit: { mode: "custom" as const, value: 1400 } } };
+    const row = landingCost(m, opts, t(), overrides).breakdown.find(
+      (r) => r.key === "securityDeposit",
+    );
+    expect(row?.amount).toBe(1400);
+  });
+
+  it("مفيش بند في تكلفة الوصول بيطلع أكبر من مليون برقم معقول", () => {
+    const m = metro("x", { roomRent: verified(1200), securityDeposit: verified(1) });
+    const overrides = { x: { securityDeposit: { mode: "custom" as const, value: 1400 } } };
+    const { total } = landingCost(m, opts, t(), overrides);
+    expect(total).toBeLessThan(20_000);
+  });
+});

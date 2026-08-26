@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Field, ChecklistItem } from "@/content/_schema";
+import { Field, ChecklistItem, Metro } from "@/content/_schema";
 import { collectFields, countStatuses } from "@/lib/content/load";
 import { display, rankValue } from "@/lib/content/field";
 
@@ -155,5 +155,87 @@ describe("المحتوى الحقيقي", () => {
     expect(counts.estimated).toBeGreaterThan(0);
     // الschema هي اللي بتفرضها — لو عدّى الload يبقى كله سليم
     expect(counts.judgment).toBe(130);
+  });
+});
+
+describe("⚠️ الفواتير مينفعش تتحط مرتين في المحتوى", () => {
+  const est = (value: number, extra: Record<string, unknown> = {}) => ({
+    value,
+    status: "estimated",
+    sources: [],
+    lastVerified: "2026-08-26",
+    basis: { ar: "أساس", en: "basis" },
+    verifyIn: "1-year",
+    ...extra,
+  });
+
+  const nulled = {
+    value: null,
+    status: "NEEDS_VERIFICATION",
+    sources: [],
+    lastVerified: "2026-08-26",
+  };
+
+  const judgment = (value: number) => ({
+    value,
+    status: "judgment",
+    sources: [],
+    lastVerified: "2026-08-26",
+    label: { ar: "وصف", en: "label" },
+  });
+
+  const build = (costs: Record<string, unknown>) => ({
+    slug: "x-tx",
+    name: { ar: "س", en: "X" },
+    state: "TX",
+    car: {
+      carNeed: judgment(3),
+      carNeedLabel: { ar: "متوسط", en: "Medium" },
+      transitSystem: nulled,
+      transitScore: nulled,
+      carFreeNeighborhoods: nulled,
+      monthlyTransitPass: nulled,
+    },
+    costs: {
+      roomRent: nulled,
+      apt1br: nulled,
+      apt2br: nulled,
+      securityDeposit: nulled,
+      utilities: nulled,
+      groceriesPerAdult: nulled,
+      carInsurance: nulled,
+      ...costs,
+    },
+    work: { gigDemand: judgment(3), worksWithoutEnglish: judgment(3), warehouseJobs: nulled },
+    life: {
+      arabCommunity: judgment(3),
+      halalAccess: nulled,
+      schoolQuality: nulled,
+      winterSeverity: nulled,
+    },
+    lastVerified: "2026-08-26",
+  });
+
+  it("إيجار شامل الفواتير + رقم في utilities = الbuild بيفشل", () => {
+    const bad = Metro.safeParse(
+      build({
+        roomRent: est(700, { includesUtilities: true }),
+        utilities: est(150),
+      }),
+    );
+    expect(bad.success).toBe(false);
+    expect(JSON.stringify(bad.error?.issues)).toContain("مرتين");
+  });
+
+  it("إيجار شامل الفواتير و utilities فاضية = تمام", () => {
+    expect(
+      Metro.safeParse(build({ roomRent: est(700, { includesUtilities: true }) })).success,
+    ).toBe(true);
+  });
+
+  it("إيجار مش شامل + رقم في utilities = تمام", () => {
+    expect(
+      Metro.safeParse(build({ roomRent: est(700), utilities: est(150) })).success,
+    ).toBe(true);
   });
 });
