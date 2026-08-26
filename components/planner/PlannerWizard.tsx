@@ -27,6 +27,8 @@ type QuestionId =
   | "drivingYears"
   | "profession"
   | "openToPhysicalWork"
+  | "willBuyCar"
+  | "target"
   | "priorities";
 
 const ORDER: QuestionId[] = [
@@ -44,6 +46,8 @@ const ORDER: QuestionId[] = [
   "drivingYears",
   "profession",
   "openToPhysicalWork",
+  "willBuyCar",
+  "target",
   "priorities",
 ];
 
@@ -206,6 +210,7 @@ function QuestionBody({
     { value: "yes", label: t("yes") },
     { value: "no", label: t("no") },
   ];
+  const states = [...new Set(metros.map((m) => m.state))].sort();
 
   switch (id) {
     case "money":
@@ -350,6 +355,62 @@ function QuestionBody({
           value={profile.openToPhysicalWork === undefined ? undefined : profile.openToPhysicalWork ? "yes" : "no"}
           onChange={(v) => set({ openToPhysicalWork: v === "yes" })}
         />
+      );
+
+    case "willBuyCar":
+      return (
+        <Choice
+          options={[
+            { value: "yes", label: t("willBuyCar.yes") },
+            { value: "no", label: t("willBuyCar.no") },
+            { value: "unsure", label: t("willBuyCar.unsure") },
+          ]}
+          value={profile.willBuyCar ?? undefined}
+          onChange={(v) => set({ willBuyCar: v as "yes" | "no" | "unsure" })}
+        />
+      );
+
+    /**
+     * المستخدم عايز مكان معين؟
+     *
+     * ⚠️ السؤال ده اختياري بقصد. الوضع الافتراضي إن الموقع هو اللي
+     * يرشّح — بس ناس كتير عندها قريب في مدينة أو شغل مستني في ولاية،
+     * وساعتها الترشيح العام مبيفدش. لو اختار، الموقع يفضل هو اللي
+     * بيعمل الخطة بس **جوه** اللي هو اختاره.
+     */
+    case "target":
+      return (
+        <div className="flex flex-wrap gap-2">
+          <select
+            value={profile.targetState ?? ""}
+            onChange={(e) =>
+              set({ targetState: e.target.value || null, targetMetro: null })
+            }
+            className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2 max-w-full"
+          >
+            <option value="">{t("target.anyState")}</option>
+            {states.map((st) => (
+              <option key={st} value={st}>
+                {st}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={profile.targetMetro ?? ""}
+            onChange={(e) => set({ targetMetro: e.target.value || null })}
+            className="rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-3 py-2 max-w-full"
+          >
+            <option value="">{t("target.anyCity")}</option>
+            {metros
+              .filter((m) => !profile.targetState || m.state === profile.targetState)
+              .map((m) => (
+                <option key={m.slug} value={m.slug}>
+                  {m.name.ar}
+                </option>
+              ))}
+          </select>
+        </div>
       );
 
     case "priorities": {

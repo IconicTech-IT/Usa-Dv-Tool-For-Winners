@@ -77,7 +77,7 @@ export function PlanBar() {
           <span>
             ⏳{" "}
             {t.rich("runway", {
-              months: () => <CountUp value={plan.runwayMonths} decimals={1} />,
+              months: () => <CountUp value={plan.runwayMonths} decimals={1} immediate />,
             })}
           </span>
         </>

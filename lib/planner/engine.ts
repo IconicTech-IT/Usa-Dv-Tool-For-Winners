@@ -376,7 +376,16 @@ export function monthlyBurn(
   const groceries = val(m, "groceriesPerAdult", missing, overrides);
   const utilitiesInRent = utilitiesIncludedInRent(m, housing.kind, overrides);
   const utilities = utilitiesInRent ? 0 : val(m, "utilities", missing, overrides);
-  const transit = val(m, "monthlyTransitPass", missing, overrides);
+  /**
+   * ⚠️ البندين دول بديلين مش مجموعين: المدينة يا محتاجة عربية يا لأ،
+   * والسطر بيعرض واحد منهم بس.
+   *
+   * وكان `transit` بيتقرا دايمًا حتى في المدن المحتاجة عربية — فبيتسجل
+   * "ناقص" ويظهر للمستخدم في قايمة الأرقام اللي محتاجة تأكيد، **وهو أصلًا
+   * مش داخل الحسبة ولا ليه سطر في المحرر يملاه منه**. يعني بنقوله إن فيه
+   * حاجة ناقصة ومنديلوش طريقة يكمّلها، وهي مش ناقصة أصلًا.
+   */
+  const transit = opts.needsCar ? null : val(m, "monthlyTransitPass", missing, overrides);
   const insurance = opts.needsCar ? val(m, "carInsurance", missing, overrides) : null;
 
   /**
@@ -502,7 +511,16 @@ export function scoreMetros(
         adults: input.adults,
         kidsAges: input.kidsAges,
         goAlone,
-        includeTravel: !input.moneyIncludesTravel,
+        /**
+       * ⚠️ كانت مقلوبة.
+       *
+       * السؤال: "المبلغ ده شامل تذاكر الطيران ورسوم الفيزا؟" — يعني
+       * **نعم** = الفلوس دي لسه هتدفع منها التذاكر، فلازم تتخصم من
+       * تكلفة الوصول. والكود كان بيعمل العكس: بيشيلها لما يقول نعم.
+       * فاللي بيقول نعم كانت خطته بتطلع أحسن من الحقيقة بقيمة التذاكر
+       * كلها — ٩٠٠ دولار للفرد و٣٢٠٠ لعيلة من أربعة.
+       */
+      includeTravel: input.moneyIncludesTravel,
         hostNights: input.hostCity === m.slug ? input.hostNights : 0,
       },
       missing,
@@ -712,12 +730,49 @@ function risksFor(
   return out;
 }
 
+/** بيحصر المدن في اختيار المستخدم، وبيرجّع الكل لو اختياره مالوش نتيجة. */
+export function restrictMetros(
+  metros: PlannerMetro[],
+  input: PlannerInput,
+): PlannerMetro[] {
+  if (input.targetMetro) {
+    const one = metros.filter((m) => m.slug === input.targetMetro);
+    if (one.length) return one;
+  }
+  if (input.targetState) {
+    const inState = metros.filter((m) => m.state === input.targetState);
+    if (inState.length) return inState;
+  }
+  return metros;
+}
+
+/**
+ * هيحتاج عربية ولا لأ.
+ *
+ * إجابة المستخدم بتغلب حاجة المدينة — هو اللي هيدفع. و"مش عارف" بترجع
+ * لحاجة المدينة كأساس للخطة الرئيسية، والواجهة بتوريه السيناريوهين.
+ */
+export function resolveNeedsCar(input: PlannerInput, m: PlannerMetro): boolean {
+  if (input.willBuyCar === "yes") return true;
+  if (input.willBuyCar === "no") return false;
+  return (m.carNeed.value ?? 3) >= 4;
+}
+
 export function computePlan(
   input: PlannerInput,
-  metros: PlannerMetro[],
+  allMetros: PlannerMetro[],
   overrides?: CostOverrides,
 ): PlanResult {
   const missing = tracker();
+
+  /**
+   * المستخدم حدّد مدينة أو ولاية؟ يبقى الترشيح كله جواها.
+   *
+   * الموقع بيفضل هو اللي بيعمل الخطة — بس **جوه النطاق اللي هو اختاره**.
+   * ولو اختياره مش موجود لأي سبب، بنرجع لكل المدن بدل ما الخطة تقف: القاعدة
+   * الأولى في المحرك إنه لازم يطلع خطة دايمًا.
+   */
+  const metros = restrictMetros(allMetros, input);
 
   // أول تقدير للـtier بيتعمل على أرخص مدينة متاحة، بعدين بيتظبط
   const provisional = tierFor(6);
@@ -751,7 +806,7 @@ export function computePlan(
     ranked[0];
 
   const chosen = preferred ? metros.find((m) => m.slug === preferred.slug)! : metros[0]!;
-  const needsCar = (chosen.carNeed.value ?? 3) >= 4;
+  const needsCar = resolveNeedsCar(input, chosen);
 
   const landing = landingCost(
     chosen,
@@ -759,7 +814,16 @@ export function computePlan(
       adults: input.adults,
       kidsAges: input.kidsAges,
       goAlone: goAloneFirst,
-      includeTravel: !input.moneyIncludesTravel,
+      /**
+       * ⚠️ كانت مقلوبة.
+       *
+       * السؤال: "المبلغ ده شامل تذاكر الطيران ورسوم الفيزا؟" — يعني
+       * **نعم** = الفلوس دي لسه هتدفع منها التذاكر، فلازم تتخصم من
+       * تكلفة الوصول. والكود كان بيعمل العكس: بيشيلها لما يقول نعم.
+       * فاللي بيقول نعم كانت خطته بتطلع أحسن من الحقيقة بقيمة التذاكر
+       * كلها — ٩٠٠ دولار للفرد و٣٢٠٠ لعيلة من أربعة.
+       */
+      includeTravel: input.moneyIncludesTravel,
       hostNights: input.hostCity === chosen.slug ? input.hostNights : 0,
     },
     missing,
@@ -780,6 +844,49 @@ export function computePlan(
   const availableCash = input.money - landing.total - input.monthlyDebt;
   const net = burn.total - input.monthlyIncomeFromHome;
   const runwayMonths = net <= 0 ? 99 : Math.max(0, availableCash / net);
+
+  /**
+   * "مش عارف هجيب عربية ولا لأ" → بنحسبله الاتنين.
+   *
+   * ⚠️ إحنا مش بنقرر عنه. الفرق بين العربية ومن غيرها ممكن يبقى شهر أو
+   * اتنين من عمر فلوسه، وده قرار كبير كفاية إنه يشوف رقمه قبل ما ياخده.
+   * بنحسب مصاريف شهرية للحالتين بنفس المدينة ونفس الوصول — الفرق الوحيد
+   * هو العربية.
+   */
+  const scenarioRunway = (b: number) => {
+    const n = b - input.monthlyIncomeFromHome;
+    return n <= 0 ? 99 : Math.max(0, availableCash / n);
+  };
+  const carScenarios =
+    input.willBuyCar === "unsure"
+      ? (() => {
+          const opts = {
+            adults: input.adults,
+            kidsAges: input.kidsAges,
+            goAlone: goAloneFirst,
+          };
+          const quiet = tracker(); // مش عايزين الحسبة دي تزوّد الحقول الناقصة
+          const withCar = monthlyBurn(
+            chosen,
+            { ...opts, needsCar: true },
+            quiet,
+            overrides,
+          ).total;
+          const withoutCar = monthlyBurn(
+            chosen,
+            { ...opts, needsCar: false },
+            quiet,
+            overrides,
+          ).total;
+          return {
+            withCar: { monthlyBurn: withCar, runwayMonths: scenarioRunway(withCar) },
+            withoutCar: {
+              monthlyBurn: withoutCar,
+              runwayMonths: scenarioRunway(withoutCar),
+            },
+          };
+        })()
+      : null;
 
   const policy = tierFor(runwayMonths);
   const goAlone = shouldGoAlone(policy, input);
@@ -827,6 +934,7 @@ export function computePlan(
     recommendedMetros: rankable.slice(0, 3),
     avoidMetros: rankable.length > 3 ? rankable.slice(-3).reverse() : [],
     monthlyProjection: projection,
+    carScenarios,
     weeklyActions: weeklyActions(policy),
     risks: risksFor(policy.tier, rankable, unverified.length),
     sources,

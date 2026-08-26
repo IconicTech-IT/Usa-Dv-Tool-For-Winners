@@ -37,6 +37,13 @@ function fill(p: Partial<PlannerInput>): PlannerInput {
     priorities: p.priorities?.length
       ? p.priorities
       : ["fastIncome", "lowCost", "community", "schools", "career"],
+
+    // ⚠️ الدالة دي بتعدّ الحقول بالاسم، فأي حقل جديد **لازم** يتحط هنا
+    // وإلا بيتحفظ في الstore ومبيوصلش للمحرك — يعني المستخدم يجاوب
+    // على سؤال والإجابة تتبخّر من غير ما حد يلاحظ.
+    targetMetro: p.targetMetro ?? null,
+    targetState: p.targetState ?? null,
+    willBuyCar: p.willBuyCar ?? null,
   };
 }
 

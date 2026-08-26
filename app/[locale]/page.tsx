@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/Card";
 import { Num } from "@/components/Num";
 import { collectFields, countStatuses } from "@/lib/content/load";
+import { DevOnly } from "@/components/DevOnly";
 
 export default async function HomePage({
   params,
@@ -47,12 +48,14 @@ export default async function HomePage({
         </div>
       </Card>
 
-      <Card status="done">
-        <div className="p-5 space-y-2">
-          <h2 className="font-bold">{t("phaseNoteTitle")}</h2>
-          <p className="text-sm">{t("phaseNote")}</p>
-        </div>
-      </Card>
+      {/* حالة البناء وحالة الداتا — للمطوّر على localhost بس */}
+      <DevOnly>
+        <Card status="done">
+          <div className="p-5 space-y-2">
+            <h2 className="font-bold">{t("phaseNoteTitle")}</h2>
+            <p className="text-sm">{t("phaseNote")}</p>
+          </div>
+        </Card>
 
       <section className="space-y-3">
         <h2 className="font-bold">{t("dataTitle")}</h2>
@@ -65,8 +68,9 @@ export default async function HomePage({
               </div>
             </Card>
           ))}
-        </ul>
-      </section>
+          </ul>
+        </section>
+      </DevOnly>
     </div>
   );
 }

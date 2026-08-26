@@ -202,7 +202,13 @@ describe("اتجاه محتاج كام؟", () => {
       { metro: "a", adults: 1, kidsAges: [], monthsWithoutWork: 4, includeTravel: true, monthlyIncomeFromHome: 0 },
       [metro("a")],
     )!;
-    const plan = computePlan({ ...input, money: need.totalNeeded }, [metro("a")]);
+    // ⚠️ الاتجاهين لازم يتكلموا نفس اللغة: "المبلغ المطلوب شامل التذاكر"
+    // (includeTravel) يقابله "المبلغ اللي معايا شامل التذاكر"
+    // (moneyIncludesTravel). التست ده كان بيعدي بالمنطق المقلوب.
+    const plan = computePlan(
+      { ...input, money: need.totalNeeded, moneyIncludesTravel: true },
+      [metro("a")],
+    );
     expect(plan.runwayMonths).toBeGreaterThan(3.5);
     expect(plan.runwayMonths).toBeLessThan(4.5);
   });
@@ -622,5 +628,84 @@ describe("⚠️ سطر العربية بيعرض حاجتين، فرقم الم
   it('"مش هحتاجه" → صفر', () => {
     const row = carRow({ x: { carInsurance: { mode: "skip" } } });
     expect(row?.amount).toBe(0);
+  });
+});
+
+describe("⚠️ اتجاه سؤال تذاكر الطيران", () => {
+  const one = [metro("a")];
+
+  it('"المبلغ شامل التذاكر" = نعم → التذاكر بتتخصم', () => {
+    const withT = computePlan({ ...input, moneyIncludesTravel: true }, one);
+    const row = withT.landingBreakdown.find((r) => r.key === "travel");
+    expect(row?.amount).toBeGreaterThan(0);
+  });
+
+  it('"المبلغ شامل التذاكر" = لأ → متتخصمش', () => {
+    const noT = computePlan({ ...input, moneyIncludesTravel: false }, one);
+    expect(noT.landingBreakdown.find((r) => r.key === "travel")?.amount).toBe(0);
+  });
+
+  it("واللي بيقول نعم تكلفة وصوله أعلى — مش أقل", () => {
+    const yes = computePlan({ ...input, moneyIncludesTravel: true }, one);
+    const no = computePlan({ ...input, moneyIncludesTravel: false }, one);
+    expect(yes.landingCost).toBeGreaterThan(no.landingCost);
+  });
+});
+
+describe("⚠️ اختيار المدينة أو الولاية", () => {
+  const pool = [
+    metro("tx-1", { state: "TX" }),
+    metro("tx-2", { state: "TX" }),
+    metro("ca-1", { state: "CA" }),
+  ];
+
+  it("من غير اختيار، كل المدن داخلة الترشيح", () => {
+    const p = computePlan(input, pool);
+    expect(p.recommendedMetros.length).toBeGreaterThan(1);
+  });
+
+  it("اختار مدينة → الخطة عليها هي", () => {
+    const p = computePlan({ ...input, targetMetro: "ca-1" }, pool);
+    expect(p.chosenMetro).toBe("ca-1");
+    expect(p.recommendedMetros.every((m) => m.slug === "ca-1")).toBe(true);
+  });
+
+  it("اختار ولاية → الترشيح جوه الولاية بس", () => {
+    const p = computePlan({ ...input, targetState: "TX" }, pool);
+    expect(p.recommendedMetros.every((m) => m.slug.startsWith("tx-"))).toBe(true);
+    expect(p.chosenMetro.startsWith("tx-")).toBe(true);
+  });
+
+  it("اختيار مش موجود مبيوقفش الخطة", () => {
+    // القاعدة الأولى في المحرك: لازم يطلع خطة دايمًا
+    const p = computePlan({ ...input, targetMetro: "nope" }, pool);
+    expect(p.chosenMetro).toBeTruthy();
+  });
+});
+
+describe("⚠️ سؤال العربية", () => {
+  const one = [metro("a", { carNeed: verified(2) })];
+
+  it('"هجيب عربية" بتغلب حاجة المدينة', () => {
+    const yes = computePlan({ ...input, willBuyCar: "yes" }, one);
+    const no = computePlan({ ...input, willBuyCar: "no" }, one);
+    expect(yes.monthlyBurn).toBeGreaterThan(no.monthlyBurn);
+  });
+
+  it('"مش عارف" بيدي الخطتين مش واحدة', () => {
+    const p = computePlan({ ...input, willBuyCar: "unsure" }, one);
+    expect(p.carScenarios).not.toBeNull();
+    expect(p.carScenarios!.withCar.monthlyBurn).toBeGreaterThan(
+      p.carScenarios!.withoutCar.monthlyBurn,
+    );
+    // العربية بتقصّر عمر الفلوس
+    expect(p.carScenarios!.withCar.runwayMonths).toBeLessThan(
+      p.carScenarios!.withoutCar.runwayMonths,
+    );
+  });
+
+  it("من غير إجابة، المدينة هي اللي بتقرر زي الأول", () => {
+    const p = computePlan(input, one);
+    expect(p.carScenarios).toBeNull();
   });
 });

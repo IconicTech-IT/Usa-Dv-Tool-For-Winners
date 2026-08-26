@@ -10,7 +10,7 @@
   "planBar": {
     "emptyPrompt": "How much do you have? We'll work out how long it lasts",
     "calculate": "Calculate",
-    "runway": "Your money lasts {months} months",
+    "runway": "Your money lasts <months></months> months",
     "finishPlan": "Finish your plan"
   },
   "badges": {
@@ -66,7 +66,7 @@
       "no": "No",
       "money": {
         "q": "How much do you have in US dollars right now?",
-        "hint": "What will actually be in hand when you land."
+        "hint": "The amount you have now, before you travel."
       },
       "moneyIncludesTravel": {
         "q": "Does that include flights and visa fees?"
@@ -130,6 +130,19 @@
         "schools": "Schools",
         "community": "Arab community",
         "career": "My career path"
+      },
+      "willBuyCar": {
+        "q": "Will you get a car in the first year?",
+        "hint": "If you are not sure, we will work out both and show you the difference.",
+        "yes": "Yes",
+        "no": "No",
+        "unsure": "Not sure"
+      },
+      "target": {
+        "q": "Do you want a particular city or state?",
+        "hint": "Optional. Leave it blank and we will recommend — or pick one and we will plan inside your choice.",
+        "anyState": "Any state",
+        "anyCity": "Any city"
       }
     },
     "result": {
@@ -137,7 +150,6 @@
       "goAlone": "With this money, go alone first",
       "goTogether": "You can bring the family",
       "months": "months",
-      "tier": "Tier",
       "monthlyBurn": "Monthly spend",
       "landingCost": "Landing cost",
       "recommended": "3 suggested cities",
@@ -158,7 +170,30 @@
       "cannotCompute": "We can't work this out yet",
       "cannotComputeWhy": "To tell you how long your money lasts we need this city's rent and food costs. Those numbers aren't confirmed yet, and calculating without them would give you a falsely optimistic figure — which is more dangerous than not answering.",
       "cannotComputeHint": "Or enter the number yourself below — if you've found a room at a certain price, that beats any average of ours.",
-      "noRankableCities": "We can't rank cities for you yet. Comparing cities needs their rent and food costs — and cities with missing numbers look cheaper than they are, so we left them out rather than recommend the wrong thing."
+      "noRankableCities": "We can't rank cities for you yet. Comparing cities needs their rent and food costs — and cities with missing numbers look cheaper than they are, so we left them out rather than recommend the wrong thing.",
+      "carTitle": "With a car, or without?",
+      "carLead": "You said you are not sure — here are both plans on your own numbers. The call is yours.",
+      "car": {
+        "withCar": "With a car",
+        "withoutCar": "Without a car"
+      },
+      "carBurn": "Monthly spend:",
+      "carRunway": "Your money lasts:",
+      "carMonths": "months",
+      "carGap": "A car adds",
+      "carPerMonth": "a month.",
+      "tierName": {
+        "A": "Very tight",
+        "B": "Tight",
+        "C": "Workable",
+        "D": "Comfortable"
+      },
+      "tierMeaning": {
+        "A": "Your money lasts under 1.5 months with no income — getting paid fast is the priority.",
+        "B": "Your money lasts 1.5 to 3 months with no income.",
+        "C": "Your money lasts 3 to 6 months with no income — you have room to choose.",
+        "D": "Your money lasts more than 6 months with no income."
+      }
     },
     "need": {
       "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",

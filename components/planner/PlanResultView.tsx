@@ -71,10 +71,20 @@ export function PlanResultView({
             <span className="text-lg font-normal">{t("months")}</span>
           </div>
           <Bullets items={plan.reasons.map((r) => localized(r, locale))} />
+          {/**
+           * ⚠️ كان مكتوب "الشريحة D".
+           *
+           * الحرف ده اسم داخلي في `tiers.ts` — المستخدم بيقراه ومبيقولّهوش
+           * حاجة: مش عارف D أحسن ولا أوحش من A، ولا على أي أساس اتحطّت.
+           * بقى اسم يوصف وضعه، وتحته سطر بيقول معناه بالأرقام.
+           */}
           <p className="text-sm text-[var(--slate)]">
-            {t("tier")} <strong>{plan.tier}</strong> · {t("monthlyBurn")}{" "}
+            <strong>{t(`tierName.${plan.tier}`)}</strong> · {t("monthlyBurn")}{" "}
             <Money value={Math.round(plan.monthlyBurn)} /> · {t("landingCost")}{" "}
             <Money value={Math.round(plan.landingCost)} />
+          </p>
+          <p className="text-sm text-[var(--slate)]">
+            {t(`tierMeaning.${plan.tier}`)}
           </p>
         </div>
       </Card>
@@ -163,6 +173,55 @@ export function PlanResultView({
         </ul>
       </Section>
 
+      {/**
+       * قال "مش عارف هجيب عربية ولا لأ" → بنوريه الخطتين بدل ما نقرر عنه.
+       * الفرق بينهم ممكن يبقى شهر أو اتنين من عمر فلوسه.
+       */}
+      {plan.carScenarios && (
+        <Section title={t("carTitle")}>
+          <Card status="now">
+            <div className="space-y-3 p-4">
+              <p className="text-sm text-[var(--slate)]">{t("carLead")}</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {(
+                  [
+                    ["withoutCar", plan.carScenarios.withoutCar],
+                    ["withCar", plan.carScenarios.withCar],
+                  ] as const
+                ).map(([key, s]) => (
+                  <div
+                    key={key}
+                    className="rounded-sm border border-[var(--glass-border)] p-3 space-y-1"
+                  >
+                    <p className="font-bold">{t(`car.${key}`)}</p>
+                    <p className="text-sm">
+                      {t("carBurn")} <Money value={Math.round(s.monthlyBurn)} />
+                    </p>
+                    <p className="text-sm">
+                      {t("carRunway")}{" "}
+                      <Num>
+                        {s.runwayMonths === 99 ? "12+" : s.runwayMonths.toFixed(1)}
+                      </Num>{" "}
+                      {t("carMonths")}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm">
+                {t("carGap")}{" "}
+                <Money
+                  value={Math.round(
+                    plan.carScenarios.withCar.monthlyBurn -
+                      plan.carScenarios.withoutCar.monthlyBurn,
+                  )}
+                />{" "}
+                {t("carPerMonth")}
+              </p>
+            </div>
+          </Card>
+        </Section>
+      )}
+
       {/* الأرقام الناقصة — بتتقال صراحة */}
       {plan.unverifiedFields.length > 0 && (
         <Section title={t("unverifiedTitle")}>
@@ -185,6 +244,20 @@ export function PlanResultView({
 }
 
 /**
+ * لون كل سيناريو في مكان واحد.
+ *
+ * ⚠️ الخطوط والليجند كانوا منفصلين: الخطوط بألوان مختلفة، والليجند
+ * تلات مربعات `■` بتاخد لون النص المحيط — يعني **تلاتتهم بنفس اللون**.
+ * فالليجند اللي وظيفته يفرّق بين الخطوط مكانش بيفرّق بين حاجة. دلوقتي
+ * الاتنين بيقرأوا من هنا فمستحيل يفترقوا تاني.
+ */
+const SCENARIOS = {
+  slow: { color: "var(--slate)", opacity: 0.6, label: "scenarioSlow" },
+  expected: { color: "var(--signal)", opacity: 1, label: "scenarioExpected" },
+  fast: { color: "var(--seal)", opacity: 0.6, label: "scenarioFast" },
+} as const;
+
+/**
  * رسم الرصيد شهر بشهر تحت ٣ سيناريوهات.
  * SVG خالص — مفيش مكتبة رسوم على الصفحة دي.
  */
@@ -193,6 +266,7 @@ function BalanceChart({ plan }: { plan: PlanResult }) {
   const reduced = useReducedMotion();
   const { ref, inView } = useInView<HTMLDivElement>();
   const expectedPath = useRef<SVGPathElement>(null);
+
   const data = plan.monthlyProjection;
 
   const W = 640;
@@ -256,13 +330,25 @@ function BalanceChart({ plan }: { plan: PlanResult }) {
               strokeWidth="1.5"
               strokeDasharray="4 4"
             />
-            <path d={line("slow")} fill="none" stroke="var(--slate)" strokeWidth="1.5" opacity="0.6" />
-            <path d={line("fast")} fill="none" stroke="var(--seal)" strokeWidth="1.5" opacity="0.6" />
+            <path
+              d={line("slow")}
+              fill="none"
+              stroke={SCENARIOS.slow.color}
+              strokeWidth="1.5"
+              opacity={SCENARIOS.slow.opacity}
+            />
+            <path
+              d={line("fast")}
+              fill="none"
+              stroke={SCENARIOS.fast.color}
+              strokeWidth="1.5"
+              opacity={SCENARIOS.fast.opacity}
+            />
             <path
               ref={expectedPath}
               d={line("expected")}
               fill="none"
-              stroke="var(--signal)"
+              stroke={SCENARIOS.expected.color}
               strokeWidth="2.5"
             />
 
@@ -311,9 +397,19 @@ function BalanceChart({ plan }: { plan: PlanResult }) {
           </svg>
 
           <ul className="flex flex-wrap gap-4 pt-3 text-sm text-[var(--slate)]">
-            <li>■ {t("scenarioSlow")}</li>
-            <li>■ {t("scenarioExpected")}</li>
-            <li>■ {t("scenarioFast")}</li>
+            {(["slow", "expected", "fast"] as const).map((k) => (
+              <li key={k} className="flex items-center gap-1.5">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2.5 w-2.5 rounded-[2px]"
+                  style={{
+                    background: SCENARIOS[k].color,
+                    opacity: SCENARIOS[k].opacity,
+                  }}
+                />
+                {t(SCENARIOS[k].label)}
+              </li>
+            ))}
           </ul>
         </div>
       </Card>

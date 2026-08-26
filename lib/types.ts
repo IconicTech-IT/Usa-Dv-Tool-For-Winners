@@ -58,6 +58,26 @@ export interface PlannerInput {
 
   /** مرتبة من الأهم للأقل */
   priorities: Array<"fastIncome" | "lowCost" | "schools" | "community" | "career">;
+
+  /**
+   * المستخدم عايز مدينة أو ولاية معينة؟
+   *
+   * الاتنين اختياريين — سايبهم فاضيين معناه "رشّحلي انت"، وده الوضع
+   * الافتراضي. لو حدّد، الترشيح بيتحصر في اختياره والموقع بيفضل هو اللي
+   * بيعمل الخطة **جوه** النطاق ده.
+   */
+  targetMetro?: string | null;
+  targetState?: string | null;
+
+  /**
+   * هيجيب عربية ولا لأ.
+   *
+   * ⚠️ `"unsure"` مش قيمة فاضية — دي إجابة. اللي مش عارف بياخد **الخطتين**
+   * جنب بعض عشان يشوف الفرق بفلوسه ويقرر، بدل ما إحنا نقرر عنه بالسكوت.
+   * و`null` معناها إنه لسه ماردش على السؤال أصلًا، فبنرجع للسلوك القديم:
+   * حاجة المدينة للعربية هي اللي بتحدد.
+   */
+  willBuyCar?: "yes" | "no" | "unsure" | null;
 }
 
 export type Tier = "A" | "B" | "C" | "D";
@@ -130,6 +150,18 @@ export interface PlanResult {
     expected: number;
     fast: number;
   }[];
+
+  /**
+   * الخطة بالعربية والخطة من غيرها، جنب بعض.
+   *
+   * بتتحسب بس لما المستخدم يقول **"مش عارف"** في سؤال العربية — ساعتها
+   * إحنا مش بنقرر عنه، بنوريه الفرق بفلوسه هو ويقرر. `null` في الحالات
+   * التانية لأن القرار اتاخد خلاص.
+   */
+  carScenarios: {
+    withCar: { monthlyBurn: number; runwayMonths: number };
+    withoutCar: { monthlyBurn: number; runwayMonths: number };
+  } | null;
   weeklyActions: { week: number; task: Localized }[];
   risks: { risk: Localized; mitigation: Localized }[];
   /** كل رقم في الخطة لازم يشاور على مصدره */
