@@ -48,12 +48,16 @@ export function CostEditor({
 
   // بنشيل التكرار: البند اللي في الاتنين (الأكل مثلًا) يتعدّل مرة واحدة
   const seen = new Set<string>();
-  const rows = [...landing, ...burn].filter((row) => {
-    if (!isEditable(row.key)) return false;
-    if (seen.has(row.key)) return false;
-    seen.add(row.key);
-    return true;
-  });
+  const rows = [...landing, ...burn]
+    .filter((row) => {
+      if (!isEditable(row.key)) return false;
+      if (seen.has(row.key)) return false;
+      seen.add(row.key);
+      return true;
+    })
+    // الطيران الأول ومفتوح: ده أكتر رقم المستخدم عارفه أحسن مننا —
+    // هو شايف عرض تذكرته، وإحنا بنفترض موسم ومدينة.
+    .sort((a, b) => Number(b.key === "travel") - Number(a.key === "travel"));
 
   return (
     <Card status="now">
@@ -105,12 +109,22 @@ function CostRow({
   needed: boolean;
 }) {
   const t = useTranslations("costEditor");
+  const tb = useTranslations("badges");
   const locale = useLocale() as "ar" | "en";
   const setOverride = useUser((s) => s.setOverride);
   const key = row.key as CostKey;
 
   const [draft, setDraft] = useState("");
-  const [open, setOpen] = useState(needed);
+  const [open, setOpen] = useState(needed || key === "travel");
+
+  /**
+   * ⚠️ رقمنا التقديري لازم يقول عن نفسه إنه تقديري **هنا كمان**.
+   * المحرر كان بيعرض كل رقم بنفس الشكل، فتقدير متفائل زي الإيجار
+   * كان بيتقرا زي رقم مؤكد — وده أخطر مكان يحصل فيه ده، لأن ده
+   * بالظبط المكان اللي المستخدم بيقرر فيه يسيب رقمنا ولا يغيّره.
+   */
+  const showEstimate = row.source === "site" && row.estimated === true;
+  const basisText = row.basis ? row.basis[locale] || row.basis.ar : undefined;
 
   const apply = () => {
     const n = Number(draft.replace(/[^\d.]/g, ""));
@@ -142,8 +156,18 @@ function CostRow({
           {row.source === "user" && (
             <span className="badge badge--estimated">{t("yours")}</span>
           )}
+
+          {showEstimate && (
+            <span className="badge badge--estimated" title={basisText}>
+              {tb("estimated")}
+            </span>
+          )}
         </span>
       </div>
+
+      {showEstimate && basisText && (
+        <p className="text-xs text-[var(--slate)]">{basisText}</p>
+      )}
 
       {!open ? (
         <button
@@ -164,7 +188,7 @@ function CostRow({
             onKeyDown={(e) => e.key === "Enter" && apply()}
             placeholder={t("yourNumber")}
             aria-label={`${localized(row.label, locale)} — ${t("yourNumber")}`}
-            className="num w-28 rounded-sm border border-[var(--glass-border)] bg-transparent px-2 py-1"
+            className="num w-28 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-1"
           />
           <button
             type="button"

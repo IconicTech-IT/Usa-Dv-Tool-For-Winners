@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { FieldDisplay } from "@/lib/content/field";
 
 /**
@@ -14,6 +14,9 @@ import type { FieldDisplay } from "@/lib/content/field";
  */
 export function Badge({ display }: { display: FieldDisplay }) {
   const t = useTranslations("badges");
+  // ⚠️ كان `basis?.ar` ثابت — يعني اللي بيقرا الموقع بالإنجليزي كان بيلاقي
+  // شرح التقدير بالعربي في الtooltip. الشرح لازم يوصل بلغة القارئ.
+  const locale = useLocale() as "ar" | "en";
 
   if (display.kind === "missing") {
     return (
@@ -25,7 +28,7 @@ export function Badge({ display }: { display: FieldDisplay }) {
 
   if (display.badge === "estimated") {
     return (
-      <span className="badge badge--estimated" title={display.basis?.ar}>
+      <span className="badge badge--estimated" title={display.basis ? display.basis[locale] || display.basis.ar : undefined}>
         {t("estimated")}
       </span>
     );
