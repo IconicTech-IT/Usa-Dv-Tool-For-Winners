@@ -66,26 +66,55 @@
   },
   "costs": {
     "roomRent": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 1290,
+      "status": "estimated",
       "sources": [],
-      "lastVerified": "2026-08-25",
+      "lastVerified": "2026-08-26",
       "unit": "USD/month",
-      "note": "أهم رقم لأصحاب الميزانيات الصغيرة"
+      "basis": {
+        "ar": "⚠️ مفيش إعلانات أوض للمدينة دي، فالرقم **متوقّع مش مقيس**: اتحسب من إيجار HUD لشقة غرفتين ($3,001) بمعادلة اتعلّمت من ٣٤ مدينة عندنا فيها إعلانات فعلية. متوسط خطأ المعادلة على المدن دي حوالي ١٢٪، وأسوأ حالة ٢٧٪. يعني اعتبره تقدير أولي للمقارنة بين المدن، مش رقم تبني عليه قرار — دوّر على إعلانات فعلية للمدينة قبل ما تحجز.",
+        "en": "⚠️ No room listings cover this city, so this figure is **predicted, not measured**: derived from the HUD 2-bedroom Fair Market Rent ($3,001) using a relationship fitted on the 34 cities where we do have real listings. Its average error on those cities is about 12%, worst case 27%. Treat it as a rough figure for comparing cities, not one to commit money against — find real listings before you book anything."
+      },
+      "verifyIn": "6-months",
+      "note": "رقم متوقّع من معادلة مش مقيس من إعلانات — أولوية أولى للاستبدال."
     },
     "apt1br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 2459,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "includesUtilities": true,
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفة واحدة في San Diego County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in San Diego County (San Diego-Chula Vista-Carlsbad, CA MSA), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "apt2br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 3001,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "includesUtilities": true,
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفتين في San Diego County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in San Diego County (San Diego-Chula Vista-Carlsbad, CA MSA), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "securityDeposit": {
       "value": null,
@@ -100,14 +129,25 @@
       "status": "NEEDS_VERIFICATION",
       "sources": [],
       "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "unit": "USD/month",
+      "note": "إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا."
     },
     "groceriesPerAdult": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 296,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "USDA Food Plans — Monthly Cost of Food, June 2026 (Low-Cost Plan)",
+          "url": "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "basis": {
+        "ar": "خطة التكلفة المنخفضة من وزارة الزراعة الأمريكية، تقرير يونيو ٢٠٢٦، لبالغ من ٢٠ لـ٥٠ سنة — متوسط الست ($275.50) والراجل ($316.80). ⚠️ USDA بتنشر رقم واحد لكل أمريكا القارية ومبتفرقش بين المدن، فالرقم ده هو هو في الخمسين مدينة.",
+        "en": "USDA Low-Cost Food Plan, June 2026, adult aged 20–50 — average of female ($275.50) and male ($316.80). ⚠️ USDA publishes one figure for the contiguous US and does not vary by city, so this is identical across all 50."
+      },
+      "verifyIn": "6-months"
     },
     "carInsurance": {
       "value": null,

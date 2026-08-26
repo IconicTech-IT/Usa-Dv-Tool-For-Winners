@@ -66,23 +66,22 @@
   },
   "costs": {
     "roomRent": {
-      "value": 570,
+      "value": 900,
       "status": "estimated",
       "sources": [
         {
-          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
-          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+          "label": "SpareRoom — rooms for rent listings",
+          "url": "https://www.spareroom.com/rooms-for-rent/"
         }
       ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
-      "includesUtilities": true,
       "basis": {
-        "ar": "إيجار شقة ٣ غرف في منطقة كولومبوس حسب HUD لسنة 2026 ($1,715) مقسوم على ٣ ساكنين = $570 للشخص، شامل المياه والكهربا والتدفئة. ⚠️ الرقم ده الأرجح أقل من اللي هتلاقيه فعلًا، لسببين في نفس الاتجاه: HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، والغرفة في شقة مشتركة بتتأجر أغلى من تلت شقة ٣ غرف لأنك بتدفع زيادة مقابل إنها مفروشة ومن غير عقد سنة ولا فحص ائتماني. اعتبره الحد الأدنى وحط رقمك من إعلان فعلي.",
-        "en": "HUD FY2026 Fair Market Rent for a 3-bedroom unit in the Columbus, OH HUD Metro FMR Area ($1,715) divided by 3 sharers = $570 per person, water, electricity and heating included. ⚠️ The real price is likely higher, for two reasons pointing the same way: HUD uses the 40th percentile of the market rather than the median, and a room in a shared apartment rents at a premium over one third of a 3-bedroom lease — you pay extra for furnished, month-to-month, no credit check. Treat this as a floor and replace it with a figure from a real listing."
+        "ar": "وسيط 73 إعلان أوضة في شقة مشتركة على SpareRoom يوم ٢٦ أغسطس ٢٠٢٦. 55٪ من الإعلانات دي سعرها شامل الفواتير — لو أوضتك منهم، علّم على بند الفواتير إنك مش هتحتاجه.",
+        "en": "Median of 73 shared-room listings on SpareRoom, 26 August 2026. 55% of them include utilities in the price — if yours does, mark the utilities line as not needed."
       },
-      "verifyIn": "1-year",
-      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
+      "verifyIn": "3-months",
+      "note": "إعلانات فعلية وبتتغير بسرعة. استخدمنا وسيط كل الإعلانات لأن عينة اللي من غير فواتير لوحدها صغيرة في مدن كتير."
     },
     "apt1br": {
       "value": 1194,
@@ -97,11 +96,11 @@
       "unit": "USD/month",
       "includesUtilities": true,
       "basis": {
-        "ar": "الإيجار العادل لشقة غرفة واحدة في منطقة كولومبوس حسب HUD لسنة 2026، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى من ده عادةً — اعتبره الحد الأدنى.",
-        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in the Columbus, OH HUD Metro FMR Area, water, electricity and heating included. ⚠️ HUD uses the 40th percentile of the market rather than the median, and a new arrival with no credit history usually pays more than this — treat it as a floor."
+        "ar": "الإيجار العادل لشقة غرفة واحدة في Franklin County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in Franklin County (Columbus, OH HUD Metro FMR Area), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
       },
       "verifyIn": "1-year",
-      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "apt2br": {
       "value": 1430,
@@ -116,11 +115,11 @@
       "unit": "USD/month",
       "includesUtilities": true,
       "basis": {
-        "ar": "الإيجار العادل لشقة غرفتين في منطقة كولومبوس حسب HUD لسنة 2026، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى من ده عادةً — اعتبره الحد الأدنى.",
-        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in the Columbus, OH HUD Metro FMR Area, water, electricity and heating included. ⚠️ HUD uses the 40th percentile of the market rather than the median, and a new arrival with no credit history usually pays more than this — treat it as a floor."
+        "ar": "الإيجار العادل لشقة غرفتين في Franklin County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in Franklin County (Columbus, OH HUD Metro FMR Area), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
       },
       "verifyIn": "1-year",
-      "note": "للمراجع: الرقم ده شامل الفواتير (علامة includesUtilities)، والschema هيفشل الbuild لو حد ملا costs.utilities للمدينة دي. لو استبدلته بمتوسط إعلانات فعلية من غير فواتير، شيل العلامة وامسح الجزء بتاع HUD من الbasis."
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "securityDeposit": {
       "value": null,
@@ -136,7 +135,7 @@
       "sources": [],
       "lastVerified": "2026-08-25",
       "unit": "USD/month",
-      "note": "الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول."
+      "note": "إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا."
     },
     "groceriesPerAdult": {
       "value": 296,
@@ -150,11 +149,10 @@
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
       "basis": {
-        "ar": "خطة \"التكلفة المنخفضة\" من وزارة الزراعة الأمريكية، تقرير يونيو 2026، لبالغ من ٢٠ لـ٥٠ سنة — متوسط الست ($275.50) والراجل ($316.80).",
-        "en": "USDA Low-Cost Food Plan, June 2026 report, adult aged 20–50 — average of female ($275.50) and male ($316.80)."
+        "ar": "خطة التكلفة المنخفضة من وزارة الزراعة الأمريكية، تقرير يونيو ٢٠٢٦، لبالغ من ٢٠ لـ٥٠ سنة — متوسط الست ($275.50) والراجل ($316.80). ⚠️ USDA بتنشر رقم واحد لكل أمريكا القارية ومبتفرقش بين المدن، فالرقم ده هو هو في الخمسين مدينة.",
+        "en": "USDA Low-Cost Food Plan, June 2026, adult aged 20–50 — average of female ($275.50) and male ($316.80). ⚠️ USDA publishes one figure for the contiguous US and does not vary by city, so this is identical across all 50."
       },
-      "verifyIn": "6-months",
-      "note": "⚠️ USDA بتنشر رقم واحد لكل أمريكا القارية ومبتفرقش بين المدن — فالرقم ده هو هو في التمن مدن، وده مش صح على طول (الأكل في نيويورك أغلى من كولومبوس). وهو كمان بيفترض إن كل الأكل بيتطبخ في البيت. لو لقيت مصدر بيقارن مستوى الأسعار بين المدن، عدّله لكل مدينة."
+      "verifyIn": "6-months"
     },
     "carInsurance": {
       "value": null,

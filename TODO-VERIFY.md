@@ -11,9 +11,9 @@
 | الحالة | العدد | معناها في الواجهة |
 |---|---|---|
 | `verified` | 18 | من غير بادج، المصدر في الفوتنوت |
-| `estimated` | 344 | بادج "تقديري"، والbasis في tooltip |
+| `estimated` | 512 | بادج "تقديري"، والbasis في tooltip |
 | `judgment` | 130 | من غير بادج — بيتعرض كوصف مش كرقم |
-| `NEEDS_VERIFICATION` | 810 | بادج "محتاج تأكيد"، ومفيش رقم |
+| `NEEDS_VERIFICATION` | 642 | بادج "محتاج تأكيد"، ومفيش رقم |
 
 ---
 
@@ -52,7 +52,7 @@
 
 ## 📋 كل الحقول الناقصة
 
-810 حقل، في 94 ملف.
+642 حقل، في 94 ملف.
 
 <details><summary><code>checklists\arrival.json</code> — 5</summary>
 
@@ -210,16 +210,12 @@
 
 </details>
 
-<details><summary><code>metros\arlington-va.json</code> — 13</summary>
+<details><summary><code>metros\arlington-va.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -228,16 +224,12 @@
 
 </details>
 
-<details><summary><code>metros\atlanta-ga.json</code> — 13</summary>
+<details><summary><code>metros\atlanta-ga.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -246,16 +238,12 @@
 
 </details>
 
-<details><summary><code>metros\austin-tx.json</code> — 13</summary>
+<details><summary><code>metros\austin-tx.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -264,16 +252,12 @@
 
 </details>
 
-<details><summary><code>metros\baltimore-md.json</code> — 13</summary>
+<details><summary><code>metros\baltimore-md.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -282,16 +266,12 @@
 
 </details>
 
-<details><summary><code>metros\boston-ma.json</code> — 13</summary>
+<details><summary><code>metros\boston-ma.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -300,16 +280,12 @@
 
 </details>
 
-<details><summary><code>metros\buffalo-ny.json</code> — 13</summary>
+<details><summary><code>metros\buffalo-ny.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -323,7 +299,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -337,7 +313,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -346,16 +322,12 @@
 
 </details>
 
-<details><summary><code>metros\cincinnati-oh.json</code> — 13</summary>
+<details><summary><code>metros\cincinnati-oh.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -364,16 +336,12 @@
 
 </details>
 
-<details><summary><code>metros\cleveland-oh.json</code> — 13</summary>
+<details><summary><code>metros\cleveland-oh.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -387,7 +355,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -396,16 +364,12 @@
 
 </details>
 
-<details><summary><code>metros\dallas-tx.json</code> — 13</summary>
+<details><summary><code>metros\dallas-tx.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -419,7 +383,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -428,16 +392,12 @@
 
 </details>
 
-<details><summary><code>metros\denver-co.json</code> — 13</summary>
+<details><summary><code>metros\denver-co.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -446,16 +406,12 @@
 
 </details>
 
-<details><summary><code>metros\des-moines-ia.json</code> — 13</summary>
+<details><summary><code>metros\des-moines-ia.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -464,16 +420,12 @@
 
 </details>
 
-<details><summary><code>metros\hartford-ct.json</code> — 13</summary>
+<details><summary><code>metros\hartford-ct.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -487,7 +439,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -496,16 +448,12 @@
 
 </details>
 
-<details><summary><code>metros\indianapolis-in.json</code> — 13</summary>
+<details><summary><code>metros\indianapolis-in.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -519,7 +467,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -528,16 +476,12 @@
 
 </details>
 
-<details><summary><code>metros\kansas-city-mo.json</code> — 13</summary>
+<details><summary><code>metros\kansas-city-mo.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -546,16 +490,12 @@
 
 </details>
 
-<details><summary><code>metros\las-vegas-nv.json</code> — 13</summary>
+<details><summary><code>metros\las-vegas-nv.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -564,16 +504,12 @@
 
 </details>
 
-<details><summary><code>metros\los-angeles-ca.json</code> — 13</summary>
+<details><summary><code>metros\los-angeles-ca.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -582,16 +518,12 @@
 
 </details>
 
-<details><summary><code>metros\louisville-ky.json</code> — 13</summary>
+<details><summary><code>metros\louisville-ky.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -600,16 +532,12 @@
 
 </details>
 
-<details><summary><code>metros\memphis-tn.json</code> — 13</summary>
+<details><summary><code>metros\memphis-tn.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -618,16 +546,12 @@
 
 </details>
 
-<details><summary><code>metros\miami-fl.json</code> — 13</summary>
+<details><summary><code>metros\miami-fl.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -636,16 +560,12 @@
 
 </details>
 
-<details><summary><code>metros\milwaukee-wi.json</code> — 13</summary>
+<details><summary><code>metros\milwaukee-wi.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -654,16 +574,12 @@
 
 </details>
 
-<details><summary><code>metros\minneapolis-mn.json</code> — 13</summary>
+<details><summary><code>metros\minneapolis-mn.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -672,16 +588,12 @@
 
 </details>
 
-<details><summary><code>metros\nashville-tn.json</code> — 13</summary>
+<details><summary><code>metros\nashville-tn.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -695,7 +607,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -704,16 +616,12 @@
 
 </details>
 
-<details><summary><code>metros\oklahoma-city-ok.json</code> — 13</summary>
+<details><summary><code>metros\oklahoma-city-ok.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -722,16 +630,12 @@
 
 </details>
 
-<details><summary><code>metros\omaha-ne.json</code> — 13</summary>
+<details><summary><code>metros\omaha-ne.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -740,16 +644,12 @@
 
 </details>
 
-<details><summary><code>metros\orlando-fl.json</code> — 13</summary>
+<details><summary><code>metros\orlando-fl.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -758,16 +658,12 @@
 
 </details>
 
-<details><summary><code>metros\paterson-nj.json</code> — 13</summary>
+<details><summary><code>metros\paterson-nj.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -781,7 +677,7 @@
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities` — الإيجار عندنا للمدينة دي شامل الفواتير، فالمحرك بيتخطى البند ده والschema بيفشل الbuild لو اتملا. لو استبدلت الإيجار برقم من إعلان فعلي من غير فواتير، شيل includesUtilities من بند السكن الأول.
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -790,16 +686,12 @@
 
 </details>
 
-<details><summary><code>metros\phoenix-az.json</code> — 13</summary>
+<details><summary><code>metros\phoenix-az.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -808,16 +700,12 @@
 
 </details>
 
-<details><summary><code>metros\pittsburgh-pa.json</code> — 13</summary>
+<details><summary><code>metros\pittsburgh-pa.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -826,16 +714,12 @@
 
 </details>
 
-<details><summary><code>metros\portland-or.json</code> — 13</summary>
+<details><summary><code>metros\portland-or.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -844,16 +728,12 @@
 
 </details>
 
-<details><summary><code>metros\raleigh-nc.json</code> — 13</summary>
+<details><summary><code>metros\raleigh-nc.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -862,16 +742,12 @@
 
 </details>
 
-<details><summary><code>metros\richmond-va.json</code> — 13</summary>
+<details><summary><code>metros\richmond-va.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -880,16 +756,12 @@
 
 </details>
 
-<details><summary><code>metros\sacramento-ca.json</code> — 13</summary>
+<details><summary><code>metros\sacramento-ca.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -898,16 +770,12 @@
 
 </details>
 
-<details><summary><code>metros\salt-lake-city-ut.json</code> — 13</summary>
+<details><summary><code>metros\salt-lake-city-ut.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -916,16 +784,12 @@
 
 </details>
 
-<details><summary><code>metros\san-antonio-tx.json</code> — 13</summary>
+<details><summary><code>metros\san-antonio-tx.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -934,16 +798,12 @@
 
 </details>
 
-<details><summary><code>metros\san-diego-ca.json</code> — 13</summary>
+<details><summary><code>metros\san-diego-ca.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -952,16 +812,12 @@
 
 </details>
 
-<details><summary><code>metros\san-francisco-ca.json</code> — 13</summary>
+<details><summary><code>metros\san-francisco-ca.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -970,16 +826,12 @@
 
 </details>
 
-<details><summary><code>metros\seattle-wa.json</code> — 13</summary>
+<details><summary><code>metros\seattle-wa.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -988,16 +840,12 @@
 
 </details>
 
-<details><summary><code>metros\silver-spring-md.json</code> — 13</summary>
+<details><summary><code>metros\silver-spring-md.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -1006,16 +854,12 @@
 
 </details>
 
-<details><summary><code>metros\st-louis-mo.json</code> — 13</summary>
+<details><summary><code>metros\st-louis-mo.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -1024,16 +868,12 @@
 
 </details>
 
-<details><summary><code>metros\tampa-fl.json</code> — 13</summary>
+<details><summary><code>metros\tampa-fl.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -1042,16 +882,12 @@
 
 </details>
 
-<details><summary><code>metros\tucson-az.json</code> — 13</summary>
+<details><summary><code>metros\tucson-az.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
@@ -1060,16 +896,12 @@
 
 </details>
 
-<details><summary><code>metros\virginia-beach-va.json</code> — 13</summary>
+<details><summary><code>metros\virginia-beach-va.json</code> — 9</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.roomRent` — أهم رقم لأصحاب الميزانيات الصغيرة
-- `costs.apt1br`
-- `costs.apt2br`
 - `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.groceriesPerAdult`
+- `costs.utilities` — إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا.
 - `costs.carInsurance` — غالي جدًا في أول سنة — مفيش تاريخ قيادة أمريكي
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`

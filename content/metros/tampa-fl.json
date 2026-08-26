@@ -66,26 +66,60 @@
   },
   "costs": {
     "roomRent": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
+      "value": 945,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "SpareRoom — rooms for rent listings",
+          "url": "https://www.spareroom.com/rooms-for-rent/"
+        }
+      ],
+      "lastVerified": "2026-08-26",
       "unit": "USD/month",
-      "note": "أهم رقم لأصحاب الميزانيات الصغيرة"
+      "basis": {
+        "ar": "وسيط 66 إعلان أوضة في شقة مشتركة على SpareRoom يوم ٢٦ أغسطس ٢٠٢٦. 76٪ من الإعلانات دي سعرها شامل الفواتير — لو أوضتك منهم، علّم على بند الفواتير إنك مش هتحتاجه.",
+        "en": "Median of 66 shared-room listings on SpareRoom, 26 August 2026. 76% of them include utilities in the price — if yours does, mark the utilities line as not needed."
+      },
+      "verifyIn": "3-months",
+      "note": "إعلانات فعلية وبتتغير بسرعة. استخدمنا وسيط كل الإعلانات لأن عينة اللي من غير فواتير لوحدها صغيرة في مدن كتير."
     },
     "apt1br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 1696,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "includesUtilities": true,
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفة واحدة في Hillsborough County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 1-bedroom unit in Hillsborough County (Tampa-St. Petersburg-Clearwater, FL MSA), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "apt2br": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 1977,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "HUD — FY2026 Fair Market Rents (FMR_All_1983_2026)",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "includesUtilities": true,
+      "basis": {
+        "ar": "الإيجار العادل لشقة غرفتين في Hillsborough County حسب HUD لسنة ٢٠٢٦، شامل المياه والكهربا والتدفئة. ⚠️ HUD بتاخد الشريحة ٤٠٪ من السوق مش المتوسط، وواحد لسه واصل ومالوش تاريخ ائتماني بيدفع أغلى — اعتبره الحد الأدنى.",
+        "en": "HUD FY2026 Fair Market Rent for a 2-bedroom unit in Hillsborough County (Tampa-St. Petersburg-Clearwater, FL MSA), water, electricity and heating included. ⚠️ HUD uses the 40th percentile rather than the median, and a new arrival with no credit history pays more — treat it as a floor."
+      },
+      "verifyIn": "1-year",
+      "note": "⚠️ ده الإيجار العادل عند HUD: الشريحة ٤٠٪ من السوق وشامل الفواتير. متحطش رقم في costs.utilities للمدينة دي — الschema هيفشل الbuild، والفواتير هتتحسب مرتين."
     },
     "securityDeposit": {
       "value": null,
@@ -100,14 +134,25 @@
       "status": "NEEDS_VERIFICATION",
       "sources": [],
       "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "unit": "USD/month",
+      "note": "إيجار الأوضة عندنا جاي من إعلانات فعلية ومش شامل الفواتير بالضرورة، فالبند ده شغال للفرد. إيجار الشقق من HUD شامل الفواتير — والschema هيفشل الbuild لو حطيت رقم هنا."
     },
     "groceriesPerAdult": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
-      "unit": "USD/month"
+      "value": 296,
+      "status": "estimated",
+      "sources": [
+        {
+          "label": "USDA Food Plans — Monthly Cost of Food, June 2026 (Low-Cost Plan)",
+          "url": "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports"
+        }
+      ],
+      "lastVerified": "2026-08-26",
+      "unit": "USD/month",
+      "basis": {
+        "ar": "خطة التكلفة المنخفضة من وزارة الزراعة الأمريكية، تقرير يونيو ٢٠٢٦، لبالغ من ٢٠ لـ٥٠ سنة — متوسط الست ($275.50) والراجل ($316.80). ⚠️ USDA بتنشر رقم واحد لكل أمريكا القارية ومبتفرقش بين المدن، فالرقم ده هو هو في الخمسين مدينة.",
+        "en": "USDA Low-Cost Food Plan, June 2026, adult aged 20–50 — average of female ($275.50) and male ($316.80). ⚠️ USDA publishes one figure for the contiguous US and does not vary by city, so this is identical across all 50."
+      },
+      "verifyIn": "6-months"
     },
     "carInsurance": {
       "value": null,
