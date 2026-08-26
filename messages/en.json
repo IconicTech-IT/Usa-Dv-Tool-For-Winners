@@ -157,7 +157,8 @@
       "unverifiedLead": "{count} fields are still unconfirmed. The plan was calculated without them, so the numbers may change once they are filled.",
       "cannotCompute": "We can't work this out yet",
       "cannotComputeWhy": "To tell you how long your money lasts we need this city's rent and food costs. Those numbers aren't confirmed yet, and calculating without them would give you a falsely optimistic figure — which is more dangerous than not answering.",
-      "cannotComputeHint": "Try another city, or see the sources page to find out where these numbers come from."
+      "cannotComputeHint": "Or enter the number yourself below — if you've found a room at a certain price, that beats any average of ours.",
+      "noRankableCities": "We can't rank cities for you yet. Comparing cities needs their rent and food costs — and cities with missing numbers look cheaper than they are, so we left them out rather than recommend the wrong thing."
     },
     "need": {
       "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",
@@ -918,5 +919,21 @@
       "/about": "About"
     },
     "footerNote": "Free forever · No account · No ads · All your data stays on your device"
+  },
+  "costEditor": {
+    "title": "These numbers aren't sacred — change them",
+    "lead": "Found a room for a better price, or know you won't need one of these at all? Change it. Your number beats our average, and the plan recalculates immediately.",
+    "weDontKnow": "We don't know it",
+    "skipped": "Not needed",
+    "yours": "Your number",
+    "iKnowIt": "I know this number",
+    "change": "Change it",
+    "yourNumber": "Your number",
+    "save": "Save",
+    "dontNeed": "I won't need this",
+    "useOurs": "Use ours again",
+    "close": "Done",
+    "resetAll": "Reset all numbers ({count} changed)",
+    "forCity": "These are {city}'s numbers — change city and the numbers change with it."
   }
 }

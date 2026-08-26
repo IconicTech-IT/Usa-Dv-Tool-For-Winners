@@ -80,6 +80,8 @@ export interface RequiredAmountInput {
 }
 
 export interface RequiredAmountResult {
+  landingBreakdown: import("@/lib/planner/engine").CostBreakdown[];
+  burnBreakdown: import("@/lib/planner/engine").CostBreakdown[];
   /** نفس قاعدة PlanResult — من غير الأرقام الأساسية مفيش مبلغ */
   computable: boolean;
   missingEssential: string[];
@@ -96,6 +98,12 @@ export interface RequiredAmountResult {
 }
 
 export interface PlanResult {
+  /** المدينة اللي الخطة اتحسبت عليها — الواجهة بتعدّل بنودها */
+  chosenMetro: string;
+  /** بنود تكلفة الوصول، كل بند بيقول رقمه جه منين */
+  landingBreakdown: import("@/lib/planner/engine").CostBreakdown[];
+  /** بنود المصاريف الشهرية */
+  burnBreakdown: import("@/lib/planner/engine").CostBreakdown[];
   /**
    * ⚠️ هل الأرقام الأساسية موجودة أصلًا؟
    * لو لأ، الواجهة **ممنوع** تعرض runway ولا مصاريف شهرية — لأن
@@ -128,6 +136,12 @@ export interface PlanResult {
 }
 
 export interface MetroScore {
+  /**
+   * ⚠️ عندنا أرقامها الأساسية؟
+   * مدينة مش عارفين عنها حاجة **ممنوع** تترشح — مصاريفها بتطلع أقل
+   * من الحقيقة فتبان أحسن من مدينة عندنا أرقامها فعلًا.
+   */
+  computable: boolean;
   slug: string;
   name: Localized;
   score: number;

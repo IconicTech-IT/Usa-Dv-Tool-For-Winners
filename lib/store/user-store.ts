@@ -4,6 +4,8 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { z } from "zod";
 import type { PlannerInput, PlanResult } from "@/lib/types";
+import type { CostKey, CostOverrides, Override } from "@/lib/planner/overrides";
+import { scopeFor } from "@/lib/planner/overrides";
 
 /**
  * مصدر واحد للحقيقة لكل بيانات المستخدم.
@@ -25,6 +27,12 @@ interface UserState {
   // ⚠️ مفيش رقم حالة. الموقع شغال بالكامل لواحد مكسبش.
   // كله اختياري — بيتملى بس لو المستخدم فعّل متابعة الإجراءات بنفسه.
   journey: { stage?: string; targetDate?: string; dates: Record<string, string> };
+  /**
+   * أرقام المستخدم نفسه لبنود التكلفة.
+   * ⚠️ دي **أصدق** من أرقام الموقع لخطته هو — لو لقى غرفة بـ$650،
+   * ده الرقم الصح، مش متوسطنا. وممنوع أي تحديث للموقع يمسحها.
+   */
+  overrides: CostOverrides;
   prefs: { locale: "ar" | "en"; theme: "system" | "light" | "dark"; reducedMotion: boolean };
 
   setProfile: (p: Partial<PlannerInput>) => void;
@@ -32,6 +40,8 @@ interface UserState {
   toggleCheck: (list: string, id: string) => void;
   addDoc: (d: { docType: string; issuedAt: string; expiresAt: string }) => void;
   setPref: <K extends keyof UserState["prefs"]>(k: K, v: UserState["prefs"][K]) => void;
+  setOverride: (metroSlug: string, key: CostKey, value: Override | null) => void;
+  clearOverrides: (metroSlug?: string) => void;
   exportJSON: () => string;
   importJSON: (raw: string) => boolean;
   clearAll: () => void;
@@ -54,6 +64,18 @@ export const PersistedState = z.object({
         issuedAt: z.string(),
         expiresAt: z.string(),
       }),
+    )
+    .optional(),
+  overrides: z
+    .record(
+      z.string(),
+      z.record(
+        z.string(),
+        z.union([
+          z.object({ mode: z.literal("custom"), value: z.number().finite() }),
+          z.object({ mode: z.literal("skip") }),
+        ]),
+      ),
     )
     .optional(),
   journey: z
@@ -82,6 +104,7 @@ const EMPTY = {
   checklists: {},
   vault: [],
   journey: { dates: {} },
+  overrides: {} as CostOverrides,
   prefs: { locale: "ar" as const, theme: "system" as const, reducedMotion: false },
 };
 
@@ -97,6 +120,7 @@ export function parsePersisted(raw: unknown): Partial<UserState> | null {
     ...(d.checklists ? { checklists: d.checklists } : {}),
     ...(d.vault ? { vault: d.vault } : {}),
     ...(d.journey ? { journey: d.journey } : {}),
+    ...(d.overrides ? { overrides: d.overrides as CostOverrides } : {}),
     ...(d.prefs ? { prefs: { ...EMPTY.prefs, ...d.prefs } } : {}),
     version: STORE_VERSION,
   };
@@ -119,13 +143,34 @@ export const useUser = create<UserState>()(
         })),
 
       addDoc: (d) => set((s) => ({ vault: [...s.vault, d] })),
+
+      setOverride: (metroSlug, key, value) =>
+        set((s) => {
+          const scope = scopeFor(key, metroSlug);
+          const forScope = { ...(s.overrides[scope] ?? {}) };
+          if (value === null) delete forScope[key];
+          else forScope[key] = value;
+
+          const next = { ...s.overrides, [scope]: forScope };
+          if (Object.keys(forScope).length === 0) delete next[scope];
+          return { overrides: next };
+        }),
+
+      clearOverrides: (metroSlug) =>
+        set((s) => {
+          if (!metroSlug) return { overrides: {} };
+          const next = { ...s.overrides };
+          delete next[metroSlug];
+          return { overrides: next };
+        }),
       setPref: (k, v) => set((s) => ({ prefs: { ...s.prefs, [k]: v } })),
 
       // التصدير ده هو النسخة الاحتياطية الوحيدة للمستخدم — قوله كده بوضوح في /my-plan
       exportJSON: () => {
-        const { profile, plan, checklists, vault, journey, prefs, version } = get();
+        const { profile, plan, checklists, vault, journey, overrides, prefs, version } =
+          get();
         return JSON.stringify(
-          { version, profile, plan, checklists, vault, journey, prefs },
+          { version, profile, plan, checklists, vault, journey, overrides, prefs },
           null,
           2,
         );
@@ -157,6 +202,7 @@ export const useUser = create<UserState>()(
         checklists: s.checklists,
         vault: s.vault,
         journey: s.journey,
+        overrides: s.overrides,
         prefs: s.prefs,
       }),
       // لما تغيّر شكل الداتا، زوّد STORE_VERSION وضيف الtransform هنا

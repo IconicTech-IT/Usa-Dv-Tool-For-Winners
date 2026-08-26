@@ -13,6 +13,7 @@ import type { PlannerMetro } from "@/lib/planner/metro";
 import type { PlanDirection, PlannerInput } from "@/lib/types";
 import { PlannerWizard } from "./PlannerWizard";
 import { PlanResultView } from "./PlanResultView";
+import { CostEditor } from "./CostEditor";
 
 /** القيم الافتراضية — الخطة بتشتغل حتى لو المستخدم جاوب على سؤال واحد بس. */
 function fill(p: Partial<PlannerInput>): PlannerInput {
@@ -78,8 +79,10 @@ export function Planner({ metros }: { metros: PlannerMetro[] }) {
 
 function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
   const t = useTranslations("planner");
+  const locale = useLocale() as "ar" | "en";
   const profile = useUser((s) => s.profile);
   const setPlan = useUser((s) => s.setPlan);
+  const overrides = useUser((s) => s.overrides);
   /**
    * ⚠️ الحالة دي مشتقة مش مجمّدة.
    * zustand بيرجّع الداتا من localStorage **بعد** أول render، فلو
@@ -90,7 +93,10 @@ function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
   const [editing, setEditing] = useState(false);
   const showResult = Boolean(profile.money) && !editing;
 
-  const plan = useMemo(() => computePlan(fill(profile), metros), [profile, metros]);
+  const plan = useMemo(
+    () => computePlan(fill(profile), metros, overrides),
+    [profile, metros, overrides],
+  );
 
   // الخطة بتتحدث لحظيًا مع أي تعديل، وبتتحفظ عشان شريط الخطة يقراها
   const done = () => {
@@ -114,7 +120,13 @@ function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
         </button>
         <span className="text-sm text-[var(--slate)]">{t("liveUpdate")}</span>
       </div>
-      <PlanResultView plan={plan} />
+      <PlanResultView
+        plan={plan}
+        metroName={(() => {
+          const m = metros.find((x) => x.slug === plan.chosenMetro);
+          return m ? localized(m.name, locale) : undefined;
+        })()}
+      />
     </div>
   );
 }
@@ -128,6 +140,7 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
   const locale = useLocale() as "ar" | "en";
   const profile = useUser((s) => s.profile);
   const setProfile = useUser((s) => s.setProfile);
+  const overrides = useUser((s) => s.overrides);
 
   const [metro, setMetro] = useState(metros[0]?.slug ?? "");
   const [months, setMonths] = useState(3);
@@ -150,8 +163,18 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
           monthlyIncomeFromHome: profile.monthlyIncomeFromHome ?? 0,
         },
         metros,
+        overrides,
       ),
-    [metro, adults, kids, months, includeTravel, profile.monthlyIncomeFromHome, metros],
+    [
+      metro,
+      adults,
+      kids,
+      months,
+      includeTravel,
+      profile.monthlyIncomeFromHome,
+      metros,
+      overrides,
+    ],
   );
 
   return (
@@ -225,19 +248,25 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
       </Card>
 
       {result && !result.computable && (
-        <Card status="danger">
-          <div className="p-6 space-y-3">
-            <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
-            <p>{t("cannotComputeWhy")}</p>
-            <ul className="flex flex-wrap gap-2">
-              {result.missingEssential.map((f) => (
-                <li key={f} className="badge badge--needs-verification">
-                  <span className="num">{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Card>
+        <>
+          <Card status="danger">
+            <div className="p-6 space-y-2">
+              <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
+              <p>{t("cannotComputeWhy")}</p>
+            </div>
+          </Card>
+          {/* مش طريق مسدود — المستخدم يقدر يفكها بأرقامه هو */}
+          <CostEditor
+            metroSlug={result.metro}
+            metroName={localized(
+              metros.find((x) => x.slug === result.metro)?.name ?? { ar: "", en: "" },
+              locale,
+            )}
+            landing={result.landingBreakdown}
+            burn={result.burnBreakdown}
+            highlight={result.missingEssential}
+          />
+        </>
       )}
 
       {result && result.computable && (
@@ -268,6 +297,16 @@ function NeedDirection({ metros }: { metros: PlannerMetro[] }) {
                 ))}
             </ul>
           </Section>
+
+          <CostEditor
+            metroSlug={result.metro}
+            metroName={localized(
+              metros.find((x) => x.slug === result.metro)?.name ?? { ar: "", en: "" },
+              locale,
+            )}
+            landing={result.landingBreakdown}
+            burn={result.burnBreakdown}
+          />
 
           {result.unverifiedFields.length > 0 && (
             <Card status="now">
