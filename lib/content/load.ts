@@ -86,6 +86,61 @@ function isField(o: unknown): o is Record<string, unknown> {
   );
 }
 
+/**
+ * كل ملفات المحتوى اللي فيها حقول بالشكل بتاع `_schema.ts`.
+ *
+ * ⚠️ أي ملف جديد فيه حقول لازم يتحط هنا. `tax-brackets.json` كان ناقص،
+ * فـ١٧ حقل ضريبي فاضي ماكانوش بيظهروا في TODO-VERIFY.md خالص — والتقرير
+ * كان بيقرا كإنه كامل وهو مش شايف أهم ملف في الموقع.
+ */
+function contentFiles(): string[] {
+  return [
+    ...listJSON("metros"),
+    ...listJSON("states"),
+    ...listJSON("jobs"),
+    ...listJSON("checklists"),
+    join(CONTENT_DIR, "fees.json"),
+    join(CONTENT_DIR, "tax-brackets.json"),
+    join(CONTENT_DIR, "steps.json"),
+    join(CONTENT_DIR, "documents.json"),
+    join(CONTENT_DIR, "eligibility.json"),
+    join(CONTENT_DIR, "job-presets.json"),
+  ];
+}
+
+/**
+ * أصول المصادر اللي المحتوى بيستشهد بيها فعلًا، مرتبة.
+ *
+ * ⚠️ صفحة `/sources` كانت بتعرض قايمة مكتوبة بالإيد، فأول ما اتضاف مصدر
+ * جديد في `content/` الصفحة فضلت تقول خمس مصادر وهي بقت تمانية. القايمة
+ * دلوقتي بتتولد من المحتوى نفسه فمستحيل تتأخر عنه تاني.
+ */
+export function collectSourceHosts(): string[] {
+  const hosts = new Set<string>();
+
+  const walk = (node: unknown) => {
+    if (Array.isArray(node)) {
+      node.forEach(walk);
+      return;
+    }
+    if (typeof node !== "object" || node === null) return;
+
+    const o = node as Record<string, unknown>;
+    if (typeof o["url"] === "string" && typeof o["label"] === "string") {
+      try {
+        hosts.add(new URL(o["url"]).origin + "/");
+      } catch {
+        // لينك مكسور — verify-content هو اللي بيمسكه، مش هنا
+      }
+    }
+    for (const v of Object.values(o)) walk(v);
+  };
+
+  for (const file of contentFiles()) walk(readJSON(file));
+
+  return [...hosts].sort();
+}
+
 /** بيمشي على كل ملفات المحتوى ويجمع كل حقل بحالته. أساس verify-content. */
 export function collectFields(): FieldRef[] {
   const out: FieldRef[] = [];
@@ -117,19 +172,7 @@ export function collectFields(): FieldRef[] {
     }
   };
 
-  const files = [
-    ...listJSON("metros"),
-    ...listJSON("states"),
-    ...listJSON("jobs"),
-    ...listJSON("checklists"),
-    join(CONTENT_DIR, "fees.json"),
-    join(CONTENT_DIR, "steps.json"),
-    join(CONTENT_DIR, "documents.json"),
-    join(CONTENT_DIR, "eligibility.json"),
-    join(CONTENT_DIR, "job-presets.json"),
-  ];
-
-  for (const file of files) {
+  for (const file of contentFiles()) {
     const rel = file.slice(CONTENT_DIR.length + 1);
     const data = readJSON(file) as Record<string, unknown>;
 

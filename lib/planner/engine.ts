@@ -456,14 +456,17 @@ function reasonsFor(
   burn: number,
 ): Localized[] {
   const months = runway === 99 ? "أكتر من سنة" : runway.toFixed(1);
+  // نفس تنسيق `<Num>`: فاصلة الآلاف. من غيرها الجملة بتقول "$1156"
+  // والفوتنوت تحتها بيقول "$1,156" لنفس الرقم.
+  const spend = Math.round(burn).toLocaleString("en-US");
   const out: Localized[] = [
     {
       ar: `بمصاريف الشهر المتوقعة، فلوسك تكفيك ${months} شهر.`,
       en: `At the expected monthly spend, your money lasts ${months} months.`,
     },
     {
-      ar: `مصاريفك الشهرية المتوقعة حوالي $${Math.round(burn)}.`,
-      en: `Your expected monthly spend is about $${Math.round(burn)}.`,
+      ar: `مصاريفك الشهرية المتوقعة حوالي $${spend}.`,
+      en: `Your expected monthly spend is about $${spend}.`,
     },
   ];
 

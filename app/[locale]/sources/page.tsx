@@ -2,7 +2,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card } from "@/components/Card";
 import { PageHeader } from "@/components/ui";
 import { Num } from "@/components/Num";
-import { collectFields, countStatuses, staleFields } from "@/lib/content/load";
+import {
+  collectFields,
+  collectSourceHosts,
+  countStatuses,
+  staleFields,
+} from "@/lib/content/load";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -55,13 +60,7 @@ export default async function SourcesPage({
       <section className="space-y-3">
         <h2 className="text-xl font-bold">{t("officialSources")}</h2>
         <ul className="space-y-1.5">
-          {[
-            "https://travel.state.gov/",
-            "https://www.uscis.gov/",
-            "https://www.ssa.gov/",
-            "https://www.irs.gov/",
-            "https://www.healthcare.gov/",
-          ].map((url) => (
+          {collectSourceHosts().map((url) => (
             <li key={url}>
               <a href={url} target="_blank" rel="noreferrer" className="underline underline-offset-4" dir="ltr">
                 {url}
