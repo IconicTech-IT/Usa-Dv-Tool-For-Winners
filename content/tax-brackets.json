@@ -1,202 +1,226 @@
 {
-  "_note": "⚠️ كل رقم ضريبي في المشروع بيتقرا من هنا. مفيش ولا رقم في الكود. وسنة الضرايب داتا جوه الملف مش في اسم متغير — لأن رقم قديم بعنوان جديد بيتقرا كأنه صح والناس بتحسب عليه فلوسها. لو taxYear مش السنة الحالية، الحاسبة بتعرض تنبيه فوق النتيجة.",
+  "_note": "⚠️ كل رقم ضريبي في المشروع بيتقرا من هنا. مفيش ولا رقم في الكود. وسنة الضرايب داتا جوه الملف مش في اسم متغير — لأن رقم قديم بعنوان جديد بيتقرا كأنه صح والناس بتحسب عليه فلوسه. لو taxYear مش السنة الحالية، الحاسبة بتعرض تنبيه فوق النتيجة. المصدر الأساسي للشرايح والخصم القياسي وإعفاء الطفل: Rev. Proc. 2025-32 المنشور في نشرة IRS الرسمية IRB 2025-45.",
   "taxYear": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 2026,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Rev. Proc. 2025-32, Internal Revenue Bulletin 2025-45",
+        "url": "https://www.irs.gov/irb/2025-45_IRB"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "سنة الضرايب اللي الأرقام دي بتاعتها — من irs.gov",
+    "lastVerified": "2026-08-26",
+    "note": "سنة الضرايب اللي الأرقام دي بتاعتها. الشرايح دي للسنة الضريبية اللي بتبدأ في 2026.",
     "unit": "year"
   },
   "federalBrackets": {
     "single": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": [
+        { "upTo": 12400, "rate": 0.1 },
+        { "upTo": 50400, "rate": 0.12 },
+        { "upTo": 105700, "rate": 0.22 },
+        { "upTo": 201775, "rate": 0.24 },
+        { "upTo": 256225, "rate": 0.32 },
+        { "upTo": 640600, "rate": 0.35 },
+        { "upTo": null, "rate": 0.37 }
+      ],
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.01 TABLE 3 (Unmarried Individuals)",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "شرايح ضريبة الدخل الفيدرالية — أعزب. الشكل: [{upTo, rate}] و upTo:null للشريحة الأخيرة"
+      "lastVerified": "2026-08-26",
+      "note": "شرايح ضريبة الدخل الفيدرالية 2026 — أعزب. الشكل: [{upTo, rate}] و upTo:null للشريحة الأخيرة"
     },
     "married": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": [
+        { "upTo": 24800, "rate": 0.1 },
+        { "upTo": 100800, "rate": 0.12 },
+        { "upTo": 211400, "rate": 0.22 },
+        { "upTo": 403550, "rate": 0.24 },
+        { "upTo": 512450, "rate": 0.32 },
+        { "upTo": 768700, "rate": 0.35 },
+        { "upTo": null, "rate": 0.37 }
+      ],
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.01 TABLE 1 (Married Filing Joint Returns)",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "شرايح ضريبة الدخل الفيدرالية — متجوز وبيقدّم مع بعض"
+      "lastVerified": "2026-08-26",
+      "note": "شرايح ضريبة الدخل الفيدرالية 2026 — متجوز وبيقدّم مع بعض"
     },
     "headOfHousehold": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": [
+        { "upTo": 17700, "rate": 0.1 },
+        { "upTo": 67450, "rate": 0.12 },
+        { "upTo": 105700, "rate": 0.22 },
+        { "upTo": 201750, "rate": 0.24 },
+        { "upTo": 256200, "rate": 0.32 },
+        { "upTo": 640600, "rate": 0.35 },
+        { "upTo": null, "rate": 0.37 }
+      ],
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.01 TABLE 2 (Heads of Households)",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "شرايح ضريبة الدخل الفيدرالية — عائل أسرة"
+      "lastVerified": "2026-08-26",
+      "note": "شرايح ضريبة الدخل الفيدرالية 2026 — عائل أسرة. ⚠️ حدود الشرايح دي مختلفة عن الأعزب — متنسخهاش منه."
     }
   },
   "standardDeduction": {
     "single": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 16100,
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.14 Standard Deduction",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "الخصم القياسي — أعزب",
+      "lastVerified": "2026-08-26",
+      "note": "الخصم القياسي 2026 — أعزب",
       "unit": "USD"
     },
     "married": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 32200,
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.14 Standard Deduction",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "الخصم القياسي — متجوز وبيقدّم مع بعض",
+      "lastVerified": "2026-08-26",
+      "note": "الخصم القياسي 2026 — متجوز وبيقدّم مع بعض",
       "unit": "USD"
     },
     "headOfHousehold": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 24150,
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "IRS — Rev. Proc. 2025-32 § 3.14 Standard Deduction",
+          "url": "https://www.irs.gov/irb/2025-45_IRB"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "الخصم القياسي — عائل أسرة",
+      "lastVerified": "2026-08-26",
+      "note": "الخصم القياسي 2026 — عائل أسرة",
       "unit": "USD"
     }
   },
   "socialSecurityRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0.062,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Topic no. 751, Social Security and Medicare withholding rates",
+        "url": "https://www.irs.gov/taxtopics/tc751"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "نسبة الضمان الاجتماعي على الموظف",
+    "lastVerified": "2026-08-26",
+    "note": "نسبة الضمان الاجتماعي على الموظف — ٦.٢٪ (وصاحب الشغل بيدفع ٦.٢٪ تانية مش بتتخصم منك)",
     "unit": "rate"
   },
   "socialSecurityWageCap": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 184500,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Topic no. 751 (2026 wage base limit)",
+        "url": "https://www.irs.gov/taxtopics/tc751"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "سقف الدخل اللي بيتحسب عليه الضمان الاجتماعي",
+    "lastVerified": "2026-08-26",
+    "note": "سقف الدخل اللي بيتحسب عليه الضمان الاجتماعي في 2026. بيتغير كل سنة.",
     "unit": "USD"
   },
   "medicareRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0.0145,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Topic no. 751, Social Security and Medicare withholding rates",
+        "url": "https://www.irs.gov/taxtopics/tc751"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "نسبة الميديكير على الموظف",
+    "lastVerified": "2026-08-26",
+    "note": "نسبة الميديكير على الموظف — ملهاش سقف. فيه ٠.٩٪ زيادة على اللي فوق ٢٠٠ ألف، والحاسبة مش بتحسبها لأنها بعيدة عن دخل أول سنة.",
     "unit": "rate"
   },
   "childTaxCredit": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 2200,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Rev. Proc. 2025-32 § 3.05 Child Tax Credit",
+        "url": "https://www.irs.gov/irb/2025-45_IRB"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "إعفاء الطفل",
+    "lastVerified": "2026-08-26",
+    "note": "أقصى إعفاء للطفل الواحد في 2026. الجزء المسترد منه ١٧٠٠ دولار — الحاسبة مش بتفرّق بينهم.",
     "unit": "USD"
   },
   "irsMileageRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0.76,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Standard mileage rates (2026, July 1 – Dec. 31)",
+        "url": "https://www.irs.gov/tax-professionals/standard-mileage-rates"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "نسبة خصم الميل الرسمية — بتتغير كل سنة وبتفرق كتير في حاسبة الجيج",
+    "lastVerified": "2026-08-26",
+    "note": "⚠️ الرقم ده اتغير في نص سنة 2026: من ١ يناير لـ٣٠ يونيو كان ٧٢.٥ سنت، ومن ١ يوليو ٧٦ سنت. الرقم هنا هو الساري دلوقتي. راجعه أول يناير وكمان لو IRS عدّلته في نص السنة تاني.",
     "unit": "USD/mile"
   },
   "selfEmploymentRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0.153,
+    "status": "verified",
     "sources": [
       {
-        "label": "IRS",
-        "url": "https://www.irs.gov/"
+        "label": "IRS — Self-employment tax (Social Security and Medicare taxes)",
+        "url": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes"
       }
     ],
-    "lastVerified": "2026-08-25",
-    "note": "نسبة ضريبة العمل الحر",
+    "lastVerified": "2026-08-26",
+    "note": "١٥.٣٪ = ١٢.٤٪ ضمان اجتماعي + ٢.٩٪ ميديكير. ده الرقم اللي بيخلي شغل الجيج مختلف عن الوظيفة: انت بتدفع نصيبك ونصيب صاحب الشغل.",
     "unit": "rate"
   },
   "federalPovertyLine": {
     "base": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 15960,
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "HHS ASPE — 2026 Poverty Guidelines (48 contiguous states and DC)",
+          "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "خط الفقر الفيدرالي — فرد واحد. من aspe.hhs.gov أو healthcare.gov",
+      "lastVerified": "2026-08-26",
+      "note": "خط الفقر الفيدرالي 2026 — فرد واحد، الـ٤٨ ولاية المتصلة وواشنطن. ألاسكا وهاواي ليهم جداول أعلى مش متحطة هنا.",
       "unit": "USD"
     },
     "perPerson": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 5680,
+      "status": "verified",
       "sources": [
         {
-          "label": "IRS",
-          "url": "https://www.irs.gov/"
+          "label": "HHS ASPE — 2026 Poverty Guidelines (48 contiguous states and DC)",
+          "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines"
         }
       ],
-      "lastVerified": "2026-08-25",
-      "note": "الزيادة لكل فرد إضافي في الأسرة",
+      "lastVerified": "2026-08-26",
+      "note": "الزيادة لكل فرد إضافي في الأسرة، 2026، الـ٤٨ ولاية المتصلة وواشنطن.",
       "unit": "USD"
     }
   },
-  "lastVerified": "2026-08-25"
+  "lastVerified": "2026-08-26"
 }

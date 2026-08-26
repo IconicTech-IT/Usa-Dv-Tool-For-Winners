@@ -1,5 +1,5 @@
 {
-  "_note": "الأرقام دي اتجمعت من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) في 2026-08-25 ولسه محتاجة تأكيد من الصفحة الرسمية نفسها. راجعها قبل ما الموقع ينزل.",
+  "_note": "الرسوم الرسمية (تسجيل القرعة · فيزا القرعة · رسم USCIS) اتأكدت من الصفحات الرسمية نفسها يوم 2026-08-26. الباقي (فحص طبي · فيش · ترجمة · طيران) بيختلف من بلد لبلد ومن حالة لحالة، فمفيش رقم واحد صح ليه — سايبينه NEEDS_VERIFICATION بدل ما نحط رقم يتقرا كإنه ثابت.",
   "fees": [
     {
       "id": "dv-registration",
@@ -8,31 +8,26 @@
         "en": "DV registration fee"
       },
       "who": {
-        "ar": "كل واحد بيسجل في القرعة",
-        "en": "Every registrant"
+        "ar": "المتقدم الأساسي بس — مش كل فرد في العيلة",
+        "en": "The principal applicant only — not each family member"
       },
       "when": {
         "ar": "وقت إرسال طلب القرعة نفسه",
         "en": "At entry submission"
       },
-      "perPerson": true,
+      "perPerson": false,
       "amount": {
         "value": 1,
         "unit": "USD",
-        "status": "estimated",
+        "status": "verified",
         "sources": [
           {
-            "label": "U.S. Department of State — DV program",
-            "url": "https://travel.state.gov/"
+            "label": "U.S. Department of State — Fees for Visa Services",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html"
           }
         ],
-        "lastVerified": "2026-08-25",
-        "note": "بدأ سنة 2025 لدورة DV-2027. أكّده من صفحة DV على travel.state.gov.",
-        "basis": {
-          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
-          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
-        },
-        "verifyIn": "6-months"
+        "lastVerified": "2026-08-26",
+        "note": "الصفحة الرسمية بتقول بالنص إنه بيتدفع وقت التسجيل من المتقدم الأساسي لوحده. يعني عيلة من ٤ بتدفع دولار واحد مش أربعة."
       }
     },
     {
@@ -53,20 +48,15 @@
       "amount": {
         "value": 330,
         "unit": "USD",
-        "status": "estimated",
+        "status": "verified",
         "sources": [
           {
-            "label": "U.S. Department of State — visa fees",
-            "url": "https://travel.state.gov/"
+            "label": "U.S. Department of State — Fees for Visa Services",
+            "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html"
           }
         ],
-        "lastVerified": "2026-08-25",
-        "note": "لكل فرد. عيلة من ٤ = الرقم × ٤. أكّده من صفحة رسوم الفيزا الرسمية.",
-        "basis": {
-          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
-          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
-        },
-        "verifyIn": "6-months"
+        "lastVerified": "2026-08-26",
+        "note": "لكل فرد داخل مع الفايز. عيلة من ٤ = ١٣٢٠ دولار. ده رسم خاص بالقرعة — غير الـ٢٠٥ بتوع باقي فئات الهجرة."
       }
     },
     {
@@ -87,20 +77,19 @@
       "amount": {
         "value": 235,
         "unit": "USD",
-        "status": "estimated",
+        "status": "verified",
         "sources": [
           {
-            "label": "USCIS Immigrant Fee",
+            "label": "USCIS — G-1055 Fee Schedule (edition 05/29/26)",
+            "url": "https://www.uscis.gov/g-1055"
+          },
+          {
+            "label": "USCIS — USCIS Immigrant Fee",
             "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee"
           }
         ],
-        "lastVerified": "2026-08-25",
-        "note": "من غيره الكارت البلاستيك مش هيتبعتلك، بس ده مش بيأثر على وضعك القانوني. فيه استثناءات مذكورة في الصفحة الرسمية.",
-        "basis": {
-          "ar": "اتكتب من مصادر ثانوية (مكاتب محاماة ومواقع متخصصة) مش من الصفحة الرسمية نفسها.",
-          "en": "Taken from secondary sources (law firms and specialist sites), not from the official page itself."
-        },
-        "verifyIn": "6-months"
+        "lastVerified": "2026-08-26",
+        "note": "لكل واحد اتصدرتله فيزا هجرة. الجدول الرسمي بيحط ٠ دولار لحالات معينة: أطفال التبني، المهاجرين الخاصين العراقيين والأفغان، المقيمين العايدين SB-1، وفئات K. من غيره الكارت البلاستيك مش هيتبعتلك — بس ده مش بيأثر على وضعك القانوني كمقيم دائم."
       }
     },
     {
