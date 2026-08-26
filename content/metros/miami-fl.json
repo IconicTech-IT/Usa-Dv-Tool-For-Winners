@@ -68,7 +68,12 @@
     "roomRent": {
       "value": 1343,
       "status": "estimated",
-      "sources": [],
+      "sources": [
+        {
+          "label": "وسيط 204 إعلان أوضة مشتركة على SpareRoom، ٢٦ أغسطس ٢٠٢٦ (83٪ منها شامل الفواتير)",
+          "url": "https://www.spareroom.com/rooms-for-rent/"
+        }
+      ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
       "basis": {
@@ -84,7 +89,12 @@
     "apt1br": {
       "value": 1995,
       "status": "estimated",
-      "sources": [],
+      "sources": [
+        {
+          "label": "HUD FY2026 — الإيجار العادل الرسمي، شامل الفواتير، الشريحة ٤٠٪ من السوق",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
       "basis": {
@@ -97,7 +107,12 @@
     "apt2br": {
       "value": 2436,
       "status": "estimated",
-      "sources": [],
+      "sources": [
+        {
+          "label": "HUD FY2026 — الإيجار العادل الرسمي، شامل الفواتير، الشريحة ٤٠٪ من السوق",
+          "url": "https://www.huduser.gov/portal/datasets/fmr.html"
+        }
+      ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
       "basis": {
@@ -125,7 +140,12 @@
     "groceriesPerAdult": {
       "value": 296,
       "status": "estimated",
-      "sources": [],
+      "sources": [
+        {
+          "label": "خطة USDA منخفضة التكلفة، يونيو ٢٠٢٦ — متوسط بالغ ٢٠-٥٠ سنة",
+          "url": "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports"
+        }
+      ],
       "lastVerified": "2026-08-26",
       "unit": "USD/month",
       "basis": {

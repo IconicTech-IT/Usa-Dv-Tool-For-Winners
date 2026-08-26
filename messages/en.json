@@ -799,7 +799,7 @@
       "judgment": "Subjective ranking (shown as a description, not a number)",
       "needsVerification": "Needs verification — shown as a badge instead of a number"
     },
-    "officialSources": "The official sources this site relies on",
+    "officialSources": "Sources the site relies on",
     "staleTitle": "Past its review date",
     "staleLead": "{count} fields are past their scheduled review date.",
     "oldestTitle": "Least recently checked",

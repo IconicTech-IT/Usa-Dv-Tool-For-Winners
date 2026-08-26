@@ -146,17 +146,32 @@ function field(
     );
   }
 
+  // ⚠️ لو المصدر فيه لينك، بنفصله ونحطه في `sources` كمان مش في النص بس.
+  // من غير الخطوة دي صفحة /sources بتقل مصادر — لأنها بتتولد من `sources`
+  // مش من `basis`، فالمستخدم بيشوف الشرح بس من غير لينك يفتحه ويتأكد.
+  const { label: srcLabel, url } = splitSource(source);
+
   const out: Record<string, unknown> = {
     value: mid,
     status: "estimated",
-    sources: [],
+    sources: url ? [{ label: srcLabel.slice(0, 120), url }] : [],
     lastVerified: today(),
     unit,
-    basis: { ar: source, en: source },
+    basis: { ar: srcLabel, en: srcLabel },
     verifyIn: "6-months",
   };
   if (lo !== null && hi !== null) out.range = [lo, hi];
   return out;
+}
+
+/** بيشيل اللينك من نص المصدر ويرجّع الاتنين. */
+function splitSource(source: string): { label: string; url: string | null } {
+  const m = source.match(/https?:\/\/\S+/);
+  if (!m) return { label: source.trim(), url: null };
+  return {
+    label: source.replace(m[0], "").replace(/\s*[·—-]\s*$/, "").trim(),
+    url: m[0].replace(/[.,)]+$/, ""),
+  };
 }
 
 function today(): string {
