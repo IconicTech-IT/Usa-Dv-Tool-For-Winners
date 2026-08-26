@@ -9,6 +9,7 @@ import { Section, Bullets } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
 import { useInView, useReducedMotion, DURATION } from "@/lib/motion";
 import type { PlanResult } from "@/lib/types";
+import { CostEditor } from "./CostEditor";
 
 /**
  * مخرجات الخطة.
@@ -17,7 +18,13 @@ import type { PlanResult } from "@/lib/types";
  * ده أهم مشهد في الموقع. والحقول اللي لسه محتاجة تأكيد بتتقال صراحة
  * تحت، مش بتتخبى.
  */
-export function PlanResultView({ plan }: { plan: PlanResult }) {
+export function PlanResultView({
+  plan,
+  metroName,
+}: {
+  plan: PlanResult;
+  metroName?: string;
+}) {
   const t = useTranslations("planner.result");
   const locale = useLocale() as "ar" | "en";
 
@@ -28,20 +35,24 @@ export function PlanResultView({ plan }: { plan: PlanResult }) {
    */
   if (!plan.computable) {
     return (
-      <Card status="danger">
-        <div className="p-6 space-y-3">
-          <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
-          <p>{t("cannotComputeWhy")}</p>
-          <ul className="flex flex-wrap gap-2">
-            {plan.missingEssential.map((f) => (
-              <li key={f} className="badge badge--needs-verification">
-                <span className="num">{f}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-sm text-[var(--slate)]">{t("cannotComputeHint")}</p>
-        </div>
-      </Card>
+      <div className="space-y-6">
+        <Card status="danger">
+          <div className="p-6 space-y-2">
+            <h2 className="text-xl font-bold">{t("cannotCompute")}</h2>
+            <p>{t("cannotComputeWhy")}</p>
+            <p className="text-sm text-[var(--slate)]">{t("cannotComputeHint")}</p>
+          </div>
+        </Card>
+
+        {/* ⚠️ الكارت فوق مش نهاية الطريق: المستخدم يكتب رقمه ويكمل */}
+        <CostEditor
+          metroSlug={plan.chosenMetro}
+          metroName={metroName}
+          landing={plan.landingBreakdown}
+          burn={plan.burnBreakdown}
+          highlight={plan.missingEssential}
+        />
+      </div>
     );
   }
 
@@ -69,6 +80,11 @@ export function PlanResultView({ plan }: { plan: PlanResult }) {
 
       {/* المدن المرشحة */}
       <Section title={t("recommended")}>
+        {plan.recommendedMetros.length === 0 && (
+          <Card status="now">
+            <p className="p-4 text-sm">{t("noRankableCities")}</p>
+          </Card>
+        )}
         <ul className="space-y-3">
           {plan.recommendedMetros.map((m, i) => (
             <Card key={m.slug} as="li" status={i === 0 ? "done" : "later"}>
@@ -106,6 +122,13 @@ export function PlanResultView({ plan }: { plan: PlanResult }) {
           </ul>
         </Section>
       )}
+
+      <CostEditor
+        metroSlug={plan.chosenMetro}
+        metroName={metroName}
+        landing={plan.landingBreakdown}
+        burn={plan.burnBreakdown}
+      />
 
       <BalanceChart plan={plan} />
 

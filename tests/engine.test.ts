@@ -292,3 +292,196 @@ describe("⚠️ رفض الحسبة من غير الأرقام الأساسية
     expect(r!.computable).toBe(false);
   });
 });
+
+describe("⚠️ أرقام المستخدم بتغلب أرقامنا", () => {
+  const noRent = metro("no-rent", { roomRent: nullField });
+
+  it("رقم المستخدم بيفك الحسبة المقفولة", () => {
+    const blocked = computePlan(input, [noRent]);
+    expect(blocked.computable).toBe(false);
+
+    const unblocked = computePlan(input, [noRent], {
+      "no-rent": { roomRent: { mode: "custom", value: 650 } },
+    });
+    expect(unblocked.computable).toBe(true);
+    expect(unblocked.missingEssential).toHaveLength(0);
+  });
+
+  it('"مش هحتاجه" إجابة كمان — مش نقص بيانات', () => {
+    // ساكن عند قريب أول ٣ شهور: الإيجار صفر بقراره مش بجهلنا
+    const staying = computePlan(input, [noRent], {
+      "no-rent": { roomRent: { mode: "skip" } },
+    });
+    expect(staying.computable).toBe(true);
+  });
+
+  it("رقم المستخدم بيغلب رقم الموقع", () => {
+    const site = computePlan(input, [metro("a")]);
+    const cheaper = computePlan(input, [metro("a")], {
+      a: { roomRent: { mode: "custom", value: 400 } },
+    });
+    // إيجار أرخص = مصاريف شهرية أقل = فلوسه تقعد أكتر
+    expect(cheaper.monthlyBurn).toBeLessThan(site.monthlyBurn);
+    expect(cheaper.runwayMonths).toBeGreaterThan(site.runwayMonths);
+  });
+
+  it("الاستغناء عن بند بيقلل المصاريف فعلًا", () => {
+    const withPhone = computePlan(input, [metro("a")]);
+    const without = computePlan(input, [metro("a")], {
+      _global: { phone: { mode: "skip" } },
+    });
+    expect(without.monthlyBurn).toBeLessThan(withPhone.monthlyBurn);
+  });
+
+  it("رقم سالب بيتقفل عند صفر مش بيكسر الحسبة", () => {
+    const weird = computePlan(input, [metro("a")], {
+      a: { roomRent: { mode: "custom", value: -500 } },
+    });
+    expect(weird.monthlyBurn).toBeGreaterThanOrEqual(0);
+    expect(Number.isFinite(weird.runwayMonths)).toBe(true);
+  });
+
+  it("override لمدينة مبيسربش لمدينة تانية", () => {
+    const plan = computePlan(input, [metro("houston"), metro("chicago")], {
+      houston: { roomRent: { mode: "custom", value: 400 } },
+    });
+    const houston = plan.recommendedMetros.find((m) => m.slug === "houston");
+    const chicago = plan.recommendedMetros.find((m) => m.slug === "chicago");
+    expect(houston!.runwayMonths).toBeGreaterThan(chicago!.runwayMonths);
+  });
+
+  it("كل بند في التفصيل بيقول رقمه جه منين", () => {
+    const plan = computePlan(input, [metro("a")], {
+      a: { roomRent: { mode: "custom", value: 500 }, utilities: { mode: "skip" } },
+    });
+    const rent = plan.burnBreakdown.find((b) => b.key === "roomRent");
+    const utils = plan.burnBreakdown.find((b) => b.key === "utilities");
+    expect(rent!.source).toBe("user");
+    expect(utils!.source).toBe("skipped");
+    expect(plan.burnBreakdown.find((b) => b.key === "groceriesPerAdult")!.source).toBe("site");
+  });
+});
+
+describe("⚠️ المدينة اللي المستخدم عدّلها بتفضل هي المختارة", () => {
+  it("التعديل مبيضيعش لما الترتيب يتغير بسببه", () => {
+    // الاتنين إيجارهم ناقص، فالخطة مقفولة في الحالتين
+    const a = metro("city-a", { roomRent: nullField });
+    const b = metro("city-b", { roomRent: nullField });
+
+    const blocked = computePlan(input, [a, b]);
+    expect(blocked.computable).toBe(false);
+
+    // المستخدم كتب إيجار city-b — لازم الخطة تشتغل على city-b
+    const fixed = computePlan(input, [a, b], {
+      "city-b": { roomRent: { mode: "custom", value: 700 } },
+    });
+    expect(fixed.chosenMetro).toBe("city-b");
+    expect(fixed.computable).toBe(true);
+  });
+
+  it("من غير تعديلات، الترتيب العادي هو اللي بيحكم", () => {
+    const cheap = metro("cheap", { roomRent: verified(500) });
+    const pricey = metro("pricey", { roomRent: verified(1600) });
+    expect(computePlan(input, [pricey, cheap]).chosenMetro).toBe("cheap");
+  });
+
+  it("التعديلات العامة (طيران، تليفون) مبتغيّرش المدينة المختارة", () => {
+    const cheap = metro("cheap", { roomRent: verified(500) });
+    const pricey = metro("pricey", { roomRent: verified(1600) });
+    const plan = computePlan(input, [pricey, cheap], {
+      _global: { phone: { mode: "skip" } },
+    });
+    expect(plan.chosenMetro).toBe("cheap");
+  });
+});
+
+describe("⚠️ مدينة مش عارفين أرقامها ممنوع تترشح", () => {
+  it("مدينة داتاها فاضية مبتظهرش في الترشيح", () => {
+    const known = metro("known", { roomRent: verified(900) });
+    const unknown = metro("unknown", {
+      roomRent: nullField,
+      groceriesPerAdult: nullField,
+    });
+
+    const plan = computePlan(input, [known, unknown]);
+    expect(plan.recommendedMetros.map((m) => m.slug)).toEqual(["known"]);
+    expect(plan.recommendedMetros.every((m) => m.computable)).toBe(true);
+  });
+
+  it("الحالة اللي كانت بتنعكس: الفاضية كانت بتزق المعروفة لـ'اتجنبها'", () => {
+    // الفاضية مصاريفها بتتحسب أقل من الحقيقة فبتبان أرخص
+    const pricey = metro("pricey-but-known", { roomRent: verified(1500) });
+    const unknown = metro("unknown", {
+      roomRent: nullField,
+      groceriesPerAdult: nullField,
+    });
+
+    const plan = computePlan(input, [pricey, unknown]);
+    expect(plan.recommendedMetros.map((m) => m.slug)).toContain("pricey-but-known");
+    expect(plan.avoidMetros.map((m) => m.slug)).not.toContain("pricey-but-known");
+  });
+
+  it("مدينة المستخدم ملاها بإيده بتترشح عادي", () => {
+    const empty = metro("filled-by-user", {
+      roomRent: nullField,
+      groceriesPerAdult: nullField,
+    });
+    const plan = computePlan(input, [empty], {
+      "filled-by-user": {
+        roomRent: { mode: "custom", value: 650 },
+        groceriesPerAdult: { mode: "custom", value: 320 },
+      },
+    });
+    expect(plan.recommendedMetros.map((m) => m.slug)).toEqual(["filled-by-user"]);
+  });
+
+  it("مفيش ولا مدينة معروفة = قايمة ترشيح فاضية مش قايمة كاذبة", () => {
+    const a = metro("a", { roomRent: nullField, groceriesPerAdult: nullField });
+    const b = metro("b", { roomRent: nullField, groceriesPerAdult: nullField });
+    const plan = computePlan(input, [a, b]);
+    expect(plan.recommendedMetros).toHaveLength(0);
+    expect(plan.avoidMetros).toHaveLength(0);
+  });
+});
+
+describe("قايمة الأرقام الناقصة", () => {
+  it("بتاعة المدينة المختارة بس مش كل المدن", () => {
+    const chosen = metro("chosen", { utilities: nullField });
+    const other = metro("other", {
+      roomRent: nullField,
+      groceriesPerAdult: nullField,
+      utilities: nullField,
+      carInsurance: nullField,
+    });
+
+    const plan = computePlan(input, [chosen, other]);
+    expect(plan.chosenMetro).toBe("chosen");
+    expect(plan.unverifiedFields.every((f) => f.startsWith("chosen."))).toBe(true);
+    expect(plan.unverifiedFields.some((f) => f.startsWith("other."))).toBe(false);
+  });
+});
+
+describe("⚠️ اختيار المدينة بيفضّل اللي عندنا أرقامها", () => {
+  it("مبيتقفلش على مدينة مجهولة وفيه مدينة معروفة", () => {
+    const known = metro("known", { roomRent: verified(1400) });
+    const unknown = metro("unknown", {
+      roomRent: nullField,
+      groceriesPerAdult: nullField,
+      utilities: nullField,
+      carInsurance: nullField,
+    });
+
+    const plan = computePlan(input, [known, unknown]);
+    expect(plan.chosenMetro).toBe("known");
+    expect(plan.computable).toBe(true);
+  });
+
+  it("بس تعديل المستخدم لسه بيغلب", () => {
+    const known = metro("known", { roomRent: verified(900) });
+    const mine = metro("mine", { roomRent: nullField });
+    const plan = computePlan(input, [known, mine], {
+      mine: { roomRent: { mode: "custom", value: 600 } },
+    });
+    expect(plan.chosenMetro).toBe("mine");
+  });
+});

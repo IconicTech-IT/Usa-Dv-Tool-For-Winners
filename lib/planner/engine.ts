@@ -27,6 +27,14 @@ import type {
 import type { PlannerMetro } from "./metro";
 import { tierFor, type TierPolicy } from "./tiers";
 import { capJudgment, rankWithJudgment } from "./judgment";
+import {
+  getOverride,
+  resolveCost,
+  GLOBAL_SCOPE,
+  type CostKey,
+  type CostOverrides,
+  type ValueSource,
+} from "./overrides";
 
 /* ------------------------------------------------------------------ *
  * أدوات صغيرة
@@ -45,16 +53,27 @@ function tracker(): Missing {
   };
 }
 
-/** بيقرا قيمة رقمية، وبيسجلها كناقصة لو مش موجودة. بيرجع null مش صفر. */
+/**
+ * بيقرا قيمة بند: رقم المستخدم الأول، بعدين "مش محتاجه"، بعدين رقم
+ * الموقع. بيرجع null لو ناقص فعلًا — **مش صفر**.
+ *
+ * الحقل بيتسجل كناقص بس لو مفيش لا رقم مستخدم ولا رقم موقع — يعني
+ * لو المستخدم حط رقمه أو قال "مش هحتاجه"، البند بقى محلول.
+ */
 function val(
   m: PlannerMetro,
   key: keyof PlannerMetro,
   missing: Missing,
+  overrides?: CostOverrides,
 ): number | null {
   const f = m[key] as { value: unknown } | undefined;
-  const v = f && typeof f.value === "number" ? f.value : null;
-  if (v === null) missing.add(m.slug, String(key));
-  return v;
+  const site = f && typeof f.value === "number" ? f.value : null;
+  const { value, source } = resolveCost(
+    site,
+    getOverride(overrides, key as unknown as CostKey, m.slug),
+  );
+  if (source === "missing") missing.add(m.slug, String(key));
+  return value;
 }
 
 function sum(parts: (number | null)[]): number {
@@ -82,20 +101,49 @@ export interface CostBreakdown {
   amount: number;
   /** الرقم ده اتحسب من حقل ناقص؟ */
   incomplete: boolean;
+  /** جه منين: رقم المستخدم · قال مش محتاجه · رقم الموقع · ناقص */
+  source: ValueSource;
+}
+
+/** الرقم ده جه منين لبند مربوط بمدينة. */
+function sourceOf(
+  m: PlannerMetro,
+  key: CostKey,
+  overrides: CostOverrides | undefined,
+): ValueSource {
+  const f = (m as unknown as Record<string, unknown>)[key] as
+    | { value: unknown }
+    | undefined;
+  const site = f && typeof f.value === "number" ? f.value : null;
+  return resolveCost(site, getOverride(overrides, key, m.slug)).source;
+}
+
+/** بيحسب بند مش مربوط بمدينة (طيران، تأسيس، تليفون). */
+function globalCost(
+  key: CostKey,
+  fallback: number,
+  metroSlug: string,
+  overrides: CostOverrides | undefined,
+): { amount: number; source: ValueSource } {
+  const { value, source } = resolveCost(fallback, getOverride(overrides, key, metroSlug));
+  return { amount: value ?? 0, source };
 }
 
 /** الإيجار المناسب لحجم العيلة — غرفة للفرد، شقة للعيلة. */
+export function housingKey(people: number, goAlone: boolean): CostKey {
+  if (goAlone || people === 1) return "roomRent";
+  return people <= 3 ? "apt1br" : "apt2br";
+}
+
 function housingMonthly(
   m: PlannerMetro,
   people: number,
   goAlone: boolean,
   missing: Missing,
-): { amount: number | null; kind: "room" | "apt1br" | "apt2br" } {
-  if (goAlone || people === 1) {
-    return { amount: val(m, "roomRent", missing), kind: "room" };
-  }
-  if (people <= 3) return { amount: val(m, "apt1br", missing), kind: "apt1br" };
-  return { amount: val(m, "apt2br", missing), kind: "apt2br" };
+  overrides?: CostOverrides,
+): { amount: number | null; kind: CostKey } {
+  const kind = housingKey(people, goAlone);
+  return { amount: val(m, kind as keyof PlannerMetro, missing, overrides), kind };
 }
 
 export function landingCost(
@@ -108,15 +156,33 @@ export function landingCost(
     hostNights: number;
   },
   missing: Missing,
+  overrides?: CostOverrides,
 ): { total: number; breakdown: CostBreakdown[] } {
   const people = opts.goAlone ? 1 : opts.adults + opts.kidsAges.length;
   const kids = opts.goAlone ? 0 : opts.kidsAges.length;
   const adults = opts.goAlone ? 1 : opts.adults;
 
-  const housing = housingMonthly(m, people, opts.goAlone, missing);
-  const deposit = val(m, "securityDeposit", missing);
-  const groceries = val(m, "groceriesPerAdult", missing);
-  const utilities = val(m, "utilities", missing);
+  const housing = housingMonthly(m, people, opts.goAlone, missing, overrides);
+  const deposit = val(m, "securityDeposit", missing, overrides);
+  const groceries = val(m, "groceriesPerAdult", missing, overrides);
+  const utilities = val(m, "utilities", missing, overrides);
+
+  const src = (key: CostKey): ValueSource => sourceOf(m, key, overrides);
+
+  const travel = globalCost(
+    "travel",
+    opts.includeTravel
+      ? adults * TRAVEL_COST_PER_ADULT + kids * TRAVEL_COST_PER_KID
+      : 0,
+    m.slug,
+    overrides,
+  );
+  const setup = globalCost(
+    "setup",
+    SETUP_PER_HOUSEHOLD + Math.max(0, people - 1) * SETUP_PER_EXTRA_PERSON,
+    m.slug,
+    overrides,
+  );
 
   // الاستضافة بتأجل الإيجار مش بتلغيه — بس بتوفر إيجار الأيام دي
   const hostedMonths = Math.min(opts.hostNights / 30, 1);
@@ -126,44 +192,47 @@ export function landingCost(
     {
       key: "travel",
       label: { ar: "تذاكر السفر", en: "Flights" },
-      amount: opts.includeTravel
-        ? adults * TRAVEL_COST_PER_ADULT + kids * TRAVEL_COST_PER_KID
-        : 0,
+      amount: travel.amount,
       incomplete: false,
+      source: travel.source,
     },
     {
-      key: "firstRent",
+      key: housing.kind,
       label: { ar: "إيجار أول شهر", en: "First month's rent" },
       amount: firstRent ?? 0,
       incomplete: firstRent === null,
+      source: src(housing.kind),
     },
     {
-      key: "deposit",
+      key: "securityDeposit",
       label: { ar: "تأمين السكن", en: "Security deposit" },
       // التأمين بيتقاس كمضاعف للإيجار
       amount:
         deposit !== null && housing.amount !== null ? deposit * housing.amount : 0,
       incomplete: deposit === null || housing.amount === null,
+      source: src("securityDeposit"),
     },
     {
       key: "setup",
       label: { ar: "تأسيس أساسي", en: "Basic setup" },
-      amount:
-        SETUP_PER_HOUSEHOLD + Math.max(0, people - 1) * SETUP_PER_EXTRA_PERSON,
+      amount: setup.amount,
       incomplete: false,
+      source: setup.source,
     },
     {
-      key: "firstFood",
+      key: "groceriesPerAdult",
       label: { ar: "أكل أول شهر", en: "First month's food" },
       amount:
         groceries !== null ? groceries * eatingUnits(adults, opts.goAlone ? [] : opts.kidsAges) : 0,
       incomplete: groceries === null,
+      source: src("groceriesPerAdult"),
     },
     {
       key: "utilities",
       label: { ar: "فواتير أول شهر", en: "First month's utilities" },
       amount: utilities ?? 0,
       incomplete: utilities === null,
+      source: src("utilities"),
     },
   ];
 
@@ -174,38 +243,43 @@ export function monthlyBurn(
   m: PlannerMetro,
   opts: { adults: number; kidsAges: number[]; goAlone: boolean; needsCar: boolean },
   missing: Missing,
+  overrides?: CostOverrides,
 ): { total: number; breakdown: CostBreakdown[] } {
   const people = opts.goAlone ? 1 : opts.adults + opts.kidsAges.length;
   const adults = opts.goAlone ? 1 : opts.adults;
   const kidsAges = opts.goAlone ? [] : opts.kidsAges;
 
-  const housing = housingMonthly(m, people, opts.goAlone, missing);
-  const groceries = val(m, "groceriesPerAdult", missing);
-  const utilities = val(m, "utilities", missing);
-  const transit = val(m, "monthlyTransitPass", missing);
-  const insurance = opts.needsCar ? val(m, "carInsurance", missing) : null;
+  const housing = housingMonthly(m, people, opts.goAlone, missing, overrides);
+  const groceries = val(m, "groceriesPerAdult", missing, overrides);
+  const utilities = val(m, "utilities", missing, overrides);
+  const transit = val(m, "monthlyTransitPass", missing, overrides);
+  const insurance = opts.needsCar ? val(m, "carInsurance", missing, overrides) : null;
+  const phone = globalCost("phone", 30 * adults, m.slug, overrides);
 
   const rows: CostBreakdown[] = [
     {
-      key: "rent",
+      key: housing.kind,
       label: { ar: "الإيجار", en: "Rent" },
       amount: housing.amount ?? 0,
       incomplete: housing.amount === null,
+      source: sourceOf(m, housing.kind, overrides),
     },
     {
-      key: "food",
+      key: "groceriesPerAdult",
       label: { ar: "الأكل", en: "Food" },
       amount: groceries !== null ? groceries * eatingUnits(adults, kidsAges) : 0,
       incomplete: groceries === null,
+      source: sourceOf(m, "groceriesPerAdult", overrides),
     },
     {
       key: "utilities",
       label: { ar: "الفواتير", en: "Utilities" },
       amount: utilities ?? 0,
       incomplete: utilities === null,
+      source: sourceOf(m, "utilities", overrides),
     },
     {
-      key: "transport",
+      key: opts.needsCar ? "carInsurance" : "monthlyTransitPass",
       label: {
         ar: opts.needsCar ? "تأمين العربية والبنزين" : "المواصلات",
         en: opts.needsCar ? "Car insurance and fuel" : "Transit",
@@ -213,12 +287,14 @@ export function monthlyBurn(
       // البنزين تقدير ثابت بسيط لحد ما حاسبة العربية تدخل في الحسبة
       amount: opts.needsCar ? (insurance ?? 0) + 120 : (transit ?? 0) * adults,
       incomplete: opts.needsCar ? insurance === null : transit === null,
+      source: sourceOf(m, opts.needsCar ? "carInsurance" : "monthlyTransitPass", overrides),
     },
     {
       key: "phone",
       label: { ar: "التليفون", en: "Phone" },
-      amount: 30 * adults,
+      amount: phone.amount,
       incomplete: false,
+      source: phone.source,
     },
   ];
 
@@ -247,6 +323,7 @@ export function scoreMetros(
   policy: TierPolicy,
   goAlone: boolean,
   missing: Missing,
+  overrides?: CostOverrides,
 ): MetroScore[] {
   const w = policy.metroWeights;
 
@@ -260,6 +337,7 @@ export function scoreMetros(
         needsCar: (m.carNeed.value ?? 3) >= 4,
       },
       missing,
+      overrides,
     );
     const landing = landingCost(
       m,
@@ -271,6 +349,7 @@ export function scoreMetros(
         hostNights: input.hostCity === m.slug ? input.hostNights : 0,
       },
       missing,
+      overrides,
     );
 
     const cash = input.money - landing.total - input.monthlyDebt;
@@ -314,8 +393,10 @@ export function scoreMetros(
     if (m.arabCommunity.label) why.push(m.arabCommunity.label);
 
     const capped = capJudgment({ factual, judgment });
+    const people = goAlone ? 1 : input.adults + input.kidsAges.length;
 
     return {
+      computable: essentialMissing(m, goAlone, people, overrides).length === 0,
       slug: m.slug,
       name: m.name,
       score: capped.score,
@@ -337,20 +418,26 @@ export function scoreMetros(
  */
 export const ESSENTIAL_FIELDS = ["housing", "groceriesPerAdult"] as const;
 
+/**
+ * البند يعتبر محلول لو عندنا رقم، **أو** المستخدم حط رقمه، **أو** قال
+ * "مش هحتاجه". التلاتة إجابات — الناقص بس هو اللي مفيهوش أي إجابة.
+ */
 function essentialMissing(
   m: PlannerMetro,
   goAlone: boolean,
   people: number,
+  overrides?: CostOverrides,
 ): string[] {
-  const missing: string[] = [];
+  const out: string[] = [];
 
-  const housing = goAlone || people === 1 ? m.roomRent : people <= 3 ? m.apt1br : m.apt2br;
-  if (typeof housing.value !== "number") {
-    missing.push(goAlone || people === 1 ? "roomRent" : people <= 3 ? "apt1br" : "apt2br");
-  }
-  if (typeof m.groceriesPerAdult.value !== "number") missing.push("groceriesPerAdult");
+  const check = (key: CostKey) => {
+    if (sourceOf(m, key, overrides) === "missing") out.push(key);
+  };
 
-  return missing;
+  check(housingKey(people, goAlone));
+  check("groceriesPerAdult");
+
+  return out;
 }
 
 /* ------------------------------------------------------------------ *
@@ -468,6 +555,7 @@ function risksFor(
 export function computePlan(
   input: PlannerInput,
   metros: PlannerMetro[],
+  overrides?: CostOverrides,
 ): PlanResult {
   const missing = tracker();
 
@@ -475,10 +563,34 @@ export function computePlan(
   const provisional = tierFor(6);
   const goAloneFirst = shouldGoAlone(provisional, input);
 
-  const ranked = scoreMetros(metros, input, provisional, goAloneFirst, missing);
-  const best = ranked[0];
+  const ranked = scoreMetros(metros, input, provisional, goAloneFirst, missing, overrides);
 
-  const chosen = best ? metros.find((m) => m.slug === best.slug)! : metros[0]!;
+  /**
+   * ⚠️ المدينة اللي المستخدم عدّل أرقامها بتغلب الترتيب.
+   *
+   * من غير القاعدة دي بيحصل دوران: المستخدم يكتب إيجار مدينة، الترتيب
+   * يتغير عشان بقت أرخص، الخطة تختار مدينة تانية إيجارها لسه ناقص،
+   * فتعديله يبان كإنه ضاع.
+   *
+   * ولو هو قعد يكتب أرقام مدينة معينة، فهو بيخطط ليها هي.
+   */
+  const customised = new Set(
+    Object.keys(overrides ?? {}).filter((scope) => scope !== GLOBAL_SCOPE),
+  );
+
+  /**
+   * ترتيب الاختيار:
+   *   ١. مدينة المستخدم عدّل أرقامها — دي نيّته الواضحة
+   *   ٢. أحسن مدينة **عندنا أرقامها** — عشان الخطة متتقفلش وفيه بديل
+   *      معروف متاح
+   *   ٣. أحسن مدينة عمومًا — عشان يفضل قدامه محرر يفك بيه القفلة
+   */
+  const preferred =
+    ranked.find((r) => customised.has(r.slug)) ??
+    ranked.find((r) => r.computable) ??
+    ranked[0];
+
+  const chosen = preferred ? metros.find((m) => m.slug === preferred.slug)! : metros[0]!;
   const needsCar = (chosen.carNeed.value ?? 3) >= 4;
 
   const landing = landingCost(
@@ -491,6 +603,7 @@ export function computePlan(
       hostNights: input.hostCity === chosen.slug ? input.hostNights : 0,
     },
     missing,
+    overrides,
   );
   const burn = monthlyBurn(
     chosen,
@@ -501,6 +614,7 @@ export function computePlan(
       needsCar,
     },
     missing,
+    overrides,
   );
 
   const availableCash = input.money - landing.total - input.monthlyDebt;
@@ -511,7 +625,16 @@ export function computePlan(
   const goAlone = shouldGoAlone(policy, input);
 
   // إعادة ترتيب بأوزان الشريحة الصح
-  const finalRanked = scoreMetros(metros, input, policy, goAlone, missing);
+  const finalRanked = scoreMetros(metros, input, policy, goAlone, missing, overrides);
+
+  /**
+   * ⚠️ المدن اللي مش عارفين أرقامها بتتشال من الترشيح كله.
+   *
+   * من غير كده بيحصل العكس تمامًا للمطلوب: مدينة داتاها فاضية
+   * مصاريفها بتتحسب أقل من الحقيقة، فبتتصدّر الترشيح وتزق المدينة
+   * اللي عندنا (أو عند المستخدم) أرقامها الحقيقية لقايمة "اتجنبها".
+   */
+  const rankable = finalRanked.filter((m) => m.computable);
 
   const projection = [];
   for (let month = 1; month <= 12; month++) {
@@ -527,24 +650,32 @@ export function computePlan(
   const unverified = missing.list().filter((f) => f.startsWith(chosen.slug));
 
   const people = goAlone ? 1 : input.adults + input.kidsAges.length;
-  const missingEssential = essentialMissing(chosen, goAlone, people);
+  const missingEssential = essentialMissing(chosen, goAlone, people, overrides);
 
   return {
     computable: missingEssential.length === 0,
     missingEssential,
+    chosenMetro: chosen.slug,
+    landingBreakdown: landing.breakdown,
+    burnBreakdown: burn.breakdown,
     tier: policy.tier,
     runwayMonths,
     landingCost: landing.total,
     monthlyBurn: burn.total,
     goAlone,
     reasons: reasonsFor(policy.tier, runwayMonths, goAlone, burn.total),
-    recommendedMetros: finalRanked.slice(0, 3),
-    avoidMetros: finalRanked.slice(-3).reverse(),
+    recommendedMetros: rankable.slice(0, 3),
+    avoidMetros: rankable.length > 3 ? rankable.slice(-3).reverse() : [],
     monthlyProjection: projection,
     weeklyActions: weeklyActions(policy),
-    risks: risksFor(policy.tier, finalRanked, unverified.length),
+    risks: risksFor(policy.tier, rankable, unverified.length),
     sources,
-    unverifiedFields: missing.list(),
+    /**
+     * ⚠️ بتاعة المدينة المختارة بس.
+     * قايمة فيها ٢٨١ حقل من مدن مالهاش علاقة بالخطة مش شفافية —
+     * دي ضوضاء بتخفي المهم.
+     */
+    unverifiedFields: unverified,
   };
 }
 
@@ -555,6 +686,7 @@ export function computePlan(
 export function computeRequired(
   input: RequiredAmountInput,
   metros: PlannerMetro[],
+  overrides?: CostOverrides,
 ): RequiredAmountResult | null {
   const m = metros.find((x) => x.slug === input.metro);
   if (!m) return null;
@@ -573,21 +705,25 @@ export function computeRequired(
       hostNights: 0,
     },
     missing,
+    overrides,
   );
   const burn = monthlyBurn(
     m,
     { adults: input.adults, kidsAges: input.kidsAges, goAlone, needsCar },
     missing,
+    overrides,
   );
 
   const net = Math.max(0, burn.total - input.monthlyIncomeFromHome);
   const months = Math.max(0, input.monthsWithoutWork);
   const people = goAlone ? 1 : input.adults + input.kidsAges.length;
-  const missingEssential = essentialMissing(m, goAlone, people);
+  const missingEssential = essentialMissing(m, goAlone, people, overrides);
 
   return {
     computable: missingEssential.length === 0,
     missingEssential,
+    landingBreakdown: landing.breakdown,
+    burnBreakdown: burn.breakdown,
     metro: m.slug,
     totalNeeded: Math.round(landing.total + net * months),
     landingCost: Math.round(landing.total),
