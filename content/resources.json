@@ -1,5 +1,5 @@
 {
-  "_note": "⚠️ الملف ده **مش مصدر أرقام** — دي مواقع بيدور فيها المستخدم بنفسه. متضفهوش لـcontentFiles() في lib/content/load.ts: لو اتضاف، الدومينات دي هتظهر في صفحة /sources كإنها مصادر بيانات رسمية للموقع، وهي مش كده. ⚠️ اللينكات اتكتبت من معرفة عامة و**ماتفتحتش من جهاز البناء** لأن الشبكة هناك بتحجب المواقع الخارجية (بترجع 403 حتى لـtravel.state.gov). لازم حد يفتحهم بنفسه ويحط تاريخ في linksLastChecked. اتشال منهم CarGurus و Autotrader لأنهم رجّعوا 404. ⚠️ ممنوع أي لينك أفلييت هنا — القاعدة الخامسة في PROJECT-RULES. ⚠️ **وممنوع نضيف هنا أي مساعدات أو دعم حكومي** (إسكان مدعوم، دعم فواتير، معونات، خطوط إحالة لخدمات اجتماعية). القرار ده اتاخد بقصد: شرط الـpublic charge في قانون الهجرة اتغير مرتين في تلات سنين، والموقع مش استشارة قانونية ومش هيقدر يضمن للمستخدم إن حاجة منها مش هتأثر على الفيزا أو الجرين كارد بتاعته. التوجيه لحاجة ممكن تضر حد في ورقه أسوأ بكتير من إننا منقولش عنها.",
+  "_note": "⚠️ الملف ده **مش مصدر أرقام** — دي مواقع بيدور فيها المستخدم بنفسه. متضفهوش لـcontentFiles() في lib/content/load.ts: لو اتضاف، الدومينات دي هتظهر في صفحة /sources كإنها مصادر بيانات رسمية للموقع، وهي مش كده. ⚠️ اللينكات اتكتبت من معرفة عامة و**ماتفتحتش من جهاز البناء** لأن الشبكة هناك بتحجب المواقع الخارجية (بترجع 403 حتى لـtravel.state.gov). لازم حد يفتحهم بنفسه ويحط تاريخ في linksLastChecked. اتشال منهم CarGurus و Autotrader لأنهم رجّعوا 404. ⚠️ ممنوع أي لينك أفلييت هنا — القاعدة الخامسة في PROJECT-RULES. ⚠️ **وممنوع نضيف هنا أي مساعدات أو دعم حكومي** (إسكان مدعوم، دعم فواتير، معونات، خطوط إحالة لخدمات اجتماعية). القرار ده اتاخد بقصد: شرط الـpublic charge في قانون الهجرة اتغير مرتين في تلات سنين، والموقع مش استشارة قانونية ومش هيقدر يضمن للمستخدم إن حاجة منها مش هتأثر على الفيزا أو الجرين كارد بتاعته. التوجيه لحاجة ممكن تضر حد في ورقه أسوأ بكتير من إننا منقولش عنها. ⚠️ **استثناء واحد مقصود:** لينك الـpublic charge على uscis.gov. ده مش توجيه لمساعدة — ده العكس بالظبط: الصفحة اللي بتقول للمستخدم أي حاجة ممكن تأثر على ورقه. حطّيناه مؤقتًا لحد ما اللينك يتأكد ويتحط تاريخه.",
   "linksLastChecked": null,
   "categories": [
     {
@@ -169,8 +169,8 @@
         "en": "Gig apps"
       },
       "lead": {
-        "ar": "مفيش مقابلة ومفيش حد بيرد عليك بالقبول أو الرفض — بس ده مش معناه إنك بتبدأ بكرة. كل المنصات الكبيرة بتعمل فحص خلفية (background check) قبل ما تفعّلك، والفحص ده محتاج رقم الضمان الاجتماعي. يعني الانتظار الحقيقي بيبدأ من ساعة ما تقدّم على الرقم مش من ساعة ما تنزّل التطبيق. وتوصيل الركاب أبطأ حاجة: عايز رخصة أمريكية وعربية باسمك وتأمين وفحص للعربية. أسرع طريق عادةً هو توصيل الأكل في مدينة بتسمح بالعجلة أو بالمشي.",
-        "en": "There is no interview and nobody replies to accept or reject you — but that does not mean you start tomorrow. Every major platform runs a background check before activating you, and that check needs a Social Security number. So the real wait starts when you apply for the number, not when you install the app. Rideshare is the slowest route: it needs a US licence, a car in your name, insurance and a vehicle inspection. The fastest way in is usually food delivery in a city that allows bike or foot couriers."
+        "ar": "مفيش مقابلة شغل ولا مدير بيقابلك — بس ده مش معناه إن الباب مفتوح. فيه قرار قبول أو رفض بيتاخد عليك، هو بس أوتوماتيك: فحص خلفية وسجل مخالفات مرور، وممكن ترفض. وفيه مدن التسجيل فيها مقفول أو عليه قايمة انتظار، فتسجّل وتفضل مستني من غير رد أصلًا. والفحص محتاج رقم الضمان الاجتماعي، يعني الانتظار الحقيقي بيبدأ من ساعة ما تقدّم على الرقم مش من ساعة ما تنزّل التطبيق. وتوصيل الركاب أبطأ حاجة: عايز رخصة أمريكية وعربية باسمك وتأمين وفحص للعربية.",
+        "en": "There is no job interview and no manager to meet — but that does not mean the door is open. There is an accept-or-reject decision on you; it is simply automated: a background check and a driving record, and you can be turned down. In some cities sign-ups are closed or waitlisted, so you register and simply wait with no reply at all. The check needs a Social Security number, so the real wait starts when you apply for the number, not when you install the app. Rideshare is the slowest route: it needs a US licence, a car in your name, insurance and a vehicle inspection."
       },
       "sites": [
         {
@@ -223,8 +223,8 @@
         }
       ],
       "unknown": {
-        "ar": "⚠️ مدة التفعيل الفعلية لكل تطبيق لسه مش عندنا — بتختلف بالمدينة وبسرعة فحص الخلفية، وأي رقم نقوله من غير مصدر هيبقى غلط لواحد بيحسب فلوسه عليه. متخططش على إن الدخل ده هيبدأ في يوم معروف.",
-        "en": "⚠️ We do not yet have the actual activation time for each app — it varies by city and by how fast the background check clears, and any figure we quote without a source would mislead someone budgeting on it. Do not plan on this income starting on a known date."
+        "ar": "⚠️ مدة التفعيل الفعلية لكل تطبيق مش عندنا، ولا عارفين التسجيل مفتوح ولا مقفول في أنهي مدينة — الاتنين بيتغيروا بالمدينة وبالوقت، وأي رقم نقوله من غير مصدر هيبقى غلط لواحد بيحسب فلوسه عليه. متخططش على إن الدخل ده هيبدأ في يوم معروف، ولا إنه هيبدأ أصلًا. خليه إضافة على خطتك مش أساسها.",
+        "en": "⚠️ We do not have the actual activation time for each app, nor whether sign-ups are open or closed in a given city — both vary by city and over time, and any figure we quote without a source would mislead someone budgeting on it. Do not plan on this income starting on a known date, or on it starting at all. Treat it as an addition to your plan, not its basis."
       }
     },
     {
@@ -289,6 +289,19 @@
           "what": {
             "ar": "دليل كل الخدمات الحكومية — مفيد لما متعرفش الجهة المسؤولة عن إيه.",
             "en": "A directory of every government service — useful when you do not know which agency handles what."
+          },
+          "official": true
+        },
+        {
+          "name": "USCIS — public charge (العبء العام)",
+          "url": "https://www.uscis.gov/greencard/public-charge",
+          "what": {
+            "ar": "الصفحة الرسمية اللي بتقول أي مساعدات حكومية بتتحسب عليك في تقييم الفيزا والجرين كارد وأي حاجة مبتتحسبش. الشرط ده اتوسّع سنة ٢٠١٩ واتلغى سنة ٢٠٢١ ورجع ضيّق سنة ٢٠٢٢ — يعني اتغير مرتين في تلات سنين، فاقراها «يوم ما تقدّم» مش قبلها بسنة. وملحوظة مهمة: الشرط ده بيتقاس عند الفيزا والجرين كارد، ومفيش منه اختبار في استمارة التجنيس (N-400).",
+            "en": "The official page listing which government benefits count against you in the visa and green-card assessment, and which do not. The condition was widened in 2019, struck down in 2021 and narrowed again in 2022 — twice in three years — so read it on the day you apply, not a year earlier. Note it is assessed at the visa and green-card stage; the naturalisation form (N-400) has no public charge test."
+          },
+          "watch": {
+            "ar": "⚠️ اللينك ده لسه ماتفتحش للتأكد. لو مافتحش معاك، ادخل uscis.gov ودوّر على «public charge» — الصفحة موجودة والمسار هو اللي بيتغير. والموقع ده مش استشارة قانونية: لو وضعك معقّد، اسأل محامي هجرة بتتأكد منه من نقابة محامين الولاية، مش «مستشار» ولا نوتاريو.",
+            "en": "⚠️ This link has not been opened to confirm it works. If it fails, go to uscis.gov and search for “public charge” — the page exists; it is the path that changes. And this site is not legal advice: if your situation is complicated, ask an immigration lawyer verified through the state bar, not a “consultant” or notario."
           },
           "official": true
         }
