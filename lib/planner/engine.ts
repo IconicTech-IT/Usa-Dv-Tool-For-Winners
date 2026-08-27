@@ -111,6 +111,17 @@ export const SETUP_PER_EXTRA_PERSON = globalField(arrivalCosts.setupPerExtraPers
 export const PHONE_PER_ADULT = globalField(arrivalCosts.phonePerAdult);
 export const FUEL_PER_CAR_MONTH = globalField(arrivalCosts.fuelPerCarMonth);
 
+/**
+ * ⚠️ تمن شرا العربية نفسها — **مش داخل في المصاريف الشهرية**.
+ *
+ * مقارنة "بعربية / من غير عربية" كانت بتقارن المصاريف الشهرية بس، فكانت
+ * بتخلي العربية تبان أرخص بكتير من الحقيقة: الفرق $400 في الشهر، بس فيه
+ * كمان آلاف الدولارات بتتدفع مرة واحدة في الأول. اللي بيقرا المقارنة من
+ * غير الرقم ده بياخد قرار ناقص.
+ */
+export const USED_CAR_PRICE = globalField(arrivalCosts.usedCarPrice);
+export const USED_CAR_PRICE_FIELD = arrivalCosts.usedCarPrice as Field<number>;
+
 /** الحالة والbasis بتاعة كل بند عام — الواجهة بتعرضهم زي أي حقل تاني. */
 export const GLOBAL_COST_FIELDS: Partial<Record<CostKey, Field<number>>> = {
   travel: arrivalCosts.travelPerAdult as Field<number>,

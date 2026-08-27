@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card } from "@/components/Card";
 import { PageHeader } from "@/components/ui";
 import { Num } from "@/components/Num";
+import { DevOnly } from "@/components/DevOnly";
 import {
   collectFields,
   collectSourceHosts,
@@ -77,6 +78,17 @@ export default async function SourcesPage({
         </section>
       )}
 
+      {/**
+       * ⚠️ قايمة أقدم الحقول — مسارات ملفات وأسماء حقول برمجية
+       * (`metros/arlington-va.json · car.carNeed`). دي أداة صيانة بتاعتنا
+       * إحنا، مش معلومة للزائر: هو مش عارف الملفات دي إيه ولا ينفع يعمل
+       * بيها حاجة، فبتتحول لضوضاء بتضيّع الجزء المفيد في الصفحة.
+       *
+       * ⚠️ **الأعداد فوق وقايمة المصادر فاضلين ظاهرين للكل** — دول الوعد
+       * بالشفافية نفسه: الزائر لازم يقدر يشوف كام رقم مؤكد وكام لسه محتاج
+       * تأكيد ومنين جايين. اللي اتخفى هو التفاصيل التقنية بس.
+       */}
+      <DevOnly>
       <section className="space-y-3">
         <h2 className="text-xl font-bold">{t("oldestTitle")}</h2>
         <p className="text-sm text-[var(--slate)]">{t("oldestLead")}</p>
@@ -88,9 +100,10 @@ export default async function SourcesPage({
               </span>
               <Num>{f.lastVerified}</Num>
             </li>
-          ))}
-        </ul>
-      </section>
+            ))}
+          </ul>
+        </section>
+      </DevOnly>
     </div>
   );
 }

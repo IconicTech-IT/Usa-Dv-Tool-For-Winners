@@ -6,6 +6,7 @@ import { Card } from "@/components/Card";
 import { Money, Num } from "@/components/Num";
 import { Section } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
+import { USED_CAR_PRICE } from "@/lib/planner/engine";
 import { breakEvenMonths, carMonthlyCost } from "@/lib/calculators/gig";
 import { BigResult, CalcField, MissingNote, NumInput } from "./shared";
 import type { GigMetro } from "./GigCalc";
@@ -22,7 +23,8 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
   const locale = useLocale() as "ar" | "en";
 
   const [metroSlug, setMetroSlug] = useState(metros[0]?.slug ?? "");
-  const [price, setPrice] = useState(8000);
+  // الرقم الافتراضي من content/arrival-costs.json مش مكتوب هنا
+  const [price, setPrice] = useState(USED_CAR_PRICE);
   const [down, setDown] = useState(2000);
   const [apr, setApr] = useState(13.5);
   const [months, setMonths] = useState(48);

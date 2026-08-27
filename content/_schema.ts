@@ -289,6 +289,7 @@ export const ArrivalCosts = z.object({
   setupPerExtraPerson: Field,
   phonePerAdult: Field,
   fuelPerCarMonth: Field,
+  usedCarPrice: Field,
   lastVerified: ISO_DATE,
 });
 

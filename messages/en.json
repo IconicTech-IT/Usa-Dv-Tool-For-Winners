@@ -66,7 +66,14 @@
       "no": "No",
       "money": {
         "q": "How much do you have in US dollars right now?",
-        "hint": "The amount you have now, before you travel."
+        "hint": "The amount you have now, before you travel.",
+        "usd": "In dollars",
+        "egp": "In Egyptian pounds",
+        "egpShort": "EGP",
+        "rateAsk": "How many pounds to the dollar? Enter the rate you are seeing.",
+        "rateNeeded": "Rate needed",
+        "equals": "That is",
+        "rateWhy": "We ask for the rate because it changes daily — any figure we hardcode would be wrong within a week, and you would be planning your money on it."
       },
       "moneyIncludesTravel": {
         "q": "Does that include flights and visa fees?"
@@ -193,7 +200,8 @@
         "B": "Your money lasts 1.5 to 3 months with no income.",
         "C": "Your money lasts 3 to 6 months with no income — you have room to choose.",
         "D": "Your money lasts more than 6 months with no income."
-      }
+      },
+      "carUpfront": "Plus buying the car itself, once, up front:"
     },
     "need": {
       "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",
@@ -792,7 +800,7 @@
     "title": "Car listing checker",
     "lead": "Paste a listing and we'll show you what should worry you in it.",
     "paste": "Listing text",
-    "localOnly": "The check runs entirely on your device. Nothing is sent anywhere.",
+    "localOnly": "The check runs entirely on your device. The listing text never leaves your browser.",
     "extracted": "What we read from it",
     "year": "Model year",
     "miles": "Mileage",
@@ -827,7 +835,7 @@
   },
   "sources": {
     "title": "Sources and data status",
-    "lead": "Every number on the site and its status. This page deliberately shows the least recently checked data first.",
+    "lead": "Every number on the site and where it stands: what is confirmed from an official source, what is an estimate, and what still needs verification.",
     "statuses": {
       "verified": "Verified against an official source",
       "estimated": "Estimate (with its basis stated)",
@@ -843,7 +851,7 @@
   "about": {
     "title": "About",
     "free": "This site is completely free, forever. No subscriptions, no ads, no affiliate links, no login, not even a donate button. Nobody earns anything from it.",
-    "privacy": "No data is collected. Everything you enter stays on your own device in your browser, and no server receives anything from you.",
+    "privacy": "Everything you enter stays on your own device — no server receives anything from you. The only thing recorded is a visit count: no cookies, nothing that identifies you.",
     "humanEffort": "This content is human work and can be wrong. Any number not confirmed from an official source is marked 'needs verification' rather than presented as fact — because a wrong number is worse than no number.",
     "legalTitle": "Note",
     "legal": "This site is not legal or financial advice. It explains, organises and calculates, but the official US sites are always the final word.",

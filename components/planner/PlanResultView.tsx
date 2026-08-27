@@ -10,6 +10,7 @@ import { localized } from "@/components/FieldValue";
 import { humanField } from "@/lib/content/labels";
 import { useInView, useReducedMotion, DURATION } from "@/lib/motion";
 import type { PlanResult } from "@/lib/types";
+import { USED_CAR_PRICE, USED_CAR_PRICE_FIELD } from "@/lib/planner/engine";
 import { CostEditor } from "./CostEditor";
 
 /**
@@ -27,6 +28,7 @@ export function PlanResultView({
   metroName?: string;
 }) {
   const t = useTranslations("planner.result");
+  const tb = useTranslations("badges");
   const locale = useLocale() as "ar" | "en";
 
   /**
@@ -207,6 +209,21 @@ export function PlanResultView({
                   </div>
                 ))}
               </div>
+              {/**
+               * ⚠️ المقارنة كانت بالمصاريف الشهرية بس.
+               *
+               * يعني العربية كانت بتبان "$400 في الشهر" — والحقيقة إن فيه
+               * كمان آلاف بتتدفع **مرة واحدة في الأول** تمن العربية نفسها.
+               * اللي بيقرا المقارنة من غير الرقم ده بياخد قرار ناقص.
+               */}
+              <p className="text-sm">
+                {t("carUpfront")} <Money value={USED_CAR_PRICE} />{" "}
+                <span className="badge badge--estimated">{tb("estimated")}</span>
+              </p>
+              <p className="text-xs text-[var(--slate)]">
+                {USED_CAR_PRICE_FIELD.basis?.[locale] ?? USED_CAR_PRICE_FIELD.basis?.ar}
+              </p>
+
               <p className="text-sm">
                 {t("carGap")}{" "}
                 <Money

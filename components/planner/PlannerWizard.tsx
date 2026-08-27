@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Card } from "@/components/Card";
+import { Money } from "@/components/Num";
+import { localized } from "@/components/FieldValue";
 import { useUser } from "@/lib/store/user-store";
-import type { PlannerInput } from "@/lib/types";
+import type { Localized, PlannerInput } from "@/lib/types";
 import type { PlannerMetro } from "@/lib/planner/metro";
 
 /**
@@ -53,9 +55,12 @@ const ORDER: QuestionId[] = [
 
 export function PlannerWizard({
   metros,
+  stateNames,
   onDone,
 }: {
   metros: PlannerMetro[];
+  /** رمز الولاية → اسمها الكامل. الرمز لوحده مبيقولش حاجة للمستخدم. */
+  stateNames: Record<string, Localized>;
   onDone: () => void;
 }) {
   const t = useTranslations("planner.questions");
@@ -108,6 +113,7 @@ export function PlannerWizard({
             id={current}
             profile={profile}
             metros={metros}
+            stateNames={stateNames}
             set={set}
             onAnswered={next}
           />
@@ -163,6 +169,97 @@ function NumberField({
   );
 }
 
+/**
+ * المبلغ — بالدولار أو بالجنيه.
+ *
+ * ⚠️ **`money` بيتخزن بالدولار دايمًا.** كل حسابات الموقع بالدولار، فلو
+ * سيبنا الجنيه يدخل المحرك هنبقى بنقارن تفاح بموز في مية مكان.
+ *
+ * ⚠️ **وسعر الصرف من المستخدم، مش من عندنا.** قاعدة في `CLAUDE.md`:
+ * ممنوع سعر صرف ثابت في الكود. السعر بيتغير كل يوم، وأي رقم نحطه إحنا
+ * هيبقى غلط بعد أسبوع — والمستخدم هيحسب عليه فلوسه ويطلع قرار غلط.
+ *
+ * ولحد ما يكتب السعر، مبنحسبش حاجة: `money` بيفضل زي ما هو بدل ما نحط
+ * رقم متحوّل بسعر مخترع.
+ */
+function MoneyField({
+  profile,
+  set,
+  t,
+}: {
+  profile: Partial<PlannerInput>;
+  set: (p: Partial<PlannerInput>) => void;
+  t: (k: string) => string;
+}) {
+  const entry = profile.moneyEntry;
+  const currency = entry?.currency ?? "USD";
+  const amount = entry?.amount ?? profile.money;
+  const rate = entry?.rate;
+
+  const apply = (next: {
+    currency?: "USD" | "EGP";
+    amount?: number;
+    rate?: number;
+  }) => {
+    const c = next.currency ?? currency;
+    const a = next.amount ?? amount ?? 0;
+    const r = next.rate ?? rate ?? 0;
+
+    const moneyEntry = { currency: c, amount: a, rate: r };
+
+    if (c === "USD") {
+      set({ moneyEntry, money: a });
+      return;
+    }
+    // بالجنيه: من غير سعر مفيش تحويل — وممنوع نخترع سعر
+    if (r > 0) set({ moneyEntry, money: Math.round(a / r) });
+    else set({ moneyEntry });
+  };
+
+  const converted =
+    currency === "EGP" && amount && rate && rate > 0
+      ? Math.round(amount / rate)
+      : null;
+
+  return (
+    <div className="space-y-3">
+      <Choice
+        options={[
+          { value: "USD", label: t("money.usd") },
+          { value: "EGP", label: t("money.egp") },
+        ]}
+        value={currency}
+        onChange={(v) => apply({ currency: v as "USD" | "EGP" })}
+      />
+
+      <NumberField
+        value={amount}
+        onChange={(n) => apply({ amount: n })}
+        prefix={currency === "USD" ? "$" : t("money.egpShort")}
+      />
+
+      {currency === "EGP" && (
+        <div className="space-y-2">
+          <p className="text-sm text-[var(--slate)]">{t("money.rateAsk")}</p>
+          <NumberField value={rate} onChange={(n) => apply({ rate: n })} prefix="$1 =" />
+          <p className="text-sm">
+            {converted === null ? (
+              <span className="badge badge--needs-verification">
+                {t("money.rateNeeded")}
+              </span>
+            ) : (
+              <>
+                {t("money.equals")} <Money value={converted} />
+              </>
+            )}
+          </p>
+          <p className="text-xs text-[var(--slate)]">{t("money.rateWhy")}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Choice({
   options,
   value,
@@ -197,15 +294,18 @@ function QuestionBody({
   id,
   profile,
   metros,
+  stateNames,
   set,
 }: {
   id: QuestionId;
   profile: Partial<PlannerInput>;
   metros: PlannerMetro[];
+  stateNames: Record<string, Localized>;
   set: (p: Partial<PlannerInput>) => void;
   onAnswered: () => void;
 }): ReactNode {
   const t = useTranslations("planner.questions");
+  const locale = useLocale() as "ar" | "en";
   const yesNo = [
     { value: "yes", label: t("yes") },
     { value: "no", label: t("no") },
@@ -214,7 +314,7 @@ function QuestionBody({
 
   switch (id) {
     case "money":
-      return <NumberField value={profile.money} onChange={(n) => set({ money: n })} prefix="$" />;
+      return <MoneyField profile={profile} set={set} t={t} />;
 
     case "moneyIncludesTravel":
       return (
@@ -310,7 +410,7 @@ function QuestionBody({
           <option value="">{t("host.none")}</option>
           {metros.map((m) => (
             <option key={m.slug} value={m.slug}>
-              {m.name.ar}
+              {localized(m.name, locale)}
             </option>
           ))}
         </select>
@@ -391,7 +491,7 @@ function QuestionBody({
             <option value="">{t("target.anyState")}</option>
             {states.map((st) => (
               <option key={st} value={st}>
-                {st}
+                {stateNames[st] ? localized(stateNames[st], locale) : st}
               </option>
             ))}
           </select>
@@ -406,7 +506,7 @@ function QuestionBody({
               .filter((m) => !profile.targetState || m.state === profile.targetState)
               .map((m) => (
                 <option key={m.slug} value={m.slug}>
-                  {m.name.ar}
+                  {localized(m.name, locale)}
                 </option>
               ))}
           </select>

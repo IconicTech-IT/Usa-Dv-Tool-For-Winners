@@ -11,7 +11,7 @@ import { humanField } from "@/lib/content/labels";
 import { useUser } from "@/lib/store/user-store";
 import { computePlan, computeRequired } from "@/lib/planner/engine";
 import type { PlannerMetro } from "@/lib/planner/metro";
-import type { PlanDirection, PlannerInput } from "@/lib/types";
+import type { Localized, PlanDirection, PlannerInput } from "@/lib/types";
 import { PlannerWizard } from "./PlannerWizard";
 import { PlanResultView } from "./PlanResultView";
 import { CostEditor } from "./CostEditor";
@@ -44,10 +44,17 @@ function fill(p: Partial<PlannerInput>): PlannerInput {
     targetMetro: p.targetMetro ?? null,
     targetState: p.targetState ?? null,
     willBuyCar: p.willBuyCar ?? null,
+    moneyEntry: p.moneyEntry ?? null,
   };
 }
 
-export function Planner({ metros }: { metros: PlannerMetro[] }) {
+export function Planner({
+  metros,
+  stateNames,
+}: {
+  metros: PlannerMetro[];
+  stateNames: Record<string, Localized>;
+}) {
   const t = useTranslations("planner");
   const [direction, setDirection] = useState<PlanDirection>("have");
 
@@ -73,7 +80,7 @@ export function Planner({ metros }: { metros: PlannerMetro[] }) {
       </div>
 
       {direction === "have" ? (
-        <HaveDirection metros={metros} />
+        <HaveDirection metros={metros} stateNames={stateNames} />
       ) : (
         <NeedDirection metros={metros} />
       )}
@@ -85,7 +92,13 @@ export function Planner({ metros }: { metros: PlannerMetro[] }) {
  * "معايا كام؟"
  * ------------------------------------------------------------------ */
 
-function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
+function HaveDirection({
+  metros,
+  stateNames,
+}: {
+  metros: PlannerMetro[];
+  stateNames: Record<string, Localized>;
+}) {
   const t = useTranslations("planner");
   const locale = useLocale() as "ar" | "en";
   const profile = useUser((s) => s.profile);
@@ -113,7 +126,7 @@ function HaveDirection({ metros }: { metros: PlannerMetro[] }) {
   };
 
   if (!showResult) {
-    return <PlannerWizard metros={metros} onDone={done} />;
+    return <PlannerWizard metros={metros} stateNames={stateNames} onDone={done} />;
   }
 
   return (

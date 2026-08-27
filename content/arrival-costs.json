@@ -73,5 +73,18 @@
     },
     "verifyIn": "6-months"
   },
-  "lastVerified": "2026-08-26"
+  "lastVerified": "2026-08-26",
+  "usedCarPrice": {
+    "value": 8000,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-26",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: عربية مستعملة معقولة لواصل جديد — موديل قديم شوية بكيلومترات عالية، من بايع خاص مش معرض. السعر بيختلف جدًا بالولاية وبالموديل وبحالتها، فده رقم يبدأ منه مش رقم تحجز بيه. حاسبة العربية بتاخد رقمك انت.",
+      "en": "Assumption: a workable used car for a new arrival — an older model with high mileage from a private seller, not a dealership. Prices vary a lot by state, model and condition, so this is a starting point, not a figure to commit to. The car calculator takes your own number."
+    },
+    "verifyIn": "6-months",
+    "note": "كان رقم ثابت في components/calculators/CarCalc.tsx. أول أولوية للاستبدال: متوسط إعلانات فعلية لعربيات مستعملة في المدن المرشحة."
+  }
 }
