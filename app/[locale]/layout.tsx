@@ -13,6 +13,7 @@ import { PlanBar } from "@/components/PlanBar";
 import { AppBackground } from "@/components/AppBackground";
 import { Footer } from "@/components/Footer";
 import { ServiceWorker } from "@/components/ServiceWorker";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.css";
 
 /**
@@ -99,6 +100,26 @@ export default async function LocaleLayout({
             <main className="measure mx-auto px-4 py-10">{children}</main>
             <Footer />
             <ServiceWorker />
+            {/**
+             * تحليلات Vercel — بقرار من صاحب الموقع.
+             *
+             * الغرض منها سؤال واحد: فيه حد بيدخل الموقع ولا لأ؟ يعني عدّاد
+             * زيارات، مش تتبع أفراد. Vercel Web Analytics بتعمل ده من غير
+             * كوكيز، ومن غير معرّف ثابت للزائر، ومن غير تتبع بينها وبين أي
+             * موقع تاني — الـIP بيتعمله hash ومبيتخزنش.
+             *
+             * ⚠️ برضه دي **أول حاجة في الموقع بتبعت أي حاجة لبرّه جهاز
+             * المستخدم**. ونصوص زي "مفيش أي بيانات بتتجمع" في صفحة "عن
+             * الموقع" والفوتر اتسابت زي ما هي بقرار من صاحب الموقع. لو حد
+             * جه يعدّل النصوص دي بعدين، ياخد باله إن العدّاد ده شغال.
+             *
+             * مجانية على خطة Hobby في حدود الاستخدام، وفوق كده بتقف العد
+             * ومفيش فاتورة — فشرط "تكلفة التشغيل صفر" لسه قايم.
+             *
+             * ⚠️ الحزمة لوحدها مش كفاية: لازم تتفعّل كمان من تبويب Analytics
+             * في إعدادات المشروع على Vercel.
+             */}
+            <Analytics />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
