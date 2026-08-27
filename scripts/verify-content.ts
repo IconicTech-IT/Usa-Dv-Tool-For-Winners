@@ -22,6 +22,7 @@ import {
   loadInterview,
   loadJobPresets,
   loadJobs,
+  loadResources,
   loadMetros,
   loadScams,
   loadStates,
@@ -266,6 +267,34 @@ function main() {
       .entries()) {
       p(`| \`${file}\` | ${n} |`);
     }
+  }
+  /**
+   * ⚠️ لينكات صفحة "مواقع تدوّر فيها" مش حقول، فمبتتعدّش فوق —
+   * وعشان كده كانت هتفضل غير مراجعة للأبد من غير ما حد ياخد باله.
+   * لينك ميت في صفحة بيدخلها حد بيدوّر على بيت بيضيّع وقته في أسوأ
+   * وقت ممكن.
+   */
+  const resources = loadResources();
+  const linkCount = resources.categories.reduce((n, c) => n + c.sites.length, 0);
+  p();
+  p("---");
+  p();
+  p("## لينكات صفحة المواقع");
+  p();
+  if (resources.linksLastChecked) {
+    p(
+      `${linkCount} لينك، آخر مراجعة \`${resources.linksLastChecked}\`. ` +
+        "افتحهم تاني كل ٦ شهور.",
+    );
+  } else {
+    p(
+      `⚠️ **${linkCount} لينك لسه ماتفتحوش ولا مرة.** اتكتبوا من معرفة عامة ` +
+        "والشبكة على جهاز البناء بتحجب المواقع الخارجية (بترجع 403 حتى " +
+        "لـ`travel.state.gov`)، فماتأكدناش إنهم شغالين.",
+    );
+    p();
+    p("افتحهم واحد واحد، صلّح اللي اتغير، وبعدين حط تاريخ النهاردة في " +
+      "`linksLastChecked` في `content/resources.json`.");
   }
   p();
   p("---");

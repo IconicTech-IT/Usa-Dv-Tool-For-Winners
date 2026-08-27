@@ -1,0 +1,40 @@
+{
+  "_note": "⚠️ الأرقام دي كانت مكتوبة ثابتة جوه lib/planner/engine.ts (900 و1800) وكانت بتترسم في خط 'دخل متوقع' من غير ما حد يقول للمستخدم إن فيه دخل مفترض أصلًا. يعني الرقم الكبير فوق ('فلوسك تكفي X شهر') بيتحسب بدخل صفر، والرسمة تحته بترسم رصيد بيعلى بسبب دخل احنا افترضناه. نقلناهم هنا عشان يتعلّموا تقديري ويبان الافتراض، والواجهة بقت بتكتب الرقم المفترض بالحرف. لو المستخدم حسب دخله في حاسبة التطبيقات أو حاسبة صافي المرتب، رقمه هو اللي بيتحط مكان ده.",
+  "expectedMonthly": {
+    "value": 900,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-27",
+    "unit": "USD/month",
+    "basis": {
+      "ar": "افتراض مش قياس: دخل شهري متواضع من شغل أول — ساعات محدودة بأجر قريب من الحد الأدنى، أو شغل تطبيقات جزئي. مفيش مصدر رسمي بيقيس ده للواصلين الجداد، فالرقم ده نقطة بداية بيتغيّر برقمك انت من حاسبة أرباح التطبيقات أو حاسبة صافي المرتب.",
+      "en": "An assumption, not a measurement: a modest first-job monthly income — limited hours near minimum wage, or part-time gig work. No official source measures this for new arrivals, so it is a starting point that your own figure from the gig or take-home calculator replaces."
+    },
+    "verifyIn": "1-year"
+  },
+  "fastMonthly": {
+    "value": 1800,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-27",
+    "unit": "USD/month",
+    "basis": {
+      "ar": "افتراض مش قياس: شغل بدوام كامل اتلقى بدري نسبيًا، أو شغل تطبيقات بساعات طويلة. ده السيناريو المتفائل وبيتعرض عشان يبان مدى الفرق — مش عشان يتبني عليه قرار.",
+      "en": "An assumption, not a measurement: full-time work found relatively early, or gig work at long hours. This is the optimistic scenario, shown to convey the spread — not to plan against."
+    },
+    "verifyIn": "1-year"
+  },
+  "startsInMonth": {
+    "value": 2,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-27",
+    "unit": "month",
+    "basis": {
+      "ar": "افتراض: أول دخل بيدخل في الشهر التاني. الشهر الأول بيروح في الاستقرار والأوراق ورقم الضمان الاجتماعي، وأغلب الشغل الرسمي بيطلب الرقم ده. السيناريو البطيء مبيفترضش دخل خالص.",
+      "en": "Assumption: the first income arrives in month two. Month one goes to settling in, paperwork and the Social Security number, which most formal work requires. The slow scenario assumes no income at all."
+    },
+    "verifyIn": "1-year"
+  },
+  "lastVerified": "2026-08-27"
+}

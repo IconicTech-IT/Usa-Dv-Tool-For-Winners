@@ -1,9 +1,11 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card } from "@/components/Card";
-import { Num } from "@/components/Num";
+import { Money, Num } from "@/components/Num";
+import { Link } from "@/i18n/navigation";
+import { useUser } from "@/lib/store/user-store";
 import { humanField } from "@/lib/content/labels";
 import type { Localized } from "@/lib/types";
 
@@ -118,6 +120,56 @@ export function StaleTaxYear({ year }: { year: number | null }) {
   return (
     <Card status="danger">
       <div className="p-4 text-sm">{t("staleTaxYear", { year })}</div>
+    </Card>
+  );
+}
+
+/**
+ * "الرقم ده يدخل خطتي" — الجسر بين أي حاسبة دخل والرسم البياني.
+ *
+ * ⚠️ من غير الكارت ده الحاسبة بتبقى جزيرة: المستخدم يقعد يظبط أميال
+ * وساعات لحد ما يطلع رقم حقيقي لدخله، وبعدين يرجع للخطة يلاقيها لسه
+ * بترسم بـ$900 اللي إحنا افترضناهم. رقمه هو أصدق من افتراضنا بمراحل،
+ * لأنه مبني على شغل بعينه في مدينة بعينها.
+ *
+ * وبيكتب في نفس المكان اللي الرسمة بتقرا منه (`profile` في الstore)،
+ * فالرجوع مش محتاج نسخ ولا لصق.
+ */
+export function SendIncomeToPlan({ monthly }: { monthly: number }) {
+  const t = useTranslations("calculators.sendIncome");
+  const setProfile = useUser((s) => s.setProfile);
+  const current = useUser((s) => s.profile.expectedMonthlyIncome);
+  const [sent, setSent] = useState(false);
+
+  const amount = Math.round(monthly);
+  if (!Number.isFinite(amount) || amount <= 0) return null;
+
+  const alreadySame = current === amount;
+
+  return (
+    <Card status="done">
+      <div className="space-y-2 p-4 text-sm">
+        <p className="font-bold">{t("title")}</p>
+        <p className="text-[var(--slate)]">{t("lead")}</p>
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => {
+              setProfile({ expectedMonthlyIncome: amount });
+              setSent(true);
+            }}
+            className="rounded-sm border border-[var(--glass-border)] px-3 py-1.5"
+          >
+            {t("send")} <Money value={amount} />
+          </button>
+          {(sent || alreadySame) && (
+            <Link href="/planner" className="underline underline-offset-4">
+              {t("backToPlan")}
+            </Link>
+          )}
+        </div>
+        {(sent || alreadySame) && <p className="text-[var(--seal)]">{t("done")}</p>}
+      </div>
     </Card>
   );
 }

@@ -86,5 +86,18 @@
     },
     "verifyIn": "6-months",
     "note": "كان رقم ثابت في components/calculators/CarCalc.tsx. أول أولوية للاستبدال: متوسط إعلانات فعلية لعربيات مستعملة في المدن المرشحة."
+  },
+  "travelPerInfant": {
+    "value": 150,
+    "status": "estimated",
+    "sources": [],
+    "lastVerified": "2026-08-27",
+    "unit": "USD",
+    "basis": {
+      "ar": "افتراض: طفل أقل من سنتين بيسافر في حضن أهله من غير كرسي (lap infant). على الرحلات الدولية ده **مش ببلاش** زي ما ناس كتير فاكرة — أغلب شركات الطيران بتاخد نسبة حوالي ١٠٪ من تذكرة البالغ زايد الضرايب. الرقم ده تقدير على أساس كده. لو حجزتله كرسي لوحده بيتحسب تذكرة طفل عادية. ⚠️ العبرة بسنه **يوم السفر** مش يوم الحجز — واللي هيكمل سنتين قبل الرحلة بيدفع تذكرة طفل كاملة.",
+      "en": "Assumption: a child under two travels on a parent's lap without a seat. On international routes this is not free, as many people assume — most airlines charge around 10% of the adult fare plus taxes, and this figure estimates that. Booking a separate seat means the ordinary child fare. Note the age that counts is the age on the travel date, not the booking date — a child turning two before the flight pays a full child fare."
+    },
+    "verifyIn": "6-months",
+    "note": "يتأكد من صفحة رسوم الأطفال عند شركة طيران فعلية على خط مصر–أمريكا."
   }
 }

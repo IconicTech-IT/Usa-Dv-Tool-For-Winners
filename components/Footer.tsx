@@ -5,7 +5,7 @@ const GROUPS = [
   { id: "plan", links: ["/planner", "/timeline", "/my-plan", "/compare/cities", "/compare/states"] },
   { id: "calculators", links: ["/calculators/arrival", "/calculators/runway", "/calculators/take-home", "/calculators/gig", "/calculators/car"] },
   { id: "prepare", links: ["/eligibility", "/checklist/documents", "/checklist/steps", "/interview", "/vault"] },
-  { id: "arrive", links: ["/first-30-days", "/housing", "/credit", "/health", "/taxes", "/family"] },
+  { id: "arrive", links: ["/first-30-days", "/housing", "/resources", "/credit", "/health", "/taxes", "/family"] },
   { id: "work", links: ["/jobs", "/car", "/car/listing-check", "/credentials", "/green-card"] },
   { id: "site", links: ["/scams", "/glossary", "/search", "/sources", "/about"] },
 ];

@@ -98,6 +98,19 @@ export interface PlannerInput {
    * حاجة المدينة للعربية هي اللي بتحدد.
    */
   willBuyCar?: "yes" | "no" | "unsure" | null;
+
+  /**
+   * دخله الشهري المتوقع **في أمريكا** — غير `monthlyIncomeFromHome`.
+   *
+   * ⚠️ ده بيتحط من حاسبة أرباح التطبيقات أو حاسبة صافي المرتب، مش من
+   * سؤال في الwizard. السبب: اللي لسه مسافرش مش عارف هيكسب كام، وسؤاله
+   * كده بيخليه يخمّن رقم متفائل ويبني عليه. الحاسبة بتوصله للرقم من
+   * أرقام حقيقية (ساعات، أميال، مرتب معروض) فيبقى رقم يستحق يتبني عليه.
+   *
+   * وبيدخل في **الرسم البياني بس** — الرقم الكبير "فلوسك تكفي كام شهر"
+   * بيفضل محسوب بدخل صفر بقصد، عشان يجاوب على "لو محصلتش شغل أقعد قد إيه".
+   */
+  expectedMonthlyIncome?: number | null;
 }
 
 export type Tier = "A" | "B" | "C" | "D";
@@ -172,6 +185,22 @@ export interface PlanResult {
   }[];
 
   /**
+   * الافتراضات اللي الرسم البياني اتبنى عليها.
+   *
+   * ⚠️ موجودة في المخرجات **عشان الواجهة تكتبها بالحرف**. من غيرها
+   * المستخدم بيشوف خط اسمه "دخل متوقع" بيرفع رصيده ومش عارف متوقع كام
+   * ولا من إمتى — فبيقرا الرسمة كوعد.
+   */
+  incomeAssumption: {
+    expected: number;
+    fast: number;
+    /** الدخل بيبدأ في الشهر ده — قبله صفر */
+    startsInMonth: number;
+    /** رقم المستخدم من حاسبة، مش تقديرنا */
+    fromUser: boolean;
+  };
+
+  /**
    * الخطة بالعربية والخطة من غيرها، جنب بعض.
    *
    * بتتحسب بس لما المستخدم يقول **"مش عارف"** في سؤال العربية — ساعتها
@@ -179,8 +208,13 @@ export interface PlanResult {
    * التانية لأن القرار اتاخد خلاص.
    */
   carScenarios: {
-    withCar: { monthlyBurn: number; runwayMonths: number };
-    withoutCar: { monthlyBurn: number; runwayMonths: number };
+    /**
+     * ⚠️ `runwayMonths` هنا **بعد خصم `upfront`**.
+     * تمن العربية بيتدفع من نفس الكاش اللي بيعيش منه، فمقارنة بتشوف
+     * المصاريف الشهرية بس بتخلي العربية تبان أرخص بكتير من الحقيقة.
+     */
+    withCar: { monthlyBurn: number; runwayMonths: number; upfront: number };
+    withoutCar: { monthlyBurn: number; runwayMonths: number; upfront: number };
   } | null;
   weeklyActions: { week: number; task: Localized }[];
   risks: { risk: Localized; mitigation: Localized }[];

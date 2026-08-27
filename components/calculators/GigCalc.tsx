@@ -8,7 +8,7 @@ import { Section } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
 import { carMonthlyCost, gigEarnings } from "@/lib/calculators/gig";
 import type { TaxTables } from "@/lib/calculators/tax";
-import { BigResult, CalcField, MissingNote, NumInput } from "./shared";
+import { BigResult, CalcField, MissingNote, NumInput, SendIncomeToPlan } from "./shared";
 import type { MetroOption } from "./TakeHome";
 
 export interface GigMetro extends MetroOption {
@@ -41,6 +41,21 @@ export function GigCalc({
   const [mpg, setMpg] = useState(28);
   const [fuel, setFuel] = useState(3.5);
 
+  /**
+   * ⚠️ التلات حقول دول كانوا `null` ثابتين في النداء على `carMonthlyCost`.
+   *
+   * يعني الحاسبة كانت بتقول تحت "٣ أرقام ناقصة والنتيجة ممكن تتغير"
+   * **ومفيش خانة يكتبهم فيها**. بنقوله فيه حاجة ناقصة ومنديلوش طريقة
+   * يكمّلها — وده أوحش من إننا منقولش أصلًا، لأنه بيخلي الرقم الكبير
+   * مشكوك فيه من غير ما يقدر يعمل حاجة.
+   *
+   * والتأمين بالذات بيتملّي من رقم المدينة لو عندنا — نفس السلوك في
+   * حاسبة العربية بالظبط.
+   */
+  const [insurance, setInsurance] = useState<number | null>(null);
+  const [registration, setRegistration] = useState<number | null>(null);
+  const [maintPerMile, setMaintPerMile] = useState<number | null>(null);
+
   const metro = metros.find((m) => m.slug === metroSlug);
 
   const car = useMemo(
@@ -53,12 +68,23 @@ export function GigCalc({
         monthlyMiles: totalMiles,
         mpg,
         fuelPricePerGallon: fuel,
-        monthlyInsurance: metro?.carInsurance ?? null,
-        annualRegistration: null,
-        maintenancePerMile: null,
+        monthlyInsurance: insurance ?? metro?.carInsurance ?? null,
+        annualRegistration: registration,
+        maintenancePerMile: maintPerMile,
         rideshareInsuranceAddOn: 40,
       }),
-    [carPrice, down, apr, totalMiles, mpg, fuel, metro],
+    [
+      carPrice,
+      down,
+      apr,
+      totalMiles,
+      mpg,
+      fuel,
+      metro,
+      insurance,
+      registration,
+      maintPerMile,
+    ],
   );
 
   const result = useMemo(
@@ -121,6 +147,29 @@ export function GigCalc({
           <CalcField label={t("fuel")}>
             <NumInput value={fuel} onChange={setFuel} prefix="$" step={0.1} />
           </CalcField>
+          {/**
+           * ⚠️ التلات خانات دول كانوا ناقصين تمامًا من الواجهة.
+           * الحسبة كانت بتعتمد عليهم وتقول إنهم ناقصين ومفيش مكان
+           * يتكتبوا فيه.
+           */}
+          <CalcField label={t("insuranceInput")}>
+            <NumInput
+              value={insurance ?? metro?.carInsurance ?? 0}
+              onChange={setInsurance}
+              prefix="$"
+            />
+          </CalcField>
+          <CalcField label={t("registrationInput")}>
+            <NumInput value={registration ?? 0} onChange={setRegistration} prefix="$" />
+          </CalcField>
+          <CalcField label={t("maintPerMile")}>
+            <NumInput
+              value={maintPerMile ?? 0}
+              onChange={setMaintPerMile}
+              prefix="$"
+              step={0.01}
+            />
+          </CalcField>
         </div>
       </Card>
 
@@ -152,6 +201,14 @@ export function GigCalc({
           {t("mileageNote", { amount: Math.round(result.mileageDeduction) })}
         </p>
       </Section>
+
+      {/**
+       * ⚠️ الرقم ده هو اللي الخطة محتاجاه.
+       * المستخدم قعد يظبط أميال وساعات وبنزين لحد ما طلع صافي شهري
+       * حقيقي — لو رجع للخطة ولقاها لسه بترسم بافتراضنا، يبقى الشغل
+       * اللي عمله هنا راح على الفاضي.
+       */}
+      <SendIncomeToPlan monthly={result.net} />
 
       <MissingNote fields={result.missingFields} />
     </div>

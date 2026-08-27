@@ -45,6 +45,7 @@ function fill(p: Partial<PlannerInput>): PlannerInput {
     targetState: p.targetState ?? null,
     willBuyCar: p.willBuyCar ?? null,
     moneyEntry: p.moneyEntry ?? null,
+    expectedMonthlyIncome: p.expectedMonthlyIncome ?? null,
   };
 }
 

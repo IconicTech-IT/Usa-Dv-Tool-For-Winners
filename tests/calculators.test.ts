@@ -284,3 +284,48 @@ describe("⚠️ الأجر الحقيقي في الساعة", () => {
     expect(r.missingFields).toContain("irsMileageRate");
   });
 });
+
+/**
+ * ⚠️ الفرق بين "صفر" و"مش عارفين" في ضريبة الولاية.
+ *
+ * تكساس وفلوريدا ونيفادا وتينيسي وواشنطن مسجّل عندنا صراحة إن مفيش
+ * فيهم ضريبة دخل — بس الحاسبة كانت بتقرا `incomeTaxRate` (اللي `null`
+ * بطبيعته في الولايات دي) وتقول للمستخدم "محتاج تأكيد" وتحط علامة
+ * استفهام مكان الرقم. يعني بنقوله "مش عارفين" عن حاجة عارفينها،
+ * واللي بيقارن عرض شغل في تكساس بعرض في كاليفورنيا كان بيلاقي نص
+ * المقارنة فاضي.
+ */
+describe("ضريبة الولاية: صفر مش زي ناقص", () => {
+  it("صفر بيتحسب ومبيتعلّمش ناقص", () => {
+    const r = takeHome(
+      {
+        annualSalary: 60_000,
+        filingStatus: "single",
+        dependents: 0,
+        stateTax: 0,
+        localTaxRate: null,
+        householdSize: 1,
+      },
+      tables,
+    );
+    expect(r.missingFields).not.toContain("stateTax");
+    expect(r.lines.find((l) => l.key === "state")!.missing).toBe(false);
+    expect(r.lines.find((l) => l.key === "state")!.amount).toBe(0);
+  });
+
+  it("null بيفضل ناقص — مش بيتحول صفر بالسكوت", () => {
+    const r = takeHome(
+      {
+        annualSalary: 60_000,
+        filingStatus: "single",
+        dependents: 0,
+        stateTax: null,
+        localTaxRate: null,
+        householdSize: 1,
+      },
+      tables,
+    );
+    expect(r.missingFields).toContain("stateTax");
+    expect(r.lines.find((l) => l.key === "state")!.missing).toBe(true);
+  });
+});

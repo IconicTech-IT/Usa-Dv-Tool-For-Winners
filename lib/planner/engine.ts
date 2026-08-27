@@ -26,6 +26,7 @@ import type {
   Tier,
 } from "@/lib/types";
 import arrivalCosts from "@/content/arrival-costs.json";
+import incomeScenarios from "@/content/income-scenarios.json";
 import type { PlannerMetro } from "./metro";
 import { tierFor, type TierPolicy } from "./tiers";
 import { capJudgment, rankWithJudgment } from "./judgment";
@@ -106,6 +107,40 @@ const globalField = (f: { value: number | null }): number => f.value ?? 0;
 
 export const TRAVEL_COST_PER_ADULT = globalField(arrivalCosts.travelPerAdult);
 export const TRAVEL_COST_PER_KID = globalField(arrivalCosts.travelPerKid);
+export const TRAVEL_COST_PER_INFANT = globalField(arrivalCosts.travelPerInfant);
+
+/**
+ * السن اللي شركات الطيران بتغيّر عنده التسعيرة.
+ *
+ * ⚠️ دول **مش أرقام فلوس** — دي حدود سن مكتوبة في شروط شركات الطيران
+ * نفسها، فمكانها الكود مش `content/`. اللي في `content/` هو تمن كل
+ * فئة، وهو اللي بيتغير بالموسم وبالخط.
+ */
+export const INFANT_UNDER = 2;
+export const ADULT_FARE_FROM = 12;
+
+/**
+ * تمن تذاكر السفر حسب **سن كل مسافر**.
+ *
+ * ⚠️ كانت `adults * تذكرة_بالغ + عدد_الأطفال * تذكرة_طفل` — والسن
+ * كان متجاهل تمامًا. ده كان بيغلط في الاتجاهين:
+ *
+ *   • **الرضيع** (أقل من سنتين) كان بيتحسب تذكرة طفل كاملة، وهو بيسافر
+ *     في الحضن بجزء صغير من التمن. عيلة معاها رضيع كانت بتدخر زيادة.
+ *   • **المراهق** (١٢ سنة فما فوق) كان بيتحسب تذكرة طفل، وهو بيدفع
+ *     تذكرة بالغ كاملة عند أغلب الشركات. عيلة معاها ولد ١٥ سنة كانت
+ *     بتوصل ناقصة تمن تذكرة.
+ *
+ * والغلط التاني أخطر: الناقص بيتكشف في المطار، مش على الموقع.
+ */
+export function travelCost(adults: number, kidsAges: number[]): number {
+  const kids = kidsAges.reduce((total, age) => {
+    if (age < INFANT_UNDER) return total + TRAVEL_COST_PER_INFANT;
+    if (age >= ADULT_FARE_FROM) return total + TRAVEL_COST_PER_ADULT;
+    return total + TRAVEL_COST_PER_KID;
+  }, 0);
+  return adults * TRAVEL_COST_PER_ADULT + kids;
+}
 export const SETUP_PER_HOUSEHOLD = globalField(arrivalCosts.setupPerHousehold);
 export const SETUP_PER_EXTRA_PERSON = globalField(arrivalCosts.setupPerExtraPerson);
 export const PHONE_PER_ADULT = globalField(arrivalCosts.phonePerAdult);
@@ -121,6 +156,29 @@ export const FUEL_PER_CAR_MONTH = globalField(arrivalCosts.fuelPerCarMonth);
  */
 export const USED_CAR_PRICE = globalField(arrivalCosts.usedCarPrice);
 export const USED_CAR_PRICE_FIELD = arrivalCosts.usedCarPrice as Field<number>;
+
+/**
+ * ⚠️ افتراضات الدخل بتاعة الرسم البياني — **كانت رقمين ثابتين جوه الحسبة**.
+ *
+ * الرسمة كانت بترسم "دخل متوقع" و"دخل سريع" بـ900 و1800 دولار في الشهر
+ * مكتوبين في الكود، **من غير ما الواجهة تقول إن فيه دخل مفترض أصلًا**.
+ * فالصفحة كانت بتحكي حكايتين متناقضتين: الرقم الكبير فوق ("فلوسك تكفي
+ * ٤ شهور") محسوب بدخل صفر، والرسمة تحته بتوري رصيد بيعلى في الشهر
+ * الخامس. اللي بيبص على الرسمة بس بيطمن على فلوس مالهاش أساس.
+ *
+ * دلوقتي الأرقام من `content/income-scenarios.json` بحالة "تقديري"
+ * وbasis يقول الافتراض، والواجهة بتكتب الرقم بالحرف جنب كل خط.
+ */
+export const INCOME_EXPECTED = globalField(incomeScenarios.expectedMonthly);
+export const INCOME_FAST = globalField(incomeScenarios.fastMonthly);
+export const INCOME_STARTS_MONTH = Math.max(
+  1,
+  globalField(incomeScenarios.startsInMonth) || 1,
+);
+export const INCOME_SCENARIO_FIELDS = {
+  expected: incomeScenarios.expectedMonthly as Field<number>,
+  fast: incomeScenarios.fastMonthly as Field<number>,
+};
 
 /** الحالة والbasis بتاعة كل بند عام — الواجهة بتعرضهم زي أي حقل تاني. */
 export const GLOBAL_COST_FIELDS: Partial<Record<CostKey, Field<number>>> = {
@@ -267,7 +325,6 @@ export function landingCost(
   overrides?: CostOverrides,
 ): { total: number; breakdown: CostBreakdown[] } {
   const people = opts.goAlone ? 1 : opts.adults + opts.kidsAges.length;
-  const kids = opts.goAlone ? 0 : opts.kidsAges.length;
   const adults = opts.goAlone ? 1 : opts.adults;
 
   const housing = housingMonthly(m, people, opts.goAlone, missing, overrides);
@@ -297,9 +354,7 @@ export function landingCost(
 
   const travel = globalCost(
     "travel",
-    opts.includeTravel
-      ? adults * TRAVEL_COST_PER_ADULT + kids * TRAVEL_COST_PER_KID
-      : 0,
+    opts.includeTravel ? travelCost(adults, opts.goAlone ? [] : opts.kidsAges) : 0,
     m.slug,
     overrides,
   );
@@ -864,9 +919,24 @@ export function computePlan(
    * بنحسب مصاريف شهرية للحالتين بنفس المدينة ونفس الوصول — الفرق الوحيد
    * هو العربية.
    */
-  const scenarioRunway = (b: number) => {
+  /**
+   * ⚠️ **تمن العربية بيتخصم من الكاش، مش بس بيتكتب تحت الكارت.**
+   *
+   * الحسبة كانت بتقارن المصاريف الشهرية بس: "من غير عربية ٤.٦ شهر،
+   * بعربية ٤.٠ شهر" — والفرق ٠.٦ شهر بيخلي القرار يبان سهل. بس اللي
+   * هيشتري العربية هيدفع تمنها **من نفس الكاش** في أول أسبوع، فالرصيد
+   * اللي بيعيش منه بينزل بالآلاف قبل ما يبدأ. الرقم الصح مش ٤.٠ — هو
+   * أقل من كده بكتير.
+   *
+   * التمن كان مكتوب في الكارت تحت كسطر تنبيهي، فالمستخدم كان بيقرا
+   * الرقمين المتقاربين وياخد قراره منهم، والتنبيه بيعدي عليه. رقم
+   * مغلوط أسوأ من مفيش رقم — والقاعدة دي بتتفرض هنا في المحرك.
+   */
+  const scenarioRunway = (b: number, upfront = 0) => {
     const n = b - input.monthlyIncomeFromHome;
-    return n <= 0 ? 99 : Math.max(0, availableCash / n);
+    const cash = availableCash - upfront;
+    if (cash <= 0) return 0; // مش قادر عليها أصلًا
+    return n <= 0 ? 99 : Math.max(0, cash / n);
   };
   const carScenarios =
     input.willBuyCar === "unsure"
@@ -890,10 +960,16 @@ export function computePlan(
             overrides,
           ).total;
           return {
-            withCar: { monthlyBurn: withCar, runwayMonths: scenarioRunway(withCar) },
+            withCar: {
+              monthlyBurn: withCar,
+              // ⚠️ التمن بيتخصم من الكاش — ده الفرق الحقيقي بين الخطتين
+              runwayMonths: scenarioRunway(withCar, USED_CAR_PRICE),
+              upfront: USED_CAR_PRICE,
+            },
             withoutCar: {
               monthlyBurn: withoutCar,
               runwayMonths: scenarioRunway(withoutCar),
+              upfront: 0,
             },
           };
         })()
@@ -914,15 +990,50 @@ export function computePlan(
    */
   const rankable = finalRanked.filter((m) => m.computable);
 
+  /**
+   * الرصيد شهر بشهر تحت تلات سيناريوهات دخل.
+   *
+   * ⚠️ الافتراضات دي **بتتقال للمستخدم بالحرف** في الواجهة، مش بتتخبى
+   * ورا كلمة "متوقع". و`expectedMonthlyIncome` — لو المستخدم حسبه في
+   * حاسبة أرباح التطبيقات أو حاسبة صافي المرتب — بيغلب تقديرنا، لأن
+   * رقمه هو مبني على شغل بعينه وإحنا بنفترض متوسط عام.
+   */
+  const userIncome =
+    typeof input.expectedMonthlyIncome === "number" &&
+    Number.isFinite(input.expectedMonthlyIncome) &&
+    input.expectedMonthlyIncome > 0
+      ? input.expectedMonthlyIncome
+      : null;
+
+  // نسبة السيناريو السريع للمتوقع بتيجي من المحتوى برضه — عشان لما
+  // المستخدم يدّينا رقمه نوسّع حواليه بنفس المدى مش بمدى مخترع.
+  const fastRatio = INCOME_EXPECTED > 0 ? INCOME_FAST / INCOME_EXPECTED : 2;
+  const expectedIncome = userIncome ?? INCOME_EXPECTED;
+  const fastIncome = userIncome !== null ? userIncome * fastRatio : INCOME_FAST;
+
+  const earningMonths = (month: number) =>
+    Math.max(0, month - (INCOME_STARTS_MONTH - 1));
+
   const projection = [];
   for (let month = 1; month <= 12; month++) {
     projection.push({
       month,
       slow: Math.round(availableCash - net * month),
-      expected: Math.round(availableCash - net * month + 900 * Math.max(0, month - 1)),
-      fast: Math.round(availableCash - net * month + 1800 * Math.max(0, month - 1)),
+      expected: Math.round(
+        availableCash - net * month + expectedIncome * earningMonths(month),
+      ),
+      fast: Math.round(
+        availableCash - net * month + fastIncome * earningMonths(month),
+      ),
     });
   }
+
+  const incomeAssumption = {
+    expected: Math.round(expectedIncome),
+    fast: Math.round(fastIncome),
+    startsInMonth: INCOME_STARTS_MONTH,
+    fromUser: userIncome !== null,
+  };
 
   const sources: Source[] = [];
   const unverified = missing.list().filter((f) => f.startsWith(chosen.slug));
@@ -945,6 +1056,7 @@ export function computePlan(
     recommendedMetros: rankable.slice(0, 3),
     avoidMetros: rankable.length > 3 ? rankable.slice(-3).reverse() : [],
     monthlyProjection: projection,
+    incomeAssumption,
     carScenarios,
     weeklyActions: weeklyActions(policy),
     risks: risksFor(policy.tier, rankable, unverified.length),

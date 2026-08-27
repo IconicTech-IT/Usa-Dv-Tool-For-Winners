@@ -285,12 +285,64 @@ export const ArrivalCosts = z.object({
   _note: z.string().optional(),
   travelPerAdult: Field,
   travelPerKid: Field,
+  travelPerInfant: Field,
   setupPerHousehold: Field,
   setupPerExtraPerson: Field,
   phonePerAdult: Field,
   fuelPerCarMonth: Field,
   usedCarPrice: Field,
   lastVerified: ISO_DATE,
+});
+
+/**
+ * افتراضات الدخل اللي الرسم البياني بيرسم بيها.
+ * ⚠️ دي **افتراضات معلنة مش قياسات** — والواجهة لازم تكتب الرقم المفترض
+ * بالحرف جنب الخط، مش تقول "دخل متوقع" وخلاص.
+ */
+export const IncomeScenarios = z.object({
+  _note: z.string().optional(),
+  expectedMonthly: Field,
+  fastMonthly: Field,
+  startsInMonth: Field,
+  lastVerified: ISO_DATE,
+});
+
+/**
+ * مواقع بيدوّر فيها المستخدم بنفسه — سكن وشغل وعربيات وأثاث.
+ *
+ * ⚠️ **دي مش مصادر بيانات.** الفرق مهم: `sources` في أي `Field` معناها
+ * "الرقم ده جه من هنا"، أما دي مواقع بنقول للمستخدم روح دوّر فيها.
+ * فممنوع الملف ده يدخل `contentFiles()`، وإلا الدومينات دي هتظهر في
+ * صفحة `/sources` كإنها مصادر رسمية للموقع.
+ *
+ * ⚠️ وممنوع أي لينك أفلييت — القاعدة الخامسة: مجاني للأبد ومن غير عمولة.
+ */
+export const ResourceSite = z.object({
+  name: z.string().min(1),
+  url: z.string().url(),
+  what: Localized,
+  /** تحذير بيتعرض جنب اللينك — للمواقع اللي فيها نصب أو شرط أهلية */
+  watch: Localized.optional(),
+  /** جهة حكومية — بتتعلّم في الواجهة عشان تتفرق عن الشركات */
+  official: z.boolean().optional(),
+});
+
+export const ResourceCategory = z.object({
+  id: z.string().min(1),
+  name: Localized,
+  lead: Localized,
+  sites: z.array(ResourceSite).min(1),
+});
+
+export const ResourcesFile = z.object({
+  _note: z.string().optional(),
+  /**
+   * ⚠️ آخر مرة حد فتح اللينكات دي بإيده وتأكد إنها شغالة.
+   * `null` معناها **محدش فتحها لسه** — وverify-content بيقولها في التقرير.
+   * لينك ميت في صفحة اسمها "مواقع تدوّر فيها" بيضيّع وقت حد بيدوّر على بيت.
+   */
+  linksLastChecked: ISO_DATE.nullable(),
+  categories: z.array(ResourceCategory).min(1),
 });
 
 export const Fee = z.object({

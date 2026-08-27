@@ -145,6 +145,19 @@ export function PlannerWizard({
 
 /* ------------------------------------------------------------------ */
 
+/**
+ * بيكبّر أو بيصغّر قايمة الأعمار من غير ما يمسح اللي المستخدم كتبه.
+ * ⚠️ لو عملناها `Array.from(...)` من الأول زي الأول، اللي يكتب أعمار
+ * تلات ولاد وبعدين يزوّد رابع كان هيلاقي التلاتة رجعوا للقيمة الافتراضية.
+ */
+const DEFAULT_KID_AGE = 8;
+
+function resizeAges(current: number[] | undefined, n: number): number[] {
+  const safe = Math.max(0, Math.floor(n) || 0);
+  const existing = current ?? [];
+  return Array.from({ length: safe }, (_, i) => existing[i] ?? DEFAULT_KID_AGE);
+}
+
 function NumberField({
   value,
   onChange,
@@ -362,11 +375,52 @@ function QuestionBody({
             <span className="text-sm">{t("family.kids")}</span>
             <NumberField
               value={profile.kidsAges?.length}
-              onChange={(n) =>
-                set({ kidsAges: Array.from({ length: Math.max(0, n) }, () => 8) })
-              }
+              onChange={(n) => set({ kidsAges: resizeAges(profile.kidsAges, n) })}
             />
           </div>
+          {/**
+           * ⚠️ السن كان **مخترع**.
+           *
+           * السؤال كان "عندك كام طفل؟" والكود بيحط `8` لكل واحد فيهم.
+           * والرقم المخترع ده كان بيدخل حسبتين حقيقيتين: تمن تذكرة
+           * الطيران، وكمية الأكل (`eatingUnits`). يعني عيلة معاها رضيع
+           * كانت بتدخر تمن تذكرة طفل كاملة وهو بيسافر في الحضن، وعيلة
+           * معاها ولد ١٥ سنة كانت بتوصل ناقصة تمن تذكرة بالغ.
+           *
+           * السن دلوقتي بيتسأل. ولسه اختياري: اللي مش عايز يكتب بيسيبه
+           * وإحنا بنحسبه كطفل عادي — بس بنقوله كده صراحة تحت.
+           */}
+          {(profile.kidsAges?.length ?? 0) > 0 && (
+            <div className="space-y-2">
+              <span className="text-sm">{t("family.kidAges")}</span>
+              <div className="flex flex-wrap gap-2">
+                {(profile.kidsAges ?? []).map((age, i) => (
+                  <label key={i} className="flex items-center gap-1.5 text-sm">
+                    <span className="text-[var(--slate)]">
+                      {t("family.kidNumber", { n: i + 1 })}
+                    </span>
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      min={0}
+                      max={25}
+                      dir="ltr"
+                      value={age}
+                      onChange={(e) =>
+                        set({
+                          kidsAges: (profile.kidsAges ?? []).map((a, j) =>
+                            j === i ? Math.max(0, Number(e.target.value)) : a,
+                          ),
+                        })
+                      }
+                      className="num w-16 rounded-sm border border-[var(--glass-border)] bg-[var(--field-bg)] px-2 py-1.5"
+                    />
+                  </label>
+                ))}
+              </div>
+              <p className="text-sm text-[var(--slate)]">{t("family.kidAgesWhy")}</p>
+            </div>
+          )}
         </div>
       );
 

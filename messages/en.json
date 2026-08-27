@@ -93,7 +93,10 @@
       "family": {
         "q": "How many people?",
         "adults": "Adults",
-        "kids": "Children"
+        "kids": "Children",
+        "kidAges": "Age of each child",
+        "kidNumber": "Child {n}",
+        "kidAgesWhy": "Age matters: under two travels on a parent's lap for a token fare, and twelve and over pays a full adult fare. Age also changes the food budget."
       },
       "spouseWillWork": {
         "q": "Will your spouse work?"
@@ -201,7 +204,9 @@
         "C": "Your money lasts 3 to 6 months with no income — you have room to choose.",
         "D": "Your money lasts more than 6 months with no income."
       },
-      "carUpfront": "Plus buying the car itself, once, up front:"
+      "carUpfront": "Plus buying the car itself, once, up front:",
+      "carAfterUpfront": "That figure is after deducting the purchase price:",
+      "carUpfrontCounted": "This price is already deducted from the “with a car” runway above — you do not need to subtract it again."
     },
     "need": {
       "lead": "Pick the city, the household, and how long you want to last without work — we'll tell you what you need.",
@@ -328,7 +333,14 @@
   },
   "calculators": {
     "missingLead": "{count} numbers in this calculation still need verification. They were left out — the result may change.",
-    "staleTaxYear": "⚠️ The tax numbers on this site are for {year}. Check them before deciding on anything."
+    "staleTaxYear": "⚠️ The tax numbers on this site are for {year}. Check them before deciding on anything.",
+    "sendIncome": {
+      "title": "Put this figure in your plan?",
+      "lead": "The chart in your plan currently draws with an income we assumed. Your own number is better — it comes from actual work.",
+      "send": "Yes, set my expected income to",
+      "backToPlan": "Back to the plan",
+      "done": "Saved to your plan. The chart will use it."
+    }
   },
   "takeHome": {
     "title": "Take-home pay",
@@ -353,7 +365,8 @@
     "healthTitle": "Health insurance",
     "povertyLine": "Your income is about {pct}% of the federal poverty line.",
     "healthHint": "A rough pointer to go and ask — not a decision. Medicaid rules differ by state.",
-    "disclaimer": "Estimates, not tax advice. The reference is irs.gov and your state tax authority."
+    "disclaimer": "Estimates, not tax advice. The reference is irs.gov and your state tax authority.",
+    "noStateTax": "This state has no income tax — that line is genuinely zero, not missing."
   },
   "gig": {
     "title": "Delivery app earnings",
@@ -378,7 +391,10 @@
       "net": "Net"
     },
     "mileageNote": "The mileage deduction saved you ${amount} of taxable income.",
-    "disclaimer": "Estimates, not tax advice."
+    "disclaimer": "Estimates, not tax advice.",
+    "insuranceInput": "Monthly car insurance",
+    "registrationInput": "Annual registration fee",
+    "maintPerMile": "Maintenance and tyres per mile"
   },
   "arrival": {
     "title": "Landing cost",
@@ -390,7 +406,9 @@
     "adults": "Adults",
     "kids": "Children",
     "breakdown": "Breakdown",
-    "disclaimer": "Estimates based on the site's data."
+    "disclaimer": "Estimates based on the site's data.",
+    "kidAges": "Age of each child",
+    "kidNumber": "Child {n}"
   },
   "runway": {
     "title": "How long your money lasts",
@@ -970,7 +988,8 @@
       "/glossary": "Glossary",
       "/search": "Search",
       "/sources": "Sources",
-      "/about": "About"
+      "/about": "About",
+      "/resources": "Where to search"
     },
     "footerNote": "Free forever · No account · No ads · All your data stays on your device"
   },
@@ -1001,5 +1020,44 @@
     "oncePerFamily": "Once per family",
     "perPersonTotal": "Confirmed fees per accompanying person:",
     "totalNote": "Fees still needing verification are not in this total. Fees paid once per family are excluded here because they are not multiplied by household size."
+  },
+  "balance": {
+    "title": "Your balance month by month",
+    "aria": "Projected balance across 12 months under three income scenarios",
+    "noIncomeLead": "If you earn nothing in the US, your money",
+    "withIncomeLead": "And if you earn ${amount, number} a month, your money",
+    "runsOutIn": "runs out in month",
+    "holdsAllYear": "lasts the whole year",
+    "moneyRunsOut": "Your money runs out here",
+    "monthLabel": "Month",
+    "hoverHint": "Hover or tap the chart to see your balance in any month.",
+    "scenarioSlow": "No income",
+    "slowBasis": "Not a dollar coming in — this is what the big number above assumes.",
+    "scenarioExpected": "Modest income",
+    "scenarioFast": "Faster income",
+    "incomeBasis": "${amount, number} a month starting in month {month}.",
+    "ourGuess": "our assumption",
+    "yourNumber": "your number",
+    "calcYourIncome": "Work out your expected income, then come back",
+    "showTable": "Show the month-by-month numbers",
+    "hideTable": "Hide the numbers"
+  },
+  "resources": {
+    "title": "Where to search",
+    "lead": "When you start looking for a flat, a job, a car or furniture — these are the places people actually use. Start browsing while you are still here, so you arrive knowing prices rather than discovering them.",
+    "scamTitle": "Read this before opening any housing link",
+    "scamLead": "Housing scams target people who are still abroad: an attractive listing below market price, and an owner who says he is travelling and needs a deposit wired to hold it for you. The rule is simple:",
+    "scamRules": {
+      "never": "Do not wire a single dollar before you, or someone you trust, has seen the place in person.",
+      "video": "Ask for a live video call from inside the flat, and have them show you something you name on the spot — not a recorded clip.",
+      "lease": "The written lease is what protects you. No lease, no flat.",
+      "pressure": "Any urgency (“someone else is taking it today”) is the first sign of a scam, not a coincidence."
+    },
+    "moreScams": "All the scam patterns in detail",
+    "officialBadge": "government",
+    "noAffiliateTitle": "We get nothing from these sites",
+    "noAffiliate": "There is not a single affiliate link on this page, and there never will be. Sites are listed because they are useful, full stop. This site is entirely free and carries no ads.",
+    "checkedOn": "These links were last opened and confirmed working on {date}",
+    "notChecked": "⚠️ These links have not yet been opened one by one to confirm they work. If one is dead, it has most likely moved rather than disappeared."
   }
 }

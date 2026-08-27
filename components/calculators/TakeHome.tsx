@@ -7,13 +7,22 @@ import { Money } from "@/components/Num";
 import { Section } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
 import { takeHome, healthSubsidy, type FilingStatus, type TaxTables, type Bracket } from "@/lib/calculators/tax";
-import { BigResult, CalcField, MissingNote, NumInput, StaleTaxYear } from "./shared";
+import {
+  BigResult,
+  CalcField,
+  MissingNote,
+  NumInput,
+  SendIncomeToPlan,
+  StaleTaxYear,
+} from "./shared";
 
 export interface StateOption {
   code: string;
   name: { ar: string; en: string };
   flatRate: number | null;
   brackets: Bracket[] | null;
+  /** `false` = الولاية مفيهاش ضريبة دخل أصلًا. `null` = مش عارفين. */
+  hasIncomeTax: boolean | null;
 }
 
 export interface MetroOption {
@@ -48,6 +57,16 @@ export function TakeHome({
   const [metroSlug, setMetroSlug] = useState("");
 
   const state = states.find((s) => s.code === stateCode);
+  /**
+   * ⚠️ الفرق بين "صفر" و"مش عارفين" — ودا فرق بيغيّر رقم في إيد المستخدم.
+   *
+   * ولاية مفيهاش ضريبة دخل بتدي **صفر**، مش `null`. لما كانت بتدي `null`
+   * الحاسبة كانت بتعلّم صافي مرتب تكساس بـ"محتاج تأكيد" وتحط علامة
+   * استفهام مكان الرقم — واللي بيقارن عرض شغل في تكساس بعرض في
+   * كاليفورنيا كان بيلاقي نص المقارنة فاضي.
+   */
+  const noStateTax = state?.hasIncomeTax === false;
+  const stateTaxInput = state?.brackets ?? state?.flatRate ?? (noStateTax ? 0 : null);
   const metro = metros.find((m) => m.slug === metroSlug);
   const cityOptions = metros.filter((m) => m.state === stateCode);
 
@@ -58,13 +77,13 @@ export function TakeHome({
           annualSalary: salary,
           filingStatus: filing,
           dependents,
-          stateTax: state?.brackets ?? state?.flatRate ?? null,
+          stateTax: stateTaxInput,
           localTaxRate: metro?.localTaxRate ?? null,
           householdSize: 1 + dependents,
         },
         tables,
       ),
-    [salary, filing, dependents, state, metro, tables],
+    [salary, filing, dependents, stateTaxInput, metro, tables],
   );
 
   const subsidy = useMemo(
@@ -116,6 +135,15 @@ export function TakeHome({
               ))}
             </select>
           </CalcField>
+
+          {/**
+           * ⚠️ الصفر لازم يقول عن نفسه إنه صفر مقصود.
+           * من غير السطر ده، بند "ضريبة الولاية · $0" بيتقرا كإننا
+           * نسينا نحسبها.
+           */}
+          {noStateTax && (
+            <p className="text-sm text-[var(--seal)]">{t("noStateTax")}</p>
+          )}
 
           <CalcField label={t("city")}>
             <select
@@ -187,6 +215,17 @@ export function TakeHome({
             <p className="text-[var(--slate)]">{t("healthHint")}</p>
           </div>
         </Card>
+      )}
+
+      {/**
+       * ⚠️ صافي المرتب ده هو دخله الشهري في الخطة.
+       * الرسم البياني بيرسم بافتراضنا لحد ما ياخد رقم حقيقي — ولو
+       * معروض عليه شغل فعلًا، الرقم ده أصدق حاجة ممكن تدخل الخطة.
+       * وبنبعته بس لما الحسبة تبقى كاملة، عشان مانحطش في خطته رقم
+       * ناقصه ضريبة.
+       */}
+      {result.missingFields.length === 0 && (
+        <SendIncomeToPlan monthly={result.netMonthly} />
       )}
 
       <MissingNote fields={result.missingFields} />

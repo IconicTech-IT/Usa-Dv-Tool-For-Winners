@@ -709,3 +709,179 @@ describe("⚠️ سؤال العربية", () => {
     expect(p.carScenarios).toBeNull();
   });
 });
+
+/* ------------------------------------------------------------------ *
+ * افتراضات الدخل في الرسم البياني
+ *
+ * ⚠️ الرقم الكبير ("فلوسك تكفي X شهر") محسوب بدخل **صفر**، والرسمة
+ * تحته كانت بترسم خط بيعلّي الرصيد بـ$900 مكتوبين في الكود من غير ما
+ * الواجهة تقول إن فيه دخل مفترض. الtests دي بتثبت التلات حاجات اللي
+ * لازم يفضلوا صح: البطيء بدون دخل خالص، الدخل بيبدأ في شهره المحدد،
+ * ورقم المستخدم بيغلب تقديرنا.
+ * ------------------------------------------------------------------ */
+describe("افتراضات الدخل في المسار الشهري", () => {
+  const metros = [metro("houston-tx")];
+
+  it("السيناريو البطيء مفيهوش أي دخل — بينزل بنفس المقدار كل شهر", () => {
+    const plan = computePlan({ ...input, money: 30_000 }, metros);
+    const p = plan.monthlyProjection;
+    const firstStep = p[0]!.slow - p[1]!.slow;
+
+    for (let i = 1; i < p.length - 1; i++) {
+      expect(p[i]!.slow - p[i + 1]!.slow).toBeCloseTo(firstStep, 0);
+    }
+  });
+
+  it("الدخل بيبدأ في الشهر المحدد — الشهر الأول زي البطيء بالظبط", () => {
+    const plan = computePlan({ ...input, money: 30_000 }, metros);
+    const start = plan.incomeAssumption.startsInMonth;
+    const before = plan.monthlyProjection.filter((m) => m.month < start);
+
+    // قبل ما الدخل يبدأ، التلات سيناريوهات لازم يبقوا رقم واحد
+    for (const m of before) {
+      expect(m.expected).toBe(m.slow);
+      expect(m.fast).toBe(m.slow);
+    }
+    expect(before.length).toBeGreaterThan(0);
+  });
+
+  it("رقم المستخدم بيغلب تقديرنا وبيتعلّم إنه بتاعه", () => {
+    const ours = computePlan({ ...input, money: 30_000 }, metros);
+    const mine = computePlan(
+      { ...input, money: 30_000, expectedMonthlyIncome: 2000 },
+      metros,
+    );
+
+    expect(ours.incomeAssumption.fromUser).toBe(false);
+    expect(mine.incomeAssumption.fromUser).toBe(true);
+    expect(mine.incomeAssumption.expected).toBe(2000);
+
+    // نفس الشهر، الفرق بالظبط = فرق الدخل × عدد شهور الكسب
+    const start = mine.incomeAssumption.startsInMonth;
+    const m6 = 6;
+    const earning = m6 - (start - 1);
+    const oursAt6 = ours.monthlyProjection.find((m) => m.month === m6)!;
+    const mineAt6 = mine.monthlyProjection.find((m) => m.month === m6)!;
+
+    expect(mineAt6.expected - oursAt6.expected).toBeCloseTo(
+      (2000 - ours.incomeAssumption.expected) * earning,
+      0,
+    );
+    // والبطيء ما يتأثرش — هو مالوش دخل أصلًا
+    expect(mineAt6.slow).toBe(oursAt6.slow);
+  });
+
+  it("رقم مش صالح بيرجّعنا لتقديرنا بدل ما يكسر الرسمة", () => {
+    for (const bad of [0, -500, Number.NaN]) {
+      const plan = computePlan(
+        { ...input, money: 30_000, expectedMonthlyIncome: bad },
+        metros,
+      );
+      expect(plan.incomeAssumption.fromUser).toBe(false);
+      expect(Number.isFinite(plan.incomeAssumption.expected)).toBe(true);
+      expect(plan.monthlyProjection.every((m) => Number.isFinite(m.expected))).toBe(
+        true,
+      );
+    }
+  });
+
+  it("السريع دايمًا فوق المتوقع، والمتوقع فوق البطيء", () => {
+    const plan = computePlan(
+      { ...input, money: 30_000, expectedMonthlyIncome: 1500 },
+      metros,
+    );
+    for (const m of plan.monthlyProjection) {
+      expect(m.fast).toBeGreaterThanOrEqual(m.expected);
+      expect(m.expected).toBeGreaterThanOrEqual(m.slow);
+    }
+  });
+});
+
+
+/* ------------------------------------------------------------------ *
+ * تمن العربية بيتخصم من الكاش
+ * ------------------------------------------------------------------ */
+describe("مقارنة العربية بتحسب تمن الشرا", () => {
+  const metros = [metro("houston-tx", { carNeed: verified(5) })];
+  const unsure: PlannerInput = {
+    ...input,
+    money: 25_000,
+    willBuyCar: "unsure",
+  };
+
+  it("الرصيد بعربية أقل من غيرها بفرق أكبر من فرق المصاريف الشهرية", () => {
+    const plan = computePlan(unsure, metros);
+    const sc = plan.carScenarios!;
+
+    // لو التمن مكانش بيتخصم، الفرق كان هيبقى من فرق المصاريف بس
+    const burnOnlyRunway =
+      (sc.withoutCar.runwayMonths * sc.withoutCar.monthlyBurn) / sc.withCar.monthlyBurn;
+
+    expect(sc.withCar.runwayMonths).toBeLessThan(burnOnlyRunway - 0.5);
+    expect(sc.withCar.upfront).toBeGreaterThan(0);
+    expect(sc.withoutCar.upfront).toBe(0);
+  });
+
+  it("الفرق بين الرصيدين بيساوي تمن العربية مقسوم على المصاريف الشهرية", () => {
+    const plan = computePlan(unsure, metros);
+    const sc = plan.carScenarios!;
+
+    const cashWithout = sc.withoutCar.runwayMonths * sc.withoutCar.monthlyBurn;
+    const cashWith = sc.withCar.runwayMonths * sc.withCar.monthlyBurn;
+
+    expect(cashWithout - cashWith).toBeCloseTo(sc.withCar.upfront, 0);
+  });
+
+  it("مش قادر على تمنها = رصيد صفر مش رقم بالسالب", () => {
+    const broke = computePlan({ ...unsure, money: 6_000 }, metros);
+    const sc = broke.carScenarios!;
+    expect(sc.withCar.runwayMonths).toBeGreaterThanOrEqual(0);
+    expect(Number.isFinite(sc.withCar.runwayMonths)).toBe(true);
+  });
+});
+
+/* ------------------------------------------------------------------ *
+ * تذاكر السفر بالسن
+ * ------------------------------------------------------------------ */
+describe("تذاكر السفر بتتحسب بسن كل مسافر", () => {
+  const m = metro("houston-tx");
+  const tracker = () => {
+    const seen: string[] = [];
+    return { add: (_m: string, f: string) => void seen.push(f), list: () => seen };
+  };
+  const withTravel = (kidsAges: number[]) =>
+    landingCost(
+      m,
+      { adults: 2, kidsAges, goAlone: false, includeTravel: true, hostNights: 0 },
+      tracker(),
+    ).breakdown.find((b) => b.key === "travel")!.amount;
+
+  it("الرضيع (أقل من سنتين) أرخص من الطفل", () => {
+    expect(withTravel([1])).toBeLessThan(withTravel([8]));
+  });
+
+  it("١٢ سنة فما فوق بيدفع تذكرة بالغ", () => {
+    const teen = withTravel([14]);
+    const child = withTravel([8]);
+    const noKids = withTravel([]);
+    expect(teen).toBeGreaterThan(child);
+    expect(teen - noKids).toBeCloseTo((noKids / 2), 0); // تذكرة بالغ كاملة
+  });
+
+  it("السن ١١ و١٢ مش نفس التمن — الحد بيشتغل", () => {
+    expect(withTravel([12])).toBeGreaterThan(withTravel([11]));
+  });
+
+  it("سن ١ وسن ٢ مش نفس التمن — حد الرضيع بيشتغل", () => {
+    expect(withTravel([2])).toBeGreaterThan(withTravel([1]));
+  });
+
+  it("مفيش تذاكر خالص لما المبلغ مش شامل السفر", () => {
+    const amount = landingCost(
+      m,
+      { adults: 2, kidsAges: [1, 8, 14], goAlone: false, includeTravel: false, hostNights: 0 },
+      tracker(),
+    ).breakdown.find((b) => b.key === "travel")!.amount;
+    expect(amount).toBe(0);
+  });
+});

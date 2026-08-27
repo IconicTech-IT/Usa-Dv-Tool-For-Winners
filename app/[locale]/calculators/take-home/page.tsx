@@ -22,6 +22,18 @@ export default async function TakeHomePage({
     name: s.name,
     flatRate: typeof s.incomeTaxRate.value === "number" ? s.incomeTaxRate.value : null,
     brackets: (s.incomeTaxBrackets?.value ?? null) as never,
+    /**
+     * ⚠️ "مفيش ضريبة دخل" معلومة، مش نقص معلومة.
+     *
+     * تكساس وفلوريدا ونيفادا وتينيسي وواشنطن مسجّل عندنا إن مفيش فيهم
+     * ضريبة دخل ولاية — والحاسبة كانت بتقرا `incomeTaxRate` (اللي `null`
+     * بطبيعة الحال) وتقول للمستخدم **"محتاج تأكيد"**. يعني بنقوله "مش
+     * عارفين" عن حاجة إحنا عارفينها، وبنخوّفه من رقم مش موجود أصلًا.
+     */
+    hasIncomeTax:
+      typeof s.hasStateIncomeTax?.value === "boolean"
+        ? s.hasStateIncomeTax.value
+        : null,
   }));
 
   const metros = loadMetros().map((m) => ({

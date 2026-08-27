@@ -1,0 +1,449 @@
+{
+  "_note": "⚠️ الملف ده **مش مصدر أرقام** — دي مواقع بيدور فيها المستخدم بنفسه. متضفهوش لـcontentFiles() في lib/content/load.ts: لو اتضاف، الدومينات دي هتظهر في صفحة /sources كإنها مصادر بيانات رسمية للموقع، وهي مش كده. ⚠️ اللينكات اتكتبت من معرفة عامة و**ماتفتحتش من جهاز البناء** لأن الشبكة هناك بتحجب المواقع الخارجية (بترجع 403 حتى لـtravel.state.gov). لازم حد يفتحهم بنفسه ويحط تاريخ في linksLastChecked. ⚠️ ممنوع أي لينك أفلييت هنا — القاعدة الخامسة في PROJECT-RULES.",
+  "linksLastChecked": null,
+  "categories": [
+    {
+      "id": "housing",
+      "name": {
+        "ar": "السكن",
+        "en": "Housing"
+      },
+      "lead": {
+        "ar": "المواقع اللي الناس بتدور بيها على شقة أو أوضة. ابدأ منها وانت لسه بره عشان تعرف الأسعار الحقيقية في مدينتك، بس متدفعش حاجة قبل ما توصل.",
+        "en": "Where people actually search for an apartment or a room. Start browsing before you travel so you know real prices in your city — but do not pay anything before you arrive."
+      },
+      "sites": [
+        {
+          "name": "Apartments.com",
+          "url": "https://www.apartments.com/",
+          "what": {
+            "ar": "شقق بعقود رسمية من شركات إدارة. فلاتر بالسعر وعدد الأوض والمنطقة.",
+            "en": "Apartments with formal leases from management companies. Filters by price, bedrooms and area."
+          }
+        },
+        {
+          "name": "Zillow",
+          "url": "https://www.zillow.com/",
+          "what": {
+            "ar": "إيجار وبيع مع بعض. مفيد إنك تقارن الأسعار في نفس الحي.",
+            "en": "Rentals and sales together. Useful for comparing prices within the same neighbourhood."
+          }
+        },
+        {
+          "name": "Trulia",
+          "url": "https://www.trulia.com/",
+          "what": {
+            "ar": "نفس داتا Zillow تقريبًا، بس فيه خرايط للحي نفسه.",
+            "en": "Largely the same data as Zillow, with neighbourhood maps."
+          }
+        },
+        {
+          "name": "HotPads",
+          "url": "https://hotpads.com/",
+          "what": {
+            "ar": "خريطة أوضح للإيجارات — كويس لما تبقى عايز تقعد جنب خط مواصلات معيّن.",
+            "en": "A clearer rental map — good when you need to be near a specific transit line."
+          }
+        },
+        {
+          "name": "PadMapper",
+          "url": "https://www.padmapper.com/",
+          "what": {
+            "ar": "بيجمع إعلانات من مواقع كتير في خريطة واحدة.",
+            "en": "Aggregates listings from several sites onto one map."
+          }
+        },
+        {
+          "name": "Roomies",
+          "url": "https://www.roomies.com/",
+          "what": {
+            "ar": "أوضة في شقة مع ناس تانية — أرخص بداية لواحد لوحده.",
+            "en": "A room in a shared flat — the cheapest start if you are on your own."
+          }
+        },
+        {
+          "name": "SpareRoom",
+          "url": "https://www.spareroom.com/",
+          "what": {
+            "ar": "أوضة مشتركة كمان، وفيه إعلانات مش موجودة على غيره.",
+            "en": "Also shared rooms, with listings you will not find elsewhere."
+          }
+        },
+        {
+          "name": "Craigslist",
+          "url": "https://www.craigslist.org/",
+          "what": {
+            "ar": "إعلانات من أفراد مباشرة — أرخص حاجة ممكن تلاقيها، وأخطر حاجة كمان.",
+            "en": "Listings direct from individuals — the cheapest thing you will find, and the riskiest."
+          },
+          "watch": {
+            "ar": "النصب هنا كتير جدًا. أي حد بيطلب تحويل فلوس قبل ما تشوف المكان بنفسك أو توقّع عقد — ده نصاب، من غير استثناء.",
+            "en": "Scams are rife here. Anyone asking you to wire money before you see the place yourself or sign a lease is a scammer — no exceptions."
+          }
+        },
+        {
+          "name": "Facebook Marketplace",
+          "url": "https://www.facebook.com/marketplace/",
+          "what": {
+            "ar": "إعلانات أفراد كمان، وفيه جروبات سكن لكل مدينة وجروبات للجالية العربية.",
+            "en": "Also individual listings, plus housing groups for each city and Arabic-community groups."
+          },
+          "watch": {
+            "ar": "نفس تحذير كريجزلست بالظبط. وحساب جديد من غير تاريخ = علامة حمرا.",
+            "en": "The same warning as Craigslist. A brand-new account with no history is a red flag."
+          }
+        },
+        {
+          "name": "HUD — الإسكان المدعوم",
+          "url": "https://www.hud.gov/topics/rental_assistance",
+          "what": {
+            "ar": "الجهة الفيدرالية للإسكان. فيها برامج إيجار مدعوم وقوايم انتظار حسب الولاية.",
+            "en": "The federal housing agency. Subsidised rent programmes and waiting lists by state."
+          },
+          "official": true
+        }
+      ]
+    },
+    {
+      "id": "jobs",
+      "name": {
+        "ar": "الشغل",
+        "en": "Work"
+      },
+      "lead": {
+        "ar": "مواقع البحث عن شغل. أول شغل بيبقى عادةً بالساعة ومن غير ما حد يسأل عن خبرتك بره أمريكا — وده طبيعي ومؤقت.",
+        "en": "Job search sites. A first job is usually hourly and nobody asks about your experience outside the US — that is normal, and temporary."
+      },
+      "sites": [
+        {
+          "name": "Indeed",
+          "url": "https://www.indeed.com/",
+          "what": {
+            "ar": "أكبر موقع شغل في أمريكا. أغلب الشغل بالساعة بيتعلن هنا.",
+            "en": "The biggest US job board. Most hourly work is posted here."
+          }
+        },
+        {
+          "name": "LinkedIn Jobs",
+          "url": "https://www.linkedin.com/jobs/",
+          "what": {
+            "ar": "للشغل المكتبي والمهني. محتاج بروفايل مكتوب كويس.",
+            "en": "For office and professional roles. Needs a well-written profile."
+          }
+        },
+        {
+          "name": "Snagajob",
+          "url": "https://www.snagajob.com/",
+          "what": {
+            "ar": "متخصص في الشغل بالساعة — مطاعم ومخازن ومحلات.",
+            "en": "Specialises in hourly work — restaurants, warehouses, retail."
+          }
+        },
+        {
+          "name": "ZipRecruiter",
+          "url": "https://www.ziprecruiter.com/",
+          "what": {
+            "ar": "بيبعتلك إشعارات لما ينزل شغل قريب منك.",
+            "en": "Alerts you when work is posted near you."
+          }
+        },
+        {
+          "name": "CareerOneStop",
+          "url": "https://www.careeronestop.org/",
+          "what": {
+            "ar": "من وزارة العمل الأمريكية. أهم حاجة فيه: بيوصّلك لأقرب American Job Center — مركز حكومي بيساعدك في السيرة الذاتية والتدريب ببلاش.",
+            "en": "From the US Department of Labor. Its best feature: it finds your nearest American Job Center — a government office that helps with your CV and training, free."
+          },
+          "official": true
+        },
+        {
+          "name": "USAJOBS",
+          "url": "https://www.usajobs.gov/",
+          "what": {
+            "ar": "الوظايف الحكومية الفيدرالية.",
+            "en": "Federal government jobs."
+          },
+          "watch": {
+            "ar": "أغلب الوظايف دي بتشترط الجنسية الأمريكية — اقرا شرط الأهلية قبل ما تقدّم.",
+            "en": "Most of these require US citizenship — read the eligibility line before applying."
+          },
+          "official": true
+        }
+      ]
+    },
+    {
+      "id": "gig",
+      "name": {
+        "ar": "شغل التطبيقات",
+        "en": "Gig apps"
+      },
+      "lead": {
+        "ar": "بتبدأ بيها بسرعة من غير انتظار رد من حد. حاسبة أرباح التطبيقات في الموقع بتوريك الأجر الحقيقي في الساعة بعد البنزين والاستهلاك والضرايب.",
+        "en": "You can start on these fast without waiting for anyone to reply. The gig calculator on this site shows your real hourly wage after fuel, wear and tax."
+      },
+      "sites": [
+        {
+          "name": "Uber",
+          "url": "https://www.uber.com/us/en/drive/",
+          "what": {
+            "ar": "توصيل ركاب وأكل.",
+            "en": "Rides and food delivery."
+          }
+        },
+        {
+          "name": "Lyft",
+          "url": "https://www.lyft.com/driver",
+          "what": {
+            "ar": "توصيل ركاب.",
+            "en": "Rides."
+          }
+        },
+        {
+          "name": "DoorDash",
+          "url": "https://dasher.doordash.com/",
+          "what": {
+            "ar": "توصيل أكل — مش لازم عربية في مدن كتير، فيه توصيل بالعجلة.",
+            "en": "Food delivery — in many cities a car is not required; bike delivery exists."
+          }
+        },
+        {
+          "name": "Instacart",
+          "url": "https://shoppers.instacart.com/",
+          "what": {
+            "ar": "تسوّق وتوصيل من السوبرماركت.",
+            "en": "Shopping and delivery from supermarkets."
+          }
+        },
+        {
+          "name": "Amazon Flex",
+          "url": "https://flex.amazon.com/",
+          "what": {
+            "ar": "توصيل طرود بعربيتك في نوبات محجوزة.",
+            "en": "Parcel delivery in booked blocks using your own car."
+          }
+        }
+      ]
+    },
+    {
+      "id": "official",
+      "name": {
+        "ar": "الجهات الرسمية",
+        "en": "Official bodies"
+      },
+      "lead": {
+        "ar": "دي المصادر الوحيدة اللي كلامها ملزم. أي معلومة عن الفيزا أو الرسوم أو الضرايب، شوفها هنا بعينك — مش في مجموعة واتساب.",
+        "en": "These are the only sources whose word is binding. Check anything about the visa, fees or taxes here yourself — not in a WhatsApp group."
+      },
+      "sites": [
+        {
+          "name": "قرعة الهجرة — وزارة الخارجية",
+          "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html",
+          "what": {
+            "ar": "صفحة القرعة الرسمية: مواعيد التقديم، الشروط، والنتيجة.",
+            "en": "The official DV page: entry dates, requirements and results."
+          },
+          "official": true
+        },
+        {
+          "name": "USCIS",
+          "url": "https://www.uscis.gov/",
+          "what": {
+            "ar": "خدمات الهجرة بعد الوصول — الجرين كارد والتصاريح.",
+            "en": "Immigration services after arrival — green card and permits."
+          },
+          "official": true
+        },
+        {
+          "name": "الضمان الاجتماعي (SSA)",
+          "url": "https://www.ssa.gov/",
+          "what": {
+            "ar": "رقم الضمان الاجتماعي — أول ورقة محتاجها عشان تشتغل رسمي.",
+            "en": "The Social Security number — the first document you need to work formally."
+          },
+          "official": true
+        },
+        {
+          "name": "مصلحة الضرايب (IRS)",
+          "url": "https://www.irs.gov/",
+          "what": {
+            "ar": "الإقرار الضريبي والشرايح والخصومات.",
+            "en": "Tax returns, brackets and deductions."
+          },
+          "official": true
+        },
+        {
+          "name": "HealthCare.gov",
+          "url": "https://www.healthcare.gov/",
+          "what": {
+            "ar": "التأمين الصحي والدعم حسب الدخل.",
+            "en": "Health insurance and income-based subsidies."
+          },
+          "official": true
+        },
+        {
+          "name": "USA.gov",
+          "url": "https://www.usa.gov/",
+          "what": {
+            "ar": "دليل كل الخدمات الحكومية — مفيد لما متعرفش الجهة المسؤولة عن إيه.",
+            "en": "A directory of every government service — useful when you do not know which agency handles what."
+          },
+          "official": true
+        }
+      ]
+    },
+    {
+      "id": "car",
+      "name": {
+        "ar": "العربية",
+        "en": "Cars"
+      },
+      "lead": {
+        "ar": "لو مدينتك محتاجة عربية، دي المواقع. وحاسبة العربية في الموقع بتحسبلك التكلفة الحقيقية بالقسط والتأمين والبنزين.",
+        "en": "If your city needs a car, these are the sites. The car calculator here works out the real cost with the loan, insurance and fuel."
+      },
+      "sites": [
+        {
+          "name": "CarGurus",
+          "url": "https://www.cargurus.com/",
+          "what": {
+            "ar": "بيقارن سعر الإعلان بمتوسط السوق ويقولك لو السعر عالي.",
+            "en": "Compares the asking price to the market average and flags overpriced listings."
+          }
+        },
+        {
+          "name": "Autotrader",
+          "url": "https://www.autotrader.com/",
+          "what": {
+            "ar": "معارض وأفراد مع بعض.",
+            "en": "Dealers and private sellers together."
+          }
+        },
+        {
+          "name": "Cars.com",
+          "url": "https://www.cars.com/",
+          "what": {
+            "ar": "نفس الفكرة، وفيه تقارير حالة لبعض العربيات.",
+            "en": "Similar, with condition reports on some cars."
+          }
+        },
+        {
+          "name": "فحص السحب من السوق — NHTSA",
+          "url": "https://www.nhtsa.gov/recalls",
+          "what": {
+            "ar": "تكتب رقم الشاسيه (VIN) وتشوف لو العربية عليها عيب مصنعي. ببلاش ورسمي.",
+            "en": "Enter the VIN and see if the car has an open safety recall. Free and official."
+          },
+          "official": true
+        },
+        {
+          "name": "فحص التاريخ والملكية — NMVTIS",
+          "url": "https://vehiclehistory.bja.ojp.gov/",
+          "what": {
+            "ar": "نظام وزارة العدل للتأكد إن العربية مش مسروقة ومش مشطوبة من حادثة.",
+            "en": "The Justice Department system for checking a car is not stolen or written off."
+          },
+          "official": true
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "name": {
+        "ar": "تأثيث البيت",
+        "en": "Furnishing"
+      },
+      "lead": {
+        "ar": "أول شهر بيتاكل في حاجات البيت. الحاجات دي كلها بتتلاقى مستعملة بجزء بسيط من سعرها، وناس كتير بتديها ببلاش.",
+        "en": "The first month gets eaten by household basics. All of this is available used for a fraction of the price, and a lot of people give it away free."
+      },
+      "sites": [
+        {
+          "name": "Facebook — جروبات Buy Nothing",
+          "url": "https://www.facebook.com/marketplace/",
+          "what": {
+            "ar": "جروبات جيران بيدوا حاجاتهم ببلاش. دوّر على اسم حيّك + Buy Nothing.",
+            "en": "Neighbourhood groups where people give things away free. Search your area name + Buy Nothing."
+          }
+        },
+        {
+          "name": "Craigslist — قسم free",
+          "url": "https://www.craigslist.org/",
+          "what": {
+            "ar": "قسم كامل للحاجات المجانية. الأثاث بيتشال بسرعة فتابعه كل يوم.",
+            "en": "A whole section for free items. Furniture goes fast, so check daily."
+          }
+        },
+        {
+          "name": "OfferUp",
+          "url": "https://offerup.com/",
+          "what": {
+            "ar": "بيع وشرا مستعمل بين الأفراد، بالخريطة.",
+            "en": "Used buying and selling between individuals, on a map."
+          }
+        },
+        {
+          "name": "Goodwill",
+          "url": "https://www.goodwill.org/",
+          "what": {
+            "ar": "محلات خيرية — هدوم وأدوات بيت بأسعار رمزية.",
+            "en": "Charity shops — clothes and household goods at token prices."
+          }
+        },
+        {
+          "name": "Habitat ReStore",
+          "url": "https://www.habitat.org/restores",
+          "what": {
+            "ar": "أثاث وأدوات بيت مستعملة، والريع بيروح لبناء بيوت.",
+            "en": "Used furniture and household goods; proceeds fund house building."
+          }
+        }
+      ]
+    },
+    {
+      "id": "help",
+      "name": {
+        "ar": "مساعدة ودعم",
+        "en": "Help and support"
+      },
+      "lead": {
+        "ar": "خدمات مجانية موجودة فعلًا وناس كتير مش عارفة إنها موجودة. مفيش حاجة فيها عيب — دي خدمات الناس بتدفع ضرايب عشانها.",
+        "en": "Free services that genuinely exist and most people do not know about. There is no shame in any of it — these are services people pay taxes for."
+      },
+      "sites": [
+        {
+          "name": "findhelp.org",
+          "url": "https://www.findhelp.org/",
+          "what": {
+            "ar": "تكتب الرمز البريدي وتلاقي أكل وسكن ومساعدة مالية مجانية قريبة منك.",
+            "en": "Enter your ZIP code and find free food, housing and financial help near you."
+          }
+        },
+        {
+          "name": "211",
+          "url": "https://www.211.org/",
+          "what": {
+            "ar": "خط ومنصة بتوصّلك بأقرب خدمة اجتماعية. بتتصل بـ211 وبس.",
+            "en": "A line and site connecting you to the nearest social service. You just dial 211."
+          }
+        },
+        {
+          "name": "USAHello",
+          "url": "https://usahello.org/",
+          "what": {
+            "ar": "أدلة للمهاجرين الجدد بلغات كتير منها العربي، ودروس إنجليزي مجانية.",
+            "en": "Guides for new arrivals in many languages including Arabic, plus free English classes."
+          }
+        },
+        {
+          "name": "Lifeline — تخفيض التليفون",
+          "url": "https://www.lifelinesupport.org/",
+          "what": {
+            "ar": "برنامج فيدرالي بيخفّض فاتورة التليفون والنت لمحدودي الدخل.",
+            "en": "A federal programme that reduces phone and internet bills for low-income households."
+          },
+          "official": true
+        }
+      ]
+    }
+  ]
+}

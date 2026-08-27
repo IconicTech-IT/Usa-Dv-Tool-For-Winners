@@ -10,10 +10,12 @@ import {
   Eligibility,
   FeesFile,
   GlossaryFile,
+  IncomeScenarios,
   InterviewFile,
   JobFile,
   JobPresetsFile,
   Metro,
+  ResourcesFile,
   ScamsFile,
   State,
   STATUSES,
@@ -103,6 +105,7 @@ function contentFiles(): string[] {
     join(CONTENT_DIR, "fees.json"),
     join(CONTENT_DIR, "tax-brackets.json"),
     join(CONTENT_DIR, "arrival-costs.json"),
+    join(CONTENT_DIR, "income-scenarios.json"),
     join(CONTENT_DIR, "steps.json"),
     join(CONTENT_DIR, "documents.json"),
     join(CONTENT_DIR, "eligibility.json"),
@@ -308,6 +311,23 @@ export function loadTaxTables() {
  */
 export function loadArrivalCosts() {
   return parseOrThrow(ArrivalCosts, join(CONTENT_DIR, "arrival-costs.json"));
+}
+
+/**
+ * ⚠️ مش في `contentFiles()` بقصد.
+ *
+ * `contentFiles()` بيغذّي حاجتين: عدّ الحقول في verify-content، وتوليد
+ * قايمة المصادر في `/sources`. والتانية دي هي المشكلة — الملف ده فيه
+ * ٤١ دومين تجاري (apartments.com و indeed.com وغيرهم)، ولو دخل هناك
+ * هيظهروا في صفحة المصادر جنب irs.gov و travel.state.gov كإن الموقع
+ * بياخد أرقامه منهم. دي مواقع بنقول للمستخدم دوّر فيها، مش مصادر بيانات.
+ */
+export function loadResources() {
+  return parseOrThrow(ResourcesFile, join(CONTENT_DIR, "resources.json"));
+}
+
+export function loadIncomeScenarios() {
+  return parseOrThrow(IncomeScenarios, join(CONTENT_DIR, "income-scenarios.json"));
 }
 
 export function loadCarNeedScale() {
