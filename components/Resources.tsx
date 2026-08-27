@@ -29,6 +29,20 @@ export async function Resources({ locale }: { locale: "ar" | "en" }) {
        * دي بيبقى بيدوّر بجد، فالتحذير لازم يوصله قبل ما يفتح أول لينك
        * مش بعد ما يقفل الصفحة.
        */}
+      {/**
+       * ⚠️ حالة اللينكات فوق، مش تحت.
+       *
+       * كانت في كارت في آخر الصفحة — والمستخدم بيدوس على اللينكات وهو
+       * نازل، يعني بيوصل للتحذير **بعد** ما يكون فتح عشرة. وفعلًا اتكشف
+       * لينكين ميتين بالطريقة دي. اللي بيقول "احنا مش متأكدين" لازم
+       * يوصل قبل الكليك الأول.
+       */}
+      {!data.linksLastChecked && (
+        <Card status="now">
+          <p className="p-4 text-sm">{t("notChecked")}</p>
+        </Card>
+      )}
+
       <Card status="danger">
         <div className="space-y-2 p-5">
           <h2 className="font-bold">{t("scamTitle")}</h2>
@@ -52,6 +66,15 @@ export async function Resources({ locale }: { locale: "ar" | "en" }) {
       {data.categories.map((cat) => (
         <Section key={cat.id} title={cat.name[locale]}>
           <p className="text-[var(--slate)]">{cat.lead[locale]}</p>
+          {/**
+           * ⚠️ اللي مش عارفينه بيتقال جنب اللي عارفينه.
+           * من غير ده الصفحة بتقرا كإن كل حاجة فيها متأكد منها.
+           */}
+          {cat.unknown && (
+            <Card status="now">
+              <p className="p-4 text-sm">{cat.unknown[locale]}</p>
+            </Card>
+          )}
           <ul className="space-y-3">
             {cat.sites.map((site) => (
               <Card key={site.url} as="li" status={site.official ? "done" : "later"}>
@@ -97,11 +120,11 @@ export async function Resources({ locale }: { locale: "ar" | "en" }) {
         <div className="space-y-2 p-4 text-sm">
           <p className="font-bold">{t("noAffiliateTitle")}</p>
           <p>{t("noAffiliate")}</p>
-          <p className="text-[var(--slate)]">
-            {data.linksLastChecked
-              ? t("checkedOn", { date: data.linksLastChecked })
-              : t("notChecked")}
-          </p>
+          {data.linksLastChecked && (
+            <p className="text-[var(--slate)]">
+              {t("checkedOn", { date: data.linksLastChecked })}
+            </p>
+          )}
         </div>
       </Card>
     </div>

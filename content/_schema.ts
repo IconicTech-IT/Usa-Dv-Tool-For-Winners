@@ -331,6 +331,15 @@ export const ResourceCategory = z.object({
   id: z.string().min(1),
   name: Localized,
   lead: Localized,
+  /**
+   * ⚠️ اللي إحنا **مش** عارفينه في القسم ده.
+   *
+   * صفحة زي دي سهل تتكتب بنبرة واثقة عن حاجات محدش أكّدها. لو فيه حاجة
+   * مهمة ناقصة عندنا (زي مدة تفعيل تطبيقات التوصيل — كلها لسه
+   * NEEDS_VERIFICATION في `content/jobs/`)، بتتقال هنا صراحة بدل ما
+   * الصفحة تسكت وتسيب المستخدم يفترض إننا عارفين.
+   */
+  unknown: Localized.optional(),
   sites: z.array(ResourceSite).min(1),
 });
 

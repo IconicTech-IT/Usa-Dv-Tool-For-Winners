@@ -178,8 +178,8 @@
         "en": "Gig apps"
       },
       "lead": {
-        "ar": "بتبدأ بيها بسرعة من غير انتظار رد من حد. حاسبة أرباح التطبيقات في الموقع بتوريك الأجر الحقيقي في الساعة بعد البنزين والاستهلاك والضرايب.",
-        "en": "You can start on these fast without waiting for anyone to reply. The gig calculator on this site shows your real hourly wage after fuel, wear and tax."
+        "ar": "مفيش مقابلة ومفيش حد بيرد عليك بالقبول أو الرفض — بس ده مش معناه إنك بتبدأ بكرة. كل المنصات الكبيرة بتعمل فحص خلفية (background check) قبل ما تفعّلك، والفحص ده محتاج رقم الضمان الاجتماعي. يعني الانتظار الحقيقي بيبدأ من ساعة ما تقدّم على الرقم مش من ساعة ما تنزّل التطبيق. وتوصيل الركاب أبطأ حاجة: عايز رخصة أمريكية وعربية باسمك وتأمين وفحص للعربية. أسرع طريق عادةً هو توصيل الأكل في مدينة بتسمح بالعجلة أو بالمشي.",
+        "en": "There is no interview and nobody replies to accept or reject you — but that does not mean you start tomorrow. Every major platform runs a background check before activating you, and that check needs a Social Security number. So the real wait starts when you apply for the number, not when you install the app. Rideshare is the slowest route: it needs a US licence, a car in your name, insurance and a vehicle inspection. The fastest way in is usually food delivery in a city that allows bike or foot couriers."
       },
       "sites": [
         {
@@ -188,6 +188,10 @@
           "what": {
             "ar": "توصيل ركاب وأكل.",
             "en": "Rides and food delivery."
+          },
+          "watch": {
+            "ar": "توصيل الركاب مش نقطة البداية: محتاج رخصة سواقة أمريكية وعربية مستوفية شروطهم وتأمين باسمك وفحص للعربية. وفيه ولايات ومدن بتشترط إنك تكون معاك الرخصة مدة معينة قبل ما تشتغل — اتأكد من شروط ولايتك قبل ما تبني عليها خطة.",
+            "en": "Rideshare is not a starting point: it needs a US driving licence, a car that meets their conditions, insurance in your name and a vehicle inspection. Some states and cities also require you to have held the licence for a set period — check your state's rules before planning around it."
           }
         },
         {
@@ -196,6 +200,10 @@
           "what": {
             "ar": "توصيل ركاب.",
             "en": "Rides."
+          },
+          "watch": {
+            "ar": "توصيل الركاب مش نقطة البداية: محتاج رخصة سواقة أمريكية وعربية مستوفية شروطهم وتأمين باسمك وفحص للعربية. وفيه ولايات ومدن بتشترط إنك تكون معاك الرخصة مدة معينة قبل ما تشتغل — اتأكد من شروط ولايتك قبل ما تبني عليها خطة.",
+            "en": "Rideshare is not a starting point: it needs a US driving licence, a car that meets their conditions, insurance in your name and a vehicle inspection. Some states and cities also require you to have held the licence for a set period — check your state's rules before planning around it."
           }
         },
         {
@@ -222,7 +230,11 @@
             "en": "Parcel delivery in booked blocks using your own car."
           }
         }
-      ]
+      ],
+      "unknown": {
+        "ar": "⚠️ مدة التفعيل الفعلية لكل تطبيق لسه مش عندنا — بتختلف بالمدينة وبسرعة فحص الخلفية، وأي رقم نقوله من غير مصدر هيبقى غلط لواحد بيحسب فلوسه عليه. متخططش على إن الدخل ده هيبدأ في يوم معروف.",
+        "en": "⚠️ We do not yet have the actual activation time for each app — it varies by city and by how fast the background check clears, and any figure we quote without a source would mislead someone budgeting on it. Do not plan on this income starting on a known date."
+      }
     },
     {
       "id": "official",
@@ -303,19 +315,15 @@
       },
       "sites": [
         {
-          "name": "CarGurus",
-          "url": "https://www.cargurus.com/",
+          "name": "Facebook Marketplace",
+          "url": "https://www.facebook.com/marketplace/",
           "what": {
-            "ar": "بيقارن سعر الإعلان بمتوسط السوق ويقولك لو السعر عالي.",
-            "en": "Compares the asking price to the market average and flags overpriced listings."
-          }
-        },
-        {
-          "name": "Autotrader",
-          "url": "https://www.autotrader.com/",
-          "what": {
-            "ar": "معارض وأفراد مع بعض.",
-            "en": "Dealers and private sellers together."
+            "ar": "بايعين أفراد في نطاق مدينتك. أرخص مكان تلاقي فيه عربية أول، وأكتر مكان محتاج تاخد بالك فيه.",
+            "en": "Private sellers within range of your city. The cheapest place to find a first car, and the one needing the most caution."
+          },
+          "watch": {
+            "ar": "متدفعش ومتوقّعش ورق قبل ما ميكانيكي تختاره انت يكشف عليها، وقبل ما تتأكد إن اسم البايع هو نفس الاسم اللي في رخصة العربية. وافحص رقم الشاسيه (VIN) في اللينكين الرسميين تحت — الاتنين ببلاش.",
+            "en": "Do not pay or sign anything before a mechanic you chose inspects it, and before you confirm the seller's name matches the name on the title. Run the VIN through the two official checkers below — both are free."
           }
         },
         {
@@ -344,7 +352,11 @@
           },
           "official": true
         }
-      ]
+      ],
+      "unknown": {
+        "ar": "⚠️ كان فيه هنا موقعين تانيين (CarGurus و Autotrader) واتشالوا لأن لينكاتهم طلعت مش شغالة. لو عندك موقع بتستعمله فعلًا وشغال، هو أحسن من أي حاجة نحطها إحنا من غير ما نفتحها.",
+        "en": "⚠️ Two other sites (CarGurus and Autotrader) were listed here and have been removed because their links turned out to be dead. If you already use a site that works, it beats anything we list without opening it."
+      }
     },
     {
       "id": "setup",
