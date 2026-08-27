@@ -8,6 +8,8 @@ import { Section } from "@/components/ui";
 import { localized } from "@/components/FieldValue";
 import { USED_CAR_PRICE } from "@/lib/planner/engine";
 import { breakEvenMonths, carMonthlyCost } from "@/lib/calculators/gig";
+import { useUser } from "@/lib/store/user-store";
+import { Link } from "@/i18n/navigation";
 import { BigResult, CalcField, MissingNote, NumInput } from "./shared";
 import type { GigMetro } from "./GigCalc";
 
@@ -22,7 +24,33 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
   const t = useTranslations("car");
   const locale = useLocale() as "ar" | "en";
 
-  const [metroSlug, setMetroSlug] = useState(metros[0]?.slug ?? "");
+  /**
+   * ⚠️ المدينة بتتملّي من خطة المستخدم لو عنده واحدة.
+   * قاعدة في PROJECT-RULES: المستخدم مايكتبش نفس المعلومة مرتين. جاي من
+   * الخطة عشان يحسب تأمين مدينته — فمالوش لازمة يدوّر عليها في القايمة.
+   */
+  const plan = useUser((st) => st.plan);
+  const setOverride = useUser((st) => st.setOverride);
+
+  /**
+   * ⚠️ المدينة **مشتقة مش مجمّدة**.
+   *
+   * zustand بيرجّع الداتا من localStorage **بعد** أول render. فلو جمّدنا
+   * المدينة في `useState` الأولاني، هتتحسب والخطة لسه `null` وتقع على أول
+   * مدينة في القايمة — واللي جاي من خطته في هيوستن يلاقي نفسه بيحسب
+   * لأرلينجتون، وأسوأ: لما يبعت الرقم للخطة يروح للمدينة الغلط.
+   *
+   * فبنمسك "اختار بإيده؟" بس، والباقي بيتحسب من الstore كل render.
+   */
+  const [picked, setPicked] = useState<string | null>(null);
+  const planMetro =
+    plan?.chosenMetro && metros.some((m) => m.slug === plan.chosenMetro)
+      ? plan.chosenMetro
+      : null;
+  const metroSlug = picked ?? planMetro ?? metros[0]?.slug ?? "";
+  const setMetroSlug = setPicked;
+  const fromPlan = picked === null && planMetro !== null;
+  const [sentToPlan, setSentToPlan] = useState(false);
   // الرقم الافتراضي من content/arrival-costs.json مش مكتوب هنا
   const [price, setPrice] = useState(USED_CAR_PRICE);
   const [down, setDown] = useState(2000);
@@ -32,6 +60,20 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
   const [mpg, setMpg] = useState(28);
   const [fuel, setFuel] = useState(3.5);
   const [rentAlternative, setRentAlternative] = useState(950);
+
+  /**
+   * ⚠️ التلات حقول دول كانوا `null` ثابتين في الحسبة.
+   *
+   * يعني الحاسبة كانت بتقول للمستخدم "٣ أرقام ناقصة والنتيجة ممكن تتغير"
+   * **ومفيش خانة يكتبهم فيها**. بنقوله فيه حاجة ناقصة ومنديلوش طريقة
+   * يكمّلها — وده أسوأ من إننا منقولش أصلًا.
+   *
+   * التأمين بيتملّي من رقم المدينة لو عندنا، والباقي المستخدم بيجيبه من
+   * عرض السعر أو من موقع المرور — دي أرقام هو يقدر يوصلها وإحنا لأ.
+   */
+  const [insurance, setInsurance] = useState<number | null>(null);
+  const [registration, setRegistration] = useState<number | null>(null);
+  const [maintPerMile, setMaintPerMile] = useState<number | null>(null);
 
   const metro = metros.find((m) => m.slug === metroSlug);
 
@@ -45,12 +87,12 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
         monthlyMiles: miles,
         mpg,
         fuelPricePerGallon: fuel,
-        monthlyInsurance: metro?.carInsurance ?? null,
-        annualRegistration: null,
-        maintenancePerMile: null,
+        monthlyInsurance: insurance ?? metro?.carInsurance ?? null,
+        annualRegistration: registration,
+        maintenancePerMile: maintPerMile,
         rideshareInsuranceAddOn: 0,
       }),
-    [price, down, apr, months, miles, mpg, fuel, metro],
+    [price, down, apr, months, miles, mpg, fuel, metro, insurance, registration, maintPerMile],
   );
 
   const breakEven = breakEvenMonths(cost.total, rentAlternative, down);
@@ -83,6 +125,15 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
 
       <Card status="now">
         <div className="p-5 space-y-4">
+          {fromPlan && (
+            <p className="text-sm text-[var(--slate)]">{t("fromPlan")}</p>
+          )}
+          {/**
+           * ⚠️ لو المدينة اتملّت من خطته، لازم يعرف.
+           * قاعدة في PROJECT-RULES: الأداة بتملّي حقولها من الstore
+           * **وتقول للمستخدم "ملّينالك ده من بياناتك"** — مش تملا في السر
+           * وتسيبه يفتكر إنه هو اللي اختار.
+           */}
           <CalcField label={t("city")}>
             <select
               value={metroSlug}
@@ -103,6 +154,30 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
           <CalcField label={t("miles")}><NumInput value={miles} onChange={setMiles} /></CalcField>
           <CalcField label={t("mpg")}><NumInput value={mpg} onChange={setMpg} /></CalcField>
           <CalcField label={t("fuel")}><NumInput value={fuel} onChange={setFuel} prefix="$" step={0.1} /></CalcField>
+          {/**
+           * ⚠️ التلات خانات دول كانوا ناقصين تمامًا.
+           *
+           * الحسبة كانت بتقول "٣ أرقام ناقصة والنتيجة ممكن تتغير" ومفيش
+           * مكان يكتبهم فيه. بنقوله فيه حاجة ناقصة ومنديلوش طريقة يكمّلها.
+           */}
+          <CalcField label={t("insuranceInput")}>
+            <NumInput
+              value={insurance ?? metro?.carInsurance ?? 0}
+              onChange={setInsurance}
+              prefix="$"
+            />
+          </CalcField>
+          <CalcField label={t("registrationInput")}>
+            <NumInput value={registration ?? 0} onChange={setRegistration} prefix="$" />
+          </CalcField>
+          <CalcField label={t("maintPerMile")}>
+            <NumInput
+              value={maintPerMile ?? 0}
+              onChange={setMaintPerMile}
+              prefix="$"
+              step={0.01}
+            />
+          </CalcField>
           <CalcField label={t("rentAlternative")}>
             <NumInput value={rentAlternative} onChange={setRentAlternative} prefix="$" />
           </CalcField>
@@ -141,6 +216,46 @@ export function CarCalc({ metros }: { metros: (GigMetro & { carNeed: number | nu
           )}
         </div>
       </Card>
+
+      {/**
+       * ⚠️ الرجوع للخطة بالرقم، مش بالإيدين.
+       *
+       * من غير الكارت ده المستخدم يحسب هنا، يفتكر الرقم، يرجع للخطة،
+       * ويكتبه تاني — وأول ما يغلط في نقله تبقى خطته مبنية على رقم تاني
+       * خالص. الزرار بيكتب الرقم في نفس المكان اللي المحرر بيكتب فيه،
+       * فالخطة بتلاقيه مستنيها.
+       */}
+      {insurance !== null && insurance > 0 && (
+        <Card status="done">
+          <div className="space-y-2 p-4 text-sm">
+            <p className="font-bold">{t("useInPlan.title")}</p>
+            <p className="text-[var(--slate)]">{t("useInPlan.lead")}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setOverride(metroSlug, "carInsurance", {
+                    mode: "custom",
+                    value: insurance,
+                  });
+                  setSentToPlan(true);
+                }}
+                className="rounded-sm border border-[var(--glass-border)] px-3 py-1.5"
+              >
+                {t("useInPlan.send")}
+              </button>
+              {sentToPlan && (
+                <Link href="/planner" className="underline underline-offset-4">
+                  {t("useInPlan.backToPlan")}
+                </Link>
+              )}
+            </div>
+            {sentToPlan && (
+              <p className="text-[var(--seal)]">{t("useInPlan.done")}</p>
+            )}
+          </div>
+        </Card>
+      )}
 
       <MissingNote fields={cost.missingFields} />
     </div>

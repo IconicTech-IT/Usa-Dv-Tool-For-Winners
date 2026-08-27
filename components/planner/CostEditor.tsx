@@ -9,6 +9,8 @@ import { useUser } from "@/lib/store/user-store";
 import type { CostBreakdown } from "@/lib/planner/engine";
 import type { CostKey } from "@/lib/planner/overrides";
 import { COST_KEYS } from "@/lib/planner/overrides";
+import { toolFor } from "@/lib/planner/tool-links";
+import { Link } from "@/i18n/navigation";
 
 /**
  * المستخدم بيصحّح أرقامنا.
@@ -123,6 +125,7 @@ function CostRow({
    * كان بيتقرا زي رقم مؤكد — وده أخطر مكان يحصل فيه ده، لأن ده
    * بالظبط المكان اللي المستخدم بيقرر فيه يسيب رقمنا ولا يغيّره.
    */
+  const tool = toolFor(row.key);
   const showEstimate = row.source === "site" && row.estimated === true;
   const basisText = row.basis ? row.basis[locale] || row.basis.ar : undefined;
 
@@ -181,13 +184,27 @@ function CostRow({
       )}
 
       {!open ? (
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="text-sm underline underline-offset-4"
-        >
-          {row.source === "missing" ? t("iKnowIt") : t("change")}
-        </button>
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="text-sm underline underline-offset-4"
+          >
+            {row.source === "missing" ? t("iKnowIt") : t("change")}
+          </button>
+
+          {/**
+           * ⚠️ البند اللي ليه حاسبة، المستخدم لازم يعرف إنها موجودة.
+           * من غير الزرار ده هو واقف قدام "مش عارفينه" ومش عارف إن الموقع
+           * نفسه فيه أداة بتحسبها — فالحاسبة بتبقى جزيرة محدش بيروحها،
+           * والبند بيفضل فاضي.
+           */}
+          {tool && (
+            <Link href={tool} className="text-sm underline underline-offset-4">
+              {t("calculateIt")}
+            </Link>
+          )}
+        </div>
       ) : (
         <div className="flex flex-wrap items-center gap-2">
           <input

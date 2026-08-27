@@ -434,7 +434,18 @@
     "breakEvenAfter": "Buying pays off after",
     "monthsWord": "months",
     "neverBreakEven": "With these numbers renting wins — buying never breaks even.",
-    "disclaimer": "Estimates, not financial advice."
+    "disclaimer": "Estimates, not financial advice.",
+    "registrationInput": "Registration per year",
+    "maintPerMile": "Maintenance per mile",
+    "fromPlan": "We filled the city in from your plan.",
+    "useInPlan": {
+      "title": "Put this in your plan?",
+      "lead": "We will write this insurance figure into your money plan, so you do not have to copy it over.",
+      "send": "Yes, use it in my plan",
+      "backToPlan": "Back to the plan",
+      "done": "Done. Your plan now uses this figure."
+    },
+    "insuranceInput": "Car insurance per month"
   },
   "pages": {
     "first30Days": {
@@ -978,7 +989,8 @@
     "close": "Done",
     "resetAll": "Reset all numbers ({count} changed)",
     "forCity": "These are {city}'s numbers — change city and the numbers change with it.",
-    "mostAreBetween": "Most prices fall between"
+    "mostAreBetween": "Most prices fall between",
+    "calculateIt": "Work it out in the calculator"
   },
   "fees": {
     "title": "Official fees",
