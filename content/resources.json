@@ -1,5 +1,5 @@
 {
-  "_note": "⚠️ الملف ده **مش مصدر أرقام** — دي مواقع بيدور فيها المستخدم بنفسه. متضفهوش لـcontentFiles() في lib/content/load.ts: لو اتضاف، الدومينات دي هتظهر في صفحة /sources كإنها مصادر بيانات رسمية للموقع، وهي مش كده. ⚠️ اللينكات اتكتبت من معرفة عامة و**ماتفتحتش من جهاز البناء** لأن الشبكة هناك بتحجب المواقع الخارجية (بترجع 403 حتى لـtravel.state.gov). لازم حد يفتحهم بنفسه ويحط تاريخ في linksLastChecked. ⚠️ ممنوع أي لينك أفلييت هنا — القاعدة الخامسة في PROJECT-RULES.",
+  "_note": "⚠️ الملف ده **مش مصدر أرقام** — دي مواقع بيدور فيها المستخدم بنفسه. متضفهوش لـcontentFiles() في lib/content/load.ts: لو اتضاف، الدومينات دي هتظهر في صفحة /sources كإنها مصادر بيانات رسمية للموقع، وهي مش كده. ⚠️ اللينكات اتكتبت من معرفة عامة و**ماتفتحتش من جهاز البناء** لأن الشبكة هناك بتحجب المواقع الخارجية (بترجع 403 حتى لـtravel.state.gov). لازم حد يفتحهم بنفسه ويحط تاريخ في linksLastChecked. اتشال منهم CarGurus و Autotrader لأنهم رجّعوا 404. ⚠️ ممنوع أي لينك أفلييت هنا — القاعدة الخامسة في PROJECT-RULES. ⚠️ **وممنوع نضيف هنا أي مساعدات أو دعم حكومي** (إسكان مدعوم، دعم فواتير، معونات، خطوط إحالة لخدمات اجتماعية). القرار ده اتاخد بقصد: شرط الـpublic charge في قانون الهجرة اتغير مرتين في تلات سنين، والموقع مش استشارة قانونية ومش هيقدر يضمن للمستخدم إن حاجة منها مش هتأثر على الفيزا أو الجرين كارد بتاعته. التوجيه لحاجة ممكن تضر حد في ورقه أسوأ بكتير من إننا منقولش عنها.",
   "linksLastChecked": null,
   "categories": [
     {
@@ -92,15 +92,6 @@
             "ar": "نفس تحذير كريجزلست بالظبط. وحساب جديد من غير تاريخ = علامة حمرا.",
             "en": "The same warning as Craigslist. A brand-new account with no history is a red flag."
           }
-        },
-        {
-          "name": "HUD — الإسكان المدعوم",
-          "url": "https://www.hud.gov/topics/rental_assistance",
-          "what": {
-            "ar": "الجهة الفيدرالية للإسكان. فيها برامج إيجار مدعوم وقوايم انتظار حسب الولاية.",
-            "en": "The federal housing agency. Subsidised rent programmes and waiting lists by state."
-          },
-          "official": true
         }
       ]
     },
@@ -287,8 +278,8 @@
           "name": "HealthCare.gov",
           "url": "https://www.healthcare.gov/",
           "what": {
-            "ar": "التأمين الصحي والدعم حسب الدخل.",
-            "en": "Health insurance and income-based subsidies."
+            "ar": "الجهة الرسمية للتأمين الصحي — بتقارن الخطط المتاحة في ولايتك ومواعيد التسجيل.",
+            "en": "The official health insurance body — compare the plans available in your state and the enrolment windows."
           },
           "official": true
         },
@@ -408,52 +399,6 @@
             "ar": "أثاث وأدوات بيت مستعملة، والريع بيروح لبناء بيوت.",
             "en": "Used furniture and household goods; proceeds fund house building."
           }
-        }
-      ]
-    },
-    {
-      "id": "help",
-      "name": {
-        "ar": "مساعدة ودعم",
-        "en": "Help and support"
-      },
-      "lead": {
-        "ar": "خدمات مجانية موجودة فعلًا وناس كتير مش عارفة إنها موجودة. مفيش حاجة فيها عيب — دي خدمات الناس بتدفع ضرايب عشانها.",
-        "en": "Free services that genuinely exist and most people do not know about. There is no shame in any of it — these are services people pay taxes for."
-      },
-      "sites": [
-        {
-          "name": "findhelp.org",
-          "url": "https://www.findhelp.org/",
-          "what": {
-            "ar": "تكتب الرمز البريدي وتلاقي أكل وسكن ومساعدة مالية مجانية قريبة منك.",
-            "en": "Enter your ZIP code and find free food, housing and financial help near you."
-          }
-        },
-        {
-          "name": "211",
-          "url": "https://www.211.org/",
-          "what": {
-            "ar": "خط ومنصة بتوصّلك بأقرب خدمة اجتماعية. بتتصل بـ211 وبس.",
-            "en": "A line and site connecting you to the nearest social service. You just dial 211."
-          }
-        },
-        {
-          "name": "USAHello",
-          "url": "https://usahello.org/",
-          "what": {
-            "ar": "أدلة للمهاجرين الجدد بلغات كتير منها العربي، ودروس إنجليزي مجانية.",
-            "en": "Guides for new arrivals in many languages including Arabic, plus free English classes."
-          }
-        },
-        {
-          "name": "Lifeline — تخفيض التليفون",
-          "url": "https://www.lifelinesupport.org/",
-          "what": {
-            "ar": "برنامج فيدرالي بيخفّض فاتورة التليفون والنت لمحدودي الدخل.",
-            "en": "A federal programme that reduces phone and internet bills for low-income households."
-          },
-          "official": true
         }
       ]
     }
