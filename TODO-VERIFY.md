@@ -4,16 +4,16 @@
 > أي حقل هنا بيظهر في الموقع كـ"محتاج تأكيد" مش كرقم.
 > **متحطش رقم من دماغك عشان تفضّي القايمة.** ناس بتاخد قرارات بفلوسها على الأرقام دي.
 
-**آخر تحديث للملف ده:** 2026-08-27
+**آخر تحديث للملف ده:** 2026-09-16
 
-**الحالة دلوقتي:** 30 ولاية · 50 مدينة · 2 شيك ليست — إجمالي 1307 حقل.
+**الحالة دلوقتي:** 4 ولاية · 12 مدينة · 2 شيك ليست — إجمالي 405 حقل.
 
 | الحالة | العدد | معناها في الواجهة |
 |---|---|---|
-| `verified` | 18 | من غير بادج، المصدر في الفوتنوت |
-| `estimated` | 517 | بادج "تقديري"، والbasis في tooltip |
-| `judgment` | 130 | من غير بادج — بيتعرض كوصف مش كرقم |
-| `NEEDS_VERIFICATION` | 642 | بادج "محتاج تأكيد"، ومفيش رقم |
+| `verified` | 50 | من غير بادج، المصدر في الفوتنوت |
+| `estimated` | 156 | بادج "تقديري"، والbasis في tooltip |
+| `judgment` | 28 | من غير بادج — بيتعرض كوصف مش كرقم |
+| `NEEDS_VERIFICATION` | 171 | بادج "محتاج تأكيد"، ومفيش رقم |
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## 🟣 ترتيب ذاتي (`judgment`) — مش محتاج مصدر، محتاج مراجعة رأي
 
-130 حقل حالتهم `judgment`. دي أحكام شخصية مش قياسات — مفيش مصدر بيرتب المدن رقميًا عليها.
+28 حقل حالتهم `judgment`. دي أحكام شخصية مش قياسات — مفيش مصدر بيرتب المدن رقميًا عليها.
 
 - **بتتعرض كوصف مش كرقم.** "جالية عربية كبيرة" — مش "٤ من ٥".
 - الرقم داخلي للترتيب في محرك الخطة بس، ووزنه مسقوف في `lib/planner/judgment.ts`.
@@ -52,7 +52,7 @@
 
 ## 📋 كل الحقول الناقصة
 
-642 حقل، في 94 ملف.
+171 حقل، في 29 ملف.
 
 <details><summary><code>checklists\arrival.json</code> — 5</summary>
 
@@ -87,14 +87,9 @@
 
 </details>
 
-<details><summary><code>eligibility.json</code> — 6</summary>
+<details><summary><code>eligibility.json</code> — 1</summary>
 
-- `criteria[0].eligibleCountries` — قايمة الدول المؤهلة للدورة الحالية — بتتغير كل سنة، انسخها من الصفحة الرسمية
 - `criteria[0].spouseParentException` — الشروط الدقيقة للاستثناء عن طريق الزوج/الزوجة أو الوالدين
-- `criteria[1].educationRequirement` — المؤهل المطلوب بالظبط
-- `criteria[1].experienceRequirement` — شروط مسار الخبرة العملية — المهن المؤهلة ومدة الخبرة والفترة الزمنية
-- `criteria[2].registrationWindow` — مواعيد فتح وقفل التسجيل للدورة الحالية
-- `criteria[2].registrationFee` — رسم التسجيل الحالي
 
 </details>
 
@@ -140,20 +135,16 @@
 
 </details>
 
-<details><summary><code>jobs\amazon-flex.json</code> — 5</summary>
+<details><summary><code>jobs\amazon-flex.json</code> — 3</summary>
 
-- `needsCar` — بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها
-- `minCarYear` — بيختلف من مدينة لمدينة
 - `needsEnglish` — مستوى الإنجليزي المطلوب فعليًا للشغل
 - `activationDays` — مدة فحص الخلفية والتفعيل
 - `requiresSSN`
 
 </details>
 
-<details><summary><code>jobs\doordash.json</code> — 5</summary>
+<details><summary><code>jobs\doordash.json</code> — 3</summary>
 
-- `needsCar` — بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها
-- `minCarYear` — بيختلف من مدينة لمدينة
 - `needsEnglish` — مستوى الإنجليزي المطلوب فعليًا للشغل
 - `activationDays` — مدة فحص الخلفية والتفعيل
 - `requiresSSN`
@@ -170,10 +161,8 @@
 
 </details>
 
-<details><summary><code>jobs\lyft.json</code> — 5</summary>
+<details><summary><code>jobs\lyft.json</code> — 3</summary>
 
-- `needsCar` — بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها
-- `minCarYear` — بيختلف من مدينة لمدينة
 - `needsEnglish` — مستوى الإنجليزي المطلوب فعليًا للشغل
 - `activationDays` — مدة فحص الخلفية والتفعيل
 - `requiresSSN`
@@ -190,33 +179,27 @@
 
 </details>
 
-<details><summary><code>jobs\uber.json</code> — 5</summary>
+<details><summary><code>jobs\uber.json</code> — 3</summary>
 
-- `needsCar` — بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها
-- `minCarYear` — بيختلف من مدينة لمدينة
 - `needsEnglish` — مستوى الإنجليزي المطلوب فعليًا للشغل
 - `activationDays` — مدة فحص الخلفية والتفعيل
 - `requiresSSN`
 
 </details>
 
-<details><summary><code>jobs\walmart-spark.json</code> — 5</summary>
+<details><summary><code>jobs\walmart-spark.json</code> — 3</summary>
 
-- `needsCar` — بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها
-- `minCarYear` — بيختلف من مدينة لمدينة
 - `needsEnglish` — مستوى الإنجليزي المطلوب فعليًا للشغل
 - `activationDays` — مدة فحص الخلفية والتفعيل
 - `requiresSSN`
 
 </details>
 
-<details><summary><code>metros\arlington-va.json</code> — 9</summary>
+<details><summary><code>metros\arlington-va.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -224,13 +207,11 @@
 
 </details>
 
-<details><summary><code>metros\atlanta-ga.json</code> — 9</summary>
+<details><summary><code>metros\austin-tx.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -238,13 +219,11 @@
 
 </details>
 
-<details><summary><code>metros\austin-tx.json</code> — 9</summary>
+<details><summary><code>metros\charlotte-nc.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -252,13 +231,11 @@
 
 </details>
 
-<details><summary><code>metros\baltimore-md.json</code> — 9</summary>
+<details><summary><code>metros\dallas-tx.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -266,13 +243,11 @@
 
 </details>
 
-<details><summary><code>metros\boston-ma.json</code> — 9</summary>
+<details><summary><code>metros\houston-tx.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -280,13 +255,11 @@
 
 </details>
 
-<details><summary><code>metros\buffalo-ny.json</code> — 9</summary>
+<details><summary><code>metros\miami-fl.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -294,13 +267,11 @@
 
 </details>
 
-<details><summary><code>metros\charlotte-nc.json</code> — 9</summary>
+<details><summary><code>metros\orlando-fl.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -308,13 +279,11 @@
 
 </details>
 
-<details><summary><code>metros\chicago-il.json</code> — 9</summary>
+<details><summary><code>metros\raleigh-nc.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -322,13 +291,11 @@
 
 </details>
 
-<details><summary><code>metros\cincinnati-oh.json</code> — 9</summary>
+<details><summary><code>metros\richmond-va.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -336,13 +303,11 @@
 
 </details>
 
-<details><summary><code>metros\cleveland-oh.json</code> — 9</summary>
+<details><summary><code>metros\san-antonio-tx.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -350,13 +315,11 @@
 
 </details>
 
-<details><summary><code>metros\columbus-oh.json</code> — 9</summary>
+<details><summary><code>metros\tampa-fl.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -364,13 +327,11 @@
 
 </details>
 
-<details><summary><code>metros\dallas-tx.json</code> — 9</summary>
+<details><summary><code>metros\virginia-beach-va.json</code> — 7</summary>
 
 - `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
 - `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
 - `costs.utilities`
-- `costs.carInsurance`
 - `work.worksWithoutEnglish`
 - `work.warehouseJobs`
 - `life.halalAccess`
@@ -378,786 +339,29 @@
 
 </details>
 
-<details><summary><code>metros\dearborn-mi.json</code> — 9</summary>
+<details><summary><code>states\FL.json</code> — 1</summary>
 
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\denver-co.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\des-moines-ia.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\hartford-ct.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\houston-tx.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\indianapolis-in.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\jersey-city-nj.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\kansas-city-mo.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\las-vegas-nv.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\los-angeles-ca.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\louisville-ky.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\memphis-tn.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\miami-fl.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\milwaukee-wi.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\minneapolis-mn.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\nashville-tn.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\nyc-ny.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\oklahoma-city-ok.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\omaha-ne.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\orlando-fl.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\paterson-nj.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\philadelphia-pa.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\phoenix-az.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\pittsburgh-pa.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\portland-or.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\raleigh-nc.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\richmond-va.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\sacramento-ca.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\salt-lake-city-ut.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\san-antonio-tx.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\san-diego-ca.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\san-francisco-ca.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\seattle-wa.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\silver-spring-md.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\st-louis-mo.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\tampa-fl.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\tucson-az.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>metros\virginia-beach-va.json</code> — 9</summary>
-
-- `car.carFreeNeighborhoods` — أنهي أحياء بالظبط ينفع تعيش فيها من غير عربية
-- `car.monthlyTransitPass`
-- `costs.securityDeposit` — من غير credit غالبًا بيطلبوا أكتر
-- `costs.utilities`
-- `costs.carInsurance`
-- `work.worksWithoutEnglish`
-- `work.warehouseJobs`
-- `life.halalAccess`
-- `life.schoolQuality`
-
-</details>
-
-<details><summary><code>states\AZ.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
 - `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
 
 </details>
 
-<details><summary><code>states\CA.json</code> — 3</summary>
+<details><summary><code>states\TX.json</code> — 1</summary>
 
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
 - `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
 
 </details>
 
-<details><summary><code>states\CO.json</code> — 3</summary>
+<details><summary><code>states\VA.json</code> — 1</summary>
 
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
 - `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
 
 </details>
 
-<details><summary><code>states\CT.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\FL.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\GA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\IA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\IL.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\IN.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\KY.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\MA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\MD.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\MI.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\MN.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\MO.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\NC.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\NE.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\NJ.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\NV.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\NY.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\OH.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\OK.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\OR.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\PA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\TN.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\TX.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\UT.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\VA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\WA.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>states\WI.json</code> — 3</summary>
-
-- `incomeTaxRate` — الشرايح والنسب — من موقع الولاية
-- `licenseProcess` — محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية.
-- `salesTax`
-
-</details>
-
-<details><summary><code>steps.json</code> — 11</summary>
+<details><summary><code>steps.json</code> — 8</summary>
 
 - `steps[0].durationDays`
 - `steps[1].durationDays`
-- `steps[2].durationDays`
 - `steps[3].durationDays`
-- `steps[4].durationDays`
-- `steps[5].durationDays`
 - `steps[6].durationDays`
 - `steps[7].durationDays`
 - `steps[8].durationDays`

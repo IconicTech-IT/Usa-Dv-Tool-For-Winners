@@ -19,12 +19,14 @@
     "verifyIn": "1-year"
   },
   "incomeTaxRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "value": 0,
+    "status": "verified",
+    "sources": [
+      { "label": "Florida vs Texas Taxes Compared (2026)", "url": "https://www.countrytaxcalc.com/tax-guides/compare/florida-vs-texas/" }
+    ],
+    "lastVerified": "2026-09-09",
     "unit": "%",
-    "note": "الشرايح والنسب — من موقع الولاية"
+    "note": "مفيش ضريبة دخل شخصي على مستوى الولاية — فيدرالي بس."
   },
   "noFaultInsurance": {
     "value": false,
@@ -73,11 +75,15 @@
     }
   },
   "salesTax": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "unit": "%"
+    "value": 8.25,
+    "range": [6.25, 8.25],
+    "status": "verified",
+    "sources": [
+      { "label": "Sales Tax by State 2026 | Tax Foundation", "url": "https://taxfoundation.org/data/all/state/sales-tax-rates/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "unit": "%",
+    "note": "نسبة الولاية 6.25% + إضافة محلية لحد 2%. المجمّع 6.25% في الريف لحد 8.25% في هيوستن ودالاس وأغلب المدن الكبيرة — القيمة هنا للمدن (كل مدن تكساس المتابعة في الموقع حضرية)."
   },
   "lastVerified": "2026-08-25"
 }

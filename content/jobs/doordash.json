@@ -8,18 +8,28 @@
     "en": ""
   },
   "needsCar": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": false,
+    "status": "estimated",
     "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها"
+    "lastVerified": "2026-09-09",
+    "note": "مفيش أي شرط عربية خالص — أي عربية، وحتى عجلة/سكوتر في بعض الأسواق. مفيش مصدر رسمي واحد متابَع بالظبط، معلومة سوق عامة بحثنا فيها.",
+    "basis": {
+      "ar": "بحث عام على سياسات DoorDash للسايقين اتأكد منه 2026-09-09 — مفيش صفحة رسمية واحدة بتلخّصه.",
+      "en": "General research on DoorDash driver policy, confirmed 2026-09-09 — no single official summary page."
+    },
+    "verifyIn": "6-months"
   },
   "minCarYear": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0,
+    "status": "estimated",
     "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بيختلف من مدينة لمدينة"
+    "lastVerified": "2026-09-09",
+    "note": "0 = مفيش حد أدنى لسنة الموديل خالص — أي عربية شغالة مقبولة.",
+    "basis": {
+      "ar": "بحث عام على سياسات DoorDash للسايقين اتأكد منه 2026-09-09 — مفيش صفحة رسمية واحدة بتلخّصه.",
+      "en": "General research on DoorDash driver policy, confirmed 2026-09-09 — no single official summary page."
+    },
+    "verifyIn": "6-months"
   },
   "needsEnglish": {
     "value": null,

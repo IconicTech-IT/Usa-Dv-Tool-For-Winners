@@ -19,12 +19,31 @@
     "verifyIn": "1-year"
   },
   "incomeTaxRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "value": 5.75,
+    "status": "verified",
+    "sources": [
+      { "label": "TAX RATE SCHEDULE | Virginia Tax", "url": "https://www.tax.virginia.gov/node/578" },
+      { "label": "2026 Virginia Tax Rates & Rankings | Tax Foundation", "url": "https://taxfoundation.org/location/virginia/" }
+    ],
+    "lastVerified": "2026-09-09",
     "unit": "%",
-    "note": "الشرايح والنسب — من موقع الولاية"
+    "note": "شرايح تصاعدية من عشرات السنين: 2% لحد $3,000، 3% لحد $5,000، 5% لحد $17,000، 5.75% فوق كده — القيمة هنا هي النسبة اللي بتنطبق على أغلب دخل الشغل العادي. جديد لـ2026: شريحة 7% على الدخل فوق $600,000 (شوف incomeTaxBrackets للجدول الكامل)."
+  },
+  "incomeTaxBrackets": {
+    "value": [
+      { "upTo": 3000, "rate": 0.02 },
+      { "upTo": 5000, "rate": 0.03 },
+      { "upTo": 17000, "rate": 0.05 },
+      { "upTo": 600000, "rate": 0.0575 },
+      { "upTo": null, "rate": 0.07 }
+    ],
+    "status": "verified",
+    "sources": [
+      { "label": "TAX RATE SCHEDULE | Virginia Tax", "url": "https://www.tax.virginia.gov/node/578" },
+      { "label": "Virginia Income Taxes in 2026: What High Earners Need to Know", "url": "https://fraimcpa.com/virginia-income-taxes-high-earners/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "شريحة الـ7% جديدة لـ2026 وبتنطبق بس فوق $600,000 دخل خاضع للضريبة."
   },
   "noFaultInsurance": {
     "value": false,
@@ -73,11 +92,15 @@
     }
   },
   "salesTax": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "unit": "%"
+    "value": 6.0,
+    "range": [5.3, 6.0],
+    "status": "verified",
+    "sources": [
+      { "label": "2026 Virginia Tax Rates & Rankings | Tax Foundation", "url": "https://taxfoundation.org/location/virginia/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "unit": "%",
+    "note": "نسبة الولاية 4.3% + إضافة محلية ~0.7-1% (نورذرن فيرجينيا/Hampton Roads أعلى شوية). القيمة هنا هي أعلى الطرف المجمّع."
   },
   "lastVerified": "2026-08-25"
 }

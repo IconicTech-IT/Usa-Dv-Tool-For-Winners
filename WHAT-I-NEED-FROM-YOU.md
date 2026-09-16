@@ -63,13 +63,14 @@ travel.state.gov  ·  uscis.gov  ·  irs.gov  ·  وكل حاجة تانية
 
 **يعني: الموقع مش هيشتغل بشكل كامل غير لما تملا الأرقام دي.**
 
-### ابدأ بـ٨ مدن بس
+### النطاق دلوقتي: ١٢ مدينة بس (٤ ولايات)
 
-مش الخمسين. المدن دي بتغطي كل درجات سلم الحاجة للعربية من ١ لـ٥:
+الموقع بقى مقتصر على الولايات اللي فيها بحث فعلي في `cities-states/`: Florida, North Carolina, Texas, Virginia. مفيش أولوية تختارها — املا الـ١٢ كلهم:
 
 ```
-nyc-ny · jersey-city-nj · chicago-il · philadelphia-pa
-houston-tx · dearborn-mi · charlotte-nc · columbus-oh
+arlington-va · austin-tx · charlotte-nc · dallas-tx
+houston-tx · miami-fl · orlando-fl · raleigh-nc
+richmond-va · san-antonio-tx · tampa-fl · virginia-beach-va
 ```
 
 لكل مدينة، افتح `content/metros/<اسم-المدينة>.json` واملا **حقلين بس** عشان الخطة تشتغل:

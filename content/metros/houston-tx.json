@@ -123,12 +123,18 @@
       "includesUtilities": true
     },
     "securityDeposit": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
+      "value": 3,
+      "range": [2, 3],
+      "status": "estimated",
       "sources": [],
-      "lastVerified": "2026-08-25",
+      "lastVerified": "2026-09-09",
       "unit": "months of rent",
-      "note": "من غير credit غالبًا بيطلبوا أكتر"
+      "note": "تكساس مفيهاش حد قانوني للديبوزيت — من غير تاريخ ائتماني أمريكي، 2-3 شهور مقدم شائع بديل عن الفحص الائتماني.",
+      "basis": {
+        "ar": "بحث عام عن استئجار المهاجرين الجدد من غير ائتمان أمريكي، اتأكد منه 2026-09-09 — مش رقم عقد فعلي.",
+        "en": "General research on renting as a new immigrant with no US credit history, confirmed 2026-09-09 — not an actual lease quote."
+      },
+      "verifyIn": "1-year"
     },
     "utilities": {
       "value": null,
@@ -155,11 +161,19 @@
       "verifyIn": "6-months"
     },
     "carInsurance": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-26",
-      "unit": "USD/month"
+      "value": 197,
+      "status": "estimated",
+      "sources": [
+        { "label": "Average Cost of Car Insurance in Texas for 2026 | Experian", "url": "https://www.experian.com/blogs/ask-experian/average-cost-car-insurance-texas/" }
+      ],
+      "lastVerified": "2026-09-09",
+      "unit": "USD/month",
+      "note": "متوسط تغطية كاملة على مستوى الولاية، أقل من المتوسط القومي — مش رقم خاص بهيوستن تحديدًا. علاوة 'سايق جديد' للمهاجرين ممكن تتحط فوقه.",
+      "basis": {
+        "ar": "متوسط ولاية تكساس مطبّق كتقريب للمدينة — مفيش رقم خاص بهيوستن لوحدها.",
+        "en": "Texas statewide average applied as a city proxy — no Houston-specific figure found."
+      },
+      "verifyIn": "1-year"
     }
   },
   "work": {

@@ -8,18 +8,23 @@
     "en": ""
   },
   "needsCar": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها"
+    "value": true,
+    "status": "verified",
+    "sources": [
+      { "label": "Lyft Driver Requirements 2026 | Gridwise", "url": "https://gridwise.io/blog/lyft-driver-requirements" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "عربية 4 أبواب. أقل سن للسايق 21 (بيختلف)."
   },
   "minCarYear": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بيختلف من مدينة لمدينة"
+    "value": 2011,
+    "status": "verified",
+    "sources": [
+      { "label": "Lyft Driver Requirements 2026 | Gridwise", "url": "https://gridwise.io/blog/lyft-driver-requirements" },
+      { "label": "How Old Can Your Car Be For Lyft? 2026 Eligibility Rules", "url": "https://www.alibaba.com/product-insights/how-old-can-your-car-be-for-lyft-2026-eligibility-rules.html" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "غالبًا ~15 سنة، بعض المدن وصلت لـ2009-2010 (أوسع من Uber). القيمة هنا للحد الشائع (15 سنة = موديل 2011)."
   },
   "needsEnglish": {
     "value": null,

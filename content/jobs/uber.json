@@ -8,18 +8,23 @@
     "en": ""
   },
   "needsCar": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها"
+    "value": true,
+    "status": "verified",
+    "sources": [
+      { "label": "2026 Uber Car Requirements: Year, Inspection & More | Ridester", "url": "https://www.ridester.com/hub-resource/uber-car-requirements/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "عربية 4 أبواب + 5 أحزمة أمان على الأقل (UberX). أقل سن للسايق 21 (بيختلف)."
   },
   "minCarYear": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بيختلف من مدينة لمدينة"
+    "value": 2011,
+    "status": "verified",
+    "sources": [
+      { "label": "2026 Uber Car Requirements: Year, Inspection & More | Ridester", "url": "https://www.ridester.com/hub-resource/uber-car-requirements/" },
+      { "label": "Uber requirements: oldest vehicle you can drive in every US state | Ridesharing Driver", "url": "https://www.ridesharingdriver.com/uber-model-year-list/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "أقصى عمر عربية 15-16 سنة حسب المدينة/الولاية — القيمة هنا للحد الأكتر تشددًا (15 سنة = موديل 2011). اتأكد من صفحة تسجيل مدينتك بالظبط."
   },
   "needsEnglish": {
     "value": null,

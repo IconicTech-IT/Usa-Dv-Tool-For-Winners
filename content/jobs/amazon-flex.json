@@ -8,18 +8,25 @@
     "en": ""
   },
   "needsCar": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بعض المدن بتسمح بالعجل أو السكوتر — اتأكد للمدينة نفسها"
+    "value": true,
+    "status": "verified",
+    "sources": [
+      { "label": "Amazon Flex Requirements 2026 | Gridwise", "url": "https://gridwise.io/blog/amazon-flex-requirements" }
+    ],
+    "lastVerified": "2026-09-09",
+    "note": "عربية 4 أبواب (سيدان/SUV/فان/شاحنة) — مفيش كوبيه بابين. أقل سن 21 (مش 18 زي الباقي)."
   },
   "minCarYear": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
+    "value": 0,
+    "status": "estimated",
     "sources": [],
-    "lastVerified": "2026-08-25",
-    "note": "بيختلف من مدينة لمدينة"
+    "lastVerified": "2026-09-09",
+    "note": "0 = مفيش حد سنة موديل اتلاقى في البحث.",
+    "basis": {
+      "ar": "بحث عام على متطلبات Amazon Flex اتأكد منه 2026-09-09 — مفيش حد عمر عربية معلن.",
+      "en": "General research on Amazon Flex driver requirements, confirmed 2026-09-09 — no published vehicle-age cap found."
+    },
+    "verifyIn": "6-months"
   },
   "needsEnglish": {
     "value": null,

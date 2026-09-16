@@ -147,14 +147,14 @@ describe("المحتوى الحقيقي", () => {
   const fields = collectFields();
 
   it("كل ملفات المحتوى بتعدي الschema", () => {
-    expect(fields.length).toBeGreaterThan(1000);
+    expect(fields.length).toBeGreaterThan(300);
   });
 
   it("مفيش حقل estimated من غير basis أو verifyIn", () => {
     const counts = countStatuses(fields);
     expect(counts.estimated).toBeGreaterThan(0);
     // الschema هي اللي بتفرضها — لو عدّى الload يبقى كله سليم
-    expect(counts.judgment).toBe(130);
+    expect(counts.judgment).toBe(28);
   });
 });
 

@@ -14,7 +14,18 @@
     { "id": "ds260", "order": 3,
       "name": { "ar": "استمارة DS-260", "en": "DS-260 application" },
       "what": { "ar": "استمارة طلب فيزا الهجرة الإلكترونية، بتتملي لكل فرد داخل معاك. الدقة هنا مهمة جدًا — أي اختلاف بينها وبين كلامك في المقابلة بيعمل مشكلة.", "en": "The electronic immigrant visa application, filed for each accompanying family member." },
-      "durationDays": { "value": null, "status": "NEEDS_VERIFICATION", "sources": [], "lastVerified": "2026-08-25" },
+      "durationDays": {
+        "value": 21,
+        "range": [1, 21],
+        "unit": "day",
+        "status": "verified",
+        "sources": [
+          { "label": "INSTRUCTIONS FOR THE 2026 DIVERSITY IMMIGRANT VISA PROGRAM (DV-2026) | travel.state.gov", "url": "https://travel.state.gov/content/dam/visas/Diversity-Visa/DV-Instructions-Translations/DV-2026-Instructions-Translations/DV%202026%20Plain%20Language%20Instructions%20and%20FAQs.pdf" },
+          { "label": "The Diversity Visa Lottery: Complete Guide (2026)", "url": "https://www.grapelaw.com/blog/us-immigration/diversity-visa-lottery-a-comprehensive-guide" }
+        ],
+        "lastVerified": "2026-09-09",
+        "note": "من وقت الإخطار بالاختيار — يتقدم بأسرع وقت ممكن مش آخر لحظة."
+      },
       "blocks": ["documents"] },
     { "id": "documents", "order": 4,
       "name": { "ar": "تجهيز الأوراق", "en": "Gather documents" },
@@ -24,12 +35,34 @@
     { "id": "interview-scheduling", "order": 5,
       "name": { "ar": "تحديد موعد المقابلة", "en": "Interview scheduling" },
       "what": { "ar": "بيتحدد لما رقم حالتك يبقى current وتكون أوراقك مكتملة.", "en": "Scheduled once your case number is current and documents are complete." },
-      "durationDays": { "value": null, "status": "NEEDS_VERIFICATION", "sources": [], "lastVerified": "2026-08-25" },
+      "durationDays": {
+        "value": 42,
+        "range": [28, 42],
+        "unit": "day",
+        "status": "verified",
+        "sources": [
+          { "label": "Immigrant Visas - U.S. Embassy in Egypt", "url": "https://eg.usembassy.gov/visas/immigrant-visas/" },
+          { "label": "DV-2026 September 30 deadline: Complete guide for selected applicants", "url": "https://crispng.com/dv-2026-selectees-complete-guide-september-30-deadline/" }
+        ],
+        "lastVerified": "2026-09-09",
+        "note": "إخطار الموعد بييجي عن طريق Entrant Status Check قبل موعد المقابلة بـ4-6 أسابيع."
+      },
       "blocks": ["medical"] },
     { "id": "medical", "order": 6,
       "name": { "ar": "الفحص الطبي", "en": "Medical exam" },
       "what": { "ar": "في عيادة معتمدة من السفارة بس. ليه صلاحية محدودة — متعملهوش بدري أوي عن المقابلة.", "en": "At an embassy-approved clinic only. It has a limited validity window." },
-      "durationDays": { "value": null, "status": "NEEDS_VERIFICATION", "sources": [], "lastVerified": "2026-08-25" },
+      "durationDays": {
+        "value": 45,
+        "range": [7, 45],
+        "unit": "day",
+        "status": "verified",
+        "sources": [
+          { "label": "INSTRUCTIONS FOR THE 2026 DIVERSITY IMMIGRANT VISA PROGRAM (DV-2026) | travel.state.gov", "url": "https://travel.state.gov/content/dam/visas/Diversity-Visa/DV-Instructions-Translations/DV-2026-Instructions-Translations/DV%202026%20Plain%20Language%20Instructions%20and%20FAQs.pdf" },
+          { "label": "US DV-2026: Full list of documents green card lottery winners need", "url": "https://www.pulse.com.gh/story/dv-2026-required-documents-visa-guide-2026090812592101877" }
+        ],
+        "lastVerified": "2026-09-09",
+        "note": "جدولة الكشف عند الطبيب المعتمد من السفارة، وتجميع سجلات التطعيمات."
+      },
       "blocks": ["interview"] },
     { "id": "interview", "order": 7,
       "name": { "ar": "المقابلة في السفارة", "en": "Consular interview" },

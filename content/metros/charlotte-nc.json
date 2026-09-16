@@ -123,12 +123,14 @@
       "includesUtilities": true
     },
     "securityDeposit": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-25",
+      "value": 2,
+      "status": "verified",
+      "sources": [
+        { "label": "Max Security Deposit Limits by State (2026) | iPropertyManagement", "url": "https://ipropertymanagement.com/laws/maximum-security-deposits" }
+      ],
+      "lastVerified": "2026-09-09",
       "unit": "months of rent",
-      "note": "من غير credit غالبًا بيطلبوا أكتر"
+      "note": "الحد القانوني: شهرين لعقد محدد المدة، 1.5 شهر لعقد شهري. الرقم هنا للعقد محدد المدة (الأشيع)."
     },
     "utilities": {
       "value": null,
@@ -155,11 +157,20 @@
       "verifyIn": "6-months"
     },
     "carInsurance": {
-      "value": null,
-      "status": "NEEDS_VERIFICATION",
-      "sources": [],
-      "lastVerified": "2026-08-26",
-      "unit": "USD/month"
+      "value": 108,
+      "range": [100, 108],
+      "status": "estimated",
+      "sources": [
+        { "label": "State of Auto Insurance in 2026 | ValuePenguin", "url": "https://www.valuepenguin.com/state-of-auto-insurance-2026" }
+      ],
+      "lastVerified": "2026-09-09",
+      "unit": "USD/month",
+      "note": "متوسط تغطية كاملة على مستوى الولاية، من أرخص الـ4 ولايات المتابعة — مش رقم خاص بشارلوت تحديدًا. علاوة 'سايق جديد' للمهاجرين ممكن تتحط فوقه.",
+      "basis": {
+        "ar": "متوسط ولاية نورث كارولاينا مطبّق كتقريب للمدينة — مفيش رقم خاص بشارلوت لوحدها.",
+        "en": "North Carolina statewide average applied as a city proxy — no Charlotte-specific figure found."
+      },
+      "verifyIn": "1-year"
     }
   },
   "work": {

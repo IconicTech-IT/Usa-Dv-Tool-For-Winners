@@ -19,12 +19,14 @@
     "verifyIn": "1-year"
   },
   "incomeTaxRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "value": 0,
+    "status": "verified",
+    "sources": [
+      { "label": "Florida Tax Guide 2026: No Income Tax, Sales Tax, Property Tax", "url": "https://thetaxcalc.com/blog/florida-tax-guide-2026" }
+    ],
+    "lastVerified": "2026-09-09",
     "unit": "%",
-    "note": "الشرايح والنسب — من موقع الولاية"
+    "note": "مفيش ضريبة دخل شخصي على مستوى الولاية — فيدرالي بس."
   },
   "noFaultInsurance": {
     "value": true,
@@ -73,11 +75,15 @@
     }
   },
   "salesTax": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "unit": "%"
+    "value": 6.98,
+    "range": [6.0, 6.98],
+    "status": "verified",
+    "sources": [
+      { "label": "2026 Sales Tax Rates, Midyear Update | Tax Foundation", "url": "https://taxfoundation.org/data/all/state/2026-sales-tax-rates-midyear/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "unit": "%",
+    "note": "نسبة الولاية 6% + متوسط إضافة محلية — المجمّع على مستوى الولاية تقريبًا 6.98%."
   },
   "lastVerified": "2026-08-25"
 }

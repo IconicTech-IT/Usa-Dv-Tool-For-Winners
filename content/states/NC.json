@@ -19,33 +19,37 @@
     "verifyIn": "1-year"
   },
   "incomeTaxRate": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "value": 3.99,
+    "status": "verified",
+    "sources": [
+      { "label": "Tax Rate Schedules | NCDOR", "url": "https://www.ncdor.gov/taxes-forms/individual-income-tax/tax-rate-schedules" },
+      { "label": "2026 North Carolina Tax Rates & Rankings | Tax Foundation", "url": "https://taxfoundation.org/location/north-carolina/" }
+    ],
+    "lastVerified": "2026-09-09",
     "unit": "%",
-    "note": "الشرايح والنسب — من موقع الولاية"
+    "note": "نسبة ثابتة 3.99% من 1 يناير 2026 (نزلت من 4.25%). مجدولة تنزل لـ3.49% في 2027 و2.99% في 2028 — مشروط بأهداف إيرادات الولاية، مش مضمون."
   },
   "noFaultInsurance": {
     "value": false,
-    "status": "estimated",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "status": "verified",
+    "sources": [
+      { "label": "Is North Carolina a No-Fault State for Auto Accidents? | Hardison & Cochran", "url": "https://www.lawyernc.com/blog/is-north-carolina-a-no-fault-state-for-auto-accidents/" },
+      { "label": "Is North Carolina a No-Fault State? | Clovered", "url": "https://clovered.com/auto-insurance/north-carolina/no-fault-insurance/" }
+    ],
+    "lastVerified": "2026-09-16",
     "unit": "boolean",
-    "note": "نظام no-fault بيخلي تأمين العربية أغلى عادةً. أكّده من هيئة التأمين في الولاية.",
-    "basis": {
-      "ar": "نظام تأمين العربيات في الولاية من معرفة عامة — يتأكد من هيئة التأمين في الولاية.",
-      "en": "The state's auto insurance system from general knowledge — confirm with the state insurance department."
-    },
-    "verifyIn": "1-year"
+    "note": "نورث كارولاينا ولاية at-fault/tort — لازم يتحدد مين الغلطان قبل ما التعويض يتصرف، مش زي ولايات no-fault اللي كل سايق تأمينه بيغطيه هو بغض النظر عن الغلطان."
   },
   "licenseProcess": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
+    "value": "Must show proof of auto liability insurance (Form DL-123 from an NC-licensed insurer, or a non-owner policy if you don't own a car yet) BEFORE the license is issued — insurance comes first, not after. SSN required. Written knowledge test plus a road test needed for a first-time license.",
+    "status": "verified",
+    "sources": [
+      { "label": "Official NCDMV: Proving Liability Insurance", "url": "https://www.ncdot.gov/dmv/help/Pages/proving-insurance.aspx" },
+      { "label": "What Is Form DL-123 & Who Needs One? | Direct Auto Insurance", "url": "https://www.directauto.com/learning-center/high-risk-insurance/what-is-form-dl-123-who-needs-one" }
+    ],
+    "lastVerified": "2026-09-16",
     "unit": "text",
-    "note": "محتاج SSN؟ فيه فترة انتظار؟ الاختبار متاح بالعربي؟ من موقع DMV الولاية."
+    "note": "فرق مهم عن ولايات تانية: التأمين بييجي قبل الرخصة مش بعدها. لو من غير عربية لسه، اشتري non-owner car insurance الأول عشان تاخد DL-123."
   },
   "winterSeverity": {
     "value": 2,
@@ -73,11 +77,15 @@
     }
   },
   "salesTax": {
-    "value": null,
-    "status": "NEEDS_VERIFICATION",
-    "sources": [],
-    "lastVerified": "2026-08-25",
-    "unit": "%"
+    "value": 7.0,
+    "range": [4.75, 7.0],
+    "status": "verified",
+    "sources": [
+      { "label": "2026 North Carolina Tax Rates & Rankings | Tax Foundation", "url": "https://taxfoundation.org/location/north-carolina/" }
+    ],
+    "lastVerified": "2026-09-09",
+    "unit": "%",
+    "note": "نسبة الولاية 4.75% + إضافة محلية ~2-2.25%. المجمّع تقريبًا 6.75-7% في أغلب المقاطعات — القيمة هنا لأعلى الطرف."
   },
-  "lastVerified": "2026-08-25"
+  "lastVerified": "2026-09-16"
 }
