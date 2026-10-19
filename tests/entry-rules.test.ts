@@ -136,6 +136,19 @@ describe("official notes on the guide pages", () => {
     expect(notesForItem("visaFee", "ar")[0]?.text).toContain("غير قابلة للاسترداد");
   });
 
+  it("ties the visa's expiry to the medical exam, not to the day the visa is issued", () => {
+    const en = noteById("visaExpiry", "en");
+    expect(en?.kind).toBe("rule");
+    expect(en?.text).toContain("usually follows the medical exam");
+    expect(en?.text).toContain("before, or at the same time as");
+    expect(en?.text).toContain("check the date printed on your visa");
+    expect(en?.text).not.toMatch(/after it is printed|from the date of printing/);
+    expect(noteById("visaExpiry", "ar")?.text).toContain("الكشف الطبي");
+    expect(en?.source.url).toBe(
+      "https://travel.state.gov/content/travel/en/us-visas/Supplements/Supplements_by_Post/CRO-Cairo.html",
+    );
+  });
+
   it("shows the passport, photos and medical notes on those items' guides", () => {
     expect(notesForItem("passport", "ar").map((n) => n.id)).toEqual([
       "passportAtRegistration",

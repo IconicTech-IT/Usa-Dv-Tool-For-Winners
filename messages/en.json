@@ -137,7 +137,7 @@
       "monthsLabel": "How many months until the family joins you?",
       "monthsHelp": "Type the number of months (1 to {max})",
       "monthsMissing": "Type the number of months so we can work the plan out in two phases.",
-      "tooLong": "A visa is usually valid for about six months from when it is issued. If the family will arrive after that, ask the embassy. The calculation here carries on with what you typed.",
+      "tooLong": "A visa usually expires about six months after the medical exam, so the real time from the interview is less than six months. If the family will arrive after a wait this long, check the date printed on the visa and ask the embassy. The calculation here carries on with what you typed.",
       "same": "The paperwork and fees are the same for the whole family: you all get your visas together. What changes is the travel, the arrival and the monthly costs."
     }
   },

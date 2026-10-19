@@ -107,8 +107,8 @@
     "visaExpiry": {
       "kind": "rule",
       "source": "cairoSupplement",
-      "ar": "الفيزا لازم تدخل بيها أمريكا قبل تاريخ انتهائها المطبوع عليها، وده عادةً بعد حوالي ستة شهور من طباعتها، وغالبًا مبتتمدّدش. المتقدم الأساسي لازم يدخل الأول أو في نفس وقت باقي أفراد الأسرة اللي معاهم فيزا.",
-      "en": "You must enter the United States before the expiry date printed on your visa, which is usually about six months after it is printed, and it generally cannot be extended. The principal applicant must enter before, or at the same time as, the family members who hold visas."
+      "ar": "المتقدم الأساسي لازم يدخل أمريكا الأول أو في نفس وقت باقي أفراد الأسرة اللي معاهم فيزا. وكل فرد في الأسرة لازم يدخل قبل تاريخ الانتهاء المطبوع على الفيزا. التاريخ ده غالبًا بيتبع الكشف الطبي (حوالي ستة شهور منه)، فشوف التاريخ المطبوع على الفيزا.",
+      "en": "The principal applicant must enter the United States before, or at the same time as, the family members who hold visas. Every family member must enter before the expiry date printed on the visa. That date usually follows the medical exam (about six months from it), so check the date printed on your visa."
     },
     "visaFeeInterview": {
       "kind": "rule",

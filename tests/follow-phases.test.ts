@@ -12,7 +12,7 @@ import {
 import { setFollowMonths, setTravelMode } from "@/lib/calc/plan-actions";
 import { parsePlanFile, serializePlan } from "@/lib/calc/plan-file";
 import { summarizePlan } from "@/lib/calc/compare";
-import { followMonthsOf } from "@/lib/calc/scaling";
+import { followMonthsOf, isLateArrival } from "@/lib/calc/scaling";
 import { groupSubtotal } from "@/lib/calc/summary";
 import { compactPlan, expandPlan } from "@/lib/transfer/codec";
 
@@ -149,6 +149,17 @@ describe("a family that arrives after the principal: the job scenarios", () => {
     plan.savings = { raw: "5000", currency: "usd" };
     const first = computePlan(plan).scenarios[0];
     expect(first?.requiredCents).toBe(oneTime - usd(5000));
+  });
+});
+
+describe("the warning about a long wait before the family arrives", () => {
+  it("starts at four months, never for a missing number, and is only a warning", () => {
+    expect(isLateArrival(null)).toBe(false);
+    expect(isLateArrival(3)).toBe(false);
+    expect(isLateArrival(4)).toBe(true);
+    expect(isLateArrival(24)).toBe(true);
+    // a long wait still calculates: nothing is blocked
+    expect(computePlan(family(TYPED, "12")).follow?.months).toBe(12);
   });
 });
 

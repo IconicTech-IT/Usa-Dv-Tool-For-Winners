@@ -31,10 +31,14 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await page.getByRole("button", { name: FOLLOW }).click();
   await expect(page.getByText(/The principal applicant must enter before/)).toBeVisible();
   await expect(page.getByText("Type the number of months so we can work")).toBeVisible();
-  await page.getByLabel(MONTHS).fill("8");
-  await expect(page.getByText(/A visa is usually valid for about six months/)).toBeVisible();
+  const warning = page.getByText(/A visa usually expires about six months after the medical exam/);
+  await page.getByLabel(MONTHS).fill("3");
+  await expect(warning).toHaveCount(0);
   await page.getByLabel(MONTHS).fill("4");
-  await expect(page.getByText(/A visa is usually valid for about six months/)).toHaveCount(0);
+  await expect(warning).toBeVisible();
+  await page.getByLabel(MONTHS).fill("8");
+  await expect(warning).toBeVisible();
+  await page.getByLabel(MONTHS).fill("4");
 
   // The moving calculator has the principal's arrival and the family's arrival instead of the five groups.
   await open(page, "/en/moving");

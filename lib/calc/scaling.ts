@@ -1,6 +1,11 @@
 import { followRuleOf, type ItemDef, type Scaling, type TimelineStage } from "@/lib/calc/catalog";
 import type { Rate } from "@/lib/calc/currency";
-import { MAX_FOLLOW_MONTHS, type AmountField, type PlanState } from "@/lib/calc/model";
+import {
+  LATE_ARRIVAL_WARNING_MONTHS,
+  MAX_FOLLOW_MONTHS,
+  type AmountField,
+  type PlanState,
+} from "@/lib/calc/model";
 import { parseAmount } from "@/lib/calc/parse-amount";
 
 /**
@@ -90,6 +95,11 @@ export function followMonthsOf(state: PlanState): number | null {
   if (!parsed.ok || parsed.amount.scale !== 0) return null;
   const months = Number(parsed.amount.units);
   return months >= 1 && months <= MAX_FOLLOW_MONTHS ? months : null;
+}
+
+/** True when the family would wait long enough that the visa's printed expiry may be a problem. */
+export function isLateArrival(months: number | null): boolean {
+  return months !== null && months >= LATE_ARRIVAL_WARNING_MONTHS;
 }
 
 /** How many times the whole household counts for an item; zero hides the item (nobody to count). */

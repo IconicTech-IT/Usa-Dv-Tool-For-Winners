@@ -4,9 +4,9 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { useNumberLocale } from "@/components/calc/format";
 import { RuleNote } from "@/components/guide/RuleNote";
-import { MAX_FOLLOW_MONTHS, VISA_VALIDITY_MONTHS, type Travel } from "@/lib/calc/model";
+import { MAX_FOLLOW_MONTHS, type Travel } from "@/lib/calc/model";
 import { formatNumber } from "@/lib/calc/parse-amount";
-import { followMonthsOf } from "@/lib/calc/scaling";
+import { followMonthsOf, isLateArrival } from "@/lib/calc/scaling";
 import type { PlanView } from "@/lib/calc/use-plan";
 import { noteById } from "@/lib/guide/notes";
 
@@ -76,7 +76,7 @@ function FollowDetails({ view }: { view: PlanView }) {
       </div>
       <div className="help">{t("same")}</div>
       {note ? <RuleNote note={note} sourceWord={labels("guide.source")} /> : null}
-      {months !== null && months > VISA_VALIDITY_MONTHS ? <div className="warn">{t("tooLong")}</div> : null}
+      {isLateArrival(months) ? <div className="warn">{t("tooLong")}</div> : null}
     </div>
   );
 }

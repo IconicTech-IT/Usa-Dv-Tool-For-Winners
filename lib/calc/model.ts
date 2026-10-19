@@ -18,10 +18,11 @@ export const MAX_NAME_LENGTH = 60;
 /** The most months the family may arrive after the principal. */
 export const MAX_FOLLOW_MONTHS = 24;
 /**
- * A visa is usually valid for about six months from the date it is printed (Cairo supplement); the setup
- * page warns when the family would arrive later. The warning never blocks anything.
+ * A visa's validity is limited to that of the medical report, about six months from the exam (Cairo
+ * supplement), so the time from the interview is shorter. The setup page warns from this many months
+ * of waiting. The warning never blocks anything.
  */
-export const VISA_VALIDITY_MONTHS = 6;
+export const LATE_ARRIVAL_WARNING_MONTHS = 4;
 
 /**
  * The only amount a new plan starts with: the official registration fee, set by the State
