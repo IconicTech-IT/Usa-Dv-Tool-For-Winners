@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-import { ITEMS, QUICK_ITEMS, STAGES, type Scaling } from "@/lib/calc/catalog";
+import { ITEMS, QUICK_ITEMS, TIMELINE_STAGES, type Scaling } from "@/lib/calc/catalog";
 import { SCENARIO_START_MONTHS } from "@/lib/calc/compute";
 import type { OpenFailure } from "@/lib/calc/plan-file";
 import type { ParseFailure } from "@/lib/calc/parse-amount";
@@ -58,6 +58,8 @@ type _AllOpen = Exclude<OpenFailure, (typeof OPEN_FAILURES)[number]> extends nev
 const _parseCheck: _AllParse = true;
 const _openCheck: _AllOpen = true;
 
+const ARRIVAL_CARDS = ["arrivalAlone", "arrivalFamily"];
+
 function placeholders(text: string): string[] {
   // The words inside a plural choice are text, not arguments, so a plural counts as its one argument.
   const withoutChoices = text.replace(/\{(\w+),\s*plural,(?:[^{}]|\{[^{}]*\})*\}/g, "{$1}");
@@ -95,18 +97,21 @@ describe("messages", () => {
       });
 
       it("has a label for every stage", () => {
-        expect(Object.keys(branch(tree, "stages")).sort()).toEqual([...STAGES].sort());
+        expect(Object.keys(branch(tree, "stages")).sort()).toEqual([...TIMELINE_STAGES].sort());
       });
 
       it("has a label for every group used by an item", () => {
-        const groups = [...new Set([...ITEMS, ...QUICK_ITEMS].map((i) => i.group))].sort();
+        // The two arrival cards exist only when the family follows later; no item belongs to them.
+        const groups = [...new Set([...ITEMS, ...QUICK_ITEMS].map((i) => i.group)), ...ARRIVAL_CARDS].sort();
         expect(Object.keys(branch(tree, "groups")).sort()).toEqual(groups);
       });
 
       it("has a hint for every calculator group, and the timeline has text for every stage", () => {
         const groupIds = Object.keys(branch(tree, "groups")).filter((id) => id !== "monthlyCosts");
         expect(Object.keys(branch(tree, "groupHints")).sort()).toEqual(groupIds.sort());
-        expect(Object.keys(branch(tree, "timeline")).sort()).toEqual([...STAGES].sort());
+        // "firstMonthAlone" is how the first month reads when the family arrives later.
+        const stages = [...TIMELINE_STAGES, "firstMonthAlone"];
+        expect(Object.keys(branch(tree, "timeline")).sort()).toEqual(stages.sort());
       });
 
       it("has a hint for every runway scenario", () => {

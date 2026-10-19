@@ -104,6 +104,12 @@
       "ar": "رسم الجرين كارد (USCIS Immigrant Fee) بتدفعه أونلاين بعد ما الفيزا تتصدر وتستلمها وقبل السفر، وده مستحسن بشدة. بيغطي معالجة ملف الهجرة وطباعة الجرين كارد، وبيتدفع عن كل شخص. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع.",
       "en": "You are strongly encouraged to pay the green card fee (the USCIS Immigrant Fee) online after the visa is issued and you collect it, and before you travel. It pays for processing your immigrant visa packet and producing your green card, and it is paid for each person. You can also pay after you arrive, but the green card is not sent until it is paid."
     },
+    "visaExpiry": {
+      "kind": "rule",
+      "source": "cairoSupplement",
+      "ar": "الفيزا لازم تدخل بيها أمريكا قبل تاريخ انتهائها المطبوع عليها، وده عادةً بعد حوالي ستة شهور من طباعتها، وغالبًا مبتتمدّدش. المتقدم الأساسي لازم يدخل الأول أو في نفس وقت باقي أفراد الأسرة اللي معاهم فيزا.",
+      "en": "You must enter the United States before the expiry date printed on your visa, which is usually about six months after it is printed, and it generally cannot be extended. The principal applicant must enter before, or at the same time as, the family members who hold visas."
+    },
     "visaFeeInterview": {
       "kind": "rule",
       "source": "cairoSupplement",

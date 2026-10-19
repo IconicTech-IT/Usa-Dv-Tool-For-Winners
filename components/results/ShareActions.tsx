@@ -24,6 +24,13 @@ function summaryText(view: PlanView, t: Translate, locale: NumberLocale): string
     `${t("results.oneOff")}: ${dollars(result.oneTimeCents)}`,
     `${t("results.monthly")}: ${dollars(result.monthlyCents)}`,
   ];
+  if (result.follow !== null) {
+    const months = formatNumber(result.follow.months, locale, 0);
+    lines.push(
+      `${t("results.travel")}: ${t("results.travelFollow", { months })}`,
+      `${t("runway.arrivalTitle", { months })}: ${dollars(result.follow.cashByArrivalCents)}`,
+    );
+  }
   const safest = result.scenarios[result.scenarios.length - 1];
   if (safest) {
     lines.push(

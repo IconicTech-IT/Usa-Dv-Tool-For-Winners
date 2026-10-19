@@ -129,7 +129,17 @@
     "child": "Child",
     "note": "You can change this at any time; the calculators update on their own.",
     "next": "Next: paperwork and fees",
-    "rule": "Official rule"
+    "rule": "Official rule",
+    "travel": {
+      "title": "How will you travel?",
+      "together": "All together",
+      "follow": "Me first, the family follows after … months",
+      "monthsLabel": "How many months until the family joins you?",
+      "monthsHelp": "Type the number of months (1 to {max})",
+      "monthsMissing": "Type the number of months so we can work the plan out in two phases.",
+      "tooLong": "A visa is usually valid for about six months from when it is issued. If the family will arrive after that, ask the embassy. The calculation here carries on with what you typed.",
+      "same": "The paperwork and fees are the same for the whole family: you all get your visas together. What changes is the travel, the arrival and the monthly costs."
+    }
   },
   "fees": {
     "title": "Paperwork and fees",
@@ -159,7 +169,11 @@
     "scenariosHeading": "Scenarios",
     "scenariosLead": "Each scenario = paperwork and fees + moving + (monthly costs × months without income) + buffer − your savings.",
     "note": "The highlighted scenario is the one we suggest planning for.",
-    "surplus": "Above what you need"
+    "surplus": "Above what you need",
+    "monthlyAlone": "Monthly costs while you are alone",
+    "monthlyFamily": "Monthly costs once the family arrives",
+    "arrivalTitle": "Until the family arrives (after {months} months)",
+    "arrivalHint": "All the one-off costs and the months you are alone"
   },
   "results": {
     "title": "Results summary",
@@ -186,7 +200,10 @@
     "planOpened": "The plan was opened.",
     "forgotCount": "{count} empty",
     "forgotNone": "No empty box. Everything is filled in.",
-    "shareHeader": "My plan summary from DV Compass"
+    "shareHeader": "My plan summary from DV Compass",
+    "travel": "How you travel",
+    "travelTogether": "All together",
+    "travelFollow": "Family after {months} months"
   },
   "quick": {
     "title": "Quick mode",
@@ -211,7 +228,10 @@
     "savings": "Savings held",
     "needed": "Still to save",
     "note": "Both files stay on your device. Nothing is sent.",
-    "rowHeader": "Item"
+    "rowHeader": "Item",
+    "travel": "How you travel",
+    "together": "All together",
+    "followAfter": "Family after {months} months"
   },
   "scam": {
     "title": "Protect yourself from scams",
@@ -304,7 +324,9 @@
       "beforeTravel": "before travel",
       "firstMonth": "first month there",
       "monthly": "monthly",
-      "beforeEntry": "before registering"
+      "beforeEntry": "before registering",
+      "aloneMonths": "months until the family arrives",
+      "familyArrival": "when the family arrives"
     },
     "groups": {
       "entry": "Applying",
@@ -318,7 +340,9 @@
       "car": "Car",
       "healthFamily": "Health and children",
       "monthlyCosts": "Monthly costs",
-      "passport": "Passport"
+      "passport": "Passport",
+      "arrivalAlone": "When you arrive alone",
+      "arrivalFamily": "When the family arrives"
     },
     "groupHints": {
       "entry": "Registration fee and photos",
@@ -331,7 +355,9 @@
       "connectivity": "Power, internet, phone",
       "car": "Licence, purchase, insurance",
       "healthFamily": "Health insurance and childcare",
-      "passport": "The main applicant's passport only"
+      "passport": "The main applicant's passport only",
+      "arrivalAlone": "Temporary stay, phone line, basics, car",
+      "arrivalFamily": "Housing deposit and rent, furniture, childcare"
     },
     "scaling": {
       "total": "For the whole household",
@@ -404,7 +430,8 @@
       "quickMonthly": "Costs for one month",
       "passport": "Get or renew the passport (main applicant)",
       "registrationFee": "Official registration fee",
-      "familyPassports": "Passports for the rest of the family"
+      "familyPassports": "Passports for the rest of the family",
+      "familyAbroadMonthly": "Your family's monthly costs back home until they join you"
     },
     "timeline": {
       "beforeInterview": {
@@ -430,6 +457,18 @@
       "beforeEntry": {
         "title": "Before registering",
         "text": "Registration fee, photos and the main applicant's passport"
+      },
+      "firstMonthAlone": {
+        "title": "When you arrive alone",
+        "text": "Temporary stay, phone line, basics and the car"
+      },
+      "aloneMonths": {
+        "title": "Months until the family arrives",
+        "text": "Your monthly costs alone and the family's costs back home"
+      },
+      "familyArrival": {
+        "title": "When the family arrives (after {months} months)",
+        "text": "The family's tickets, rent and deposit, furniture, childcare"
       }
     },
     "scenarios": {
@@ -463,7 +502,8 @@
         "invalid": "The plan in this file is incomplete or was edited"
       }
     },
-    "currencyChoice": "Amount currency"
+    "currencyChoice": "Amount currency",
+    "laterShare": "{amount} of it when the family arrives"
   },
   "guideNotes": {
     "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country."

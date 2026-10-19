@@ -6,7 +6,8 @@ import { AmountInput } from "@/components/calc/AmountInput";
 import { Stepper } from "@/components/calc/Stepper";
 import { LineTotal } from "@/components/calc/LineTotal";
 import { countUnitOf, findItem, type ItemDef } from "@/lib/calc/catalog";
-import { effectiveScaling, type ItemResult } from "@/lib/calc/compute";
+import type { ItemResult } from "@/lib/calc/compute";
+import { effectiveScaling } from "@/lib/calc/scaling";
 import { MAX_REGISTRATIONS, REGISTRATION_FEE_ITEM, type AmountField } from "@/lib/calc/model";
 import { hasGuide } from "@/lib/guide/links";
 import type { PlanView } from "@/lib/calc/use-plan";
@@ -22,7 +23,10 @@ interface ItemFieldProps {
 function lineTotalOf(def: ItemDef, field: AmountField, result: ItemResult | undefined) {
   const unit = countUnitOf(effectiveScaling(def, field));
   if (unit === null || !result?.typed || result.cents === null) return null;
-  return <LineTotal unit={unit} count={result.multiplier} cents={result.cents} />;
+  // When the family follows later, an item that splits shows the share that falls on the family's arrival.
+  const later =
+    result.parts.length > 1 ? result.parts.find((p) => p.stage === "familyArrival")?.cents : undefined;
+  return <LineTotal unit={unit} count={result.multiplier} cents={result.cents} laterCents={later} />;
 }
 
 /** The item id of the "How do I find this price?" page, or undefined when the item has no page. */

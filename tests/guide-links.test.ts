@@ -9,7 +9,7 @@ const rawText = readFileSync(join(process.cwd(), "content", "guide-links.json"),
 const data = GuideLinksSchema.parse(JSON.parse(rawText));
 
 /** Items for which there is no sensible single source: no guide button. */
-const NO_GUIDE = ["entryHelp", "otherMoving", "otherMonthly"];
+const NO_GUIDE = ["entryHelp", "otherMoving", "otherMonthly", "familyAbroadMonthly"];
 
 const TRACKING = /[?&](utm_[a-z]+|ref|aff|affid|affiliate|tag|clickid|gclid|fbclid|cid|campaign)=/i;
 

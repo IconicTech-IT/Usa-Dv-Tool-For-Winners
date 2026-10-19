@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { DualAmount } from "@/components/calc/DualAmount";
 import { Icon } from "@/components/Icon";
 import type { GroupDef } from "@/lib/calc/catalog";
-import { subtotalOf } from "@/lib/calc/summary";
+import { groupSubtotal } from "@/lib/calc/summary";
 import type { PlanView } from "@/lib/calc/use-plan";
 
 interface GroupSectionProps {
@@ -23,10 +23,7 @@ export function GroupSection({ group, position, view, children }: GroupSectionPr
   const t = useTranslations();
   const bodyId = useId();
   const [isOpen, setIsOpen] = useState(true);
-  const subtotal = subtotalOf(
-    view.result,
-    group.items.map((item) => item.id),
-  );
+  const subtotal = groupSubtotal(view.result, group);
 
   return (
     <section className={isOpen ? "stage" : "stage closed"}>

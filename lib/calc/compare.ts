@@ -8,6 +8,8 @@ export interface PlanSummary {
   name: string;
   adults: number;
   children: number;
+  /** Months until the family arrives after the principal; null when everyone travels together. */
+  followMonths: number | null;
   oneTimeCents: Cents;
   monthlyCents: Cents;
   /** What the safest scenario (job starts after 3 months) needs in all. */
@@ -30,6 +32,7 @@ export function summarizePlan(name: string, state: PlanState): PlanSummary {
     name,
     adults: result.adults,
     children: result.children,
+    followMonths: result.follow?.months ?? null,
     oneTimeCents: result.oneTimeCents,
     monthlyCents: result.monthlyCents,
     safestTotalCents: safest ? scenarioTotalCents(safest, result) : ZERO_CENTS,

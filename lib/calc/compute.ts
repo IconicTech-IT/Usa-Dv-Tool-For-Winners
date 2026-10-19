@@ -1,9 +1,17 @@
-import { ITEMS, QUICK_ITEMS, STAGES, type ItemDef, type Scaling, type Stage } from "@/lib/calc/catalog";
+import { ITEMS, QUICK_ITEMS, TIMELINE_STAGES, type ItemDef, type TimelineStage } from "@/lib/calc/catalog";
 import { parseRate, type Rate } from "@/lib/calc/currency";
 import { isZero, type Decimal } from "@/lib/calc/decimal";
+import { addMonths, costOfMonths, type FollowPhases } from "@/lib/calc/follow";
 import { multiplyCents, toUsdCents, usdCentsToLocalCents, ZERO_CENTS, type Cents } from "@/lib/calc/money";
 import type { AmountField, PlanState } from "@/lib/calc/model";
 import { parseAmount } from "@/lib/calc/parse-amount";
+import {
+  effectiveScaling,
+  followMonthsOf,
+  householdMultiplier,
+  placementsOf,
+  type HouseholdContext,
+} from "@/lib/calc/scaling";
 
 /**
  * All the maths, in exact US cents (BigInt). Money amounts come only from what the user
@@ -11,28 +19,43 @@ import { parseAmount } from "@/lib/calc/parse-amount";
  *
  * Formulas (design note s2):
  *   stage total      = sum of its items, each multiplied by the household count when per person
- *   oneTime          = beforeEntry + beforeInterview + atInterview + beforeTravel + firstMonth
+ *   oneTime          = beforeEntry + beforeInterview + atInterview + beforeTravel + firstMonth (+ familyArrival)
  *   monthly          = sum of the monthly items
  *   scenario n       = oneTime + monthly * n + bufferMonths * monthly - savings   (n = 0, 1, 2, 3)
  *   netMonthlyAfter  = monthly - income - spouseIncome   (negative means a monthly surplus)
  *   timeline         = running total over the stages in order; the "monthly" stage adds one month
+ *
+ * When the family arrives some months after the principal, the same formulas run in two phases:
+ * the months alone cost "aloneMonthly", the months after cost "monthly", and a scenario's months are
+ * priced phase by phase (see follow.ts).
  */
 
 export const SCENARIO_START_MONTHS = [0, 1, 2, 3] as const;
 export type ScenarioStart = (typeof SCENARIO_START_MONTHS)[number];
 
 /** The stages that make up the one-time total (everything except the monthly costs). */
-const ONE_TIME_STAGES: readonly Stage[] = [
+const ONE_TIME_STAGES: readonly TimelineStage[] = [
   "beforeEntry",
   "beforeInterview",
   "atInterview",
   "beforeTravel",
   "firstMonth",
+  "familyArrival",
 ];
+
+/** The stages that exist only when the family follows later. */
+const FOLLOW_ONLY_STAGES: readonly TimelineStage[] = ["aloneMonths", "familyArrival"];
+
+/** The share of an item that falls in one stage, in US cents. */
+export interface ItemPart {
+  stage: TimelineStage;
+  cents: Cents;
+}
 
 export interface ItemResult {
   id: string;
-  stage: Stage;
+  /** The stage the item is listed under in "what did I forget". */
+  stage: TimelineStage;
   /**
    * False when the item counts nobody in this household (the family items of a person alone). Such an
    * item is hidden, adds nothing whatever was typed in it before, and is not listed as forgotten.
@@ -43,14 +66,19 @@ export interface ItemResult {
   /** Text is there but is not a valid non-negative number. */
   invalid: boolean;
   multiplier: number;
-  /** Amount in US cents after the multiplier; null when empty, invalid, or the rate is missing. */
+  /**
+   * Amount in US cents after the multiplier; null when empty, invalid, or the rate is missing. For a
+   * monthly item it is one month of the whole family.
+   */
   cents: Cents | null;
+  /** Where that money falls on the timeline (one share unless the family follows later). */
+  parts: ItemPart[];
   /** Typed in the local currency but no valid rate was typed yet. */
   needsRate: boolean;
 }
 
 export interface StageResult {
-  stage: Stage;
+  stage: TimelineStage;
   cents: Cents;
   /** Ids of items nobody typed an amount for ("what did I forget"). */
   emptyIds: string[];
@@ -59,7 +87,7 @@ export interface StageResult {
 }
 
 export interface TimelineEntry {
-  stage: Stage;
+  stage: TimelineStage;
   stageCents: Cents;
   cumulativeCents: Cents;
 }
@@ -71,6 +99,16 @@ export interface Scenario {
   shortfallCents: Cents;
   /** The negative of requiredCents when it is negative, else zero. */
   surplusCents: Cents;
+}
+
+/** What is known when the family arrives some months after the principal. */
+export interface FollowResult {
+  /** Months until the family arrives. */
+  months: number;
+  /** One month of costs while the principal is alone, the family's costs back home included. */
+  aloneMonthlyCents: Cents;
+  /** Everything needed until the family arrives: all one-time money and the months alone, before savings. */
+  cashByArrivalCents: Cents;
 }
 
 export interface PlanResult {
@@ -88,53 +126,33 @@ export interface PlanResult {
   savingsCents: Cents;
   netMonthlyAfterStartCents: Cents;
   scenarios: Scenario[];
+  /** Set only when the family arrives some months after the principal. */
+  follow: FollowResult | null;
   /** A local-currency amount exists but no valid rate was typed, so totals are partial. */
   needsRate: boolean;
 }
 
-interface HouseholdContext {
-  adults: number;
-  children: number;
-  registrations: number;
-  rate: Rate | null;
+/** The stage an item is listed under: where it first falls, or for a monthly item where it falls last (the full family). */
+function listingStage(def: ItemDef, stages: readonly TimelineStage[]): TimelineStage {
+  const stage = def.stage === "monthly" ? stages[stages.length - 1] : stages[0];
+  return stage ?? def.stage;
 }
 
-/** The spouse counts once however many adults travel: only a spouse is written on the entry. */
-function spouseCount(adults: number): number {
-  return adults > 1 ? 1 : 0;
-}
-
-function multiplierFor(scaling: Scaling, context: HouseholdContext): number {
-  const { adults, children, registrations } = context;
-  switch (scaling) {
-    case "total":
-      return 1;
-    case "perPerson":
-      return adults + children;
-    case "perAdult":
-      return adults;
-    case "perChild":
-      return children;
-    case "perEntrant":
-      return 1 + spouseCount(adults) + children;
-    case "applicantOnly":
-      return 1;
-    case "perFamilyMember":
-      return spouseCount(adults) + children;
-    case "perRegistration":
-      return registrations;
-  }
-}
-
-/** The scaling an item uses now: a toggle item follows the box's "per person" switch. */
-export function effectiveScaling(def: ItemDef, field: AmountField): Scaling {
-  if (def.toggle) return field.perPerson ? "perPerson" : "total";
-  return def.scaling;
+/** The cents of an item that stand for the whole item: every share, but only one month of a monthly item. */
+function headlineCents(parts: readonly ItemPart[]): Cents {
+  return parts.filter((p) => p.stage !== "aloneMonths").reduce((sum, p) => sum + p.cents, ZERO_CENTS);
 }
 
 function computeItem(def: ItemDef, field: AmountField | undefined, context: HouseholdContext): ItemResult {
-  const base = { id: def.id, stage: def.stage };
-  const multiplier = multiplierFor(field ? effectiveScaling(def, field) : def.scaling, context);
+  const scaling = field ? effectiveScaling(def, field) : def.scaling;
+  const multiplier = householdMultiplier(def, scaling, context);
+  const placements = placementsOf(def, scaling, context);
+  const stage = listingStage(
+    def,
+    placements.map((p) => p.stage),
+  );
+  const base = { id: def.id, stage, parts: [] };
+
   if (multiplier === 0) {
     // The typed text stays in the plan, so the item comes back with its value when the family is added.
     return {
@@ -173,13 +191,16 @@ function computeItem(def: ItemDef, field: AmountField | undefined, context: Hous
   }
 
   const single = toUsdCents(parsed.amount, field.currency, context.rate);
+  const parts =
+    single === null ? [] : placements.map((p) => ({ stage: p.stage, cents: single * BigInt(p.multiplier) }));
   return {
     ...base,
     applicable: true,
     typed: true,
     invalid: false,
     multiplier,
-    cents: single === null ? null : single * BigInt(multiplier),
+    cents: single === null ? null : headlineCents(parts),
+    parts,
     needsRate: single === null,
   };
 }
@@ -203,23 +224,26 @@ function sumCents(values: readonly (Cents | null)[]): Cents {
 }
 
 function computeStages(items: ItemResult[]): StageResult[] {
-  return STAGES.map((stage) => {
-    const stageItems = items.filter((i) => i.stage === stage);
+  return TIMELINE_STAGES.map((stage) => {
+    const listed = items.filter((i) => i.stage === stage);
     return {
       stage,
-      cents: sumCents(stageItems.map((i) => i.cents)),
-      emptyIds: stageItems.filter((i) => i.applicable && !i.typed).map((i) => i.id),
-      incomplete: stageItems.some((i) => i.needsRate),
+      cents: sumCents(items.flatMap((i) => i.parts.filter((p) => p.stage === stage).map((p) => p.cents))),
+      emptyIds: listed.filter((i) => i.applicable && !i.typed).map((i) => i.id),
+      incomplete: listed.some((i) => i.needsRate),
     };
   });
 }
 
-function computeTimeline(stages: StageResult[]): TimelineEntry[] {
+/** The money timeline in order; the two stages of a family that follows later are left out otherwise. */
+function computeTimeline(stages: StageResult[], isFollow: boolean): TimelineEntry[] {
   let running = ZERO_CENTS;
-  return stages.map((s) => {
-    running += s.cents;
-    return { stage: s.stage, stageCents: s.cents, cumulativeCents: running };
-  });
+  return stages
+    .filter((s) => isFollow || !FOLLOW_ONLY_STAGES.includes(s.stage))
+    .map((s) => {
+      running += s.cents;
+      return { stage: s.stage, stageCents: s.cents, cumulativeCents: running };
+    });
 }
 
 interface ScenarioInputs {
@@ -227,15 +251,22 @@ interface ScenarioInputs {
   monthlyCents: Cents;
   savingsCents: Cents;
   bufferMonths: Decimal;
+  /** Set when the family follows later: the months are then priced phase by phase. */
+  phases: FollowPhases | null;
 }
 
-function computeScenarios(inputs: ScenarioInputs): Scenario[] {
+/** The monthly costs of the months without income: the months until the job starts and the buffer after. */
+function monthsCost(inputs: ScenarioInputs, startMonth: number): Cents {
+  if (inputs.phases !== null) return costOfMonths(addMonths(inputs.bufferMonths, startMonth), inputs.phases);
   const buffer = isZero(inputs.bufferMonths)
     ? ZERO_CENTS
     : multiplyCents(inputs.monthlyCents, inputs.bufferMonths);
+  return inputs.monthlyCents * BigInt(startMonth) + buffer;
+}
+
+function computeScenarios(inputs: ScenarioInputs): Scenario[] {
   return SCENARIO_START_MONTHS.map((startMonth) => {
-    const requiredCents =
-      inputs.oneTimeCents + inputs.monthlyCents * BigInt(startMonth) + buffer - inputs.savingsCents;
+    const requiredCents = inputs.oneTimeCents + monthsCost(inputs, startMonth) - inputs.savingsCents;
     return {
       startMonth,
       requiredCents,
@@ -252,14 +283,24 @@ export function computePlan(state: PlanState): PlanResult {
   const defs = quick ? QUICK_ITEMS : ITEMS;
   const fields = quick ? state.quick : state.items;
 
+  // The five quick boxes are whole-household totals, so they never split between two phases.
+  const followMonths = quick ? null : followMonthsOf(state);
   const { registrations } = state;
   const items = defs.map((def) =>
-    computeItem(def, fields[def.id], { adults, children, registrations, rate }),
+    computeItem(def, fields[def.id], { adults, children, registrations, rate, followMonths }),
   );
   const stages = computeStages(items);
-  const stageCents = (stage: Stage) => stages.find((s) => s.stage === stage)?.cents ?? ZERO_CENTS;
+  const stageCents = (stage: TimelineStage) => stages.find((s) => s.stage === stage)?.cents ?? ZERO_CENTS;
   const oneTimeCents = sumCents(ONE_TIME_STAGES.map(stageCents));
   const monthlyCents = stageCents("monthly");
+  const phases: FollowPhases | null =
+    followMonths === null
+      ? null
+      : {
+          months: followMonths,
+          aloneMonthlyCents: stageCents("aloneMonths") / BigInt(followMonths),
+          fullMonthlyCents: monthlyCents,
+        };
 
   const income = standaloneCents(state.income, rate);
   const spouse = standaloneCents(state.spouseIncome, rate);
@@ -273,14 +314,28 @@ export function computePlan(state: PlanState): PlanResult {
     persons: adults + children,
     items,
     stages,
-    timeline: computeTimeline(stages),
+    timeline: computeTimeline(stages, phases !== null),
     oneTimeCents,
     monthlyCents,
     incomeCents: income.cents,
     spouseIncomeCents: spouse.cents,
     savingsCents: savings.cents,
     netMonthlyAfterStartCents: monthlyCents - income.cents - spouse.cents,
-    scenarios: computeScenarios({ oneTimeCents, monthlyCents, savingsCents: savings.cents, bufferMonths }),
+    scenarios: computeScenarios({
+      oneTimeCents,
+      monthlyCents,
+      savingsCents: savings.cents,
+      bufferMonths,
+      phases,
+    }),
+    follow:
+      phases === null
+        ? null
+        : {
+            months: phases.months,
+            aloneMonthlyCents: phases.aloneMonthlyCents,
+            cashByArrivalCents: oneTimeCents + stageCents("aloneMonths"),
+          },
     needsRate: items.some((i) => i.needsRate) || income.needsRate || spouse.needsRate || savings.needsRate,
   };
 }

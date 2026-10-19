@@ -22,6 +22,24 @@ export const STAGES: readonly Stage[] = [
 ] as const;
 
 /**
+ * The stages of the money timeline. The first six are the stages an item is due in; the next two exist
+ * only when the family follows the principal later: the months he spends alone, and the family's arrival.
+ * In that case the timeline shows "monthly" last, as the full family's cost of one month.
+ */
+export type TimelineStage = Stage | "aloneMonths" | "familyArrival";
+
+export const TIMELINE_STAGES: readonly TimelineStage[] = [
+  "beforeEntry",
+  "beforeInterview",
+  "atInterview",
+  "beforeTravel",
+  "firstMonth",
+  "aloneMonths",
+  "familyArrival",
+  "monthly",
+] as const;
+
+/**
  * How the typed amount scales with the household.
  * - perEntrant: everyone who is written on the entry: the applicant, the spouse (if any) and all children.
  * - applicantOnly: the main applicant alone.
@@ -58,6 +76,16 @@ export function countUnitOf(scaling: Scaling): CountUnit | null {
 /** Which calculator an item belongs to. */
 export type Calculator = "fees" | "moving" | "monthly";
 
+/**
+ * When the family follows the principal later, where an item's money falls:
+ * - together: unchanged. The paperwork is the same for everyone (all get visas together).
+ * - alone: all of it when the principal arrives.
+ * - family: all of it when the family arrives.
+ * - split: the principal's share at his stage, the family's share (per person) when the family arrives.
+ * - whileApart: only in the months before the family arrives (the family's costs back home).
+ */
+export type FollowRule = "together" | "alone" | "family" | "split" | "whileApart";
+
 export type GroupId =
   // Fees calculator
   | "passport"
@@ -73,7 +101,10 @@ export type GroupId =
   | "car"
   | "healthFamily"
   // Monthly costs (the runway)
-  | "monthlyCosts";
+  | "monthlyCosts"
+  // The moving calculator when the family follows later: two cards instead of the five groups
+  | "arrivalAlone"
+  | "arrivalFamily";
 
 export interface ItemDef {
   id: string;
@@ -83,11 +114,14 @@ export interface ItemDef {
   scaling: Scaling;
   /** The user may switch this item between "whole household" and "per person" (default: whole household). */
   toggle?: boolean;
+  /** Where the money falls when the family follows later (default: see `followRuleOf`). */
+  follow?: FollowRule;
 }
 
 interface ItemOptions {
   scaling?: Scaling;
   toggle?: boolean;
+  follow?: FollowRule;
 }
 
 function define(
@@ -96,9 +130,10 @@ function define(
   where: { group: GroupId; stage: Stage },
   options: ItemOptions,
 ): ItemDef {
-  const { scaling = "total", toggle = false } = options;
+  const { scaling = "total", toggle = false, follow } = options;
   const base = { id, calculator, group: where.group, stage: where.stage, scaling };
-  return toggle ? { ...base, toggle } : base;
+  const withToggle = toggle ? { ...base, toggle } : base;
+  return follow === undefined ? withToggle : { ...withToggle, follow };
 }
 
 const fees = (id: string, group: GroupId, stage: Stage, options: ItemOptions = {}) =>
@@ -136,30 +171,30 @@ export const ITEMS: readonly ItemDef[] = [
   fees("otherPaperwork", "afterVisa", "beforeTravel"),
 
   /* Moving: travel */
-  moving("ticket", "travel", "beforeTravel", { scaling: "perPerson" }),
+  moving("ticket", "travel", "beforeTravel", { scaling: "perPerson", follow: "split" }),
   moving("excessBaggage", "travel", "beforeTravel"),
-  moving("travelInsurance", "travel", "beforeTravel", { toggle: true }),
+  moving("travelInsurance", "travel", "beforeTravel", { toggle: true, follow: "split" }),
 
   /* Moving: housing, household, connectivity (the first month there) */
   moving("temporaryStay", "housing", "firstMonth"),
-  moving("applicationFees", "housing", "firstMonth"),
-  moving("securityDeposit", "housing", "firstMonth"),
-  moving("firstMonthRent", "housing", "firstMonth"),
-  moving("furniture", "household", "firstMonth"),
-  moving("winterClothes", "household", "firstMonth", { scaling: "perPerson" }),
+  moving("applicationFees", "housing", "firstMonth", { follow: "family" }),
+  moving("securityDeposit", "housing", "firstMonth", { follow: "family" }),
+  moving("firstMonthRent", "housing", "firstMonth", { follow: "family" }),
+  moving("furniture", "household", "firstMonth", { follow: "family" }),
+  moving("winterClothes", "household", "firstMonth", { scaling: "perPerson", follow: "split" }),
   moving("householdBasics", "household", "firstMonth"),
-  moving("utilityDeposits", "connectivity", "firstMonth"),
-  moving("phoneLine", "connectivity", "firstMonth", { scaling: "perAdult" }),
+  moving("utilityDeposits", "connectivity", "firstMonth", { follow: "family" }),
+  moving("phoneLine", "connectivity", "firstMonth", { scaling: "perAdult", follow: "split" }),
 
   /* Moving: car */
-  moving("licenseTests", "car", "firstMonth", { scaling: "perPerson" }),
+  moving("licenseTests", "car", "firstMonth", { scaling: "perPerson", follow: "split" }),
   moving("carPurchase", "car", "firstMonth"),
   moving("carInsuranceStart", "car", "firstMonth"),
   moving("carRegistration", "car", "firstMonth"),
 
   /* Moving: health and family */
-  moving("healthInsuranceStart", "healthFamily", "firstMonth", { toggle: true }),
-  moving("childcareStart", "healthFamily", "firstMonth", { scaling: "perChild" }),
+  moving("healthInsuranceStart", "healthFamily", "firstMonth", { toggle: true, follow: "split" }),
+  moving("childcareStart", "healthFamily", "firstMonth", { scaling: "perChild", follow: "split" }),
   moving("otherMoving", "healthFamily", "firstMonth"),
 
   /* Monthly running costs */
@@ -173,7 +208,15 @@ export const ITEMS: readonly ItemDef[] = [
   monthly("carInsurance", "monthlyCosts", "monthly"),
   monthly("childcare", "monthlyCosts", "monthly", { scaling: "perChild" }),
   monthly("otherMonthly", "monthlyCosts", "monthly"),
+  // Only when the family follows later: what the family spends back home until it joins the principal.
+  monthly("familyAbroadMonthly", "monthlyCosts", "monthly", { follow: "whileApart" }),
 ];
+
+/** Where an item's money falls when the family follows later. */
+export function followRuleOf(def: ItemDef): FollowRule {
+  if (def.follow !== undefined) return def.follow;
+  return def.stage === "firstMonth" ? "alone" : "together";
+}
 
 /**
  * Quick mode: five big boxes (all paperwork and fees, travel, first housing and set-up,
@@ -205,12 +248,12 @@ export function findItem(id: string): ItemDef | undefined {
 export interface GroupDef {
   id: GroupId;
   /** When the money of the group's first item is due; the screen shows it next to the group title. */
-  stage: Stage;
+  stage: TimelineStage;
   items: ItemDef[];
 }
 
 /** The groups of one calculator, in the order of the catalog. */
-export function groupsOfCalculator(calculator: Calculator): GroupDef[] {
+function catalogGroups(calculator: Calculator): GroupDef[] {
   const groups: GroupDef[] = [];
   for (const item of itemsOfCalculator(calculator)) {
     const existing = groups.find((g) => g.id === item.group);
@@ -218,4 +261,30 @@ export function groupsOfCalculator(calculator: Calculator): GroupDef[] {
     else groups.push({ id: item.group, stage: item.stage, items: [item] });
   }
   return groups;
+}
+
+/** Items of these scalings count nobody but the family, so on their own they belong to the family's arrival. */
+const FAMILY_ONLY_SCALINGS: readonly Scaling[] = ["perChild", "perFamilyMember"];
+
+function isFamilyArrivalItem(def: ItemDef): boolean {
+  const rule = followRuleOf(def);
+  return rule === "family" || (rule === "split" && FAMILY_ONLY_SCALINGS.includes(def.scaling));
+}
+
+/**
+ * The groups of one calculator. When the family follows later, the moving calculator keeps the travel
+ * group and replaces the five groups of the first month by two cards: the principal's arrival and the
+ * family's arrival. An item that splits between them sits on the first card, with its family share
+ * counted automatically.
+ */
+export function groupsOfCalculator(calculator: Calculator, followsLater = false): GroupDef[] {
+  const groups = catalogGroups(calculator);
+  if (!followsLater || calculator !== "moving") return groups;
+
+  const arrival = groups.filter((g) => g.stage === "firstMonth").flatMap((g) => g.items);
+  return [
+    ...groups.filter((g) => g.stage !== "firstMonth"),
+    { id: "arrivalAlone", stage: "firstMonth", items: arrival.filter((i) => !isFamilyArrivalItem(i)) },
+    { id: "arrivalFamily", stage: "familyArrival", items: arrival.filter(isFamilyArrivalItem) },
+  ];
 }

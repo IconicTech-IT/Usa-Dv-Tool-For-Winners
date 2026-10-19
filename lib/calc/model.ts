@@ -15,6 +15,13 @@ export const MAX_CHILDREN = 20;
 export const MAX_ADULTS = 10;
 export const MAX_REGISTRATIONS = 10;
 export const MAX_NAME_LENGTH = 60;
+/** The most months the family may arrive after the principal. */
+export const MAX_FOLLOW_MONTHS = 24;
+/**
+ * A visa is usually valid for about six months from the date it is printed (Cairo supplement); the setup
+ * page warns when the family would arrive later. The warning never blocks anything.
+ */
+export const VISA_VALIDITY_MONTHS = 6;
 
 /**
  * The only amount a new plan starts with: the official registration fee, set by the State
@@ -39,12 +46,26 @@ export const HouseholdSchema = z.object({
 });
 export type Household = z.infer<typeof HouseholdSchema>;
 
+/**
+ * How the household travels: all together, or the principal first and the family a number of months later.
+ * The months stay as typed (a string) like every other box; the choice only counts when there is a family.
+ */
+export const TravelSchema = z.object({
+  mode: z.enum(["together", "follow"]),
+  followMonths: z.string().max(MAX_RAW_LENGTH),
+});
+export type Travel = z.infer<typeof TravelSchema>;
+
+export const TOGETHER: Travel = { mode: "together", followMonths: "" };
+
 export const PlanStateSchema = z.object({
   version: z.literal(PLAN_VERSION),
   /** The name the person gave this plan ("Texas, alone"); empty until he types one. */
   name: z.string().max(MAX_NAME_LENGTH).default(""),
   uiMode: z.enum(["quick", "detailed"]),
   household: HouseholdSchema,
+  /** Plans saved before this choice existed travel all together. */
+  travel: TravelSchema.default(TOGETHER),
   /** ISO 4217 code of the user's local currency. */
   localCurrency: z.string().regex(/^[A-Z]{3}$/),
   /** Local units per one US dollar, typed by the user; empty until he types it. */
@@ -81,6 +102,7 @@ export function emptyPlan(): PlanState {
     name: "",
     uiMode: "detailed",
     household: { adults: 1, children: 0, childAges: [] },
+    travel: TOGETHER,
     localCurrency: DEFAULT_LOCAL_CURRENCY,
     rate: "",
     items,

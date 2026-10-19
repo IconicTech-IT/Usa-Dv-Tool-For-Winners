@@ -18,8 +18,10 @@ import {
   setChildAge,
   setChildren,
   setRegistrations,
+  setFollowMonths,
   setLocalCurrency,
   setRate,
+  setTravelMode,
   setUiMode,
   type FieldPatch,
   type TopField,
@@ -88,6 +90,8 @@ export interface PlanActions {
   setAdults: (adults: number) => void;
   setChildren: (children: number) => void;
   setRegistrations: (registrations: number) => void;
+  setTravelMode: (mode: PlanState["travel"]["mode"]) => void;
+  setFollowMonths: (raw: string) => void;
   setChildAge: (index: number, raw: string) => void;
   setLocalCurrency: (code: string) => void;
   setRate: (raw: string) => void;
@@ -141,6 +145,8 @@ function fieldActions(update: Update) {
     setAdults: (adults: number) => update((s) => setAdults(s, adults)),
     setChildren: (children: number) => update((s) => setChildren(s, children)),
     setRegistrations: (registrations: number) => update((s) => setRegistrations(s, registrations)),
+    setTravelMode: (mode: PlanState["travel"]["mode"]) => update((s) => setTravelMode(s, mode)),
+    setFollowMonths: (raw: string) => update((s) => setFollowMonths(s, raw)),
     setChildAge: (index: number, raw: string) => update((s) => setChildAge(s, index, raw)),
     setLocalCurrency: (code: string) => update((s) => setLocalCurrency(s, code)),
     setRate: (raw: string) => update((s) => setRate(s, raw)),

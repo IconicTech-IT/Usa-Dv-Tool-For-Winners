@@ -7,6 +7,7 @@ import {
   withChildren,
   type AmountField,
   type PlanState,
+  type Travel,
 } from "@/lib/calc/model";
 
 /**
@@ -91,6 +92,18 @@ export function setChildAge(state: PlanState, index: number, raw: string): PlanS
   const childAges = state.household.childAges.slice();
   childAges[index] = age;
   return { ...state, household: { ...state.household, childAges } };
+}
+
+export function setTravelMode(state: PlanState, mode: Travel["mode"]): PlanState {
+  if ((mode !== "together" && mode !== "follow") || mode === state.travel.mode) return state;
+  return { ...state, travel: { ...state.travel, mode } };
+}
+
+export function setFollowMonths(state: PlanState, raw: string): PlanState {
+  const followMonths = clampRaw(raw);
+  return followMonths === state.travel.followMonths
+    ? state
+    : { ...state, travel: { ...state.travel, followMonths } };
 }
 
 export function setLocalCurrency(state: PlanState, code: string): PlanState {

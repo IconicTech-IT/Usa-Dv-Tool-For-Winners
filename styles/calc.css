@@ -457,3 +457,12 @@ dialog.sheet-dialog .warn {
   border-radius: 14px;
   background: var(--sf);
 }
+
+/* A choice whose labels are long sentences: the buttons grow in height instead of cutting the text */
+.seg.tall button {
+  height: auto;
+  min-block-size: 40px;
+  padding-block: 8px;
+  padding-inline: 8px;
+  line-height: 1.35;
+}

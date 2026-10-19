@@ -701,6 +701,7 @@
     "carInsurance": ["naicStateInsurance", "theZebra"],
     "childcare": ["childCareAware"],
     "otherMonthly": [],
+    "familyAbroadMonthly": [],
     "passport": ["egyptMoi", "digitalEgypt", "stateDvPage"],
     "registrationFee": ["federalRegisterFee", "stateDvPage"],
     "familyPassports": ["egyptMoi", "digitalEgypt", "usEmbassies"]

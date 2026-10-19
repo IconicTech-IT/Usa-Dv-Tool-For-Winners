@@ -6,7 +6,7 @@ import { useNumberLocale } from "@/components/calc/format";
 import { Link } from "@/i18n/navigation";
 import { formatNumber } from "@/lib/calc/parse-amount";
 import { pathForItem } from "@/lib/calc/routes";
-import { forgottenByStage } from "@/lib/calc/summary";
+import { forgottenByStage, timelineKeyOf } from "@/lib/calc/summary";
 import type { PlanView } from "@/lib/calc/use-plan";
 
 /** How many empty boxes are named under a stage before the rest is cut with an ellipsis. */
@@ -18,6 +18,8 @@ export function ForgotList({ view }: { view: PlanView }) {
   const locale = useNumberLocale();
   const separator = locale === "ar" ? "، " : ", ";
   const forgotten = forgottenByStage(view.result);
+  const { follow } = view.result;
+  const months = formatNumber(follow?.months ?? 0, locale, 0);
 
   if (forgotten.length === 0) return <div className="note">{t("results.forgotNone")}</div>;
 
@@ -30,7 +32,7 @@ export function ForgotList({ view }: { view: PlanView }) {
         return (
           <div key={stage} className="row">
             <span>
-              <b>{t(`calc.timeline.${stage}.title`)}</b>
+              <b>{t(`calc.timeline.${timelineKeyOf(stage, follow !== null)}.title`, { months })}</b>
               <small>
                 {names.join(separator)}
                 {more}

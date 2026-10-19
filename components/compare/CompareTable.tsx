@@ -40,6 +40,13 @@ export function CompareTable({ first, second }: CompareTableProps) {
         </span>
       ),
     },
+    {
+      label: t("travel"),
+      cell: (plan) =>
+        plan.followMonths === null
+          ? t("together")
+          : t("followAfter", { months: formatNumber(plan.followMonths, locale, 0) }),
+    },
     { label: t("oneOff"), cell: dollars((plan) => plan.oneTimeCents) },
     { label: t("monthly"), cell: dollars((plan) => plan.monthlyCents) },
     { label: t("scenario3"), cell: dollars((plan) => plan.safestTotalCents) },

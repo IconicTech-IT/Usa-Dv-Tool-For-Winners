@@ -40,8 +40,18 @@ export function RunwayScreen() {
         {MONTHLY_ITEMS.map((item) => (
           <ItemField key={item.id} view={view} id={item.id} kind="item" />
         ))}
+        {result.follow === null ? null : (
+          <div className="subtot">
+            <span>{t("monthlyAlone")}</span>
+            <DualAmount
+              cents={result.follow.aloneMonthlyCents}
+              result={result}
+              localCode={plan.localCurrency}
+            />
+          </div>
+        )}
         <div className="subtot">
-          <span>{t("monthlyTotal")}</span>
+          <span>{result.follow === null ? t("monthlyTotal") : t("monthlyFamily")}</span>
           <DualAmount cents={result.monthlyCents} result={result} localCode={plan.localCurrency} />
         </div>
       </section>

@@ -14,7 +14,7 @@ interface CalculatorGroupsProps {
 export function CalculatorGroups({ view, calculator }: CalculatorGroupsProps) {
   return (
     <>
-      {groupsOfCalculator(calculator).map((group, index) => (
+      {groupsOfCalculator(calculator, view.result.follow !== null).map((group, index) => (
         <GroupSection key={group.id} group={group} position={index + 1} view={view}>
           {group.items.map((item) => (
             <ItemField key={item.id} view={view} id={item.id} kind="item" />

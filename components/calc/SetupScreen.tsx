@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 
 import { Stepper } from "@/components/calc/Stepper";
+import { TravelChoice } from "@/components/calc/TravelChoice";
 import { RuleNote } from "@/components/guide/RuleNote";
 import { PlanNameField } from "@/components/plans/PlanNameField";
 import { Link } from "@/i18n/navigation";
@@ -40,6 +41,7 @@ export function SetupScreen() {
         onChange={setChildren}
       />
       <ChildAges view={view} />
+      <TravelChoice view={view} />
       <FamilyListingRule />
       <div className="note">{t("note")}</div>
       <Link className="btn pr" href="/fees" style={{ marginTop: 18 }}>

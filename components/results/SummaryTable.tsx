@@ -63,6 +63,11 @@ export function SummaryTable({ view }: { view: PlanView }) {
               })}
             </span>
           </Row>
+          <Row label={t("results.travel")} editHref="/setup">
+            {result.follow === null
+              ? t("results.travelTogether")
+              : t("results.travelFollow", { months: formatNumber(result.follow.months, locale, 0) })}
+          </Row>
           <Row label={t("fees.title")} editHref={pathForCalculator("fees", mode)}>
             {amount("fees")}
           </Row>
