@@ -474,5 +474,13 @@
     "title": "No internet right now",
     "lead": "This page is not saved on your device yet. Open it once while you are online and it will work offline afterwards.",
     "home": "Back to the home page"
+  },
+  "og": {
+    "title": "Work out the cost of immigrating yourself",
+    "sub": "Free calculators for the US DV lottery",
+    "chip1": "You type the numbers",
+    "chip2": "Your data on your device",
+    "chip3": "Arabic · mobile",
+    "alt": "DV Compass: work out the cost of immigrating yourself"
   }
 }

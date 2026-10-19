@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { routing, type Locale } from "@/i18n/routing";
 import { SITE_NAME } from "@/lib/site";
 
+/** The share card photographed by scripts/make-og.ts, one per language. */
+const SHARE_IMAGE_SIZE = { width: 1200, height: 630 } as const;
+
 const OPEN_GRAPH_LOCALE: Record<Locale, string> = { ar: "ar_EG", en: "en_US" };
 
 interface PageMetadataInput {
@@ -19,6 +22,7 @@ export function pageMetadata({ locale, path, title, description }: PageMetadataI
     routing.locales.map((language) => [language, `/${language}${path}`]),
   );
   languages["x-default"] = `/${routing.defaultLocale}${path}`;
+  const image = `/og-${locale}.png`;
 
   return {
     title,
@@ -31,7 +35,8 @@ export function pageMetadata({ locale, path, title, description }: PageMetadataI
       siteName: SITE_NAME,
       locale: OPEN_GRAPH_LOCALE[locale],
       type: "website",
+      images: [{ url: image, ...SHARE_IMAGE_SIZE, alt: title }],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }

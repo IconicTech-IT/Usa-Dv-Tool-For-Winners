@@ -1,0 +1,85 @@
+/* The share card: photographed into public/og-*.png by scripts/make-og.mjs */
+.og {
+  width: 1200px;
+  height: 630px;
+  /* Fixed in the corner so the site header and footer never sit over the photograph */
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 60%, #14213d 100%);
+  color: #fff;
+  padding: 64px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.og .ring {
+  position: absolute;
+  inset-inline-start: -140px;
+  top: -140px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  border: 80px solid rgb(255 255 255 / 7%);
+}
+.og .og-brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 34px;
+  font-weight: 700;
+}
+.og .mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgb(255 255 255 / 15%);
+  display: grid;
+  place-items: center;
+}
+.og .mark svg {
+  width: 36px;
+  height: 36px;
+}
+.og h1 {
+  position: relative;
+  font-size: 72px;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 900px;
+}
+.og .sub {
+  position: relative;
+  font-size: 30px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+.og .chips {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  margin-top: 0;
+}
+.og .chip {
+  height: 48px;
+  font-size: 22px;
+  border: 1px solid rgb(255 255 255 / 35%);
+  background: rgb(255 255 255 / 12%);
+  color: #fff;
+  padding: 0 18px;
+}
+.og .url-wrap {
+  position: absolute;
+  inset-inline-end: 72px;
+  inset-block-start: 72px;
+}
+.og .url {
+  font-family: var(--font-inter), sans-serif;
+  direction: ltr;
+  font-size: 26px;
+  font-weight: 600;
+  opacity: 0.9;
+}
