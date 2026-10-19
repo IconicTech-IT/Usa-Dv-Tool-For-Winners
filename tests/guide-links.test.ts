@@ -9,7 +9,7 @@ const rawText = readFileSync(join(process.cwd(), "content", "guide-links.json"),
 const data = GuideLinksSchema.parse(JSON.parse(rawText));
 
 /** Items for which there is no sensible single source: no guide button. */
-const NO_GUIDE = ["otherMoving", "otherMonthly"];
+const NO_GUIDE = ["entryHelp", "otherMoving", "otherMonthly"];
 
 const TRACKING = /[?&](utm_[a-z]+|ref|aff|affid|affiliate|tag|clickid|gclid|fbclid|cid|campaign)=/i;
 
@@ -70,6 +70,8 @@ describe("guide links", () => {
   it("resolves sources for the app", () => {
     expect(hasGuide("rent")).toBe(true);
     expect(hasGuide("otherMonthly")).toBe(false);
+    // The price of paid help with the entry is whatever the helper asks: no source to look it up in.
+    expect(hasGuide("entryHelp")).toBe(false);
     expect(hasGuide("noSuchItem")).toBe(false);
     const food = guideSitesFor("food").map((s) => s.id);
     expect(food).toContain("usdaFoodPlans");

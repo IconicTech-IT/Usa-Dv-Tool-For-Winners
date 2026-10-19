@@ -641,7 +641,7 @@
     "civilCertificates": ["reciprocity", "stateImmigrantVisaProcess"],
     "militaryCertificate": ["reciprocity", "usEmbassies"],
     "entryPhotos": ["statePhotos", "stateDvPage"],
-    "entryHelp": ["stateDvPage"],
+    "entryHelp": [],
     "visaPhotos": ["statePhotos", "stateDvPage"],
     "otherPaperwork": ["stateImmigrantVisaProcess"],
     "visaFee": ["stateFees", "stateDvPage", "usEmbassies"],
