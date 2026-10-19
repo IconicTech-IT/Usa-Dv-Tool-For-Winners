@@ -16,5 +16,154 @@
     "contactBefore": "لو فيه أي شكوى أو اقتراح أو مشكلة في الحاسبة ابعتلي على الإيميل: ",
     "email": "usalottery2027@gmail.com",
     "legal": "الموقع مش تابع للحكومة الأمريكية، ومش استشارة قانونية أو مالية."
+  },
+  "calc": {
+    "sections": {
+      "fees": "الورق والرسوم",
+      "moving": "الانتقال والاستقرار",
+      "monthly": "المصاريف الشهرية",
+      "runway": "كام محتاج قبل ما الدخل يبدأ",
+      "results": "النتيجة",
+      "quick": "سريع",
+      "detailed": "تفصيلي"
+    },
+    "stages": {
+      "beforeInterview": "قبل المقابلة",
+      "atInterview": "يوم المقابلة",
+      "beforeTravel": "قبل السفر",
+      "firstMonth": "أول شهر هناك",
+      "monthly": "كل شهر"
+    },
+    "groups": {
+      "paperwork": "الورق والرسوم",
+      "travel": "السفر",
+      "housingStart": "بداية السكن",
+      "household": "البيت",
+      "connectivity": "الخطوط والخدمات",
+      "car": "العربية",
+      "healthFamily": "الصحة والأسرة",
+      "otherMoving": "حاجات تانية",
+      "monthlyCosts": "المصاريف الشهرية"
+    },
+    "scaling": {
+      "total": "للأسرة كلها",
+      "perPerson": "لكل فرد",
+      "perAdult": "لكل بالغ",
+      "perChild": "لكل طفل"
+    },
+    "toggle": {
+      "label": "الحساب",
+      "household": "للأسرة كلها",
+      "perPerson": "لكل فرد"
+    },
+    "items": {
+      "medicalExam": "الكشف الطبي",
+      "policeCertificate": "شهادة الحالة الجنائية (الفيش)",
+      "translation": "الترجمة المعتمدة",
+      "civilCertificates": "شهادات الميلاد والزواج وأوراق الحالة المدنية",
+      "militaryCertificate": "شهادة الخدمة العسكرية (لو مطلوبة)",
+      "photos": "الصور",
+      "otherPaperwork": "أوراق ومصاريف تانية",
+      "visaFee": "رسم الفيزا",
+      "interviewTravel": "الانتقال لمكان المقابلة",
+      "passportCourier": "توصيل الجواز بعد الفيزا (كوريير)",
+      "immigrantFee": "رسم الهجرة (USCIS)",
+      "ticket": "تذاكر الطيران",
+      "excessBaggage": "الشنط الزيادة",
+      "travelInsurance": "تأمين السفر",
+      "temporaryStay": "إقامة مؤقتة أول أيام (فندق أو غيره)",
+      "applicationFees": "رسوم طلب الشقة",
+      "securityDeposit": "التأمين (الديبوزيت)",
+      "firstMonthRent": "إيجار أول شهر",
+      "furniture": "الأثاث",
+      "winterClothes": "هدوم الشتا",
+      "householdBasics": "أدوات البيت الأساسية",
+      "utilityDeposits": "تأمينات الكهربا والمياه والإنترنت",
+      "phoneLine": "تفعيل خط موبايل",
+      "licenseTests": "اختبارات ورخصة القيادة",
+      "carPurchase": "شراء عربية",
+      "carInsuranceStart": "تأمين العربية (أول دفعة)",
+      "carRegistration": "تسجيل العربية ولوحاتها",
+      "healthInsuranceStart": "التأمين الصحي (أول دفعة)",
+      "childcareStart": "رعاية الأطفال (تسجيل أو أول دفعة)",
+      "otherMoving": "مصاريف انتقال تانية",
+      "rent": "الإيجار",
+      "utilities": "كهربا ومياه وغاز",
+      "internet": "الإنترنت",
+      "phone": "الموبايل",
+      "food": "الأكل",
+      "transport": "المواصلات",
+      "healthInsurance": "التأمين الصحي",
+      "carInsurance": "تأمين العربية",
+      "childcare": "رعاية الأطفال",
+      "otherMonthly": "مصاريف شهرية تانية",
+      "quickBeforeInterview": "كل مصاريف ما قبل المقابلة",
+      "quickAtInterview": "كل مصاريف يوم المقابلة",
+      "quickBeforeTravel": "كل مصاريف ما قبل السفر",
+      "quickFirstMonth": "كل مصاريف أول شهر هناك",
+      "quickMonthly": "مصاريفك الشهرية"
+    },
+    "household": {
+      "title": "أسرتك",
+      "adults": "عدد البالغين",
+      "children": "عدد الأطفال",
+      "childAge": "سن الطفل {n} (اختياري)"
+    },
+    "fields": {
+      "amount": "المبلغ",
+      "currency": "العملة",
+      "usd": "دولار",
+      "local": "عملتي",
+      "rate": "سعر الدولار بعملتك",
+      "rateHelp": "اكتب كام وحدة من عملتك بتساوي دولار واحد. إنت اللي بتكتب السعر.",
+      "rateLink": "شوف سعر الدولار النهارده",
+      "income": "دخلك الشهري بعد ما تشتغل",
+      "spouseIncome": "دخل الزوج أو الزوجة",
+      "savings": "مدخراتك دلوقتي",
+      "bufferMonths": "شهور احتياطي (اختياري)"
+    },
+    "guide": {
+      "button": "إزاي ألاقي السعر؟",
+      "title": "إزاي تعرف السعر بنفسك",
+      "back": "رجوع للحاسبة",
+      "notice": "إحنا مابنقولش أسعار. المصادر دي بتوريك السعر الحقيقي، وإنت اللي بتكتبه.",
+      "official": "مصدر رسمي",
+      "watch": "خد بالك",
+      "noLinks": "مفيش مصدر معين للبند ده. اكتب المبلغ اللي تعرفه."
+    },
+    "errors": {
+      "empty": "اكتب المبلغ",
+      "invalid": "اكتب رقم صحيح",
+      "negative": "الرقم لازم يكون صفر أو أكتر",
+      "needsRate": "اكتب سعر الدولار الأول"
+    },
+    "results": {
+      "oneTime": "تكاليف مرة واحدة",
+      "monthly": "مصاريف شهرية",
+      "required": "المبلغ المطلوب",
+      "shortfall": "ناقصك",
+      "surplus": "فايضلك",
+      "forgot": "نسيت حاجة؟",
+      "partial": "الإجمالي ناقص لأن فيه مبالغ بعملتك من غير سعر دولار."
+    },
+    "scenarios": {
+      "start0": "الدخل يبدأ من أول يوم",
+      "start1": "الدخل يبدأ بعد شهر",
+      "start2": "الدخل يبدأ بعد شهرين",
+      "start3": "الدخل يبدأ بعد تلات شهور"
+    },
+    "plan": {
+      "save": "احفظ خطتي كملف",
+      "open": "افتح خطة محفوظة",
+      "clear": "امسح كل حاجة",
+      "cantSave": "المتصفح مش سامح يحفظ هنا. احفظ خطتك كملف عشان ماتضيعش.",
+      "privacy": "الأرقام اللي بتكتبها بتفضل على جهازك.",
+      "openFailures": {
+        "too-large": "الملف كبير أوي ومش خطة محفوظة من الموقع",
+        "not-json": "الملف ده مش خطة محفوظة من الموقع",
+        "wrong-format": "الملف ده مش خطة محفوظة من DV Compass",
+        "invalid": "الخطة اللي في الملف ناقصة أو متعدّل فيها"
+      }
+    }
   }
 }

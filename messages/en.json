@@ -16,5 +16,154 @@
     "contactBefore": "For any complaint, suggestion or problem with the calculator, email me: ",
     "email": "usalottery2027@gmail.com",
     "legal": "This site is not affiliated with the U.S. government and is not legal or financial advice."
+  },
+  "calc": {
+    "sections": {
+      "fees": "Paperwork and fees",
+      "moving": "Moving and settling",
+      "monthly": "Monthly costs",
+      "runway": "How much you need before income starts",
+      "results": "Results",
+      "quick": "Quick",
+      "detailed": "Detailed"
+    },
+    "stages": {
+      "beforeInterview": "Before the interview",
+      "atInterview": "At the interview",
+      "beforeTravel": "Before travel",
+      "firstMonth": "First month there",
+      "monthly": "Every month"
+    },
+    "groups": {
+      "paperwork": "Paperwork and fees",
+      "travel": "Travel",
+      "housingStart": "Starting housing",
+      "household": "Household",
+      "connectivity": "Phone and services",
+      "car": "Car",
+      "healthFamily": "Health and family",
+      "otherMoving": "Other",
+      "monthlyCosts": "Monthly costs"
+    },
+    "scaling": {
+      "total": "For the whole household",
+      "perPerson": "Per person",
+      "perAdult": "Per adult",
+      "perChild": "Per child"
+    },
+    "toggle": {
+      "label": "Counted",
+      "household": "Whole household",
+      "perPerson": "Per person"
+    },
+    "items": {
+      "medicalExam": "Medical exam",
+      "policeCertificate": "Police certificate",
+      "translation": "Certified translations",
+      "civilCertificates": "Birth, marriage and civil records",
+      "militaryCertificate": "Military service record (if required)",
+      "photos": "Photos",
+      "otherPaperwork": "Other paperwork",
+      "visaFee": "Visa fee",
+      "interviewTravel": "Getting to the interview",
+      "passportCourier": "Passport courier",
+      "immigrantFee": "USCIS immigrant fee",
+      "ticket": "Flight tickets",
+      "excessBaggage": "Extra baggage",
+      "travelInsurance": "Travel insurance",
+      "temporaryStay": "Temporary stay on arrival",
+      "applicationFees": "Rental application fees",
+      "securityDeposit": "Security deposit",
+      "firstMonthRent": "First month's rent",
+      "furniture": "Furniture",
+      "winterClothes": "Winter clothes",
+      "householdBasics": "Household basics",
+      "utilityDeposits": "Utility and internet deposits",
+      "phoneLine": "Phone line setup",
+      "licenseTests": "Driving tests and licence",
+      "carPurchase": "Car purchase",
+      "carInsuranceStart": "Car insurance (first payment)",
+      "carRegistration": "Car registration and plates",
+      "healthInsuranceStart": "Health insurance (first payment)",
+      "childcareStart": "Childcare (sign-up or first payment)",
+      "otherMoving": "Other moving costs",
+      "rent": "Rent",
+      "utilities": "Electricity, water and gas",
+      "internet": "Internet",
+      "phone": "Mobile phone",
+      "food": "Food",
+      "transport": "Transport",
+      "healthInsurance": "Health insurance",
+      "carInsurance": "Car insurance",
+      "childcare": "Childcare",
+      "otherMonthly": "Other monthly costs",
+      "quickBeforeInterview": "Everything before the interview",
+      "quickAtInterview": "Everything at the interview",
+      "quickBeforeTravel": "Everything before travel",
+      "quickFirstMonth": "Everything in the first month there",
+      "quickMonthly": "Your monthly costs"
+    },
+    "household": {
+      "title": "Your household",
+      "adults": "Number of adults",
+      "children": "Number of children",
+      "childAge": "Age of child {n} (optional)"
+    },
+    "fields": {
+      "amount": "Amount",
+      "currency": "Currency",
+      "usd": "US dollar",
+      "local": "My currency",
+      "rate": "Dollar rate in your currency",
+      "rateHelp": "Type how many units of your currency equal one US dollar. You type the rate.",
+      "rateLink": "Look up today's dollar rate",
+      "income": "Your monthly income once you work",
+      "spouseIncome": "Your spouse's monthly income",
+      "savings": "Your savings now",
+      "bufferMonths": "Emergency buffer in months (optional)"
+    },
+    "guide": {
+      "button": "How do I find this price?",
+      "title": "How to find the price yourself",
+      "back": "Back to the calculator",
+      "notice": "We do not quote prices. These sources show the real price, and you type it.",
+      "official": "Official source",
+      "watch": "Watch out",
+      "noLinks": "There is no specific source for this item. Type the amount you know."
+    },
+    "errors": {
+      "empty": "Type the amount",
+      "invalid": "Type a valid number",
+      "negative": "The number must be zero or more",
+      "needsRate": "Type the dollar rate first"
+    },
+    "results": {
+      "oneTime": "One-time costs",
+      "monthly": "Monthly costs",
+      "required": "Amount needed",
+      "shortfall": "You are short by",
+      "surplus": "You have extra",
+      "forgot": "Did you forget something?",
+      "partial": "The total is partial: some amounts are in your currency and no dollar rate was typed."
+    },
+    "scenarios": {
+      "start0": "Income starts on day one",
+      "start1": "Income starts after one month",
+      "start2": "Income starts after two months",
+      "start3": "Income starts after three months"
+    },
+    "plan": {
+      "save": "Save my plan as a file",
+      "open": "Open a saved plan",
+      "clear": "Clear everything",
+      "cantSave": "This browser is not letting the site save here. Save your plan as a file so you do not lose it.",
+      "privacy": "The numbers you type stay on your device.",
+      "openFailures": {
+        "too-large": "The file is too large to be a saved plan",
+        "not-json": "This file is not a saved plan",
+        "wrong-format": "This file is not a DV Compass plan",
+        "invalid": "The plan in this file is incomplete or was edited"
+      }
+    }
   }
 }
