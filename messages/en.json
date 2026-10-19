@@ -237,14 +237,20 @@
     "step3": "Multiply by 4 and type the number into the calculator. Repeat now and then; prices change.",
     "links": "Real links",
     "note": "These are external sites. We do not set prices and are not responsible for them.",
-    "backToCalculator": "Type the number into the calculator"
+    "backToCalculator": "Type the number into the calculator",
+    "titleFor": "How do I find the price of “{item}”?",
+    "genericLead": "We will not give you a number. We show you where to look, and you type the number into the calculator.",
+    "genericStep1": "Open the links below and look for the current fee or price.",
+    "genericStep2": "Type the number as you find it. Mind the currency, and whether it is one-off or monthly.",
+    "genericStep3": "Go back to the calculator and type the number. Check it now and then; prices and fees change.",
+    "official": "Official"
   },
   "guideHealth": {
     "title": "How do I find the price of health insurance?",
     "lead": "We will not give you a number. The price depends on the state, your age, household size and income, and you see it yourself on the official US government site.",
     "step1": "Open HealthCare.gov, enter the ZIP code of your intended city, and your household members and ages.",
     "step2": "Browse the plans and the monthly premium of each one, and check whether a subsidy applies to your expected income.",
-    "step3": "Type the monthly premium into the calculator. For children, check Medicaid.gov and the CHIP programme; they may be covered at lower cost.",
+    "step3": "Type the monthly premium into the calculator. If you have children, include them in the household size so the premium covers them.",
     "state": "Some states run their own marketplace; HealthCare.gov sends you there automatically. We do not set prices."
   },
   "charge": {

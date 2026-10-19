@@ -125,3 +125,22 @@ dialog.sheet-dialog .options {
 .sheet button.opt.on {
   background: var(--prbg);
 }
+
+/* The "back" arrow is drawn pointing left; in a right-to-left page back points right. */
+html[dir="rtl"] .back svg {
+  transform: scaleX(-1);
+}
+
+/* Source links on the guide pages: the short description and the warning sit under the link. */
+.links .help {
+  margin-inline: 4px;
+}
+.links .warn {
+  margin-top: 6px;
+}
+
+/* A link inside a note looks like the other links of the design. */
+.note a {
+  color: var(--pr);
+  font-weight: 600;
+}

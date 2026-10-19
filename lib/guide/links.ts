@@ -51,3 +51,6 @@ export function hasGuide(itemId: string): boolean {
 export function allGuideUrls(): { id: string; url: string }[] {
   return Object.entries(data.sites).map(([id, site]) => ({ id, url: site.url }));
 }
+
+/** Ids of the items that have a guide page. */
+export const GUIDE_ITEM_IDS: readonly string[] = Object.keys(data.items).filter(hasGuide);
