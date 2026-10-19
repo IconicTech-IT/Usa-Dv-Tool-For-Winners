@@ -57,22 +57,23 @@ function resolveMarks(text: string): string | null {
   return text;
 }
 
+function resolveRepeatedMark(parts: string[]): string | null {
+  const [first, ...rest] = parts;
+  const groupsOk = rest.every((group) => group.length === 3);
+  if (!first || first.length > 3 || !groupsOk) return null;
+  return parts.join("");
+}
+
+function looksLikeThousands(before: string, after: string): boolean {
+  return after.length === 3 && before.length >= 1 && before.length <= 3 && !before.startsWith("0");
+}
+
 function resolveSingleMark(text: string, mark: "," | "."): string | null {
   const parts = text.split(mark);
-
-  if (parts.length > 2) {
-    const [first, ...rest] = parts;
-    const groupsOk = rest.every((g) => g.length === 3);
-    if (!first || first.length > 3 || !groupsOk) return null;
-    return parts.join("");
-  }
+  if (parts.length > 2) return resolveRepeatedMark(parts);
 
   const [before = "", after = ""] = parts;
-  if (mark === ",") {
-    const looksLikeThousands =
-      after.length === 3 && before.length >= 1 && before.length <= 3 && !before.startsWith("0");
-    if (looksLikeThousands) return before + after;
-  }
+  if (mark === "," && looksLikeThousands(before, after)) return before + after;
   return `${before}.${after}`;
 }
 

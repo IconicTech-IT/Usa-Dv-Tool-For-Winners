@@ -9,9 +9,14 @@ function plan(edit: (p: PlanState) => void): PlanState {
   return p;
 }
 
-function put(p: PlanState, id: string, raw: string, currency: "usd" | "local" = "usd", perPerson?: boolean) {
-  const field = perPerson === undefined ? { raw, currency } : { raw, currency, perPerson };
-  p.items[id] = field;
+interface PutOptions {
+  currency?: "usd" | "local";
+  perPerson?: boolean;
+}
+
+function put(p: PlanState, id: string, raw: string, options: PutOptions = {}) {
+  const { currency = "usd", perPerson } = options;
+  p.items[id] = perPerson === undefined ? { raw, currency } : { raw, currency, perPerson };
 }
 
 describe("stage totals and per-person items", () => {
@@ -61,7 +66,7 @@ describe("toggle items (health insurance)", () => {
 
     const perPerson = plan((p) => {
       p.household = { adults: 2, children: 1, childAges: [""] };
-      put(p, "healthInsurance", "300", "usd", true);
+      put(p, "healthInsurance", "300", { perPerson: true });
     });
     expect(computePlan(perPerson).monthlyUsd).toBe(900);
   });
@@ -71,7 +76,7 @@ describe("currency per field", () => {
   it("converts local fields with the typed rate", () => {
     const p = plan((q) => {
       q.rate = "50";
-      put(q, "translation", "1000", "local");
+      put(q, "translation", "1000", { currency: "local" });
       put(q, "photos", "5");
     });
     const r = computePlan(p);
@@ -81,7 +86,7 @@ describe("currency per field", () => {
 
   it("flags a missing rate and leaves the local amount out of the total", () => {
     const p = plan((q) => {
-      put(q, "translation", "1000", "local");
+      put(q, "translation", "1000", { currency: "local" });
       put(q, "photos", "5");
     });
     const r = computePlan(p);

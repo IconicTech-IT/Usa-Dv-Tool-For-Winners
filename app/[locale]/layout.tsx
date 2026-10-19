@@ -6,7 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
 
-import { routing, DIRECTION, type Locale } from "@/i18n/routing";
+import { routing, DIRECTION } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { AppBackground } from "@/components/AppBackground";
@@ -81,7 +81,7 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
 
   setRequestLocale(locale);
-  const dir = DIRECTION[locale as Locale];
+  const dir = DIRECTION[locale];
 
   return (
     <html

@@ -67,10 +67,11 @@ export interface PlanActions {
   reset(): void;
 }
 
+/** Function-typed fields (not methods) so they can be passed to React without losing `this`. */
 export interface PlanStore {
-  subscribe(listener: () => void): () => void;
-  getSnapshot(): PlanSnapshot;
-  getServerSnapshot(): PlanSnapshot;
+  subscribe: (listener: () => void) => () => void;
+  getSnapshot: () => PlanSnapshot;
+  getServerSnapshot: () => PlanSnapshot;
   actions: PlanActions;
 }
 

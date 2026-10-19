@@ -2,9 +2,9 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
+import { useIsClient } from "@/lib/use-is-client";
 
 /**
  * الهيدر ثابت ومبيتحركش بين الصفحات (persistent layout) —
@@ -16,9 +16,7 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useIsClient();
 
   const other = routing.locales.find((l) => l !== locale) ?? routing.defaultLocale;
 

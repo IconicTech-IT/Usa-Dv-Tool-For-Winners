@@ -119,7 +119,7 @@ describe("plan store", () => {
     a.actions.setItem("ticket", { raw: "250" });
     a.actions.setRate("49.5");
     a.actions.setChildren(2);
-    expect(JSON.parse(storage.getItem(STORAGE_KEY) ?? "{}").rate).toBe("49.5");
+    expect(loadPlan(storage).rate).toBe("49.5");
 
     const b = createPlanStore({ storage, watch: null });
     expect(b.getSnapshot().plan.items.ticket?.raw).toBe("250");
@@ -211,6 +211,6 @@ describe("plan store", () => {
     const other = { ...emptyPlan(), rate: "55" };
     store.actions.replace(other);
     expect(store.getSnapshot().plan.rate).toBe("55");
-    expect(JSON.parse(storage.getItem(STORAGE_KEY) ?? "{}").rate).toBe("55");
+    expect(loadPlan(storage).rate).toBe("55");
   });
 });

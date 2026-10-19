@@ -47,65 +47,72 @@ export interface ItemDef {
   toggle?: boolean;
 }
 
-function item(
-  id: string,
-  calculator: Calculator,
-  group: GroupId,
-  stage: Stage,
-  scaling: Scaling = "total",
-  toggle = false,
-): ItemDef {
-  return toggle ? { id, calculator, group, stage, scaling, toggle } : { id, calculator, group, stage, scaling };
+interface ItemOptions {
+  scaling?: Scaling;
+  toggle?: boolean;
 }
+
+function define(calculator: Calculator, id: string, where: { group: GroupId; stage: Stage }, options: ItemOptions): ItemDef {
+  const { scaling = "total", toggle = false } = options;
+  const base = { id, calculator, group: where.group, stage: where.stage, scaling };
+  return toggle ? { ...base, toggle } : base;
+}
+
+const fees = (id: string, group: GroupId, stage: Stage, options: ItemOptions = {}) =>
+  define("fees", id, { group, stage }, options);
+const moving = (id: string, group: GroupId, stage: Stage, options: ItemOptions = {}) =>
+  define("moving", id, { group, stage }, options);
+const monthly = (id: string, group: GroupId, stage: Stage, options: ItemOptions = {}) =>
+  define("monthly", id, { group, stage }, options);
 
 export const ITEMS: readonly ItemDef[] = [
   /* Paperwork and fees */
-  item("medicalExam", "fees", "paperwork", "beforeInterview", "perPerson"),
-  item("policeCertificate", "fees", "paperwork", "beforeInterview", "perAdult"),
-  item("translation", "fees", "paperwork", "beforeInterview"),
-  item("civilCertificates", "fees", "paperwork", "beforeInterview"),
-  item("militaryCertificate", "fees", "paperwork", "beforeInterview"),
-  item("photos", "fees", "paperwork", "beforeInterview", "perPerson"),
-  item("otherPaperwork", "fees", "paperwork", "beforeInterview"),
-  item("visaFee", "fees", "paperwork", "atInterview", "perPerson"),
-  item("interviewTravel", "fees", "paperwork", "atInterview"),
-  item("passportCourier", "fees", "paperwork", "beforeTravel"),
-  item("immigrantFee", "fees", "paperwork", "beforeTravel", "perPerson"),
+  fees("medicalExam", "paperwork", "beforeInterview", { scaling: "perPerson" }),
+  fees("policeCertificate", "paperwork", "beforeInterview", { scaling: "perAdult" }),
+  fees("translation", "paperwork", "beforeInterview"),
+  fees("civilCertificates", "paperwork", "beforeInterview"),
+  fees("militaryCertificate", "paperwork", "beforeInterview"),
+  fees("photos", "paperwork", "beforeInterview", { scaling: "perPerson" }),
+  fees("otherPaperwork", "paperwork", "beforeInterview"),
+  fees("visaFee", "paperwork", "atInterview", { scaling: "perPerson" }),
+  fees("interviewTravel", "paperwork", "atInterview"),
+  fees("passportCourier", "paperwork", "beforeTravel"),
+  fees("immigrantFee", "paperwork", "beforeTravel", { scaling: "perPerson" }),
 
   /* Travel */
-  item("ticket", "fees", "travel", "beforeTravel", "perPerson"),
-  item("excessBaggage", "fees", "travel", "beforeTravel"),
-  item("travelInsurance", "fees", "travel", "beforeTravel", "total", true),
+  fees("ticket", "travel", "beforeTravel", { scaling: "perPerson" }),
+  fees("excessBaggage", "travel", "beforeTravel"),
+  fees("travelInsurance", "travel", "beforeTravel", { toggle: true }),
 
   /* Moving and settling (first month there) */
-  item("temporaryStay", "moving", "housingStart", "firstMonth"),
-  item("applicationFees", "moving", "housingStart", "firstMonth"),
-  item("securityDeposit", "moving", "housingStart", "firstMonth"),
-  item("firstMonthRent", "moving", "housingStart", "firstMonth"),
-  item("furniture", "moving", "household", "firstMonth"),
-  item("winterClothes", "moving", "household", "firstMonth", "perPerson"),
-  item("householdBasics", "moving", "household", "firstMonth"),
-  item("utilityDeposits", "moving", "connectivity", "firstMonth"),
-  item("phoneLine", "moving", "connectivity", "firstMonth", "perAdult"),
-  item("licenseTests", "moving", "car", "firstMonth", "perAdult"),
-  item("carPurchase", "moving", "car", "firstMonth"),
-  item("carInsuranceStart", "moving", "car", "firstMonth"),
-  item("carRegistration", "moving", "car", "firstMonth"),
-  item("healthInsuranceStart", "moving", "healthFamily", "firstMonth", "total", true),
-  item("childcareStart", "moving", "healthFamily", "firstMonth"),
-  item("otherMoving", "moving", "otherMoving", "firstMonth"),
+  moving("temporaryStay", "housingStart", "firstMonth"),
+  moving("applicationFees", "housingStart", "firstMonth"),
+  moving("securityDeposit", "housingStart", "firstMonth"),
+  moving("firstMonthRent", "housingStart", "firstMonth"),
+  moving("furniture", "household", "firstMonth"),
+  moving("winterClothes", "household", "firstMonth", { scaling: "perPerson" }),
+  moving("householdBasics", "household", "firstMonth"),
+  moving("utilityDeposits", "connectivity", "firstMonth"),
+  moving("phoneLine", "connectivity", "firstMonth", { scaling: "perAdult" }),
+  moving("licenseTests", "car", "firstMonth", { scaling: "perAdult" }),
+  moving("carPurchase", "car", "firstMonth"),
+  moving("carInsuranceStart", "car", "firstMonth"),
+  moving("carRegistration", "car", "firstMonth"),
+  moving("healthInsuranceStart", "healthFamily", "firstMonth", { toggle: true }),
+  moving("childcareStart", "healthFamily", "firstMonth"),
+  moving("otherMoving", "otherMoving", "firstMonth"),
 
   /* Monthly running costs */
-  item("rent", "monthly", "monthlyCosts", "monthly"),
-  item("utilities", "monthly", "monthlyCosts", "monthly"),
-  item("internet", "monthly", "monthlyCosts", "monthly"),
-  item("phone", "monthly", "monthlyCosts", "monthly"),
-  item("food", "monthly", "monthlyCosts", "monthly"),
-  item("transport", "monthly", "monthlyCosts", "monthly"),
-  item("healthInsurance", "monthly", "monthlyCosts", "monthly", "total", true),
-  item("carInsurance", "monthly", "monthlyCosts", "monthly"),
-  item("childcare", "monthly", "monthlyCosts", "monthly"),
-  item("otherMonthly", "monthly", "monthlyCosts", "monthly"),
+  monthly("rent", "monthlyCosts", "monthly"),
+  monthly("utilities", "monthlyCosts", "monthly"),
+  monthly("internet", "monthlyCosts", "monthly"),
+  monthly("phone", "monthlyCosts", "monthly"),
+  monthly("food", "monthlyCosts", "monthly"),
+  monthly("transport", "monthlyCosts", "monthly"),
+  monthly("healthInsurance", "monthlyCosts", "monthly", { toggle: true }),
+  monthly("carInsurance", "monthlyCosts", "monthly"),
+  monthly("childcare", "monthlyCosts", "monthly"),
+  monthly("otherMonthly", "monthlyCosts", "monthly"),
 ];
 
 /**

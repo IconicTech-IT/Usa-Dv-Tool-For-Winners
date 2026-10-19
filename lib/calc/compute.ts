@@ -95,13 +95,13 @@ function effectiveScaling(def: ItemDef, field: AmountField): Scaling {
   return def.scaling;
 }
 
-function computeItem(
-  def: ItemDef,
-  field: AmountField | undefined,
-  adults: number,
-  children: number,
-  rate: number | null,
-): ItemResult {
+interface HouseholdContext {
+  adults: number;
+  children: number;
+  rate: number | null;
+}
+
+function computeItem(def: ItemDef, field: AmountField | undefined, context: HouseholdContext): ItemResult {
   const base = { id: def.id, stage: def.stage };
   const empty = !field || field.raw.trim() === "";
   if (!field || empty) {
@@ -109,12 +109,12 @@ function computeItem(
   }
 
   const parsed = parseAmount(field.raw);
-  const multiplier = multiplierFor(effectiveScaling(def, field), adults, children);
+  const multiplier = multiplierFor(effectiveScaling(def, field), context.adults, context.children);
   if (!parsed.ok) {
     return { ...base, typed: false, invalid: true, multiplier, usd: null, needsRate: false };
   }
 
-  const usd = toUsd(parsed.value, field.currency, rate);
+  const usd = toUsd(parsed.value, field.currency, context.rate);
   return {
     ...base,
     typed: true,
@@ -151,7 +151,7 @@ export function computePlan(state: PlanState): PlanResult {
   const defs = quick ? QUICK_ITEMS : ITEMS;
   const fields = quick ? state.quick : state.items;
 
-  const items = defs.map((def) => computeItem(def, fields[def.id], adults, children, rate));
+  const items = defs.map((def) => computeItem(def, fields[def.id], { adults, children, rate }));
 
   const stages: StageResult[] = STAGES.map((stage) => {
     const stageItems = items.filter((i) => i.stage === stage);
