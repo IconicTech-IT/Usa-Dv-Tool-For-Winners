@@ -219,3 +219,25 @@ html[dir="rtl"] .back svg {
   padding-inline: 12px;
   gap: 6px;
 }
+
+/* "A new version is ready" notice */
+.update {
+  position: fixed;
+  inset-inline: 12px;
+  bottom: 84px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--pr);
+  border-radius: 12px;
+  background: var(--sf);
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+.update .btn {
+  width: auto;
+  height: 40px;
+}

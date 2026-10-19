@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Pick<LayoutProps, "params">):
     metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
-    manifest: "/manifest.json",
+    icons: { apple: "/icons/apple-touch-icon.png" },
   };
 }
 

@@ -463,5 +463,14 @@
       "neverChecked": "The links have not been checked by hand yet. If you find a broken link, tell us.",
       "note": "These links go to external sites. We do not set prices and are not responsible for them."
     }
+  },
+  "pwa": {
+    "updateReady": "A new version of the site is ready.",
+    "update": "Update now"
+  },
+  "offline": {
+    "title": "No internet right now",
+    "lead": "This page is not saved on your device yet. Open it once while you are online and it will work offline afterwards.",
+    "home": "Back to the home page"
   }
 }
