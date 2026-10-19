@@ -49,9 +49,10 @@ describe("guide links", () => {
     }
   });
 
-  it("marks a source official exactly when it is a .gov site", () => {
+  it("marks a source official exactly when it is a government site (.gov or .gov.eg)", () => {
     for (const [id, site] of Object.entries(data.sites)) {
-      const gov = new URL(site.url).hostname.endsWith(".gov");
+      const host = new URL(site.url).hostname;
+      const gov = host.endsWith(".gov") || host.endsWith(".gov.eg");
       expect(Boolean(site.official), id).toBe(gov);
     }
   });
@@ -70,6 +71,7 @@ describe("guide links", () => {
   it("resolves sources for the app", () => {
     expect(hasGuide("rent")).toBe(true);
     expect(hasGuide("otherMonthly")).toBe(false);
+    expect(guideSitesFor("passport").map((s) => s.id)).toEqual(["egyptMoi", "digitalEgypt", "stateDvPage"]);
     // The price of paid help with the entry is whatever the helper asks: no source to look it up in.
     expect(hasGuide("entryHelp")).toBe(false);
     expect(hasGuide("noSuchItem")).toBe(false);

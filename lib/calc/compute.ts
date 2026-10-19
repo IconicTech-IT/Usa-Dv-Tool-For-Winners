@@ -11,7 +11,7 @@ import { parseAmount } from "@/lib/calc/parse-amount";
  *
  * Formulas (design note s2):
  *   stage total      = sum of its items, each multiplied by the household count when per person
- *   oneTime          = beforeInterview + atInterview + beforeTravel + firstMonth
+ *   oneTime          = beforeEntry + beforeInterview + atInterview + beforeTravel + firstMonth
  *   monthly          = sum of the monthly items
  *   scenario n       = oneTime + monthly * n + bufferMonths * monthly - savings   (n = 0, 1, 2, 3)
  *   netMonthlyAfter  = monthly - income - spouseIncome   (negative means a monthly surplus)
@@ -22,7 +22,13 @@ export const SCENARIO_START_MONTHS = [0, 1, 2, 3] as const;
 export type ScenarioStart = (typeof SCENARIO_START_MONTHS)[number];
 
 /** The stages that make up the one-time total (everything except the monthly costs). */
-const ONE_TIME_STAGES: readonly Stage[] = ["beforeInterview", "atInterview", "beforeTravel", "firstMonth"];
+const ONE_TIME_STAGES: readonly Stage[] = [
+  "beforeEntry",
+  "beforeInterview",
+  "atInterview",
+  "beforeTravel",
+  "firstMonth",
+];
 
 export interface ItemResult {
   id: string;

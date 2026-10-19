@@ -632,6 +632,30 @@
         "ar": "شركة شحن. شوف سعر ومواعيد توصيل الجواز من فرعك.",
         "en": "A courier company. Check the delivery price and times for your branch."
       }
+    },
+    "egyptMoi": {
+      "name": {
+        "ar": "وزارة الداخلية المصرية",
+        "en": "Egyptian Ministry of Interior"
+      },
+      "url": "https://www.moi.gov.eg/",
+      "what": {
+        "ar": "الموقع الرسمي لوزارة الداخلية: خدمات الجوازات والهجرة والجنسية.",
+        "en": "The ministry's official site: passport, immigration and nationality services."
+      },
+      "official": true
+    },
+    "digitalEgypt": {
+      "name": {
+        "ar": "مصر الرقمية",
+        "en": "Digital Egypt"
+      },
+      "url": "https://digital.gov.eg/",
+      "what": {
+        "ar": "بوابة الخدمات الحكومية الرقمية في مصر. دوّر فيها على خدمة الجواز واقرا الرسم والمستندات من هناك.",
+        "en": "Egypt's digital government services portal. Look for the passport service and read the fee and documents there."
+      },
+      "official": true
     }
   },
   "items": {
@@ -676,6 +700,7 @@
     "healthInsurance": ["healthcareSeePlans", "healthcareGov"],
     "carInsurance": ["naicStateInsurance", "theZebra"],
     "childcare": ["childCareAware"],
-    "otherMonthly": []
+    "otherMonthly": [],
+    "passport": ["egyptMoi", "digitalEgypt", "stateDvPage"]
   }
 }

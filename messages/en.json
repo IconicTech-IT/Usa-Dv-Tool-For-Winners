@@ -290,7 +290,8 @@
       "atInterview": "at the interview",
       "beforeTravel": "before travel",
       "firstMonth": "first month there",
-      "monthly": "monthly"
+      "monthly": "monthly",
+      "beforeEntry": "before registering"
     },
     "groups": {
       "entry": "Applying",
@@ -303,7 +304,8 @@
       "connectivity": "Utilities",
       "car": "Car",
       "healthFamily": "Health and children",
-      "monthlyCosts": "Monthly costs"
+      "monthlyCosts": "Monthly costs",
+      "passport": "Passport"
     },
     "groupHints": {
       "entry": "Lottery entry and photos",
@@ -315,7 +317,8 @@
       "household": "Furniture, clothes, basics",
       "connectivity": "Power, internet, phone",
       "car": "Licence, purchase, insurance",
-      "healthFamily": "Health insurance and childcare"
+      "healthFamily": "Health insurance and childcare",
+      "passport": "Get or renew it for each person"
     },
     "scaling": {
       "total": "For the whole household",
@@ -375,7 +378,8 @@
       "quickTravel": "Travel",
       "quickHousing": "First housing and set-up",
       "quickCar": "Car and insurance",
-      "quickMonthly": "Costs for one month"
+      "quickMonthly": "Costs for one month",
+      "passport": "Get or renew the passport"
     },
     "timeline": {
       "beforeInterview": {
@@ -397,6 +401,10 @@
       "monthly": {
         "title": "Monthly",
         "text": "Your monthly costs × months without income"
+      },
+      "beforeEntry": {
+        "title": "Before registering",
+        "text": "A passport for each person in the family"
       }
     },
     "scenarios": {
@@ -431,5 +439,9 @@
       }
     },
     "currencyChoice": "Amount currency"
+  },
+  "guideNotes": {
+    "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country.",
+    "charge": "If you are thinking about any government benefit, read the public charge page first"
   }
 }

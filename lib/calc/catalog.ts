@@ -8,10 +8,12 @@
  * - `group` is WHERE the item sits on the screen of its calculator.
  */
 
-export type Stage = "beforeInterview" | "atInterview" | "beforeTravel" | "firstMonth" | "monthly";
+export type Stage =
+  "beforeEntry" | "beforeInterview" | "atInterview" | "beforeTravel" | "firstMonth" | "monthly";
 
 /** Order matters: the cumulative timeline follows it. */
 export const STAGES: readonly Stage[] = [
+  "beforeEntry",
   "beforeInterview",
   "atInterview",
   "beforeTravel",
@@ -27,6 +29,7 @@ export type Calculator = "fees" | "moving" | "monthly";
 
 export type GroupId =
   // Fees calculator
+  | "passport"
   | "entry"
   | "documents"
   | "interview"
@@ -75,6 +78,9 @@ const monthly = (id: string, group: GroupId, stage: Stage, options: ItemOptions 
   define("monthly", id, { group, stage }, options);
 
 export const ITEMS: readonly ItemDef[] = [
+  /* Fees: the passport, needed before anything else */
+  fees("passport", "passport", "beforeEntry", { scaling: "perPerson" }),
+
   /* Fees: entering the lottery */
   fees("entryPhotos", "entry", "beforeInterview", { scaling: "perPerson" }),
   fees("entryHelp", "entry", "beforeInterview"),

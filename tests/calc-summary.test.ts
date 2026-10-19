@@ -14,6 +14,7 @@ function planWith(patch: (plan: PlanState) => void): PlanState {
 describe("groupsOfCalculator", () => {
   it("lists the fees groups in screen order", () => {
     expect(groupsOfCalculator("fees").map((g) => g.id)).toEqual([
+      "passport",
       "entry",
       "documents",
       "interview",

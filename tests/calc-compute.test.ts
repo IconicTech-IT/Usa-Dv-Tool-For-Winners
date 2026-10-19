@@ -60,7 +60,22 @@ describe("stage totals and per-person items", () => {
 
   it("keeps a running total over the stages in order", () => {
     const cumulative = result.timeline.map((t) => t.cumulativeCents);
-    expect(cumulative).toEqual([usd(490), usd(610), usd(610), usd(650), usd(650 + 3200)]);
+    expect(cumulative).toEqual([0n, usd(490), usd(610), usd(610), usd(650), usd(650 + 3200)]);
+  });
+});
+
+describe("the passport", () => {
+  it("is counted for every person in the earliest stage and in the one-time total", () => {
+    const family = plan((p) => {
+      p.household = { adults: 2, children: 1, childAges: [""] };
+      put(p, "passport", "40");
+    });
+    const result = computePlan(family);
+    const first = result.stages[0];
+    expect(first?.stage).toBe("beforeEntry");
+    expect(first?.cents).toBe(usd(120));
+    expect(result.oneTimeCents).toBe(usd(120));
+    expect(result.timeline[0]?.cumulativeCents).toBe(usd(120));
   });
 });
 
