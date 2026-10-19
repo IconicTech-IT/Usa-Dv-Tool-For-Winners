@@ -2,13 +2,8 @@ import { getTranslations } from "next-intl/server";
 
 import { Icon } from "@/components/Icon";
 import type { Locale } from "@/i18n/routing";
+import official from "@/content/official-links.json";
 import { guideSitesFor } from "@/lib/guide/links";
-
-/** The official pages the scam page points to. Sources of money and results only, never an office. */
-const STATUS_CHECK_URL = "https://dvprogram.state.gov/ESC/";
-const FRAUD_WARNING_URL = "https://travel.state.gov/dvfraud";
-/** The final rule that set the registration fee (Federal Register, 16 September 2025). */
-const FEE_RULE_URL = "https://public-inspection.federalregister.gov/2025-17851.pdf";
 
 const FACT_NUMBERS = ["1", "2", "3", "4", "5"] as const;
 const SIGN_NUMBERS = ["1", "2", "3", "4"] as const;
@@ -23,9 +18,9 @@ function officialLinks(): OfficialLink[] {
   const lotteryPage = guideSitesFor("entryPhotos").find((site) => site.id === "stateDvPage");
   return [
     ...(lotteryPage ? [{ key: "entry" as const, url: lotteryPage.url }] : []),
-    { key: "status", url: STATUS_CHECK_URL },
-    { key: "fraud", url: FRAUD_WARNING_URL },
-    { key: "fee", url: FEE_RULE_URL },
+    { key: "status", url: official.statusCheck },
+    { key: "fraud", url: official.fraudWarning },
+    { key: "fee", url: official.feeRule },
   ];
 }
 
