@@ -172,7 +172,13 @@
     "openPlan": "Open a saved plan",
     "compare": "Compare two plans",
     "whatsapp": "Share on WhatsApp",
-    "savings": "Savings held"
+    "savings": "Savings held",
+    "householdValue": "{adults} adults, {children} children",
+    "resetConfirm": "Delete every number you typed from this device? This cannot be undone.",
+    "planOpened": "The plan was opened.",
+    "forgotCount": "{count} empty",
+    "forgotNone": "No empty box. Everything is filled in.",
+    "shareHeader": "My plan summary from DV Compass"
   },
   "quick": {
     "title": "Quick mode",

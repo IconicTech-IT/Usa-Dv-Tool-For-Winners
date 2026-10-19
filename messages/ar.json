@@ -172,7 +172,13 @@
     "openPlan": "افتح خطة محفوظة",
     "compare": "قارن خطتين",
     "whatsapp": "شارك على واتساب",
-    "savings": "مدخرات معاك"
+    "savings": "مدخرات معاك",
+    "householdValue": "{adults} بالغ، {children} طفل",
+    "resetConfirm": "تمسح كل الأرقام اللي كتبتها من على الجهاز؟ مفيش رجوع.",
+    "planOpened": "الخطة اتفتحت.",
+    "forgotCount": "{count} فاضية",
+    "forgotNone": "مفيش خانة فاضية. كل حاجة مكتوبة.",
+    "shareHeader": "ملخص خطتي من DV Compass"
   },
   "quick": {
     "title": "الوضع السريع",

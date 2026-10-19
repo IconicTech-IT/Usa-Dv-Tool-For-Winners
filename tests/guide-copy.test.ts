@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 
 import ar from "@/messages/ar.json";
 import en from "@/messages/en.json";
-import { CALCULATOR_PATH, guideKind, guideText, type Translate } from "@/lib/guide/copy";
+import { CALCULATOR_PATH } from "@/lib/calc/routes";
+import { guideKind, guideText, type Translate } from "@/lib/guide/copy";
 import { GUIDE_ITEM_IDS, guideSitesFor } from "@/lib/guide/links";
 
 /** A translate function over a messages file: dotted keys, {name} placeholders, throws on a missing key. */

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { isInvalidAmountText } from "@/lib/calc/parse-amount";
 import { bufferMonthsOf, MAX_BUFFER_MONTHS } from "@/lib/calc/plan-actions";
+import { pathForCalculator, pathForItem } from "@/lib/calc/routes";
 
 describe("isInvalidAmountText", () => {
   it("does not call empty text invalid: nothing was typed", () => {
@@ -36,5 +37,19 @@ describe("bufferMonthsOf", () => {
 
   it("never goes above the limit of the stepper", () => {
     expect(bufferMonthsOf("99")).toBe(MAX_BUFFER_MONTHS);
+  });
+});
+
+describe("pathForItem", () => {
+  it("sends an item to its own calculator page", () => {
+    expect(pathForItem("medicalExam", "detailed")).toBe("/fees");
+    expect(pathForItem("ticket", "detailed")).toBe("/moving");
+    expect(pathForItem("rent", "detailed")).toBe("/runway");
+  });
+
+  it("sends every item to the quick page in quick mode", () => {
+    expect(pathForItem("ticket", "quick")).toBe("/quick");
+    expect(pathForCalculator("monthly", "quick")).toBe("/quick");
+    expect(pathForCalculator("monthly", "detailed")).toBe("/runway");
   });
 });

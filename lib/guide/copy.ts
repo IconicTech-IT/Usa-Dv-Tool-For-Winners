@@ -1,5 +1,3 @@
-import type { Calculator } from "@/lib/calc/catalog";
-
 /** A translate function with the root of the messages (`getTranslations()` gives one). */
 export type Translate = (key: string, values?: Record<string, string>) => string;
 
@@ -39,10 +37,3 @@ export function guideText(t: Translate, itemId: string): GuideText {
     steps: [t(`${namespace}.step1`), t(`${namespace}.step2`), t(`${namespace}.step3`)],
   };
 }
-
-/** The calculator page a guide sends the user back to. */
-export const CALCULATOR_PATH = {
-  fees: "/fees",
-  moving: "/moving",
-  monthly: "/runway",
-} as const satisfies Record<Calculator, string>;

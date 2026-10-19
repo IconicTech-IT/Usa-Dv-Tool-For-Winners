@@ -4,7 +4,8 @@ import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { findItem } from "@/lib/calc/catalog";
-import { CALCULATOR_PATH, guideKind, guideText } from "@/lib/guide/copy";
+import { CALCULATOR_PATH } from "@/lib/calc/routes";
+import { guideKind, guideText } from "@/lib/guide/copy";
 import { guideSitesFor, type GuideSite } from "@/lib/guide/links";
 
 interface GuideScreenProps {

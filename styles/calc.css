@@ -181,3 +181,30 @@ html[dir="rtl"] .back svg {
   font-weight: 700;
   white-space: nowrap;
 }
+
+/* Print (and "save as PDF" from the browser): the numbers only, on white */
+@media print {
+  .top,
+  .privacy,
+  .skip,
+  .total,
+  footer,
+  .no-print,
+  .rate {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .calc-page {
+    padding-block-end: 0;
+  }
+  .card,
+  .stage,
+  .sc,
+  .it {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
