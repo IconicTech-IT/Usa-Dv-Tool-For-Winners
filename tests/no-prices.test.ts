@@ -17,12 +17,14 @@ const DIGITS = "[0-9\\u0660-\\u0669\\u06F0-\\u06F9]";
 const CURRENCY_WORDS =
   "(?:USD|EGP|SAR|AED|EUR|GBP|دولار|دولارات|جنيه|ريال|درهم|دينار|يورو|dollars?|pounds?|euros?)";
 
+const NUMBER = `${DIGITS}+(?:[,.\u066B\u066C]${DIGITS}+)*`;
+
 const PATTERNS: { name: string; re: RegExp }[] = [
   { name: "$ before number", re: new RegExp(`\\$\\s?${DIGITS}`) },
-  { name: "number before $", re: new RegExp(`${DIGITS}[\\d,.\\u066B\\u066C]*\\s?\\$`) },
+  { name: "number before $", re: new RegExp(`${NUMBER}\\s?\\$`) },
   {
     name: "number then currency word",
-    re: new RegExp(`${DIGITS}[\\d,.\\u066B\\u066C]*\\s?${CURRENCY_WORDS}`, "i"),
+    re: new RegExp(`${NUMBER}\\s?${CURRENCY_WORDS}(?![A-Za-z])`, "i"),
   },
   {
     name: "currency word then number",
