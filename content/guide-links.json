@@ -1,0 +1,816 @@
+{
+  "_note": "Sources the user opens to find a real price himself. We never state a price. Every link is a plain URL: no affiliate, no tracking. An item with no entry in 'items' gets no guide button. linksLastChecked stays null until a person has opened every link in a real browser and written the date here; scripts/check-links.ts only helps with that.",
+  "linksLastChecked": null,
+  "sites": {
+    "stateDvPage": {
+      "name": {
+        "ar": "قرعة الهجرة: وزارة الخارجية",
+        "en": "Diversity Visa: US State Department"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html",
+      "what": {
+        "ar": "الصفحة الرسمية للقرعة: الخطوات والشروط والإرشادات.",
+        "en": "The official DV page: steps, requirements and instructions."
+      },
+      "official": true
+    },
+    "stateImmigrantVisaProcess": {
+      "name": {
+        "ar": "خطوات فيزا الهجرة: وزارة الخارجية",
+        "en": "The immigrant visa process: US State Department"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process.html",
+      "what": {
+        "ar": "خطوات فيزا الهجرة من أولها لآخرها، شاملة الكشف الطبي والأوراق.",
+        "en": "The immigrant visa steps from start to finish, including the medical exam and documents."
+      },
+      "official": true
+    },
+    "stateFees": {
+      "name": {
+        "ar": "رسوم خدمات الفيزا: وزارة الخارجية",
+        "en": "Fees for visa services: US State Department"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-for-visa-services.html",
+      "what": {
+        "ar": "جدول الرسوم الرسمي. اقرا الرسم من هنا وأكّده من خطاب موعدك.",
+        "en": "The official fee table. Read the fee here and confirm it against your appointment letter."
+      },
+      "official": true
+    },
+    "statePhotos": {
+      "name": {
+        "ar": "شروط الصور: وزارة الخارجية",
+        "en": "Photo requirements: US State Department"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html",
+      "what": {
+        "ar": "مواصفات الصورة المطلوبة للفيزا.",
+        "en": "The photo specification the visa requires."
+      },
+      "official": true
+    },
+    "reciprocity": {
+      "name": {
+        "ar": "الأوراق المدنية حسب البلد: وزارة الخارجية",
+        "en": "Civil documents by country: US State Department"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country.html",
+      "what": {
+        "ar": "اختار بلدك وشوف الأوراق المطلوبة منها (الميلاد، الزواج، الشرطة، الجيش) وإزاي تطلعها.",
+        "en": "Pick your country and see which documents are needed (birth, marriage, police, military) and how to get them."
+      },
+      "official": true
+    },
+    "usEmbassies": {
+      "name": {
+        "ar": "سفارات وقنصليات أمريكا",
+        "en": "US embassies and consulates"
+      },
+      "url": "https://www.usembassy.gov/",
+      "what": {
+        "ar": "دليل السفارات. ادخل على سفارة بلدك وشوف صفحة الهجرة وتعليمات المقابلة.",
+        "en": "The embassy directory. Open your country's embassy and read its immigrant visa and interview instructions."
+      },
+      "official": true
+    },
+    "uscisImmigrantFee": {
+      "name": {
+        "ar": "رسم الهجرة: USCIS",
+        "en": "USCIS immigrant fee"
+      },
+      "url": "https://www.uscis.gov/file-online/uscis-immigrant-fee",
+      "what": {
+        "ar": "الصفحة الرسمية لدفع رسم الهجرة بعد الفيزا.",
+        "en": "The official page for paying the immigrant fee after the visa."
+      },
+      "official": true
+    },
+    "uscisFees": {
+      "name": {
+        "ar": "جدول رسوم USCIS",
+        "en": "USCIS fee schedule"
+      },
+      "url": "https://www.uscis.gov/g-1055",
+      "what": {
+        "ar": "جدول رسوم USCIS الرسمي.",
+        "en": "The official USCIS fee schedule."
+      },
+      "official": true
+    },
+    "healthcareGov": {
+      "name": {
+        "ar": "HealthCare.gov",
+        "en": "HealthCare.gov"
+      },
+      "url": "https://www.healthcare.gov/",
+      "what": {
+        "ar": "الموقع الرسمي للتأمين الصحي في أمريكا.",
+        "en": "The official US health insurance marketplace."
+      },
+      "official": true
+    },
+    "healthcareSeePlans": {
+      "name": {
+        "ar": "شوف الخطط والأسعار: HealthCare.gov",
+        "en": "See plans and prices: HealthCare.gov"
+      },
+      "url": "https://www.healthcare.gov/see-plans/",
+      "what": {
+        "ar": "اكتب الرقم البريدي وبيانات أسرتك وشوف الخطط والأسعار الحقيقية في ولايتك.",
+        "en": "Enter a ZIP code and your household details to see the real plans and prices in your state."
+      },
+      "official": true
+    },
+    "usaMotorVehicle": {
+      "name": {
+        "ar": "خدمات المركبات: USA.gov",
+        "en": "Motor vehicle services: USA.gov"
+      },
+      "url": "https://www.usa.gov/motor-vehicle-services",
+      "what": {
+        "ar": "بتوصّلك لإدارة المرور في ولايتك: الرخصة والتسجيل واللوحات والرسوم.",
+        "en": "Takes you to your state's motor vehicle office: licence, registration, plates and fees."
+      },
+      "official": true
+    },
+    "nhtsaRecalls": {
+      "name": {
+        "ar": "فحص السحب من السوق: NHTSA",
+        "en": "Safety recalls: NHTSA"
+      },
+      "url": "https://www.nhtsa.gov/recalls",
+      "what": {
+        "ar": "اكتب رقم الشاسيه (VIN) وشوف لو العربية عليها عيب مصنعي.",
+        "en": "Enter the VIN and see whether the car has an open safety recall."
+      },
+      "official": true
+    },
+    "nmvtis": {
+      "name": {
+        "ar": "تاريخ العربية وملكيتها: NMVTIS",
+        "en": "Vehicle history: NMVTIS"
+      },
+      "url": "https://vehiclehistory.bja.ojp.gov/",
+      "what": {
+        "ar": "نظام وزارة العدل للتأكد إن العربية مش مسروقة ومش مشطوبة من حادثة.",
+        "en": "The Justice Department system for checking a car is not stolen or written off."
+      },
+      "official": true
+    },
+    "fccBroadbandMap": {
+      "name": {
+        "ar": "خريطة الإنترنت: FCC",
+        "en": "National Broadband Map: FCC"
+      },
+      "url": "https://broadbandmap.fcc.gov/",
+      "what": {
+        "ar": "اكتب العنوان وشوف شركات الإنترنت المتاحة عنده وسرعاتها.",
+        "en": "Enter an address to see which internet providers serve it and at what speeds."
+      },
+      "official": true
+    },
+    "eiaElectricity": {
+      "name": {
+        "ar": "الكهربا حسب الولاية: EIA",
+        "en": "Electricity by state: EIA"
+      },
+      "url": "https://www.eia.gov/electricity/state/",
+      "what": {
+        "ar": "بيانات رسمية عن أسعار الكهربا واستهلاكها في كل ولاية.",
+        "en": "Official data on electricity prices and use in each state."
+      },
+      "official": true
+    },
+    "fuelEconomy": {
+      "name": {
+        "ar": "FuelEconomy.gov",
+        "en": "FuelEconomy.gov"
+      },
+      "url": "https://www.fueleconomy.gov/",
+      "what": {
+        "ar": "تكلفة البنزين لكل موديل عربية، وبتقارن بين العربيات.",
+        "en": "Fuel cost for each car model, with side-by-side comparison."
+      },
+      "official": true
+    },
+    "usdaFoodPlans": {
+      "name": {
+        "ar": "خطط الأكل: وزارة الزراعة (USDA)",
+        "en": "Food plans: USDA"
+      },
+      "url": "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-reports-monthly-reports",
+      "what": {
+        "ar": "تقارير رسمية شهرية عن تكلفة الأكل لأحجام أسر مختلفة. بتقارن بيها اللي إنت بتكتبه.",
+        "en": "Official monthly reports on food cost for different household sizes. Compare them with what you type."
+      },
+      "official": true
+    },
+    "weatherGov": {
+      "name": {
+        "ar": "الطقس: NOAA",
+        "en": "Weather: NOAA"
+      },
+      "url": "https://www.weather.gov/",
+      "what": {
+        "ar": "اكتب اسم المدينة وشوف الجو ودرجات الحرارة في الشتا قبل ما تشتري هدوم.",
+        "en": "Type a city to see the weather and winter temperatures before buying clothes."
+      },
+      "official": true
+    },
+    "naicStateInsurance": {
+      "name": {
+        "ar": "إدارات التأمين في الولايات: NAIC",
+        "en": "State insurance departments: NAIC"
+      },
+      "url": "https://content.naic.org/state-insurance-departments",
+      "what": {
+        "ar": "اختار ولايتك وشوف إدارة التأمين فيها وإزاي تقارن العروض.",
+        "en": "Pick your state to find its insurance department and how to compare offers."
+      }
+    },
+    "childCareAware": {
+      "name": {
+        "ar": "Child Care Aware of America",
+        "en": "Child Care Aware of America"
+      },
+      "url": "https://www.childcareaware.org/",
+      "what": {
+        "ar": "منظمة غير حكومية بتساعدك تدوّر على حضانات مرخّصة في منطقتك.",
+        "en": "A non-profit that helps you search for licensed childcare in your area."
+      }
+    },
+    "apartments": {
+      "name": {
+        "ar": "Apartments.com",
+        "en": "Apartments.com"
+      },
+      "url": "https://www.apartments.com/",
+      "what": {
+        "ar": "شقق بعقود رسمية من شركات إدارة. فلاتر بعدد الأوض والمنطقة.",
+        "en": "Apartments with formal leases from management companies. Filters by bedrooms and area."
+      }
+    },
+    "zillow": {
+      "name": {
+        "ar": "Zillow",
+        "en": "Zillow"
+      },
+      "url": "https://www.zillow.com/",
+      "what": {
+        "ar": "إيجار وبيع. مفيد إنك تقارن نفس الحي.",
+        "en": "Rentals and sales. Useful for comparing within one neighbourhood."
+      }
+    },
+    "trulia": {
+      "name": {
+        "ar": "Trulia",
+        "en": "Trulia"
+      },
+      "url": "https://www.trulia.com/",
+      "what": {
+        "ar": "إعلانات شقق مع خرايط للحي.",
+        "en": "Apartment listings with neighbourhood maps."
+      }
+    },
+    "hotpads": {
+      "name": {
+        "ar": "HotPads",
+        "en": "HotPads"
+      },
+      "url": "https://hotpads.com/",
+      "what": {
+        "ar": "خريطة واضحة للإيجارات.",
+        "en": "A clear rental map."
+      }
+    },
+    "padmapper": {
+      "name": {
+        "ar": "PadMapper",
+        "en": "PadMapper"
+      },
+      "url": "https://www.padmapper.com/",
+      "what": {
+        "ar": "بيجمع إعلانات من مواقع كتير في خريطة واحدة.",
+        "en": "Gathers listings from several sites onto one map."
+      }
+    },
+    "roomies": {
+      "name": {
+        "ar": "Roomies",
+        "en": "Roomies"
+      },
+      "url": "https://www.roomies.com/",
+      "what": {
+        "ar": "أوضة في شقة مع ناس تانية.",
+        "en": "A room in a shared flat."
+      }
+    },
+    "spareroom": {
+      "name": {
+        "ar": "SpareRoom",
+        "en": "SpareRoom"
+      },
+      "url": "https://www.spareroom.com/",
+      "what": {
+        "ar": "أوض مشتركة كمان، وفيه إعلانات مش على غيره.",
+        "en": "Also shared rooms, with listings not found elsewhere."
+      }
+    },
+    "facebookMarketplace": {
+      "name": {
+        "ar": "Facebook Marketplace",
+        "en": "Facebook Marketplace"
+      },
+      "url": "https://www.facebook.com/marketplace/",
+      "what": {
+        "ar": "إعلانات من أفراد: أثاث وعربيات وإيجار.",
+        "en": "Listings from individuals: furniture, cars and rentals."
+      },
+      "watch": {
+        "ar": "النصب هنا كتير. ماتدفعش ولا تحوّل فلوس قبل ما تشوف الحاجة بنفسك وتتأكد من البايع.",
+        "en": "Scams are common here. Do not pay or wire money before you see the item yourself and check the seller."
+      }
+    },
+    "googleFlights": {
+      "name": {
+        "ar": "Google Flights",
+        "en": "Google Flights"
+      },
+      "url": "https://www.google.com/travel/flights",
+      "what": {
+        "ar": "قارن أسعار الطيران بالتاريخ والمطار، وشوف مصاريف الشنط.",
+        "en": "Compare flight prices by date and airport, and see baggage fees."
+      }
+    },
+    "skyscanner": {
+      "name": {
+        "ar": "Skyscanner",
+        "en": "Skyscanner"
+      },
+      "url": "https://www.skyscanner.com/",
+      "what": {
+        "ar": "مقارنة بين شركات الطيران ومواعيد أرخص.",
+        "en": "Compares airlines and cheaper dates."
+      }
+    },
+    "googleHotels": {
+      "name": {
+        "ar": "Google Hotels",
+        "en": "Google Hotels"
+      },
+      "url": "https://www.google.com/travel/hotels",
+      "what": {
+        "ar": "قارن الفنادق بالمدينة والتاريخ.",
+        "en": "Compare hotels by city and date."
+      }
+    },
+    "booking": {
+      "name": {
+        "ar": "Booking.com",
+        "en": "Booking.com"
+      },
+      "url": "https://www.booking.com/",
+      "what": {
+        "ar": "فنادق وشقق للإقامة المؤقتة.",
+        "en": "Hotels and flats for a temporary stay."
+      }
+    },
+    "airbnb": {
+      "name": {
+        "ar": "Airbnb",
+        "en": "Airbnb"
+      },
+      "url": "https://www.airbnb.com/",
+      "what": {
+        "ar": "شقق وأوض للإقامة المؤقتة.",
+        "en": "Flats and rooms for a temporary stay."
+      }
+    },
+    "walmart": {
+      "name": {
+        "ar": "Walmart",
+        "en": "Walmart"
+      },
+      "url": "https://www.walmart.com/",
+      "what": {
+        "ar": "أسعار أكل وأدوات بيت وأثاث على الموقع نفسه.",
+        "en": "Prices for food, household goods and furniture on the site itself."
+      }
+    },
+    "costco": {
+      "name": {
+        "ar": "Costco",
+        "en": "Costco"
+      },
+      "url": "https://www.costco.com/",
+      "what": {
+        "ar": "أسعار الجملة. محتاج عضوية.",
+        "en": "Bulk prices. Needs a membership."
+      }
+    },
+    "aldi": {
+      "name": {
+        "ar": "ALDI",
+        "en": "ALDI"
+      },
+      "url": "https://www.aldi.us/",
+      "what": {
+        "ar": "سوبرماركت اقتصادي، وبتشوف المنتجات والعروض.",
+        "en": "A discount supermarket; see products and offers."
+      }
+    },
+    "kroger": {
+      "name": {
+        "ar": "Kroger",
+        "en": "Kroger"
+      },
+      "url": "https://www.kroger.com/",
+      "what": {
+        "ar": "سلسلة سوبرماركت كبيرة، وبتشوف الأسعار حسب فرعك.",
+        "en": "A large supermarket chain; prices depend on your store."
+      }
+    },
+    "samsClub": {
+      "name": {
+        "ar": "Sam's Club",
+        "en": "Sam's Club"
+      },
+      "url": "https://www.samsclub.com/",
+      "what": {
+        "ar": "أسعار جملة. محتاج عضوية.",
+        "en": "Bulk prices. Needs a membership."
+      }
+    },
+    "target": {
+      "name": {
+        "ar": "Target",
+        "en": "Target"
+      },
+      "url": "https://www.target.com/",
+      "what": {
+        "ar": "هدوم وأدوات بيت وأكل.",
+        "en": "Clothes, household goods and food."
+      }
+    },
+    "ikea": {
+      "name": {
+        "ar": "IKEA",
+        "en": "IKEA"
+      },
+      "url": "https://www.ikea.com/us/en/",
+      "what": {
+        "ar": "أثاث وأدوات بيت، مع الأسعار على الموقع.",
+        "en": "Furniture and household goods, with prices on the site."
+      }
+    },
+    "goodwill": {
+      "name": {
+        "ar": "Goodwill",
+        "en": "Goodwill"
+      },
+      "url": "https://www.goodwill.org/",
+      "what": {
+        "ar": "محلات خيرية: هدوم وأدوات بيت مستعملة.",
+        "en": "Charity shops: used clothes and household goods."
+      }
+    },
+    "habitatRestore": {
+      "name": {
+        "ar": "Habitat ReStore",
+        "en": "Habitat ReStore"
+      },
+      "url": "https://www.habitat.org/restores",
+      "what": {
+        "ar": "أثاث وأدوات بيت مستعملة، والريع بيروح لبناء بيوت.",
+        "en": "Used furniture and household goods; proceeds fund house building."
+      }
+    },
+    "offerUp": {
+      "name": {
+        "ar": "OfferUp",
+        "en": "OfferUp"
+      },
+      "url": "https://offerup.com/",
+      "what": {
+        "ar": "بيع وشرا مستعمل بين الأفراد.",
+        "en": "Used buying and selling between individuals."
+      },
+      "watch": {
+        "ar": "نفس تحذير Facebook Marketplace: شوف الحاجة بنفسك قبل ما تدفع.",
+        "en": "Same warning as Facebook Marketplace: see the item yourself before you pay."
+      }
+    },
+    "energySage": {
+      "name": {
+        "ar": "EnergySage",
+        "en": "EnergySage"
+      },
+      "url": "https://www.energysage.com/local-data/electricity-cost/",
+      "what": {
+        "ar": "سعر الكهربا في مدينتك.",
+        "en": "The electricity price in your city."
+      }
+    },
+    "mintMobile": {
+      "name": {
+        "ar": "Mint Mobile",
+        "en": "Mint Mobile"
+      },
+      "url": "https://www.mintmobile.com/",
+      "what": {
+        "ar": "خطوط موبايل مسبقة الدفع، والسعر على الموقع.",
+        "en": "Prepaid phone lines, with the price on the site."
+      }
+    },
+    "visible": {
+      "name": {
+        "ar": "Visible",
+        "en": "Visible"
+      },
+      "url": "https://www.visible.com/",
+      "what": {
+        "ar": "خطوط موبايل شهرية، والسعر على الموقع.",
+        "en": "Monthly phone lines, with the price on the site."
+      }
+    },
+    "tMobile": {
+      "name": {
+        "ar": "T-Mobile",
+        "en": "T-Mobile"
+      },
+      "url": "https://www.t-mobile.com/",
+      "what": {
+        "ar": "خطوط وباقات، والسعر على الموقع.",
+        "en": "Lines and plans, with the price on the site."
+      }
+    },
+    "carsCom": {
+      "name": {
+        "ar": "Cars.com",
+        "en": "Cars.com"
+      },
+      "url": "https://www.cars.com/",
+      "what": {
+        "ar": "إعلانات عربيات جديدة ومستعملة من تجار.",
+        "en": "New and used car listings from dealers."
+      }
+    },
+    "kbb": {
+      "name": {
+        "ar": "Kelley Blue Book",
+        "en": "Kelley Blue Book"
+      },
+      "url": "https://www.kbb.com/",
+      "what": {
+        "ar": "تقدير قيمة العربية حسب الموديل والحالة.",
+        "en": "A value estimate by model and condition."
+      }
+    },
+    "edmunds": {
+      "name": {
+        "ar": "Edmunds",
+        "en": "Edmunds"
+      },
+      "url": "https://www.edmunds.com/",
+      "what": {
+        "ar": "مراجعات وأسعار وتكلفة الملكية للعربيات.",
+        "en": "Reviews, prices and cost of ownership for cars."
+      }
+    },
+    "theZebra": {
+      "name": {
+        "ar": "The Zebra",
+        "en": "The Zebra"
+      },
+      "url": "https://www.thezebra.com/",
+      "what": {
+        "ar": "مقارنة عروض تأمين العربية.",
+        "en": "Compares car insurance offers."
+      }
+    },
+    "squaremouth": {
+      "name": {
+        "ar": "Squaremouth",
+        "en": "Squaremouth"
+      },
+      "url": "https://www.squaremouth.com/",
+      "what": {
+        "ar": "مقارنة عروض تأمين السفر.",
+        "en": "Compares travel insurance offers."
+      }
+    },
+    "insureMyTrip": {
+      "name": {
+        "ar": "InsureMyTrip",
+        "en": "InsureMyTrip"
+      },
+      "url": "https://www.insuremytrip.com/",
+      "what": {
+        "ar": "مقارنة عروض تأمين السفر.",
+        "en": "Compares travel insurance offers."
+      }
+    },
+    "googleMaps": {
+      "name": {
+        "ar": "Google Maps",
+        "en": "Google Maps"
+      },
+      "url": "https://www.google.com/maps",
+      "what": {
+        "ar": "المسافات وخطوط المواصلات والوقت بين مكانين.",
+        "en": "Distances, transit lines and travel time between two places."
+      }
+    },
+    "aramex": {
+      "name": {
+        "ar": "Aramex",
+        "en": "Aramex"
+      },
+      "url": "https://www.aramex.com/",
+      "what": {
+        "ar": "شركة شحن. شوف سعر ومواعيد توصيل الجواز من فرعك.",
+        "en": "A courier company. Check the delivery price and times for your branch."
+      }
+    }
+  },
+  "items": {
+    "medicalExam": [
+      "stateImmigrantVisaProcess",
+      "usEmbassies",
+      "stateDvPage"
+    ],
+    "policeCertificate": [
+      "reciprocity",
+      "stateImmigrantVisaProcess",
+      "usEmbassies"
+    ],
+    "translation": [
+      "reciprocity",
+      "usEmbassies"
+    ],
+    "civilCertificates": [
+      "reciprocity",
+      "stateImmigrantVisaProcess"
+    ],
+    "militaryCertificate": [
+      "reciprocity",
+      "usEmbassies"
+    ],
+    "photos": [
+      "statePhotos",
+      "stateDvPage"
+    ],
+    "otherPaperwork": [
+      "stateImmigrantVisaProcess"
+    ],
+    "visaFee": [
+      "stateFees",
+      "stateDvPage",
+      "usEmbassies"
+    ],
+    "interviewTravel": [
+      "googleMaps",
+      "usEmbassies"
+    ],
+    "passportCourier": [
+      "usEmbassies",
+      "aramex"
+    ],
+    "immigrantFee": [
+      "uscisImmigrantFee",
+      "uscisFees"
+    ],
+    "ticket": [
+      "googleFlights",
+      "skyscanner"
+    ],
+    "excessBaggage": [
+      "googleFlights",
+      "skyscanner"
+    ],
+    "travelInsurance": [
+      "squaremouth",
+      "insureMyTrip"
+    ],
+    "temporaryStay": [
+      "googleHotels",
+      "booking",
+      "airbnb"
+    ],
+    "applicationFees": [
+      "apartments",
+      "zillow"
+    ],
+    "securityDeposit": [
+      "apartments",
+      "zillow"
+    ],
+    "firstMonthRent": [
+      "apartments",
+      "zillow",
+      "trulia",
+      "hotpads",
+      "padmapper"
+    ],
+    "furniture": [
+      "ikea",
+      "walmart",
+      "goodwill",
+      "habitatRestore",
+      "offerUp",
+      "facebookMarketplace"
+    ],
+    "winterClothes": [
+      "walmart",
+      "target",
+      "goodwill",
+      "weatherGov"
+    ],
+    "householdBasics": [
+      "walmart",
+      "target",
+      "costco"
+    ],
+    "utilityDeposits": [
+      "energySage",
+      "eiaElectricity"
+    ],
+    "phoneLine": [
+      "mintMobile",
+      "visible",
+      "tMobile"
+    ],
+    "licenseTests": [
+      "usaMotorVehicle"
+    ],
+    "carPurchase": [
+      "facebookMarketplace",
+      "carsCom",
+      "kbb",
+      "edmunds",
+      "nhtsaRecalls",
+      "nmvtis"
+    ],
+    "carInsuranceStart": [
+      "naicStateInsurance",
+      "theZebra"
+    ],
+    "carRegistration": [
+      "usaMotorVehicle"
+    ],
+    "healthInsuranceStart": [
+      "healthcareSeePlans",
+      "healthcareGov"
+    ],
+    "childcareStart": [
+      "childCareAware"
+    ],
+    "otherMoving": [],
+    "rent": [
+      "apartments",
+      "zillow",
+      "trulia",
+      "hotpads",
+      "padmapper",
+      "roomies",
+      "spareroom"
+    ],
+    "utilities": [
+      "energySage",
+      "eiaElectricity"
+    ],
+    "internet": [
+      "fccBroadbandMap"
+    ],
+    "phone": [
+      "mintMobile",
+      "visible",
+      "tMobile"
+    ],
+    "food": [
+      "walmart",
+      "costco",
+      "aldi",
+      "kroger",
+      "samsClub",
+      "usdaFoodPlans"
+    ],
+    "transport": [
+      "googleMaps",
+      "fuelEconomy"
+    ],
+    "healthInsurance": [
+      "healthcareSeePlans",
+      "healthcareGov"
+    ],
+    "carInsurance": [
+      "naicStateInsurance",
+      "theZebra"
+    ],
+    "childcare": [
+      "childCareAware"
+    ],
+    "otherMonthly": []
+  }
+}
