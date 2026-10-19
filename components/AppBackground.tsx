@@ -1,14 +1,5 @@
-"use client";
-
-import { useGlassGuard } from "@/lib/motion";
-
-/**
- * الطبقة اللي الglass بيعمللها blur. من غيرها الكارت بيبقى مجرد كارت باهت.
- * بقعة الضوء بتتحرك ببطء شديد (GSAP في المرحلة ٥) وبتقف مع reduced-motion.
- */
+/** خلفية ثابتة بسيطة. التصميم الجديد هيستبدلها. */
 export function AppBackground() {
-  useGlassGuard();
-
   return (
     <div className="app-bg" aria-hidden="true">
       <div

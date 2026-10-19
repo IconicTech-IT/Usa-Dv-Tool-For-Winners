@@ -9,7 +9,6 @@ import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/go
 import { routing, DIRECTION, type Locale } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
-import { PlanBar } from "@/components/PlanBar";
 import { AppBackground } from "@/components/AppBackground";
 import { Footer } from "@/components/Footer";
 import { ServiceWorker } from "@/components/ServiceWorker";
@@ -96,7 +95,6 @@ export default async function LocaleLayout({
           <NextIntlClientProvider>
             <AppBackground />
             <Header />
-            <PlanBar />
             <main className="measure mx-auto px-4 py-10">{children}</main>
             <Footer />
             <ServiceWorker />
