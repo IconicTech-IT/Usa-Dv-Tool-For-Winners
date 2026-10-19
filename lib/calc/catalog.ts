@@ -1,7 +1,11 @@
 /**
- * The list of cost items. Only ids, stage, grouping and how an amount scales with
- * the household. There are NO amounts here: the user types every number.
- * Labels and guide links live in the messages and the guide pages.
+ * The list of cost items, as in the approved design (v10). Only ids, stage, grouping and
+ * how an amount scales with the household. There are NO amounts here: the user types
+ * every number. Labels and guide links live in the messages and the guide pages.
+ *
+ * Two different groupings, kept apart on purpose:
+ * - `stage` is WHEN the money is due. The money timeline follows it.
+ * - `group` is WHERE the item sits on the screen of its calculator.
  */
 
 export type Stage = "beforeInterview" | "atInterview" | "beforeTravel" | "firstMonth" | "monthly";
@@ -22,14 +26,19 @@ export type Scaling = "total" | "perPerson" | "perAdult" | "perChild";
 export type Calculator = "fees" | "moving" | "monthly";
 
 export type GroupId =
-  | "paperwork"
+  // Fees calculator
+  | "entry"
+  | "documents"
+  | "interview"
+  | "afterVisa"
+  // Moving calculator
   | "travel"
-  | "housingStart"
+  | "housing"
   | "household"
   | "connectivity"
   | "car"
   | "healthFamily"
-  | "otherMoving"
+  // Monthly costs (the runway)
   | "monthlyCosts";
 
 export interface ItemDef {
@@ -66,76 +75,83 @@ const monthly = (id: string, group: GroupId, stage: Stage, options: ItemOptions 
   define("monthly", id, { group, stage }, options);
 
 export const ITEMS: readonly ItemDef[] = [
-  /* Paperwork and fees */
-  fees("medicalExam", "paperwork", "beforeInterview", { scaling: "perPerson" }),
-  fees("policeCertificate", "paperwork", "beforeInterview", { scaling: "perAdult" }),
-  fees("translation", "paperwork", "beforeInterview"),
-  fees("civilCertificates", "paperwork", "beforeInterview"),
-  fees("militaryCertificate", "paperwork", "beforeInterview"),
-  fees("photos", "paperwork", "beforeInterview", { scaling: "perPerson" }),
-  fees("otherPaperwork", "paperwork", "beforeInterview"),
-  fees("visaFee", "paperwork", "atInterview", { scaling: "perPerson" }),
-  fees("interviewTravel", "paperwork", "atInterview"),
-  fees("passportCourier", "paperwork", "beforeTravel"),
-  fees("immigrantFee", "paperwork", "beforeTravel", { scaling: "perPerson" }),
+  /* Fees: entering the lottery */
+  fees("entryPhotos", "entry", "beforeInterview", { scaling: "perPerson" }),
+  fees("entryHelp", "entry", "beforeInterview"),
 
-  /* Travel */
-  fees("ticket", "travel", "beforeTravel", { scaling: "perPerson" }),
-  fees("excessBaggage", "travel", "beforeTravel"),
-  fees("travelInsurance", "travel", "beforeTravel", { toggle: true }),
+  /* Fees: documents */
+  fees("medicalExam", "documents", "beforeInterview", { scaling: "perPerson" }),
+  fees("policeCertificate", "documents", "beforeInterview", { scaling: "perPerson" }),
+  fees("translation", "documents", "beforeInterview"),
+  fees("civilCertificates", "documents", "beforeInterview"),
+  fees("militaryCertificate", "documents", "beforeInterview"),
+  fees("visaPhotos", "documents", "beforeInterview", { scaling: "perPerson" }),
 
-  /* Moving and settling (first month there) */
-  moving("temporaryStay", "housingStart", "firstMonth"),
-  moving("applicationFees", "housingStart", "firstMonth"),
-  moving("securityDeposit", "housingStart", "firstMonth"),
-  moving("firstMonthRent", "housingStart", "firstMonth"),
+  /* Fees: the interview */
+  fees("visaFee", "interview", "atInterview", { scaling: "perPerson" }),
+  fees("interviewTravel", "interview", "atInterview"),
+  fees("passportCourier", "interview", "beforeTravel", { scaling: "perPerson" }),
+
+  /* Fees: after the visa */
+  fees("immigrantFee", "afterVisa", "beforeTravel", { scaling: "perPerson" }),
+  fees("otherPaperwork", "afterVisa", "beforeTravel"),
+
+  /* Moving: travel */
+  moving("ticket", "travel", "beforeTravel", { scaling: "perPerson" }),
+  moving("excessBaggage", "travel", "beforeTravel"),
+  moving("travelInsurance", "travel", "beforeTravel", { toggle: true }),
+
+  /* Moving: housing, household, connectivity (the first month there) */
+  moving("temporaryStay", "housing", "firstMonth"),
+  moving("applicationFees", "housing", "firstMonth"),
+  moving("securityDeposit", "housing", "firstMonth"),
+  moving("firstMonthRent", "housing", "firstMonth"),
   moving("furniture", "household", "firstMonth"),
   moving("winterClothes", "household", "firstMonth", { scaling: "perPerson" }),
   moving("householdBasics", "household", "firstMonth"),
   moving("utilityDeposits", "connectivity", "firstMonth"),
   moving("phoneLine", "connectivity", "firstMonth", { scaling: "perAdult" }),
-  moving("licenseTests", "car", "firstMonth", { scaling: "perAdult" }),
+
+  /* Moving: car */
+  moving("licenseTests", "car", "firstMonth", { scaling: "perPerson" }),
   moving("carPurchase", "car", "firstMonth"),
   moving("carInsuranceStart", "car", "firstMonth"),
   moving("carRegistration", "car", "firstMonth"),
+
+  /* Moving: health and family */
   moving("healthInsuranceStart", "healthFamily", "firstMonth", { toggle: true }),
-  moving("childcareStart", "healthFamily", "firstMonth"),
-  moving("otherMoving", "otherMoving", "firstMonth"),
+  moving("childcareStart", "healthFamily", "firstMonth", { scaling: "perChild" }),
+  moving("otherMoving", "healthFamily", "firstMonth"),
 
   /* Monthly running costs */
   monthly("rent", "monthlyCosts", "monthly"),
   monthly("utilities", "monthlyCosts", "monthly"),
   monthly("internet", "monthlyCosts", "monthly"),
   monthly("phone", "monthlyCosts", "monthly"),
-  monthly("food", "monthlyCosts", "monthly"),
+  monthly("food", "monthlyCosts", "monthly", { scaling: "perPerson" }),
   monthly("transport", "monthlyCosts", "monthly"),
   monthly("healthInsurance", "monthlyCosts", "monthly", { toggle: true }),
   monthly("carInsurance", "monthlyCosts", "monthly"),
-  monthly("childcare", "monthlyCosts", "monthly"),
+  monthly("childcare", "monthlyCosts", "monthly", { scaling: "perChild" }),
   monthly("otherMonthly", "monthlyCosts", "monthly"),
 ];
 
 /**
- * Quick mode: five big boxes, one per stage. Each amount is the whole household's
- * total for that stage (a quick estimate typed by the user).
+ * Quick mode: five big boxes (all paperwork and fees, travel, first housing and set-up,
+ * car and insurance, one month of costs). Each amount is the whole household's total for
+ * that box. Savings is the separate field every plan has.
  */
 export const QUICK_ITEMS: readonly ItemDef[] = [
   {
-    id: "quickBeforeInterview",
+    id: "quickPaperwork",
     calculator: "fees",
-    group: "paperwork",
+    group: "documents",
     stage: "beforeInterview",
     scaling: "total",
   },
-  { id: "quickAtInterview", calculator: "fees", group: "paperwork", stage: "atInterview", scaling: "total" },
-  { id: "quickBeforeTravel", calculator: "fees", group: "travel", stage: "beforeTravel", scaling: "total" },
-  {
-    id: "quickFirstMonth",
-    calculator: "moving",
-    group: "housingStart",
-    stage: "firstMonth",
-    scaling: "total",
-  },
+  { id: "quickTravel", calculator: "moving", group: "travel", stage: "beforeTravel", scaling: "total" },
+  { id: "quickHousing", calculator: "moving", group: "housing", stage: "firstMonth", scaling: "total" },
+  { id: "quickCar", calculator: "moving", group: "car", stage: "firstMonth", scaling: "total" },
   { id: "quickMonthly", calculator: "monthly", group: "monthlyCosts", stage: "monthly", scaling: "total" },
 ];
 

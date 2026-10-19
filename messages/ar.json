@@ -35,14 +35,16 @@
       "monthly": "كل شهر"
     },
     "groups": {
-      "paperwork": "الورق والرسوم",
+      "entry": "التسجيل في القرعة",
+      "documents": "الأوراق",
+      "interview": "المقابلة",
+      "afterVisa": "بعد الفيزا",
       "travel": "السفر",
-      "housingStart": "بداية السكن",
+      "housing": "السكن",
       "household": "البيت",
       "connectivity": "الخطوط والخدمات",
       "car": "العربية",
       "healthFamily": "الصحة والأسرة",
-      "otherMoving": "حاجات تانية",
       "monthlyCosts": "المصاريف الشهرية"
     },
     "scaling": {
@@ -62,7 +64,9 @@
       "translation": "الترجمة المعتمدة",
       "civilCertificates": "شهادات الميلاد والزواج وأوراق الحالة المدنية",
       "militaryCertificate": "شهادة الخدمة العسكرية (لو مطلوبة)",
-      "photos": "الصور",
+      "entryPhotos": "صور التسجيل في القرعة",
+      "entryHelp": "مساعدة في التسجيل (لو استعنت بحد)",
+      "visaPhotos": "صور الفيزا",
       "otherPaperwork": "أوراق ومصاريف تانية",
       "visaFee": "رسم الفيزا",
       "interviewTravel": "الانتقال لمكان المقابلة",
@@ -97,11 +101,11 @@
       "carInsurance": "تأمين العربية",
       "childcare": "رعاية الأطفال",
       "otherMonthly": "مصاريف شهرية تانية",
-      "quickBeforeInterview": "كل مصاريف ما قبل المقابلة",
-      "quickAtInterview": "كل مصاريف يوم المقابلة",
-      "quickBeforeTravel": "كل مصاريف ما قبل السفر",
-      "quickFirstMonth": "كل مصاريف أول شهر هناك",
-      "quickMonthly": "مصاريفك الشهرية"
+      "quickPaperwork": "كل الورق والرسوم",
+      "quickTravel": "السفر",
+      "quickHousing": "السكن الأول والتجهيز",
+      "quickCar": "العربية والتأمين",
+      "quickMonthly": "مصاريف شهر واحد"
     },
     "household": {
       "title": "أسرتك",

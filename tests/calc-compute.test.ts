@@ -23,26 +23,29 @@ describe("stage totals and per-person items", () => {
   const family = plan((p) => {
     p.household = { adults: 2, children: 2, childAges: ["", ""] };
     put(p, "medicalExam", "100"); // per person: x4
-    put(p, "policeCertificate", "10"); // per adult: x2
+    put(p, "policeCertificate", "10"); // per person: x4
     put(p, "translation", "50"); // whole household
     put(p, "visaFee", "30"); // per person at the interview
+    put(p, "phoneLine", "20"); // per adult in the first month: x2
     put(p, "rent", "1,000");
-    put(p, "food", "٥٠٠");
+    put(p, "food", "٥٠٠"); // per person every month: x4
+    put(p, "childcare", "100"); // per child every month: x2
   });
   const result = computePlan(family);
   const stage = (s: string) => result.stages.find((x) => x.stage === s);
 
-  it("multiplies per-person and per-adult items by the household", () => {
-    expect(stage("beforeInterview")?.usd).toBe(100 * 4 + 10 * 2 + 50);
+  it("multiplies per-person, per-adult and per-child items by the household", () => {
+    expect(stage("beforeInterview")?.usd).toBe(100 * 4 + 10 * 4 + 50);
     expect(stage("atInterview")?.usd).toBe(120);
+    expect(stage("firstMonth")?.usd).toBe(20 * 2);
   });
 
   it("sums the monthly items, reading Arabic digits and thousand marks", () => {
-    expect(result.monthlyUsd).toBe(1500);
+    expect(result.monthlyUsd).toBe(1000 + 500 * 4 + 100 * 2);
   });
 
   it("builds the one-time total from the four non-monthly stages", () => {
-    expect(result.oneTimeUsd).toBe(470 + 120);
+    expect(result.oneTimeUsd).toBe(490 + 120 + 40);
   });
 
   it("lists items nobody typed as empty for 'what did I forget'", () => {
@@ -52,7 +55,7 @@ describe("stage totals and per-person items", () => {
 
   it("keeps a running total over the stages in order", () => {
     const cumulative = result.timeline.map((t) => t.cumulativeUsd);
-    expect(cumulative).toEqual([470, 590, 590, 590, 2090]);
+    expect(cumulative).toEqual([490, 610, 610, 650, 650 + 3200]);
   });
 });
 
@@ -77,7 +80,7 @@ describe("currency per field", () => {
     const p = plan((q) => {
       q.rate = "50";
       put(q, "translation", "1000", { currency: "local" });
-      put(q, "photos", "5");
+      put(q, "visaPhotos", "5");
     });
     const r = computePlan(p);
     expect(r.needsRate).toBe(false);
@@ -87,7 +90,7 @@ describe("currency per field", () => {
   it("flags a missing rate and leaves the local amount out of the total", () => {
     const p = plan((q) => {
       put(q, "translation", "1000", { currency: "local" });
-      put(q, "photos", "5");
+      put(q, "visaPhotos", "5");
     });
     const r = computePlan(p);
     expect(r.needsRate).toBe(true);
@@ -102,7 +105,7 @@ describe("runway scenarios", () => {
     q.household = { adults: 2, children: 0, childAges: [] };
     put(q, "visaFee", "300"); // x2 = 600 one-time
     put(q, "rent", "1000");
-    put(q, "food", "500"); // monthly 1500
+    put(q, "food", "250"); // per person x2 = 500, so the monthly total is 1500
     q.savings = { raw: "5000", currency: "usd" };
     q.bufferMonths = "2";
     q.income = { raw: "2000", currency: "usd" };
@@ -136,18 +139,18 @@ describe("validation and quick mode", () => {
   it("flags unreadable text as invalid and counts zero as typed", () => {
     const p = plan((q) => {
       put(q, "translation", "abc");
-      put(q, "photos", "0");
+      put(q, "visaPhotos", "0");
     });
     const r = computePlan(p);
     expect(r.items.find((i) => i.id === "translation")?.invalid).toBe(true);
     expect(r.items.find((i) => i.id === "translation")?.typed).toBe(false);
-    expect(r.items.find((i) => i.id === "photos")?.typed).toBe(true);
+    expect(r.items.find((i) => i.id === "visaPhotos")?.typed).toBe(true);
   });
 
   it("uses the five quick boxes when the mode is quick", () => {
     const p = plan((q) => {
       q.uiMode = "quick";
-      q.quick["quickBeforeInterview"] = { raw: "400", currency: "usd" };
+      q.quick["quickPaperwork"] = { raw: "400", currency: "usd" };
       q.quick["quickMonthly"] = { raw: "1,200", currency: "usd" };
       put(q, "rent", "9999"); // detailed values are ignored in quick mode
     });

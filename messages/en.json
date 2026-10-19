@@ -35,14 +35,16 @@
       "monthly": "Every month"
     },
     "groups": {
-      "paperwork": "Paperwork and fees",
+      "entry": "Entering the lottery",
+      "documents": "Documents",
+      "interview": "The interview",
+      "afterVisa": "After the visa",
       "travel": "Travel",
-      "housingStart": "Starting housing",
+      "housing": "Housing",
       "household": "Household",
       "connectivity": "Phone and services",
       "car": "Car",
       "healthFamily": "Health and family",
-      "otherMoving": "Other",
       "monthlyCosts": "Monthly costs"
     },
     "scaling": {
@@ -62,7 +64,9 @@
       "translation": "Certified translations",
       "civilCertificates": "Birth, marriage and civil records",
       "militaryCertificate": "Military service record (if required)",
-      "photos": "Photos",
+      "entryPhotos": "Entry photos",
+      "entryHelp": "Help with the entry (if you used any)",
+      "visaPhotos": "Visa photos",
       "otherPaperwork": "Other paperwork",
       "visaFee": "Visa fee",
       "interviewTravel": "Getting to the interview",
@@ -97,11 +101,11 @@
       "carInsurance": "Car insurance",
       "childcare": "Childcare",
       "otherMonthly": "Other monthly costs",
-      "quickBeforeInterview": "Everything before the interview",
-      "quickAtInterview": "Everything at the interview",
-      "quickBeforeTravel": "Everything before travel",
-      "quickFirstMonth": "Everything in the first month there",
-      "quickMonthly": "Your monthly costs"
+      "quickPaperwork": "All paperwork and fees",
+      "quickTravel": "Travel",
+      "quickHousing": "First housing and set-up",
+      "quickCar": "Car and insurance",
+      "quickMonthly": "One month of costs"
     },
     "household": {
       "title": "Your household",
