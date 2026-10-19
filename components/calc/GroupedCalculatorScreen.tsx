@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { CalculatorGroups } from "@/components/calc/CalculatorGroups";
 import { ModeSwitch } from "@/components/calc/ModeSwitch";
 import { RatePanel } from "@/components/calc/RatePanel";
+import { PlanBar } from "@/components/plans/PlanBar";
 import { StickyTotal } from "@/components/calc/StickyTotal";
 import { useRouteMode } from "@/components/calc/use-route-mode";
 import { usePlan } from "@/lib/calc/use-plan";
@@ -27,6 +28,7 @@ export function GroupedCalculatorScreen({ calculator }: GroupedCalculatorScreenP
 
   return (
     <div className="calc-page">
+      <PlanBar view={view} />
       <RatePanel view={view} />
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>

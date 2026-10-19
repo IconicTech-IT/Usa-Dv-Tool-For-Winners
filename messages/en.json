@@ -108,6 +108,10 @@
       "compare": {
         "title": "Compare two plans",
         "text": "Alone and with family side by side, from two saved files"
+      },
+      "plans": {
+        "title": "My plans",
+        "text": "Every plan has a name. Make more than one plan, for example one per state, and compare them."
       }
     }
   },
@@ -178,7 +182,7 @@
     "whatsapp": "Share on WhatsApp",
     "savings": "Savings held",
     "householdValue": "{adults} adults, {children} children",
-    "resetConfirm": "Delete every number you typed from this device? This cannot be undone.",
+    "resetConfirm": "Clear the numbers of this plan and start again? Your other plans are not touched.",
     "planOpened": "The plan was opened.",
     "forgotCount": "{count} empty",
     "forgotNone": "No empty box. Everything is filled in.",
@@ -492,5 +496,32 @@
     "chip2": "Your data on your device",
     "chip3": "Arabic · mobile",
     "alt": "DV Compass: work out the cost of immigrating yourself"
+  },
+  "plans": {
+    "title": "My plans",
+    "lead": "Every plan has a name. Make more than one plan, for example one per state, and compare them.",
+    "defaultName": "Plan",
+    "current": "Plan",
+    "manage": "My plans",
+    "active": "Open now",
+    "open": "Open",
+    "rename": "Rename",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "deleteConfirm": "Delete the plan “{name}”? This cannot be undone.",
+    "newHeading": "New plan",
+    "nameLabel": "Plan name",
+    "namePlaceholder": "For example: Texas - alone",
+    "nameHelp": "The name shows in the comparison and in the file name when you save the plan.",
+    "create": "Make a new plan",
+    "save": "Save the name",
+    "cancel": "Cancel",
+    "updated": "Last changed",
+    "full": "You have reached the most plans you can keep. Delete one before you add a new one.",
+    "imported": "The plan was added as “{name}” and opened. Your first plan is still saved in “My plans”.",
+    "listLabel": "The plans saved on your device",
+    "pickPlan": "Choose a saved plan",
+    "noPlan": "No plan",
+    "orFile": "Or open a file"
   }
 }

@@ -27,9 +27,22 @@ export function serializePlan(state: PlanState, now: Date = new Date()): string 
   );
 }
 
-/** A suggested download name such as dv-compass-plan-2026-10-19.json. */
-export function planFileName(now: Date = new Date()): string {
-  return `dv-compass-plan-${now.toISOString().slice(0, 10)}.json`;
+/** Characters a file name cannot hold, and the spaces that make a name awkward. */
+const UNSAFE_IN_FILE_NAME = /[\\/:*?"<>|\s]+/g;
+const MAX_FILE_NAME_PART = 40;
+
+/**
+ * A suggested download name such as dv-compass-plan-2026-10-19.json, or with the plan name in it:
+ * dv-compass-Texas-alone-2026-10-19.json.
+ */
+export function planFileName(now: Date = new Date(), planName = ""): string {
+  const date = now.toISOString().slice(0, 10);
+  const printable = [...planName].filter((ch) => ch.charCodeAt(0) > 31).join("");
+  const slug = printable
+    .replace(UNSAFE_IN_FILE_NAME, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, MAX_FILE_NAME_PART);
+  return slug === "" ? `dv-compass-plan-${date}.json` : `dv-compass-${slug}-${date}.json`;
 }
 
 function fillFields(

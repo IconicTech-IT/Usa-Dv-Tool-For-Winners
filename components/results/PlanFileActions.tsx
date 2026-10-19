@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
 import { parsePlanFile, planFileName, serializePlan } from "@/lib/calc/plan-file";
+import { planStore } from "@/lib/calc/plan-store";
 import type { PlanView } from "@/lib/calc/use-plan";
 
 type Message = { kind: "ok" | "error"; text: string } | null;
@@ -15,9 +16,20 @@ function downloadPlan(view: PlanView): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = planFileName();
+  link.download = planFileName(new Date(), view.plan.name);
   link.click();
   URL.revokeObjectURL(url);
+}
+
+type Translate = ReturnType<typeof useTranslations>;
+
+/** Adds a plan file as a new plan under its own name (it never replaces a plan) and opens it. */
+async function importPlanFile(view: PlanView, file: File, t: Translate): Promise<Message> {
+  const parsed = parsePlanFile(await file.text());
+  if (!parsed.ok) return { kind: "error", text: t(`calc.plan.openFailures.${parsed.reason}`) };
+  const name = parsed.state.name !== "" ? parsed.state.name : file.name.replace(/\.json$/i, "");
+  if (!view.actions.importPlan({ ...parsed.state, name })) return { kind: "error", text: t("plans.full") };
+  return { kind: "ok", text: t("plans.imported", { name: planStore.getSnapshot().plan.name }) };
 }
 
 /** Save the plan as a file, open a saved one, compare two plans, or start again. All on the device. */
@@ -29,14 +41,7 @@ export function PlanFileActions({ view }: { view: PlanView }) {
   const openFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     event.target.value = "";
-    if (!file) return;
-    const parsed = parsePlanFile(await file.text());
-    if (parsed.ok) {
-      view.actions.replace(parsed.state);
-      setMessage({ kind: "ok", text: t("results.planOpened") });
-    } else {
-      setMessage({ kind: "error", text: t(`calc.plan.openFailures.${parsed.reason}`) });
-    }
+    if (file) setMessage(await importPlanFile(view, file, t));
   };
 
   const reset = () => {
@@ -63,6 +68,9 @@ export function PlanFileActions({ view }: { view: PlanView }) {
         />
       </div>
       <div className="row2" style={{ marginTop: 10 }}>
+        <Link className="btn ghost" href="/plans">
+          {t("plans.manage")}
+        </Link>
         <Link className="btn ghost" href="/compare">
           {t("results.compare")}
         </Link>

@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Stepper } from "@/components/calc/Stepper";
 import { RuleNote } from "@/components/guide/RuleNote";
+import { PlanNameField } from "@/components/plans/PlanNameField";
 import { Link } from "@/i18n/navigation";
 import { MAX_ADULTS, MAX_CHILDREN } from "@/lib/calc/model";
 import { usePlan, type PlanView } from "@/lib/calc/use-plan";
@@ -20,6 +21,7 @@ export function SetupScreen() {
     <div className="calc-page">
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>
+      <PlanNameField view={view} />
       <WhoChoice view={view} />
       <Stepper
         label={t("adults")}

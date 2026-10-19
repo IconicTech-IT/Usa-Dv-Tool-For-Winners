@@ -14,6 +14,7 @@ export const MAX_RAW_LENGTH = 40;
 export const MAX_CHILDREN = 20;
 export const MAX_ADULTS = 10;
 export const MAX_REGISTRATIONS = 10;
+export const MAX_NAME_LENGTH = 60;
 
 /**
  * The only amount a new plan starts with: the official registration fee, set by the State
@@ -40,6 +41,8 @@ export type Household = z.infer<typeof HouseholdSchema>;
 
 export const PlanStateSchema = z.object({
   version: z.literal(PLAN_VERSION),
+  /** The name the person gave this plan ("Texas, alone"); empty until he types one. */
+  name: z.string().max(MAX_NAME_LENGTH).default(""),
   uiMode: z.enum(["quick", "detailed"]),
   household: HouseholdSchema,
   /** ISO 4217 code of the user's local currency. */
@@ -75,6 +78,7 @@ export function emptyPlan(): PlanState {
 
   return {
     version: PLAN_VERSION,
+    name: "",
     uiMode: "detailed",
     household: { adults: 1, children: 0, childAges: [] },
     localCurrency: DEFAULT_LOCAL_CURRENCY,

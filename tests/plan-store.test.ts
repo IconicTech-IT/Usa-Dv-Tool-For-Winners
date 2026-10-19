@@ -13,7 +13,13 @@ import {
   setUiMode,
 } from "@/lib/calc/plan-actions";
 import { createPlanStore, type StorageWatcher } from "@/lib/calc/plan-store";
-import { loadPlan, STORAGE_KEY, type StorageLike } from "@/lib/calc/storage";
+import { activeEntry } from "@/lib/calc/library";
+import { LIBRARY_KEY, loadLibrary, type StorageLike } from "@/lib/calc/storage";
+
+/** The active plan as it is saved on the device. */
+function savedPlan(storage: StorageLike) {
+  return activeEntry(loadLibrary(storage)).plan;
+}
 
 class MemoryStorage implements StorageLike {
   map = new Map<string, string>();
@@ -126,7 +132,7 @@ describe("plan store", () => {
     a.actions.setItem("ticket", { raw: "250" });
     a.actions.setRate("49.5");
     a.actions.setChildren(2);
-    expect(loadPlan(storage).rate).toBe("49.5");
+    expect(savedPlan(storage).rate).toBe("49.5");
 
     const b = createPlanStore({ storage, watch: null });
     expect(b.getSnapshot().plan.items.ticket?.raw).toBe("250");
@@ -155,7 +161,7 @@ describe("plan store", () => {
     const store = createPlanStore({ storage, watch: null });
     store.actions.setItem("ticket", { raw: "7".repeat(500) });
     store.actions.setItem("madeUp", { raw: "1" });
-    const loaded = loadPlan(storage);
+    const loaded = savedPlan(storage);
     expect(loaded.items.ticket?.raw).toHaveLength(MAX_RAW_LENGTH);
     expect(Object.keys(loaded.items)).not.toContain("madeUp");
   });
@@ -189,7 +195,7 @@ describe("plan store", () => {
     expect(listener).not.toHaveBeenCalled();
     expect(b.getSnapshot().plan.items.ticket?.raw).toBe("");
 
-    h.fire(STORAGE_KEY);
+    h.fire(LIBRARY_KEY);
     expect(listener).toHaveBeenCalledTimes(1);
     expect(b.getSnapshot().plan.items.ticket?.raw).toBe("321");
 
@@ -200,24 +206,17 @@ describe("plan store", () => {
     expect(h.listeners.size).toBe(0);
   });
 
-  it("reset forgets everything and tells the listeners", () => {
+  it("reset starts the active plan again, keeps its name and its place in the list, and tells the listeners", () => {
     const storage = new MemoryStorage();
     const store = createPlanStore({ storage, watch: null });
+    store.actions.setName("Texas");
     store.actions.setRate("12");
     const listener = vi.fn();
     store.subscribe(listener);
     store.actions.reset();
-    expect(storage.getItem(STORAGE_KEY)).toBeNull();
-    expect(store.getSnapshot().plan).toEqual(emptyPlan());
+    expect(store.getSnapshot().plan).toEqual({ ...emptyPlan(), name: "Texas" });
+    expect(savedPlan(storage).rate).toBe("");
+    expect(store.getSnapshot().plans).toHaveLength(1);
     expect(listener).toHaveBeenCalledTimes(1);
-  });
-
-  it("replace swaps the whole plan (for an opened file)", () => {
-    const storage = new MemoryStorage();
-    const store = createPlanStore({ storage, watch: null });
-    const other = { ...emptyPlan(), rate: "55" };
-    store.actions.replace(other);
-    expect(store.getSnapshot().plan.rate).toBe("55");
-    expect(loadPlan(storage).rate).toBe("55");
   });
 });

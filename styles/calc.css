@@ -350,3 +350,67 @@ html[dir="rtl"] .ilink[target="_blank"]::after {
 .total .in {
   max-width: 848px;
 }
+
+/* The plan bar and the list of saved plans */
+.planbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 8px 12px;
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  background: var(--sf);
+  font-size: 14px;
+}
+.plan-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.plan-row {
+  padding: 12px 14px;
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  background: var(--sf);
+}
+.plan-row.on {
+  border-color: var(--pr);
+  background: var(--prbg);
+}
+.plan-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.plan-actions .btn {
+  width: auto;
+  height: 40px;
+  padding-inline: 14px;
+}
+.plan-row.on .help {
+  color: var(--tx2);
+}
+
+/* A native list box styled like the other fields */
+select.select {
+  width: 100%;
+  height: 44px;
+  margin: 4px 0 8px;
+  padding-inline: 10px;
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--tx);
+  font: inherit;
+  font-size: 14px;
+}

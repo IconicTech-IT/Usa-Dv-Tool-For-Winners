@@ -50,7 +50,7 @@ export default tseslint.config(
   },
   {
     files: ["tests/**/*.ts"],
-    rules: { "max-lines-per-function": "off", "max-lines": "off" },
+    rules: { "max-lines-per-function": "off", "max-lines": "off", complexity: "off" },
   },
   {
     // Browser tests hold one long script that runs inside the page, so size and branch limits do not fit them.

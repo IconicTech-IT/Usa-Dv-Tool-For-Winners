@@ -6,6 +6,7 @@ import { DualAmount } from "@/components/calc/DualAmount";
 import { ItemField } from "@/components/calc/ItemField";
 import { ModeSwitch } from "@/components/calc/ModeSwitch";
 import { RatePanel } from "@/components/calc/RatePanel";
+import { PlanBar } from "@/components/plans/PlanBar";
 import { ScenarioList } from "@/components/calc/ScenarioList";
 import { StickyTotal } from "@/components/calc/StickyTotal";
 import { TopField } from "@/components/calc/TopField";
@@ -24,6 +25,7 @@ export function QuickScreen() {
 
   return (
     <div className="calc-page">
+      <PlanBar view={view} />
       <RatePanel view={view} />
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>

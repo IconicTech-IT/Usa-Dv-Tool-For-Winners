@@ -11,7 +11,7 @@ interface HomeProps {
 }
 
 interface CardLink {
-  id: "fees" | "moving" | "runway" | "results" | "charge" | "english" | "scam" | "compare";
+  id: "fees" | "moving" | "runway" | "results" | "charge" | "english" | "scam" | "compare" | "plans";
   href: string;
   icon: IconName;
 }
@@ -27,6 +27,7 @@ const PAGES: readonly CardLink[] = [
   { id: "charge", href: "/charge", icon: "shield" },
   { id: "english", href: "/english", icon: "chat" },
   { id: "scam", href: "/scam", icon: "warning" },
+  { id: "plans", href: "/plans", icon: "document" },
   { id: "compare", href: "/compare", icon: "compare" },
 ];
 

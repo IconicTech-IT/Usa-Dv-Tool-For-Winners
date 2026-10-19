@@ -14,7 +14,15 @@ export function usePlan() {
     planStore.getServerSnapshot,
   );
   const result = useMemo(() => computePlan(snapshot.plan), [snapshot.plan]);
-  return { plan: snapshot.plan, saved: snapshot.saved, result, actions: planStore.actions };
+  return {
+    plan: snapshot.plan,
+    saved: snapshot.saved,
+    activeId: snapshot.activeId,
+    plans: snapshot.plans,
+    result,
+    getPlan: planStore.getPlan,
+    actions: planStore.actions,
+  };
 }
 
 /** What `usePlan` returns, for components that receive it from their screen. */

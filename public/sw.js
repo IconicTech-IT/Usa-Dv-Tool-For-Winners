@@ -24,6 +24,7 @@ const PAGE_PATHS = [
   "/results",
   "/quick",
   "/compare",
+  "/plans",
   "/scam",
   "/charge",
   "/english",
