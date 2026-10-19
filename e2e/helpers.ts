@@ -5,7 +5,13 @@ import { PAGE_PATHS } from "../lib/routes";
 export const LOCALES = ["ar", "en"] as const;
 
 /** Every public page, plus the offline page and two guide pages. */
-export const ALL_PATHS: string[] = [...PAGE_PATHS, "/offline", "/guide/food", "/guide/passport"];
+export const ALL_PATHS: string[] = [
+  ...PAGE_PATHS,
+  "/offline",
+  "/guide/food",
+  "/guide/passport",
+  "/guide/healthInsurance",
+];
 
 /** A small plan with typed amounts, so the pages that show totals are tested with numbers on them. */
 export const SAMPLE_PLAN = {

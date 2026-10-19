@@ -182,18 +182,6 @@
       },
       "official": true
     },
-    "usdaFoodPlans": {
-      "name": {
-        "ar": "خطط الأكل: وزارة الزراعة (USDA)",
-        "en": "Food plans: USDA"
-      },
-      "url": "https://www.fns.usda.gov/research/cnpp/usda-food-plans/cost-food-monthly-reports",
-      "what": {
-        "ar": "تقارير رسمية شهرية عن تكلفة الأكل لأحجام أسر مختلفة. بتقارن بيها اللي إنت بتكتبه.",
-        "en": "Official monthly reports on food cost for different household sizes. Compare them with what you type."
-      },
-      "official": true
-    },
     "weatherGov": {
       "name": {
         "ar": "الطقس: NOAA",
@@ -707,7 +695,7 @@
     "utilities": ["energySage", "eiaElectricity"],
     "internet": ["fccBroadbandMap"],
     "phone": ["mintMobile", "visible", "tMobile"],
-    "food": ["walmart", "costco", "aldi", "kroger", "samsClub", "usdaFoodPlans"],
+    "food": ["walmart", "costco", "aldi", "kroger", "samsClub"],
     "transport": ["googleMaps", "fuelEconomy"],
     "healthInsurance": ["healthcareGov"],
     "carInsurance": ["naicStateInsurance", "theZebra"],

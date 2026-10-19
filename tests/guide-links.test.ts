@@ -76,7 +76,7 @@ describe("guide links", () => {
     expect(hasGuide("entryHelp")).toBe(false);
     expect(hasGuide("noSuchItem")).toBe(false);
     const food = guideSitesFor("food").map((s) => s.id);
-    expect(food).toContain("usdaFoodPlans");
+    expect(food).toContain("walmart");
     expect(guideSitesFor("health").length).toBe(0);
   });
 });

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Inline } from "@/components/content/Inline";
 import { Icon } from "@/components/Icon";
 import { RuleNote } from "@/components/guide/RuleNote";
+import { SubsidyWarning } from "@/components/guide/SubsidyWarning";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { findItem } from "@/lib/calc/catalog";
@@ -37,6 +38,7 @@ export async function GuideScreen({ itemId, locale }: GuideScreenProps) {
       {notesForItem(itemId, locale).map((note) => (
         <RuleNote key={note.id} note={note} sourceWord={t("guide.source")} />
       ))}
+      {kind === "health" ? <SubsidyWarning /> : null}
       <h2>{t("guide.how")}</h2>
       <div className="steps">
         {text.steps.map((step) => (
@@ -52,14 +54,7 @@ export async function GuideScreen({ itemId, locale }: GuideScreenProps) {
       {itemId === "passport" || itemId === "familyPassports" ? (
         <div className="note">{t("guideNotes.passport")}</div>
       ) : null}
-      {kind === "health" ? (
-        <>
-          <div className="note">{t("guideHealth.state")}</div>
-          <div className="note">
-            <Link href="/charge">{t("guideNotes.charge")}</Link>
-          </div>
-        </>
-      ) : null}
+      {kind === "health" ? <div className="note">{t("guideHealth.state")}</div> : null}
       <div className="note">{t("guide.note")}</div>
       <Link className="btn pr" href={back} style={{ marginTop: 18 }}>
         {t("guide.backToCalculator")}

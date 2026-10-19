@@ -95,7 +95,7 @@
       },
       "charge": {
         "title": "The new public charge rule",
-        "text": "Explained from official sources only, with a simple self-check"
+        "text": "An explanation from the official sources only"
       },
       "english": {
         "title": "Learn English",
@@ -265,9 +265,11 @@
     "title": "How do I find the price of health insurance?",
     "lead": "We will not give you a number. The price depends on the state, your age, household size and income, and you see it yourself on the official US government site.",
     "step1": "Open HealthCare.gov, enter the ZIP code of your intended city, and your household members and ages.",
-    "step2": "Browse the plans and the monthly premium of each one, and check whether a subsidy applies to your expected income.",
+    "step2": "Browse the plans and the monthly premium of each plan.",
     "step3": "Type the monthly premium into the calculator. If you have children, include them in the household size so the premium covers them.",
-    "state": "Some states run their own marketplace; HealthCare.gov sends you there automatically. We do not set prices."
+    "state": "Some states run their own marketplace; HealthCare.gov sends you there automatically. We do not set prices.",
+    "subsidyWarning": "HealthCare.gov may offer you a subsidy on the premium based on your income. As a new immigrant, do not take this subsidy; work out the full price without it.",
+    "subsidyWarningLink": "Read the public charge page"
   },
   "charge": {
     "title": "The new public charge rule",
@@ -458,8 +460,7 @@
     "currencyChoice": "Amount currency"
   },
   "guideNotes": {
-    "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country.",
-    "charge": "If you are thinking about any government benefit, read the public charge page first"
+    "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country."
   },
   "pages": {
     "about": {

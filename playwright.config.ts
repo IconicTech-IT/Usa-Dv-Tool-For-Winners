@@ -22,6 +22,13 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     ...(browserPath ? { launchOptions: { executablePath: browserPath } } : { channel: "chrome" }),
   },
+  projects: [
+    { name: "main", testIgnore: /vitals\.spec/ },
+    // The speed test measures a slowed-down phone, so it runs alone, one page after another, after
+    // everything else: other tests running beside it would slow it down and make the numbers jump. A page
+    // that is only slow once (the machine was busy) passes on a retry; a page that is really slow fails three times.
+    { name: "vitals", testMatch: /vitals\.spec/, dependencies: ["main"], fullyParallel: false, retries: 2 },
+  ],
   webServer: {
     command: `npx next start -p ${PORT}`,
     port: PORT,

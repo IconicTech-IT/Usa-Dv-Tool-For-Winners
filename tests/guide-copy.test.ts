@@ -69,8 +69,10 @@ describe("health guide", () => {
     }
   });
 
-  it("sends people who think about a government benefit to the public-charge page first", () => {
-    expect(ar.guideNotes.charge).toContain("البابليك تشارج");
-    expect(en.guideNotes.charge.toLowerCase()).toContain("public charge");
+  it("warns that HealthCare.gov may offer a subsidy the new immigrant must not take, and links the public-charge page", () => {
+    expect(ar.guideHealth.subsidyWarning).toContain("متاخدش الدعم ده");
+    expect(en.guideHealth.subsidyWarning).toContain("do not take this subsidy");
+    expect(ar.guideHealth.subsidyWarningLink).toContain("البابليك تشارج");
+    expect(en.guideHealth.subsidyWarningLink.toLowerCase()).toContain("public charge");
   });
 });
