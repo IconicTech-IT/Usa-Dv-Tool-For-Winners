@@ -11,6 +11,7 @@ import { PlanFileActions } from "@/components/results/PlanFileActions";
 import { ShareActions } from "@/components/results/ShareActions";
 import { SummaryTable } from "@/components/results/SummaryTable";
 import { Timeline } from "@/components/results/Timeline";
+import { TransferDialog } from "@/components/transfer/TransferDialog";
 import { usePlan } from "@/lib/calc/use-plan";
 
 /** Everything the user typed, on one page: totals, the money timeline, scenarios and what is missing. */
@@ -41,6 +42,9 @@ export function ResultsScreen() {
         <PlanNameField view={view} />
       </div>
       <PlanFileActions view={view} />
+      <div className="row2 no-print" style={{ marginTop: 10 }}>
+        <TransferDialog view={view} />
+      </div>
       <div className="note">{t("results.note")}</div>
       <div className="legal box">{t("footer.legal")}</div>
     </div>

@@ -414,3 +414,38 @@ select.select {
   font: inherit;
   font-size: 14px;
 }
+
+/* The move-to-another-device dialogs */
+dialog.sheet-dialog .body {
+  padding: 4px 14px 16px;
+  overflow-y: auto;
+}
+dialog.sheet-dialog .body p {
+  margin-top: 10px;
+}
+dialog.sheet-dialog .warn {
+  margin-top: 12px;
+}
+.qr-title {
+  margin-top: 16px;
+}
+.qr {
+  display: block;
+  width: min(100%, 260px);
+  height: auto;
+  margin-top: 8px;
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+}
+.offer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  margin-top: 12px;
+}
+.offer dt {
+  color: var(--tx2);
+}
+.offer dd {
+  font-weight: 700;
+}

@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState, type RefObject } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Icon } from "@/components/Icon";
+import { useDialogOpen } from "@/components/use-dialog-open";
 import { listCurrencies, searchCurrencies, type CurrencyOption } from "@/lib/calc/currency";
 
 interface CurrencySheetProps {
@@ -11,16 +12,6 @@ interface CurrencySheetProps {
   selectedCode: string;
   onSelect: (code: string) => void;
   onClose: () => void;
-}
-
-/** Keeps a native dialog open or closed in step with a flag; the browser traps focus and handles Esc. */
-function useDialogOpen(ref: RefObject<HTMLDialogElement | null>, isOpen: boolean): void {
-  useEffect(() => {
-    const dialog = ref.current;
-    if (!dialog) return;
-    if (isOpen && !dialog.open) dialog.showModal();
-    if (!isOpen && dialog.open) dialog.close();
-  }, [ref, isOpen]);
 }
 
 /** The full ISO 4217 list in a dialog: Arab currencies first, searchable by name or code. */

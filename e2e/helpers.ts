@@ -10,6 +10,7 @@ export const ALL_PATHS: string[] = [...PAGE_PATHS, "/offline", "/guide/food", "/
 /** A small plan with typed amounts, so the pages that show totals are tested with numbers on them. */
 export const SAMPLE_PLAN = {
   version: 1,
+  name: "خطة تجريبية",
   uiMode: "detailed",
   household: { adults: 2, children: 1, childAges: ["7"] },
   localCurrency: "EGP",

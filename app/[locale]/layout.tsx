@@ -4,9 +4,10 @@ import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Analytics } from "@vercel/analytics/next";
 
 import { PrivacyStrip } from "@/components/PrivacyStrip";
+import { IncomingPlan } from "@/components/transfer/IncomingPlan";
+import { SafeAnalytics } from "@/components/SafeAnalytics";
 import { ServiceWorker } from "@/components/ServiceWorker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -81,7 +82,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             </div>
             <ServiceWorker />
             {/* Visit counter only: no cookies and no personal data. The privacy line says so. */}
-            <Analytics />
+            <IncomingPlan />
+            <SafeAnalytics />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
