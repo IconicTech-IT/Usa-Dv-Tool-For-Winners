@@ -39,12 +39,15 @@
     "usdAria": "In dollars",
     "localAria": "In your local currency",
     "cumulative": "Up to here",
-    "stageTotal": "Stage total"
+    "stageTotal": "Stage total",
+    "decrease": "Decrease",
+    "increase": "Increase"
   },
   "mode": {
     "quick": "Quick",
     "detailed": "Detailed",
-    "help": "Quick: 5 big categories. Detailed: every item on its own."
+    "help": "Quick: 5 big categories. Detailed: every item on its own.",
+    "label": "Entry mode"
   },
   "rate": {
     "label": "Current exchange rate",
@@ -54,12 +57,13 @@
     "pickSearch": "Search by name or code",
     "pickArab": "Common Arab currencies",
     "pickAll": "All currencies",
-    "aria": "Exchange rate: pounds per dollar",
+    "aria": "Exchange rate: units of your local currency per dollar",
     "google": "Check the rate on Google",
-    "hint": "You type the rate. Every pound amount is converted with it.",
-    "empty": "Type the exchange rate first so we can show the pound amounts too.",
+    "hint": "You type the rate. Every amount in your local currency is converted with it.",
+    "empty": "Type the exchange rate first so we can show amounts in your local currency too.",
     "short": "at the rate you typed",
-    "note": "Pound amounts use the exchange rate you typed above."
+    "note": "Amounts in your local currency use the exchange rate you typed above.",
+    "invalid": "Type a number above zero"
   },
   "home": {
     "title": "Work out the real cost of immigrating, step by step",
@@ -146,7 +150,8 @@
     "stillToSave": "Still to save",
     "scenariosHeading": "Scenarios",
     "scenariosLead": "Each scenario = paperwork and fees + moving + (monthly costs × months without income) + buffer − your savings.",
-    "note": "The highlighted scenario is the one we suggest planning for."
+    "note": "The highlighted scenario is the one we suggest planning for.",
+    "surplus": "Above what you need"
   },
   "results": {
     "title": "Results summary",
@@ -424,6 +429,7 @@
         "wrong-format": "This file is not a DV Compass plan",
         "invalid": "The plan in this file is incomplete or was edited"
       }
-    }
+    },
+    "currencyChoice": "Amount currency"
   }
 }

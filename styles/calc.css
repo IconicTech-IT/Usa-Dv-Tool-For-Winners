@@ -1,0 +1,127 @@
+/* The calculator screens: parts of the design that need real elements (buttons, links, a dialog). */
+
+.calc-page {
+  /* Room for the fixed total bar so the last box is never hidden behind it. */
+  padding-block-end: 96px;
+}
+
+/* Mode switch made of links */
+.seg a {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 40px;
+  border-radius: 9px;
+  font-weight: 600;
+  color: var(--tx2);
+  text-decoration: none;
+}
+.seg a.on {
+  background: var(--pr);
+  color: #fff;
+}
+.dark .seg a.on {
+  color: #0f1417;
+}
+.seg.mode a {
+  height: 36px;
+  font-size: 14px;
+}
+
+/* A box shows its focus ring while the number inside has focus */
+.input:focus-within {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 25%, transparent);
+}
+.input input:focus-visible {
+  outline: none;
+}
+.label label {
+  flex: 1;
+}
+
+/* The group header is a real button inside a heading */
+.stage-title {
+  margin: 0;
+  font-size: inherit;
+}
+.stage .hd {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+.stage .hd .title {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Fixed total bar */
+.total {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 5;
+}
+.total .help {
+  display: block;
+  margin: 0;
+}
+
+/* Stepper buttons lose their look when they cannot be pressed */
+.step .ctl button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* The currency list dialog */
+dialog.sheet-dialog {
+  width: min(520px, calc(100vw - 24px));
+  max-height: 85vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--tx);
+  overflow: visible;
+}
+dialog.sheet-dialog::backdrop {
+  background: rgb(15 20 23 / 55%);
+}
+dialog.sheet-dialog .sheet {
+  margin-top: 0;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+dialog.sheet-dialog .options {
+  overflow-y: auto;
+}
+.sheet .search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--tx);
+}
+.sheet .search:focus-within {
+  border-color: var(--focus);
+}
+.sheet button.opt {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--bd);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.sheet button.opt.on {
+  background: var(--prbg);
+}

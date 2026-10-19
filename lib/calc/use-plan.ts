@@ -16,3 +16,6 @@ export function usePlan() {
   const result = useMemo(() => computePlan(snapshot.plan), [snapshot.plan]);
   return { plan: snapshot.plan, saved: snapshot.saved, result, actions: planStore.actions };
 }
+
+/** What `usePlan` returns, for components that receive it from their screen. */
+export type PlanView = ReturnType<typeof usePlan>;

@@ -162,3 +162,21 @@ export function itemsOfCalculator(calculator: Calculator): ItemDef[] {
 export function findItem(id: string): ItemDef | undefined {
   return ITEMS.find((i) => i.id === id) ?? QUICK_ITEMS.find((i) => i.id === id);
 }
+
+export interface GroupDef {
+  id: GroupId;
+  /** When the money of the group's first item is due; the screen shows it next to the group title. */
+  stage: Stage;
+  items: ItemDef[];
+}
+
+/** The groups of one calculator, in the order of the catalog. */
+export function groupsOfCalculator(calculator: Calculator): GroupDef[] {
+  const groups: GroupDef[] = [];
+  for (const item of itemsOfCalculator(calculator)) {
+    const existing = groups.find((g) => g.id === item.group);
+    if (existing) existing.items.push(item);
+    else groups.push({ id: item.group, stage: item.stage, items: [item] });
+  }
+  return groups;
+}

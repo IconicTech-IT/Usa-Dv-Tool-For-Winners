@@ -102,3 +102,8 @@ export function formatNumber(value: number, locale: NumberLocale, maximumFractio
   const tag = locale === "ar" ? "ar-EG" : "en-US";
   return new Intl.NumberFormat(tag, { maximumFractionDigits }).format(value);
 }
+
+/** Text is there but is not a valid non-negative number (empty text is not invalid, just not typed). */
+export function isInvalidAmountText(raw: string): boolean {
+  return raw.trim() !== "" && !parseAmount(raw).ok;
+}

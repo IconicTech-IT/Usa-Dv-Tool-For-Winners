@@ -82,7 +82,9 @@ export function setChildAge(state: PlanState, index: number, raw: string): PlanS
 
 export function setLocalCurrency(state: PlanState, code: string): PlanState {
   if (!isValidCurrencyCode(code) || code === state.localCurrency) return state;
-  return { ...state, localCurrency: code };
+  // The typed rate belongs to the old currency, so it is cleared: a stale rate would silently
+  // convert amounts with the wrong number.
+  return { ...state, localCurrency: code, rate: "" };
 }
 
 export function setRate(state: PlanState, raw: string): PlanState {
@@ -98,4 +100,12 @@ export function setBufferMonths(state: PlanState, raw: string): PlanState {
 export function setUiMode(state: PlanState, mode: PlanState["uiMode"]): PlanState {
   if ((mode !== "quick" && mode !== "detailed") || mode === state.uiMode) return state;
   return { ...state, uiMode: mode };
+}
+
+export const MAX_BUFFER_MONTHS = 24;
+
+/** The emergency buffer as a whole number of months for the stepper; zero when empty or not a whole number. */
+export function bufferMonthsOf(raw: string): number {
+  const match = /^\d{1,2}$/.exec(raw.trim());
+  return match === null ? 0 : Math.min(Number(match[0]), MAX_BUFFER_MONTHS);
 }

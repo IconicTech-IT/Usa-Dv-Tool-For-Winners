@@ -65,6 +65,13 @@ describe("plan actions (pure)", () => {
     expect(setUiMode(start, "detailed")).toBe(start);
   });
 
+  it("clears the typed rate when the local currency changes", () => {
+    const start = setRate(emptyPlan(), "50");
+    const next = setLocalCurrency(start, "SAR");
+    expect(next.localCurrency).toBe("SAR");
+    expect(next.rate).toBe("");
+  });
+
   it("ignores unknown item ids and bad values", () => {
     const start = emptyPlan();
     expect(patchItem(start, "notAnItem", { raw: "5" })).toBe(start);

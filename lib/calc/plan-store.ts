@@ -58,20 +58,20 @@ function defaultWatcher(): StorageWatcher | null {
 }
 
 export interface PlanActions {
-  setItem(id: string, patch: FieldPatch): void;
-  setQuick(id: string, patch: FieldPatch): void;
-  setTopField(key: TopField, patch: FieldPatch): void;
-  setAdults(adults: number): void;
-  setChildren(children: number): void;
-  setChildAge(index: number, raw: string): void;
-  setLocalCurrency(code: string): void;
-  setRate(raw: string): void;
-  setBufferMonths(raw: string): void;
-  setUiMode(mode: PlanState["uiMode"]): void;
+  setItem: (id: string, patch: FieldPatch) => void;
+  setQuick: (id: string, patch: FieldPatch) => void;
+  setTopField: (key: TopField, patch: FieldPatch) => void;
+  setAdults: (adults: number) => void;
+  setChildren: (children: number) => void;
+  setChildAge: (index: number, raw: string) => void;
+  setLocalCurrency: (code: string) => void;
+  setRate: (raw: string) => void;
+  setBufferMonths: (raw: string) => void;
+  setUiMode: (mode: PlanState["uiMode"]) => void;
   /** Replace everything, for example after opening a saved plan file. */
-  replace(plan: PlanState): void;
+  replace: (plan: PlanState) => void;
   /** Forget everything on this device. */
-  reset(): void;
+  reset: () => void;
 }
 
 /** Function-typed fields (not methods) so they can be passed to React without losing `this`. */
