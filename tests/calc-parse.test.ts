@@ -1,52 +1,54 @@
 import { describe, expect, it } from "vitest";
 
-import { amountOrNull, formatNumber, parseAmount } from "@/lib/calc/parse-amount";
+import { decimalToString } from "@/lib/calc/decimal";
+import { formatNumber, parseAmount } from "@/lib/calc/parse-amount";
 
-function value(input: string): number | null {
+/** The exact amount as text, or null when the input is not a valid amount. */
+function value(input: string): string | null {
   const r = parseAmount(input);
-  return r.ok ? r.value : null;
+  return r.ok ? decimalToString(r.amount) : null;
 }
 
 describe("parseAmount digits", () => {
   it("reads Latin, Arabic-Indic and Persian digits", () => {
-    expect(value("123")).toBe(123);
-    expect(value("١٢٣")).toBe(123);
-    expect(value("۱۲۳")).toBe(123);
+    expect(value("123")).toBe("123");
+    expect(value("١٢٣")).toBe("123");
+    expect(value("۱۲۳")).toBe("123");
   });
 
   it("ignores spaces and non-breaking spaces", () => {
-    expect(value(" 2 500 ")).toBe(2500);
-    expect(value("2 500")).toBe(2500);
+    expect(value(" 2 500 ")).toBe("2500");
+    expect(value("2 500")).toBe("2500");
   });
 });
 
 describe("parseAmount separators", () => {
   it("treats a comma followed by three digits as thousands", () => {
-    expect(value("1,500")).toBe(1500);
-    expect(value("12,345,678")).toBe(12345678);
+    expect(value("1,500")).toBe("1500");
+    expect(value("12,345,678")).toBe("12345678");
   });
 
   it("treats a short comma tail as a decimal comma", () => {
-    expect(value("1,5")).toBe(1.5);
-    expect(value("1,50")).toBe(1.5);
-    expect(value("0,500")).toBe(0.5);
+    expect(value("1,5")).toBe("1.5");
+    expect(value("1,50")).toBe("1.5");
+    expect(value("0,500")).toBe("0.5");
   });
 
   it("uses the last mark as the decimal when both appear", () => {
-    expect(value("1,234.56")).toBe(1234.56);
-    expect(value("1.234,56")).toBe(1234.56);
-    expect(value("1,000.5")).toBe(1000.5);
+    expect(value("1,234.56")).toBe("1234.56");
+    expect(value("1.234,56")).toBe("1234.56");
+    expect(value("1,000.5")).toBe("1000.5");
   });
 
   it("treats several dots as thousands and a single dot as decimal", () => {
-    expect(value("1.250.000")).toBe(1250000);
-    expect(value("1.5")).toBe(1.5);
-    expect(value(".5")).toBe(0.5);
-    expect(value("5.")).toBe(5);
+    expect(value("1.250.000")).toBe("1250000");
+    expect(value("1.5")).toBe("1.5");
+    expect(value(".5")).toBe("0.5");
+    expect(value("5.")).toBe("5");
   });
 
   it("reads the Arabic decimal and thousand separators", () => {
-    expect(value("١٬٢٠٠٫٥٠")).toBe(1200.5);
+    expect(value("١٬٢٠٠٫٥٠")).toBe("1200.5");
   });
 });
 
@@ -68,9 +70,14 @@ describe("parseAmount failures", () => {
     expect(parseAmount("-5")).toEqual({ ok: false, reason: "negative" });
   });
 
-  it("amountOrNull gives null on any failure and zero is a valid amount", () => {
-    expect(amountOrNull("x")).toBeNull();
-    expect(amountOrNull("0")).toBe(0);
+  it("accepts zero as a valid amount", () => {
+    expect(value("0")).toBe("0");
+    expect(value("0,00")).toBe("0");
+  });
+
+  it("keeps a whole part of 12 digits and rejects a longer one", () => {
+    expect(value("999999999999")).toBe("999999999999");
+    expect(parseAmount("1234567890123")).toEqual({ ok: false, reason: "invalid" });
   });
 });
 

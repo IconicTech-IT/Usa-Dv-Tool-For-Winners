@@ -1,33 +1,27 @@
 import { describe, expect, it } from "vitest";
 
+import { decimalToString } from "@/lib/calc/decimal";
 import {
   ARAB_CURRENCY_CODES,
   listCurrencies,
   parseRate,
   rateLookupUrl,
   searchCurrencies,
-  toUsd,
-  usdToLocal,
 } from "@/lib/calc/currency";
 
-describe("rate and conversion", () => {
-  it("parses a typed rate and rejects empty, zero and negative", () => {
-    expect(parseRate("50")).toBe(50);
-    expect(parseRate("٤٩٫٥")).toBe(49.5);
-    expect(parseRate("")).toBeNull();
-    expect(parseRate("0")).toBeNull();
-    expect(parseRate("abc")).toBeNull();
-  });
+function rateText(raw: string): string | null {
+  const rate = parseRate(raw);
+  return rate === null ? null : decimalToString(rate);
+}
 
-  it("converts local amounts with the user's rate and leaves dollars alone", () => {
-    expect(toUsd(100, "usd", null)).toBe(100);
-    expect(toUsd(100, "local", 50)).toBe(2);
-    expect(toUsd(100, "local", null)).toBeNull();
-  });
-
-  it("converts dollars to local, or null without a rate", () => {
-    expect(usdToLocal(2, 50)).toBe(100);
-    expect(usdToLocal(2, null)).toBeNull();
+describe("rate the user types", () => {
+  it("parses a typed rate and rejects empty, zero and unreadable text", () => {
+    expect(rateText("50")).toBe("50");
+    expect(rateText("٤٩٫٥")).toBe("49.5");
+    expect(rateText("")).toBeNull();
+    expect(rateText("0")).toBeNull();
+    expect(rateText("0,00")).toBeNull();
+    expect(rateText("abc")).toBeNull();
   });
 });
 

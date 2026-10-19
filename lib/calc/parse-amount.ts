@@ -1,3 +1,5 @@
+import { decimalFromString, type Decimal } from "@/lib/calc/decimal";
+
 /**
  * Reads an amount the user typed. Accepts Arabic-Indic (٠-٩) and Persian (۰-۹)
  * digits, the Arabic decimal and thousand separators, spaces, and both "." and ","
@@ -13,7 +15,7 @@
 
 export type ParseFailure = "empty" | "invalid" | "negative";
 
-export type ParseResult = { ok: true; value: number } | { ok: false; reason: ParseFailure };
+export type ParseResult = { ok: true; amount: Decimal } | { ok: false; reason: ParseFailure };
 
 const ARABIC_INDIC_ZERO = 0x0660;
 const PERSIAN_ZERO = 0x06f0;
@@ -75,28 +77,22 @@ function resolveSingleMark(text: string, mark: "," | "."): string | null {
   return `${before}.${after}`;
 }
 
-export function parseAmount(input: string): ParseResult {
-  const trimmed = input.trim();
-  if (trimmed === "") return { ok: false, reason: "empty" };
-
-  const normalized = normalizeSeparators(toAsciiDigits(trimmed));
-  if (normalized.startsWith("-")) return { ok: false, reason: "negative" };
-  if (!/^[0-9.,]*[0-9][0-9.,]*$/.test(normalized)) {
-    return { ok: false, reason: "invalid" };
-  }
-
-  const resolved = resolveMarks(normalized);
-  if (resolved === null) return { ok: false, reason: "invalid" };
-
-  const value = Number(resolved);
-  if (!Number.isFinite(value)) return { ok: false, reason: "invalid" };
-  return { ok: true, value };
+function fail(reason: ParseFailure): ParseResult {
+  return { ok: false, reason };
 }
 
-/** A typed amount, or null when the field is empty or not a valid number. */
-export function amountOrNull(input: string): number | null {
-  const result = parseAmount(input);
-  return result.ok ? result.value : null;
+/** Reads what the user typed into an exact amount; zero counts as a valid amount. */
+export function parseAmount(input: string): ParseResult {
+  const trimmed = input.trim();
+  if (trimmed === "") return fail("empty");
+
+  const normalized = normalizeSeparators(toAsciiDigits(trimmed));
+  if (normalized.startsWith("-")) return fail("negative");
+  if (!/^[0-9.,]*[0-9][0-9.,]*$/.test(normalized)) return fail("invalid");
+
+  const resolved = resolveMarks(normalized);
+  const amount = resolved === null ? null : decimalFromString(resolved);
+  return amount === null ? fail("invalid") : { ok: true, amount };
 }
 
 export type NumberLocale = "ar" | "en";

@@ -1,4 +1,5 @@
-import { amountOrNull } from "@/lib/calc/parse-amount";
+import type { Decimal } from "@/lib/calc/decimal";
+import { parseAmount } from "@/lib/calc/parse-amount";
 
 /**
  * Currency maths. We never supply an exchange rate: the user types
@@ -7,25 +8,13 @@ import { amountOrNull } from "@/lib/calc/parse-amount";
 
 export type FieldCurrency = "usd" | "local";
 
-/** The rate the user typed (local units per one US dollar), or null if empty or not positive. */
-export function parseRate(raw: string): number | null {
-  const value = amountOrNull(raw);
-  return value !== null && value > 0 ? value : null;
-}
+/** Local units per one US dollar, exactly as typed. */
+export type Rate = Decimal;
 
-/**
- * Converts an amount typed in a field to US dollars.
- * Returns null when the field is in the local currency and no valid rate was typed.
- */
-export function toUsd(amount: number, currency: FieldCurrency, rate: number | null): number | null {
-  if (currency === "usd") return amount;
-  if (rate === null) return null;
-  return amount / rate;
-}
-
-/** US dollars to the local currency at the user's rate; null without a rate. */
-export function usdToLocal(usd: number, rate: number | null): number | null {
-  return rate === null ? null : usd * rate;
+/** The rate the user typed, or null if it is empty, unreadable, or not above zero. */
+export function parseRate(raw: string): Rate | null {
+  const parsed = parseAmount(raw);
+  return parsed.ok && parsed.amount.units > 0n ? parsed.amount : null;
 }
 
 /* ------------------------------------------------------------------ */
