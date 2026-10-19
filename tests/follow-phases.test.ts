@@ -13,7 +13,7 @@ import { setFollowMonths, setTravelMode } from "@/lib/calc/plan-actions";
 import { parsePlanFile, serializePlan } from "@/lib/calc/plan-file";
 import { summarizePlan } from "@/lib/calc/compare";
 import { followMonthsOf, isLateArrival } from "@/lib/calc/scaling";
-import { groupSubtotal } from "@/lib/calc/summary";
+import { groupSubtotal, stageSections } from "@/lib/calc/summary";
 import { compactPlan, expandPlan } from "@/lib/transfer/codec";
 
 function usd(dollars: number): bigint {
@@ -308,5 +308,52 @@ describe("the totals on the cards of the moving calculator when the family follo
 
   it("adds the cards up to the moving money that is due before the months alone", () => {
     expect(total("travel") + total("arrivalAlone") + total("arrivalFamily")).toBe(usd(600 + 670 + 2620));
+  });
+});
+
+describe("the plan as printed: stage sections", () => {
+  const follow = computePlan(family(TYPED, "4"));
+  const sections = stageSections(follow);
+  const rowsOf = (stage: string) => sections.find((s) => s.stage === stage)?.rows ?? [];
+
+  it("lists each stage with the boxes that have an amount, each with how many times it counts", () => {
+    expect(rowsOf("beforeInterview")).toEqual([{ id: "medicalExam", multiplier: 3, cents: usd(300) }]);
+    expect(rowsOf("beforeTravel")).toEqual([{ id: "ticket", multiplier: 1, cents: usd(600) }]);
+    expect(rowsOf("familyArrival").find((row) => row.id === "ticket")).toEqual({
+      id: "ticket",
+      multiplier: 2,
+      cents: usd(1200),
+    });
+  });
+
+  it("carries the phases of a family that follows later, including the months alone", () => {
+    expect(sections.map((s) => s.stage)).toEqual([
+      "beforeInterview",
+      "beforeTravel",
+      "firstMonth",
+      "aloneMonths",
+      "familyArrival",
+      "monthly",
+    ]);
+    expect(rowsOf("aloneMonths").map((row) => row.id)).toEqual(["rent", "food", "familyAbroadMonthly"]);
+  });
+
+  it("adds up, row by row, to the total of its stage", () => {
+    for (const section of sections) {
+      const sum = section.rows.reduce((total, row) => total + row.cents, 0n);
+      expect(sum, section.stage).toBe(section.cents);
+    }
+  });
+
+  it("leaves out the stages with nothing typed, and the phases when everyone travels together", () => {
+    const together = family(TYPED, "4");
+    together.travel = { mode: "together", followMonths: "" };
+    const stages = stageSections(computePlan(together)).map((s) => s.stage);
+    expect(stages).not.toContain("aloneMonths");
+    expect(stages).not.toContain("familyArrival");
+    expect(stages).not.toContain("beforeEntry");
+    // a new plan holds only the official registration fee, so that is all it prints
+    expect(stageSections(computePlan(emptyPlan())).map((s) => s.stage)).toEqual(["beforeEntry"]);
+    expect(stageSections(computePlan(family({}, "4")))).toEqual([]);
   });
 });

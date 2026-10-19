@@ -466,3 +466,92 @@ dialog.sheet-dialog .warn {
   padding-inline: 8px;
   line-height: 1.35;
 }
+
+/* The printed plan: on the screen it is hidden, in print it is the only thing on the page. */
+@page {
+  size: A4;
+  margin: 14mm;
+}
+.print-sheet {
+  display: none;
+}
+@media print {
+  /* A printed page is always light, whatever colour scheme the screen uses. */
+  html,
+  html.dark {
+    color-scheme: light;
+    --bg: #fff;
+    --sf: #fff;
+    --sf2: #f1f1f1;
+    --bd: #b5b5b5;
+    --tx: #000;
+    --tx2: #222;
+    --tx3: #444;
+    --pr: #0b4f4a;
+    --pr2: #0b4f4a;
+    --prbg: #fff;
+    --ok: #14532d;
+    --okbg: #fff;
+    --er: #7f1d1d;
+    --erbg: #fff;
+    --shadow: none;
+  }
+  body {
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+  .calc-page:has(> .print-sheet) > :not(.print-sheet) {
+    display: none !important;
+  }
+  .print-sheet {
+    display: block;
+  }
+  .print-head h1 {
+    font-size: 20pt;
+    line-height: 1.25;
+  }
+  .print-sheet h2 {
+    font-size: 13pt;
+    margin-block: 14pt 6pt;
+    break-after: avoid;
+  }
+  .print-facts,
+  .print-stage {
+    inline-size: 100%;
+    border-collapse: collapse;
+    margin-block-end: 10pt;
+  }
+  .print-facts th,
+  .print-facts td,
+  .print-stage td {
+    padding-block: 3pt;
+    padding-inline: 6pt;
+    border-block-end: 1px solid var(--bd);
+    vertical-align: top;
+  }
+  .print-facts th {
+    inline-size: 40%;
+    text-align: start;
+    font-weight: 600;
+  }
+  .print-stage {
+    break-inside: avoid;
+  }
+  .print-stage caption {
+    padding-block: 4pt;
+    font-weight: 700;
+    text-align: start;
+    break-after: avoid;
+  }
+  .print-stage td:last-child {
+    text-align: end;
+  }
+  .print-stage .print-sum td {
+    font-weight: 700;
+  }
+  .print-legal {
+    margin-block-start: 10pt;
+    font-size: 9pt;
+    color: var(--tx2);
+  }
+}

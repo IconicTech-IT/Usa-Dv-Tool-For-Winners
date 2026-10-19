@@ -7,6 +7,7 @@ import { PlanBar } from "@/components/plans/PlanBar";
 import { ScenarioList } from "@/components/calc/ScenarioList";
 import { ForgotList } from "@/components/results/ForgotList";
 import { PlanNameField } from "@/components/plans/PlanNameField";
+import { PlanPrint } from "@/components/print/PlanPrint";
 import { PlanFileActions } from "@/components/results/PlanFileActions";
 import { ShareActions } from "@/components/results/ShareActions";
 import { SummaryTable } from "@/components/results/SummaryTable";
@@ -47,6 +48,7 @@ export function ResultsScreen() {
       </div>
       <div className="note">{t("results.note")}</div>
       <div className="legal box">{t("footer.legal")}</div>
+      <PlanPrint view={view} />
     </div>
   );
 }

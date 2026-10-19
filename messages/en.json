@@ -601,5 +601,19 @@
     "added": "The plan was added as “{name}” and opened.",
     "broken": "This link does not work, or part of it was cut off. Ask the sender to send it again.",
     "brokenTitle": "The link does not work"
+  },
+  "print": {
+    "button": "Print the plan / PDF",
+    "plansHint": "Prints the plan that is open now. In the print window choose \"Save as PDF\" if you want a file.",
+    "untitled": "Unnamed plan",
+    "printedOn": "Printed on",
+    "currency": "Your currency",
+    "rate": "Exchange rate you typed",
+    "rateValue": "{rate} {code} per US dollar",
+    "rateNone": "not typed yet",
+    "stagesHeading": "Costs stage by stage",
+    "stagesNone": "No amount has been typed yet.",
+    "runwayHeading": "Monthly costs and scenarios",
+    "site": "Free calculator at:"
   }
 }

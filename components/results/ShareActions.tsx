@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { useNumberLocale } from "@/components/calc/format";
 import { Icon } from "@/components/Icon";
+import { PrintButton } from "@/components/print/PrintButton";
 import type { NumberLocale } from "@/lib/calc/parse-amount";
 import { formatNumber } from "@/lib/calc/parse-amount";
 import { formatMoney } from "@/lib/calc/money";
@@ -48,10 +49,7 @@ export function ShareActions({ view }: { view: PlanView }) {
 
   return (
     <div className="row2 no-print" style={{ marginTop: 18 }}>
-      <button type="button" className="btn pr" onClick={() => window.print()}>
-        <Icon name="print" />
-        {t("results.print")}
-      </button>
+      <PrintButton />
       <a
         className="btn wa"
         href={whatsappUrl(summaryText(view, t, locale))}

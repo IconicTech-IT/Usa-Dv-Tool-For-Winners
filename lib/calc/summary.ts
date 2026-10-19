@@ -87,6 +87,30 @@ export function forgottenByStage(result: PlanResult): ForgottenStage[] {
     .map((stage) => ({ stage: stage.stage, itemIds: stage.emptyIds }));
 }
 
+/** One stage of the plan for printing: the boxes with an amount that fall in it, and the stage total. */
+export interface StageSection {
+  stage: TimelineStage;
+  cents: Cents;
+  rows: { id: string; multiplier: number; cents: Cents }[];
+}
+
+/** The stages of the timeline that have typed amounts, each with its boxes in the order of the catalog. */
+export function stageSections(result: PlanResult): StageSection[] {
+  return result.timeline
+    .map((entry) => ({
+      stage: entry.stage,
+      cents: entry.stageCents,
+      rows: result.items.flatMap((item) =>
+        item.typed
+          ? item.parts
+              .filter((part) => part.stage === entry.stage)
+              .map((part) => ({ id: item.id, multiplier: part.multiplier, cents: part.cents }))
+          : [],
+      ),
+    }))
+    .filter((section) => section.rows.length > 0);
+}
+
 /** The message key of a timeline stage: the first month reads "when you arrive alone" when the family follows later. */
 export function timelineKeyOf(stage: TimelineStage, followsLater: boolean): string {
   return followsLater && stage === "firstMonth" ? "firstMonthAlone" : stage;

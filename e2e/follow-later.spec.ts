@@ -29,7 +29,7 @@ test("the principal travels first and the family follows: setup, moving, monthly
 
   // The family follows after some months: the rule is shown, and a long wait warns without blocking.
   await page.getByRole("button", { name: FOLLOW }).click();
-  await expect(page.getByText(/The principal applicant must enter before/)).toBeVisible();
+  await expect(page.getByText(/The principal applicant must enter the United States before/)).toBeVisible();
   await expect(page.getByText("Type the number of months so we can work")).toBeVisible();
   const warning = page.getByText(/A visa usually expires about six months after the medical exam/);
   await page.getByLabel(MONTHS).fill("3");
@@ -62,9 +62,9 @@ test("the principal travels first and the family follows: setup, moving, monthly
   // The results page says how the household travels and shows the stages of both phases.
   await open(page, "/en/results");
   await expect(page.locator("main")).toContainText("Family after 4 months");
-  await expect(page.locator(".tl")).toContainText("When you arrive alone");
-  await expect(page.locator(".tl")).toContainText("When the family arrives (after 4 months)");
-  await expect(page.locator(".tl")).toContainText("Months until the family arrives");
+  await expect(page.locator(".tl:visible")).toContainText("When you arrive alone");
+  await expect(page.locator(".tl:visible")).toContainText("When the family arrives (after 4 months)");
+  await expect(page.locator(".tl:visible")).toContainText("Months until the family arrives");
 
   // Back to all together: the family's costs back home and the extra stages go away; the values are kept.
   await open(page, "/en/setup");
@@ -73,7 +73,7 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await expect(page.getByText("Your family's monthly costs back home until they join you")).toHaveCount(0);
   await expect(page.getByText(/Until the family arrives/)).toHaveCount(0);
   await open(page, "/en/results");
-  await expect(page.locator(".tl")).not.toContainText("When the family arrives");
+  await expect(page.locator(".tl:visible")).not.toContainText("When the family arrives");
   await open(page, "/en/setup");
   await page.getByRole("button", { name: FOLLOW }).click();
   await expect(page.getByLabel(MONTHS)).toHaveValue("4");
@@ -88,7 +88,7 @@ test("the Arabic page asks the question and keeps the plan after a reload", asyn
 
   await open(page, "/ar/results");
   await expect(page.locator("main")).toContainText("الأسرة بعد ٣ شهر");
-  await expect(page.locator(".tl")).toContainText("لما توصل لوحدك");
+  await expect(page.locator(".tl:visible")).toContainText("لما توصل لوحدك");
 });
 
 /** The pages that change when the family follows later, with a long wait so the setup page shows its warning. */

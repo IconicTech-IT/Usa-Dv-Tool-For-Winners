@@ -11,6 +11,7 @@ import {
   householdMultiplier,
   placementsOf,
   type HouseholdContext,
+  type Placement,
 } from "@/lib/calc/scaling";
 
 /**
@@ -50,6 +51,8 @@ const FOLLOW_ONLY_STAGES: readonly TimelineStage[] = ["aloneMonths", "familyArri
 export interface ItemPart {
   stage: TimelineStage;
   cents: Cents;
+  /** How many times the typed amount counts in this share. */
+  multiplier: number;
 }
 
 export interface ItemResult {
@@ -143,6 +146,15 @@ function headlineCents(parts: readonly ItemPart[]): Cents {
   return parts.filter((p) => p.stage !== "aloneMonths").reduce((sum, p) => sum + p.cents, ZERO_CENTS);
 }
 
+/** One typed amount spread over the stages it falls in. */
+function sharesOf(single: Cents, placements: readonly Placement[]): ItemPart[] {
+  return placements.map((p) => ({
+    stage: p.stage,
+    cents: single * BigInt(p.multiplier),
+    multiplier: p.multiplier,
+  }));
+}
+
 function computeItem(def: ItemDef, field: AmountField | undefined, context: HouseholdContext): ItemResult {
   const scaling = field ? effectiveScaling(def, field) : def.scaling;
   const multiplier = householdMultiplier(def, scaling, context);
@@ -191,8 +203,7 @@ function computeItem(def: ItemDef, field: AmountField | undefined, context: Hous
   }
 
   const single = toUsdCents(parsed.amount, field.currency, context.rate);
-  const parts =
-    single === null ? [] : placements.map((p) => ({ stage: p.stage, cents: single * BigInt(p.multiplier) }));
+  const parts = single === null ? [] : sharesOf(single, placements);
   return {
     ...base,
     applicable: true,

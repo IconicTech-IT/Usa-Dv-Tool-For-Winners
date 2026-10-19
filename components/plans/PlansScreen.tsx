@@ -4,6 +4,8 @@ import { useId, useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { NameInput } from "@/components/plans/NameInput";
+import { PlanPrint } from "@/components/print/PlanPrint";
+import { PrintButton } from "@/components/print/PrintButton";
 import { MAX_PLANS } from "@/lib/calc/library";
 import { MAX_NAME_LENGTH } from "@/lib/calc/model";
 import { usePlan, type PlanView } from "@/lib/calc/use-plan";
@@ -11,6 +13,7 @@ import { usePlan, type PlanView } from "@/lib/calc/use-plan";
 /** The list of saved plans: open, rename, duplicate, delete (after a question), and make a new one. */
 export function PlansScreen() {
   const t = useTranslations("plans");
+  const print = useTranslations("print");
   const view = usePlan();
   const [message, setMessage] = useState<string | null>(null);
 
@@ -37,6 +40,11 @@ export function PlansScreen() {
           {message}
         </div>
       )}
+      <div className="no-print" style={{ marginTop: 16 }}>
+        <PrintButton />
+        <div className="help">{print("plansHint")}</div>
+      </div>
+      <PlanPrint view={view} />
     </div>
   );
 }
