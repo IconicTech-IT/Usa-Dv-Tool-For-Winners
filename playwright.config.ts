@@ -14,6 +14,8 @@ export default defineConfig({
   testDir: "./e2e",
   timeout: 60_000,
   fullyParallel: true,
+  // Three browsers at a time: more makes the browser crash on a small machine.
+  workers: 3,
   forbidOnly: true,
   reporter: [["list"]],
   use: {

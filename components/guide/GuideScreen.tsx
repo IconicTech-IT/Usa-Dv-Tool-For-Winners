@@ -1,12 +1,14 @@
 import { getTranslations } from "next-intl/server";
 
 import { Icon } from "@/components/Icon";
+import { RuleNote } from "@/components/guide/RuleNote";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { findItem } from "@/lib/calc/catalog";
 import { CALCULATOR_PATH } from "@/lib/calc/routes";
 import { guideKind, guideText } from "@/lib/guide/copy";
 import { guideSitesFor, type GuideSite } from "@/lib/guide/links";
+import { notesForItem } from "@/lib/guide/notes";
 
 interface GuideScreenProps {
   itemId: string;
@@ -31,6 +33,9 @@ export async function GuideScreen({ itemId, locale }: GuideScreenProps) {
       </Link>
       <h1>{text.title}</h1>
       <p className="lead">{text.lead}</p>
+      {notesForItem(itemId, locale).map((note) => (
+        <RuleNote key={note.id} note={note} sourceWord={t("guide.source")} />
+      ))}
       <h2>{t("guide.how")}</h2>
       <div className="steps">
         {text.steps.map((step) => (
@@ -43,7 +48,9 @@ export async function GuideScreen({ itemId, locale }: GuideScreenProps) {
           <SourceLink key={site.id} site={site} locale={locale} officialLabel={t("guide.official")} />
         ))}
       </div>
-      {itemId === "passport" ? <div className="note">{t("guideNotes.passport")}</div> : null}
+      {itemId === "passport" || itemId === "familyPassports" ? (
+        <div className="note">{t("guideNotes.passport")}</div>
+      ) : null}
       {kind === "health" ? (
         <>
           <div className="note">{t("guideHealth.state")}</div>

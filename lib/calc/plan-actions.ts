@@ -1,6 +1,13 @@
 import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import { isValidCurrencyCode } from "@/lib/calc/currency";
-import { MAX_ADULTS, MAX_RAW_LENGTH, withChildren, type AmountField, type PlanState } from "@/lib/calc/model";
+import {
+  MAX_ADULTS,
+  MAX_RAW_LENGTH,
+  MAX_REGISTRATIONS,
+  withChildren,
+  type AmountField,
+  type PlanState,
+} from "@/lib/calc/model";
 
 /**
  * Pure changes to a plan. Each function returns the SAME state object when nothing
@@ -62,6 +69,12 @@ export function setAdults(state: PlanState, adults: number): PlanState {
   const count = Math.max(1, Math.min(MAX_ADULTS, Math.trunc(adults)));
   if (count === state.household.adults) return state;
   return { ...state, household: { ...state.household, adults: count } };
+}
+
+export function setRegistrations(state: PlanState, registrations: number): PlanState {
+  if (!Number.isFinite(registrations)) return state;
+  const count = Math.max(1, Math.min(MAX_REGISTRATIONS, Math.trunc(registrations)));
+  return count === state.registrations ? state : { ...state, registrations: count };
 }
 
 export function setChildren(state: PlanState, children: number): PlanState {

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { groupsOfCalculator } from "@/lib/calc/catalog";
 import { computePlan } from "@/lib/calc/compute";
-import { emptyPlan, type PlanState } from "@/lib/calc/model";
+import { emptyField, emptyPlan, REGISTRATION_FEE_ITEM, type PlanState } from "@/lib/calc/model";
 import {
   forgottenByStage,
   scenarioTotalCents,
@@ -13,6 +13,7 @@ import {
 
 function planWith(patch: (plan: PlanState) => void): PlanState {
   const plan = emptyPlan();
+  plan.items[REGISTRATION_FEE_ITEM] = emptyField();
   patch(plan);
   return plan;
 }

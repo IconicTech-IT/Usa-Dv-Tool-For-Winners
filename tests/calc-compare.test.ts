@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { summarizePlan } from "@/lib/calc/compare";
-import { emptyPlan, type PlanState } from "@/lib/calc/model";
+import { emptyField, emptyPlan, REGISTRATION_FEE_ITEM, type PlanState } from "@/lib/calc/model";
 
 function plan(edit: (p: PlanState) => void): PlanState {
   const p = emptyPlan();
+  p.items[REGISTRATION_FEE_ITEM] = emptyField();
   edit(p);
   return p;
 }

@@ -103,22 +103,10 @@
         "ar": "HealthCare.gov",
         "en": "HealthCare.gov"
       },
-      "url": "https://www.healthcare.gov/",
-      "what": {
-        "ar": "الموقع الرسمي للتأمين الصحي في أمريكا.",
-        "en": "The official US health insurance marketplace."
-      },
-      "official": true
-    },
-    "healthcareSeePlans": {
-      "name": {
-        "ar": "شوف الخطط والأسعار: HealthCare.gov",
-        "en": "See plans and prices: HealthCare.gov"
-      },
       "url": "https://www.healthcare.gov/see-plans/",
       "what": {
-        "ar": "اكتب الرقم البريدي وبيانات أسرتك وشوف الخطط والأسعار الحقيقية في ولايتك.",
-        "en": "Enter a ZIP code and your household details to see the real plans and prices in your state."
+        "ar": "الموقع الرسمي. اكتب الرقم البريدي وبيانات أسرتك وشوف الخطط والقسط الشهري الحقيقي في ولايتك.",
+        "en": "The official site. Enter a ZIP code and your household details to see the real plans and monthly premium in your state."
       },
       "official": true
     },
@@ -656,10 +644,34 @@
         "en": "Egypt's digital government services portal. Look for the passport service and read the fee and documents there."
       },
       "official": true
+    },
+    "federalRegisterFee": {
+      "name": {
+        "ar": "قرار رسم التسجيل (Federal Register)",
+        "en": "The registration fee rule (Federal Register)"
+      },
+      "url": "https://www.govinfo.gov/content/pkg/FR-2025-09-16/html/2025-17851.htm",
+      "what": {
+        "ar": "القرار الرسمي اللي حدد رسم التسجيل في القرعة.",
+        "en": "The official rule that set the lottery registration fee."
+      },
+      "official": true
+    },
+    "usCairoIvInstructions": {
+      "name": {
+        "ar": "السفارة الأمريكية في القاهرة: تعليمات الهجرة والأطباء المعتمدين",
+        "en": "US Embassy Cairo: immigrant visa instructions and approved doctors"
+      },
+      "url": "https://travel.state.gov/content/travel/en/us-visas/Supplements/Supplements_by_Post/CRO-Cairo.html",
+      "what": {
+        "ar": "فيها خطوات المقابلة وقايمة الأطباء المعتمدين للكشف الطبي. اسأل العيادة نفسها عن السعر.",
+        "en": "The interview steps and the list of approved doctors for the medical exam. Ask the clinic itself for the price."
+      },
+      "official": true
     }
   },
   "items": {
-    "medicalExam": ["stateImmigrantVisaProcess", "usEmbassies", "stateDvPage"],
+    "medicalExam": ["usCairoIvInstructions", "usEmbassies", "stateImmigrantVisaProcess"],
     "policeCertificate": ["reciprocity", "stateImmigrantVisaProcess", "usEmbassies"],
     "translation": ["reciprocity", "usEmbassies"],
     "civilCertificates": ["reciprocity", "stateImmigrantVisaProcess"],
@@ -688,7 +700,7 @@
     "carPurchase": ["facebookMarketplace", "carsCom", "kbb", "edmunds", "nhtsaRecalls", "nmvtis"],
     "carInsuranceStart": ["naicStateInsurance", "theZebra"],
     "carRegistration": ["usaMotorVehicle"],
-    "healthInsuranceStart": ["healthcareSeePlans", "healthcareGov"],
+    "healthInsuranceStart": ["healthcareGov"],
     "childcareStart": ["childCareAware"],
     "otherMoving": [],
     "rent": ["apartments", "zillow", "trulia", "hotpads", "padmapper", "roomies", "spareroom"],
@@ -697,10 +709,12 @@
     "phone": ["mintMobile", "visible", "tMobile"],
     "food": ["walmart", "costco", "aldi", "kroger", "samsClub", "usdaFoodPlans"],
     "transport": ["googleMaps", "fuelEconomy"],
-    "healthInsurance": ["healthcareSeePlans", "healthcareGov"],
+    "healthInsurance": ["healthcareGov"],
     "carInsurance": ["naicStateInsurance", "theZebra"],
     "childcare": ["childCareAware"],
     "otherMonthly": [],
-    "passport": ["egyptMoi", "digitalEgypt", "stateDvPage"]
+    "passport": ["egyptMoi", "digitalEgypt", "stateDvPage"],
+    "registrationFee": ["federalRegisterFee", "stateDvPage"],
+    "familyPassports": ["egyptMoi", "digitalEgypt", "usEmbassies"]
   }
 }

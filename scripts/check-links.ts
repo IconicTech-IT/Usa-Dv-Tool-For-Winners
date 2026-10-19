@@ -37,6 +37,7 @@ function collectUrls(): string[] {
   const files = [
     join(CONTENT, "guide-links.json"),
     join(CONTENT, "official-links.json"),
+    join(CONTENT, "item-notes.json"),
     ...readdirSync(join(CONTENT, "pages"))
       .filter((name) => name.endsWith(".json"))
       .map((name) => join(CONTENT, "pages", name)),

@@ -13,6 +13,14 @@ export const PLAN_VERSION = 1 as const;
 export const MAX_RAW_LENGTH = 40;
 export const MAX_CHILDREN = 20;
 export const MAX_ADULTS = 10;
+export const MAX_REGISTRATIONS = 10;
+
+/**
+ * The only amount a new plan starts with: the official registration fee, set by the State
+ * Department's final rule of 16 September 2025 (Federal Register 2025-17851). The user may change it.
+ */
+export const REGISTRATION_FEE_PREFILL = "1";
+export const REGISTRATION_FEE_ITEM = "registrationFee";
 
 export const AmountFieldSchema = z.object({
   raw: z.string().max(MAX_RAW_LENGTH),
@@ -45,6 +53,8 @@ export const PlanStateSchema = z.object({
   savings: AmountFieldSchema,
   /** Emergency buffer in months, typed by the user. */
   bufferMonths: z.string().max(MAX_RAW_LENGTH),
+  /** How many entries are made: one, or two when the spouse also enters on his or her own. */
+  registrations: z.number().int().min(1).max(MAX_REGISTRATIONS).default(1),
 });
 export type PlanState = z.infer<typeof PlanStateSchema>;
 
@@ -52,9 +62,14 @@ export function emptyField(): AmountField {
   return { raw: "", currency: "usd" };
 }
 
+/** A box as a new plan has it: empty, except the registration fee which holds the official fee. */
+export function defaultField(id: string): AmountField {
+  return id === REGISTRATION_FEE_ITEM ? { raw: REGISTRATION_FEE_PREFILL, currency: "usd" } : emptyField();
+}
+
 export function emptyPlan(): PlanState {
   const items: Record<string, AmountField> = {};
-  for (const def of ITEMS) items[def.id] = emptyField();
+  for (const def of ITEMS) items[def.id] = defaultField(def.id);
   const quick: Record<string, AmountField> = {};
   for (const def of QUICK_ITEMS) quick[def.id] = emptyField();
 
@@ -70,6 +85,7 @@ export function emptyPlan(): PlanState {
     spouseIncome: emptyField(),
     savings: emptyField(),
     bufferMonths: "",
+    registrations: 1,
   };
 }
 

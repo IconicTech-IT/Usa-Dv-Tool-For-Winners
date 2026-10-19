@@ -34,7 +34,8 @@ for (const locale of LOCALES) {
 
     // The results page opens offline and shows the number.
     await page.goto(`/${locale}/results`);
-    await expect(page.locator("table")).toContainText(/123|١٢٣/);
+    // 123 typed, plus the official registration fee a new plan starts with.
+    await expect(page.locator("table")).toContainText(/124|١٢٤/);
 
     // A page that was never saved (a guide) shows the offline page, which proves the network is really cut.
     await page.goto(`/${locale}/guide/rent`);

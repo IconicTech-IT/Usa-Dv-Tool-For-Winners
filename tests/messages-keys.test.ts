@@ -41,7 +41,16 @@ const OPEN_FAILURES = [
   "wrong-format",
   "invalid",
 ] as const satisfies readonly OpenFailure[];
-const SCALINGS = ["total", "perPerson", "perAdult", "perChild"] as const satisfies readonly Scaling[];
+const SCALINGS = [
+  "total",
+  "perPerson",
+  "perAdult",
+  "perChild",
+  "perEntrant",
+  "applicantOnly",
+  "perFamilyMember",
+  "perRegistration",
+] as const satisfies readonly Scaling[];
 type _AllScaling = Exclude<Scaling, (typeof SCALINGS)[number]> extends never ? true : never;
 const _scalingCheck: _AllScaling = true;
 type _AllParse = Exclude<ParseFailure, (typeof PARSE_FAILURES)[number]> extends never ? true : never;

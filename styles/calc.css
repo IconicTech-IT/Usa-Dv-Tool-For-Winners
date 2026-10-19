@@ -270,3 +270,76 @@ html[dir="rtl"] .back svg {
 .prompt .help {
   color: var(--tx2);
 }
+
+/* Official rules and tips on the guide pages and the setup page */
+.rule {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--sf2);
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.rule p {
+  color: var(--tx);
+}
+.rule .ilink {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+}
+.rule.tip {
+  background: var(--prbg);
+  border: 1px solid var(--pr);
+}
+.rule.tip > svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 2px;
+  color: var(--pr);
+}
+
+/*
+ * Inline links look like links, not like the browser default: teal, medium weight, an underline
+ * that is always there (so colour is not the only sign) and gets stronger on hover and focus.
+ * An external link gets a small arrow. Buttons and cards have their own styles and are not touched.
+ */
+.ilink,
+.note a:not(.btn),
+.help a:not(.btn),
+.fxnote a,
+.rule a,
+.lead a,
+.muted a,
+.errt a {
+  color: var(--pr);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--pr) 45%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  border-radius: 3px;
+}
+.ilink:hover,
+.ilink:focus-visible,
+.note a:not(.btn):hover,
+.note a:not(.btn):focus-visible,
+.help a:not(.btn):hover,
+.help a:not(.btn):focus-visible,
+.rule a:hover,
+.rule a:focus-visible {
+  text-decoration-color: var(--pr);
+}
+.ilink[target="_blank"]::after {
+  content: "\2197";
+  display: inline-block;
+  margin-inline-start: 4px;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+html[dir="rtl"] .ilink[target="_blank"]::after {
+  content: "\2196";
+}

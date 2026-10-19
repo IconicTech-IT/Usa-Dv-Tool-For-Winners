@@ -60,5 +60,6 @@ test("the typed amounts add up on the results page", async ({ page }) => {
   await page.goto("/en/fees");
   await page.locator(".input input").first().fill("40");
   await page.goto("/en/results");
-  await expect(page.locator("tr.sum")).toContainText("40");
+  // 40 typed, plus the official registration fee a new plan starts with.
+  await expect(page.locator("tr.sum")).toContainText("41");
 });

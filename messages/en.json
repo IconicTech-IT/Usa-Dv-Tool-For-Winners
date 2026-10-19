@@ -124,12 +124,15 @@
     "agesHelp": "Enter each child's age (some fees and costs depend on it)",
     "child": "Child",
     "note": "You can change this at any time; the calculators update on their own.",
-    "next": "Next: paperwork and fees"
+    "next": "Next: paperwork and fees",
+    "rule": "Official rule"
   },
   "fees": {
     "title": "Paperwork and fees",
     "lead": "Type each fee as you find it on the official source. The total adds itself up.",
-    "note": "Fields marked \"per person\" are multiplied by the number of people from the household setup."
+    "note": "Fields marked \"per person\" are multiplied by the number of people from the household setup.",
+    "registrations": "Number of entries",
+    "registrationsHelp": "1 if only you enter. 2 if your spouse also enters on his or her own."
   },
   "moving": {
     "title": "Moving and settling",
@@ -251,7 +254,8 @@
     "genericStep1": "Open the links below and look for the current fee or price.",
     "genericStep2": "Type the number as you find it. Mind the currency, and whether it is one-off or monthly.",
     "genericStep3": "Go back to the calculator and type the number. Check it now and then; prices and fees change.",
-    "official": "Official"
+    "official": "Official",
+    "source": "Source"
   },
   "guideHealth": {
     "title": "How do I find the price of health insurance?",
@@ -311,8 +315,8 @@
       "passport": "Passport"
     },
     "groupHints": {
-      "entry": "Lottery entry and photos",
-      "documents": "Exam and documents",
+      "entry": "Registration fee and photos",
+      "documents": "Family passports, medical exam and documents",
       "interview": "Fees and travel to the embassy",
       "afterVisa": "USCIS fee and anything else",
       "travel": "Tickets, bags, insurance",
@@ -321,13 +325,17 @@
       "connectivity": "Power, internet, phone",
       "car": "Licence, purchase, insurance",
       "healthFamily": "Health insurance and childcare",
-      "passport": "Get or renew it for each person"
+      "passport": "The main applicant's passport only"
     },
     "scaling": {
       "total": "For the whole household",
       "perPerson": "Per person",
       "perAdult": "Per adult",
-      "perChild": "Per child"
+      "perChild": "Per child",
+      "perEntrant": "applicant, spouse and children",
+      "applicantOnly": "main applicant only",
+      "perFamilyMember": "spouse and children",
+      "perRegistration": "× number of entries"
     },
     "toggle": {
       "label": "Counted",
@@ -335,7 +343,7 @@
       "perPerson": "per person"
     },
     "items": {
-      "entryPhotos": "Photos to the lottery spec",
+      "entryPhotos": "Entry photos",
       "entryHelp": "Help with the entry (if any)",
       "medicalExam": "Medical exam and vaccines",
       "policeCertificate": "Police certificate",
@@ -382,12 +390,14 @@
       "quickHousing": "First housing and set-up",
       "quickCar": "Car and insurance",
       "quickMonthly": "Costs for one month",
-      "passport": "Get or renew the passport"
+      "passport": "Get or renew the passport (main applicant)",
+      "registrationFee": "Official registration fee",
+      "familyPassports": "Passports for the rest of the family"
     },
     "timeline": {
       "beforeInterview": {
         "title": "Before the interview",
-        "text": "Exam, documents, photos"
+        "text": "Family passports, medical exam and documents"
       },
       "atInterview": {
         "title": "At the interview",
@@ -407,7 +417,7 @@
       },
       "beforeEntry": {
         "title": "Before registering",
-        "text": "A passport for each person in the family"
+        "text": "Registration fee, photos and the main applicant's passport"
       }
     },
     "scenarios": {

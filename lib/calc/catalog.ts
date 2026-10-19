@@ -21,8 +21,22 @@ export const STAGES: readonly Stage[] = [
   "monthly",
 ] as const;
 
-/** How the typed amount scales with the household. */
-export type Scaling = "total" | "perPerson" | "perAdult" | "perChild";
+/**
+ * How the typed amount scales with the household.
+ * - perEntrant: everyone who is written on the entry: the applicant, the spouse (if any) and all children.
+ * - applicantOnly: the main applicant alone.
+ * - perFamilyMember: the spouse (if any) and all children, without the applicant.
+ * - perRegistration: the number of entries made (one, or two when the spouse also enters).
+ */
+export type Scaling =
+  | "total"
+  | "perPerson"
+  | "perAdult"
+  | "perChild"
+  | "perEntrant"
+  | "applicantOnly"
+  | "perFamilyMember"
+  | "perRegistration";
 
 /** Which calculator an item belongs to. */
 export type Calculator = "fees" | "moving" | "monthly";
@@ -79,13 +93,15 @@ const monthly = (id: string, group: GroupId, stage: Stage, options: ItemOptions 
 
 export const ITEMS: readonly ItemDef[] = [
   /* Fees: the passport, needed before anything else */
-  fees("passport", "passport", "beforeEntry", { scaling: "perPerson" }),
+  fees("passport", "passport", "beforeEntry", { scaling: "applicantOnly" }),
 
   /* Fees: entering the lottery */
-  fees("entryPhotos", "entry", "beforeInterview", { scaling: "perPerson" }),
-  fees("entryHelp", "entry", "beforeInterview"),
+  fees("registrationFee", "entry", "beforeEntry", { scaling: "perRegistration" }),
+  fees("entryPhotos", "entry", "beforeEntry", { scaling: "perEntrant" }),
+  fees("entryHelp", "entry", "beforeEntry"),
 
   /* Fees: documents */
+  fees("familyPassports", "documents", "beforeInterview", { scaling: "perFamilyMember" }),
   fees("medicalExam", "documents", "beforeInterview", { scaling: "perPerson" }),
   fees("policeCertificate", "documents", "beforeInterview", { scaling: "perPerson" }),
   fees("translation", "documents", "beforeInterview"),

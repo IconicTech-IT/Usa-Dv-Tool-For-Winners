@@ -11,7 +11,6 @@ function scalingOf(id: string): string | undefined {
 describe("catalog follows the approved design", () => {
   it("scales these items by every person in the household", () => {
     for (const id of [
-      "entryPhotos",
       "medicalExam",
       "policeCertificate",
       "visaPhotos",
@@ -43,8 +42,22 @@ describe("catalog follows the approved design", () => {
     }
   });
 
+  it("scales the registration-stage items the way the entry works", () => {
+    expect(scalingOf("passport")).toBe("applicantOnly");
+    expect(scalingOf("entryPhotos")).toBe("perEntrant");
+    expect(scalingOf("familyPassports")).toBe("perFamilyMember");
+    expect(scalingOf("registrationFee")).toBe("perRegistration");
+  });
+
+  it("puts the registration items in the earliest stage and the family passports before the interview", () => {
+    for (const id of ["passport", "registrationFee", "entryPhotos", "entryHelp"]) {
+      expect(findItem(id)?.stage, id).toBe("beforeEntry");
+    }
+    expect(findItem("familyPassports")?.stage).toBe("beforeInterview");
+  });
+
   it("has separate entry photos and visa photos, and the entry help", () => {
-    expect(findItem("entryPhotos")?.stage).toBe("beforeInterview");
+    expect(findItem("entryPhotos")?.stage).toBe("beforeEntry");
     expect(findItem("visaPhotos")?.stage).toBe("beforeInterview");
     expect(findItem("entryHelp")).toBeDefined();
     expect(findItem("photos")).toBeUndefined();

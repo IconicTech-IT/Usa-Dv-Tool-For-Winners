@@ -7,6 +7,7 @@ import {
   setBufferMonths,
   setChildAge,
   setChildren,
+  setRegistrations,
   setLocalCurrency,
   setRate,
   setUiMode,
@@ -63,6 +64,7 @@ export interface PlanActions {
   setTopField: (key: TopField, patch: FieldPatch) => void;
   setAdults: (adults: number) => void;
   setChildren: (children: number) => void;
+  setRegistrations: (registrations: number) => void;
   setChildAge: (index: number, raw: string) => void;
   setLocalCurrency: (code: string) => void;
   setRate: (raw: string) => void;
@@ -135,6 +137,7 @@ export function createPlanStore(options: PlanStoreOptions = {}): PlanStore {
     setTopField: (key, patch) => update((s) => patchTopField(s, key, patch)),
     setAdults: (adults) => update((s) => setAdults(s, adults)),
     setChildren: (children) => update((s) => setChildren(s, children)),
+    setRegistrations: (registrations) => update((s) => setRegistrations(s, registrations)),
     setChildAge: (index, raw) => update((s) => setChildAge(s, index, raw)),
     setLocalCurrency: (code) => update((s) => setLocalCurrency(s, code)),
     setRate: (raw) => update((s) => setRate(s, raw)),

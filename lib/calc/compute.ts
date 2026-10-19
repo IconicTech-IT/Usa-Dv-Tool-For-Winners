@@ -90,10 +90,17 @@ export interface PlanResult {
 interface HouseholdContext {
   adults: number;
   children: number;
+  registrations: number;
   rate: Rate | null;
 }
 
-function multiplierFor(scaling: Scaling, adults: number, children: number): number {
+/** The spouse counts once however many adults travel: only a spouse is written on the entry. */
+function spouseCount(adults: number): number {
+  return adults > 1 ? 1 : 0;
+}
+
+function multiplierFor(scaling: Scaling, context: HouseholdContext): number {
+  const { adults, children, registrations } = context;
   switch (scaling) {
     case "total":
       return 1;
@@ -103,6 +110,14 @@ function multiplierFor(scaling: Scaling, adults: number, children: number): numb
       return adults;
     case "perChild":
       return children;
+    case "perEntrant":
+      return 1 + spouseCount(adults) + children;
+    case "applicantOnly":
+      return 1;
+    case "perFamilyMember":
+      return spouseCount(adults) + children;
+    case "perRegistration":
+      return registrations;
   }
 }
 
@@ -118,7 +133,7 @@ function computeItem(def: ItemDef, field: AmountField | undefined, context: Hous
   }
 
   const parsed = parseAmount(field.raw);
-  const multiplier = multiplierFor(effectiveScaling(def, field), context.adults, context.children);
+  const multiplier = multiplierFor(effectiveScaling(def, field), context);
   if (!parsed.ok) {
     return { ...base, typed: false, invalid: true, multiplier, cents: null, needsRate: false };
   }
@@ -202,7 +217,10 @@ export function computePlan(state: PlanState): PlanResult {
   const defs = quick ? QUICK_ITEMS : ITEMS;
   const fields = quick ? state.quick : state.items;
 
-  const items = defs.map((def) => computeItem(def, fields[def.id], { adults, children, rate }));
+  const { registrations } = state;
+  const items = defs.map((def) =>
+    computeItem(def, fields[def.id], { adults, children, registrations, rate }),
+  );
   const stages = computeStages(items);
   const stageCents = (stage: Stage) => stages.find((s) => s.stage === stage)?.cents ?? ZERO_CENTS;
   const oneTimeCents = sumCents(ONE_TIME_STAGES.map(stageCents));

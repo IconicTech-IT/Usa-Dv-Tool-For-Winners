@@ -1,6 +1,6 @@
 import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import {
-  emptyField,
+  defaultField,
   PLAN_VERSION,
   PlanStateSchema,
   type AmountField,
@@ -37,7 +37,7 @@ function fillFields(
   saved: Record<string, AmountField>,
 ): Record<string, AmountField> {
   const out: Record<string, AmountField> = {};
-  for (const def of known) out[def.id] = saved[def.id] ?? emptyField();
+  for (const def of known) out[def.id] = saved[def.id] ?? defaultField(def.id);
   return out;
 }
 

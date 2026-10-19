@@ -1,0 +1,117 @@
+{
+  "_note": "Official rules and tips shown on the guide pages. Every rule carries its official source. A tip is advice, not a rule, and is shown highlighted.",
+  "sources": {
+    "dvInstructions": {
+      "ar": "تعليمات الـDV الرسمية (Federal Register)",
+      "en": "The official DV instructions (Federal Register)",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2024-10-01/html/2024-22482.htm"
+    },
+    "passportRule": {
+      "ar": "قاعدة الخارجية للباسبور والصور (Federal Register)",
+      "en": "The State Department rule on the passport and photos (Federal Register)",
+      "url": "https://www.federalregister.gov/documents/2026/03/11/2026-04737"
+    },
+    "feeRule": {
+      "ar": "قرار رسم التسجيل (Federal Register)",
+      "en": "The registration fee rule (Federal Register)",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2025-09-16/html/2025-17851.htm"
+    },
+    "passportValidity": {
+      "ar": "شروط الباسبور للفيزا (22 CFR 42.64)",
+      "en": "Passport requirements for the visa (22 CFR 42.64)",
+      "url": "https://www.ecfr.gov/current/title-22/section-42.64"
+    },
+    "medicalRule": {
+      "ar": "الكشف الطبي للفيزا (22 CFR 42.66)",
+      "en": "The medical examination for the visa (22 CFR 42.66)",
+      "url": "https://www.ecfr.gov/current/title-22/section-42.66"
+    },
+    "uscisFee": {
+      "ar": "رسم USCIS للمهاجرين",
+      "en": "The USCIS immigrant fee",
+      "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee"
+    }
+  },
+  "notes": {
+    "familyListing": {
+      "kind": "rule",
+      "source": "dvInstructions",
+      "ar": "لازم تكتب الزوج/الزوجة وكل الأولاد غير المتزوجين تحت 21 سنة حتى لو مش هيسافروا. عدم كتابتهم ممكن يخليك غير مؤهل. الزوج/الزوجة المنفصل لازم يتكتب، إلا لو الانفصال رسمي بحكم محكمة.",
+      "en": "You must list your spouse and all unmarried children under 21, even if they will not travel. Not listing them may make you ineligible. A separated spouse must be listed, unless the separation is legal, by a court order."
+    },
+    "passportAtRegistration": {
+      "kind": "rule",
+      "source": "passportRule",
+      "ar": "وقت التسجيل: لازم الباسبور يكون ساري ومش منتهي. المطلوب باسبور المتقدم الأساسي بس، وبترفع صورة صفحة البيانات وصفحة التوقيع (JPEG مش PDF، وحجمها ما يزيدش عن 5MB).",
+      "en": "At registration the passport must be valid and not expired. Only the main applicant's passport is needed, and you upload a scan of the data page and the signature page (JPEG, not PDF, and no larger than 5 MB)."
+    },
+    "passportExemptions": {
+      "kind": "rule",
+      "source": "passportRule",
+      "ar": "فيه 3 استثناءات بس من شرط الباسبور: عديمو الجنسية، ومواطنو دولة شيوعية مش قادرين ياخدوا باسبور من حكومتهم، ومن عنده أو متوقع له إعفاء فردي معتمد. والظروف المادية لوحدها مش سبب للإعفاء.",
+      "en": "There are only 3 exceptions to the passport requirement: stateless people, nationals of a Communist-controlled country who cannot get a passport from their government, and people who have or expect an approved individual waiver. Money problems alone are not a reason for an exception."
+    },
+    "passportSixMonths": {
+      "kind": "tip",
+      "source": "passportValidity",
+      "ar": "نصيحة مهمة: خلي الباسبور صالح لمدة 6 شهور على الأقل. التأشيرة نفسها بتحتاج الباسبور يكون صالح 60 يوم بعد مدة التأشيرة، والتجديد بياخد وقت، فمتستناش لآخر لحظة.",
+      "en": "Important tip: keep the passport valid for at least 6 months. The visa itself needs a passport valid for 60 days beyond the visa's validity, and renewing takes time, so do not wait until the last moment."
+    },
+    "familyPassports": {
+      "kind": "rule",
+      "source": "passportValidity",
+      "ar": "كل متقدم للفيزا، ومنهم الزوج/الزوجة والأولاد، لازم يقدّم باسبور. مش مطلوب وقت التسجيل، لكن هتحتاجه قبل المقابلة.",
+      "en": "Every visa applicant, including the spouse and children, must present a passport. It is not needed at registration, but you will need it before the interview."
+    },
+    "photosSixMonths": {
+      "kind": "rule",
+      "source": "passportRule",
+      "ar": "الصور لازم تكون متصورة خلال آخر 6 شهور قبل التقديم.",
+      "en": "The photos must have been taken within the 6 months before you submit the entry."
+    },
+    "photosWhoNeeds": {
+      "kind": "rule",
+      "source": "dvInstructions",
+      "ar": "لازم صورة للمتقدم وللزوج/الزوجة ولكل الأولاد غير المتزوجين تحت 21 سنة، حتى لو مش هيسافروا. مش لازم صورة لزوج/زوجة أو ابن هو مواطن أمريكي أو حامل جرين كارد.",
+      "en": "A photo is needed for the applicant, the spouse and every unmarried child under 21, even if they will not travel. No photo is needed for a spouse or child who is already a US citizen or green card holder."
+    },
+    "registrationFee": {
+      "kind": "rule",
+      "source": "feeRule",
+      "ar": "رسم التسجيل دولار واحد بس، بقرار نهائي من الخارجية في 16 سبتمبر 2025. بيتدفع أونلاين وقت التسجيل.",
+      "en": "The registration fee is just one dollar, by a final State Department rule of 16 September 2025. It is paid online at registration."
+    },
+    "oneEntryPerPerson": {
+      "kind": "rule",
+      "source": "dvInstructions",
+      "ar": "كل شخص يقدّم استمارة واحدة بس: أكتر من استمارة بيلغي كل استمارات الشخص ده. والزوجين يقدروا يقدّموا، كل واحد استمارته.",
+      "en": "Each person may submit one entry only: more than one entry cancels all of that person's entries. Spouses may each submit their own entry."
+    },
+    "panelPhysician": {
+      "kind": "rule",
+      "source": "medicalRule",
+      "ar": "الكشف الطبي بيبقى عند الدكتور أو الجهة اللي السفارة بتحددها (panel physician)، مش أي دكتور. السعر اسأل عنه العيادة نفسها. لو مش في مصر: صفحة السفارة الأمريكية في بلدك فيها الأطباء المعتمدين.",
+      "en": "The medical exam is done by the doctor or clinic the embassy designates (a panel physician), not any doctor. Ask that clinic directly for the price. If you are not in Egypt, your country's US embassy page lists its approved doctors."
+    },
+    "immigrantFee": {
+      "kind": "rule",
+      "source": "uscisFee",
+      "ar": "رسم USCIS مستحسن بشدة تدفعه بعد ما تستلم الفيزا وقبل السفر. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع. الدفع أونلاين بس.",
+      "en": "You are strongly encouraged to pay the USCIS fee after you collect the visa and before you travel. You can also pay after you arrive, but the green card is not sent until it is paid. Payment is online only."
+    },
+    "photoSpecs": {
+      "kind": "rule",
+      "source": "dvInstructions",
+      "ar": "مواصفات الصورة الرقمية حسب تعليمات DV-2026 (هتتراجع أول ما تنزل تعليمات DV-2027): 600 × 600 بكسل، بصيغة JPEG، حجمها 240 كيلوبايت أو أقل. وش مواجه للكاميرا، والراس من 22 لـ35 مم (حوالي 50 لـ69% من طول الصورة)، خلفية بيضاء أو off-white سادة، من غير نضارة. ممنوع غطا راس بيخبّي الشعر أو خط الشعر، إلا لو بتلبسه كل يوم لسبب ديني. ممنوع أي تعديل على الصورة.",
+      "en": "The digital photo specifications from the DV-2026 instructions (to be rechecked when the DV-2027 instructions come out): 600 × 600 pixels, JPEG format, 240 kilobytes or less. Face the camera directly, head 22 to 35 mm (about 50 to 69% of the photo height), plain white or off-white background, no eyeglasses. No hat or head covering that hides the hair or hairline, unless worn every day for a religious reason. No editing of the photo."
+    }
+  },
+  "byItem": {
+    "passport": ["passportAtRegistration", "passportExemptions", "passportSixMonths"],
+    "familyPassports": ["familyPassports"],
+    "entryPhotos": ["photosWhoNeeds", "photosSixMonths", "photoSpecs", "familyListing"],
+    "registrationFee": ["registrationFee", "oneEntryPerPerson"],
+    "medicalExam": ["panelPhysician"],
+    "immigrantFee": ["immigrantFee"]
+  }
+}

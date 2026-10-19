@@ -1,11 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Stepper } from "@/components/calc/Stepper";
+import { RuleNote } from "@/components/guide/RuleNote";
 import { Link } from "@/i18n/navigation";
 import { MAX_ADULTS, MAX_CHILDREN } from "@/lib/calc/model";
 import { usePlan, type PlanView } from "@/lib/calc/use-plan";
+import { noteById } from "@/lib/guide/notes";
 
 /** Who travels: the adults and children the "per person" costs are multiplied by. */
 export function SetupScreen() {
@@ -36,6 +38,7 @@ export function SetupScreen() {
         onChange={setChildren}
       />
       <ChildAges view={view} />
+      <FamilyListingRule />
       <div className="note">{t("note")}</div>
       <Link className="btn pr" href="/fees" style={{ marginTop: 18 }}>
         {t("next")}
@@ -108,4 +111,13 @@ function ChildAges({ view }: { view: PlanView }) {
       </div>
     </div>
   );
+}
+
+/** The official rule about who must be listed on the entry, shown where the household is set up. */
+function FamilyListingRule() {
+  const t = useTranslations();
+  const locale = useLocale() === "en" ? "en" : "ar";
+  const note = noteById("familyListing", locale);
+  if (!note) return null;
+  return <RuleNote note={note} sourceWord={t("guide.source")} />;
 }
