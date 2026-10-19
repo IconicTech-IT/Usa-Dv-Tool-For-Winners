@@ -25,15 +25,19 @@ interface AmountInputProps {
   needsRate?: boolean | undefined;
   /** A line shown under the box, such as what the amount is multiplied by. */
   note?: ReactNode;
+  /** One line under the name that says what the box covers ("Includes: ..."). */
+  includes?: string | undefined;
 }
 
 /** One money box: label, dollar/local switch, the number, and the "how do I know the price?" button. */
 export function AmountInput(props: AmountInputProps) {
   const { label, field, localCode, onChange, scaling, hasToggle, guideItemId, invalid, needsRate, note } =
     props;
+  const { includes } = props;
   const t = useTranslations();
   const inputId = useId();
   const messageId = `${inputId}-message`;
+  const includesId = `${inputId}-includes`;
   const message = fieldMessage(t, invalid === true, needsRate === true);
 
   return (
@@ -49,6 +53,7 @@ export function AmountInput(props: AmountInputProps) {
           <ScalingBadge scaling={scaling} />
         )}
       </div>
+      <IncludesLine id={includesId} text={includes} />
       <div className={invalid ? "input err" : "input"}>
         <CurrencySwitch
           value={field.currency}
@@ -62,7 +67,10 @@ export function AmountInput(props: AmountInputProps) {
           placeholder="0"
           value={field.raw}
           aria-invalid={invalid === true}
-          aria-describedby={message === null ? undefined : messageId}
+          aria-describedby={describedBy(
+            includes === undefined ? null : includesId,
+            message === null ? null : messageId,
+          )}
           onChange={(event) => onChange({ raw: event.target.value })}
         />
       </div>
@@ -83,6 +91,22 @@ export function AmountInput(props: AmountInputProps) {
 }
 
 type Translate = ReturnType<typeof useTranslations>;
+
+/** The ids of the lines that describe the box, in one attribute; undefined when there are none. */
+function describedBy(...ids: (string | null)[]): string | undefined {
+  const present = ids.filter((id): id is string => id !== null);
+  return present.length === 0 ? undefined : present.join(" ");
+}
+
+/** The one line under a box's name that says what it covers. */
+function IncludesLine({ id, text }: { id: string; text: string | undefined }) {
+  if (text === undefined) return null;
+  return (
+    <div id={id} className="help includes">
+      {text}
+    </div>
+  );
+}
 
 function fieldMessage(t: Translate, invalid: boolean, needsRate: boolean): string | null {
   if (invalid) return t("calc.errors.invalid");

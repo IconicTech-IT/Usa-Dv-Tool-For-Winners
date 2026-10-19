@@ -64,7 +64,7 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await expect(withFamily).toBeVisible();
   // Each card is typed on its own: a room for one while alone, the family's flat later.
   await box(alone, "Rent").locator("input").fill("400");
-  await box(alone, "Food").locator("input").fill("100");
+  await box(alone, "Food and groceries (monthly)").locator("input").fill("100");
   await box(alone, "Your family's monthly costs back home until they join you").locator("input").fill("70");
   await box(withFamily, "Rent").locator("input").fill("1000");
   await expect(alone.locator(".subtot")).toContainText("Monthly costs while you are alone");

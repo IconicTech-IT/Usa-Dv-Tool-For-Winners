@@ -555,3 +555,8 @@ dialog.sheet-dialog .warn {
     color: var(--tx2);
   }
 }
+
+/* The line under an item's name that says what it covers */
+.field .includes {
+  margin-block: 0 8px;
+}

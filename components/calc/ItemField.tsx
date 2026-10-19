@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { AmountInput } from "@/components/calc/AmountInput";
 import { Stepper } from "@/components/calc/Stepper";
 import { LineTotal } from "@/components/calc/LineTotal";
+import { useIncludes } from "@/components/calc/use-includes";
 import { countUnitOf, findItem, type ItemDef } from "@/lib/calc/catalog";
 import type { ItemResult } from "@/lib/calc/compute";
 import { effectiveScaling } from "@/lib/calc/scaling";
@@ -38,6 +39,7 @@ function guideIdOf(id: string): string | undefined {
 export function ItemField({ view, id, kind }: ItemFieldProps) {
   const t = useTranslations("calc.items");
   const fees = useTranslations("fees");
+  const includes = useIncludes(id);
   const def = findItem(id);
   const field = kind === "quick" ? view.plan.quick[id] : view.plan.items[id];
   if (!def || !field) return null;
@@ -59,6 +61,7 @@ export function ItemField({ view, id, kind }: ItemFieldProps) {
       invalid={result?.invalid}
       needsRate={result?.needsRate}
       note={lineTotalOf(def, field, result)}
+      includes={includes}
     />
   );
   if (id !== REGISTRATION_FEE_ITEM) return box;

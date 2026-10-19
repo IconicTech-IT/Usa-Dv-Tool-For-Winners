@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { AmountInput } from "@/components/calc/AmountInput";
+import { useIncludes } from "@/components/calc/use-includes";
 import { hasGuide } from "@/lib/guide/links";
 import type { PlanView } from "@/lib/calc/use-plan";
 
@@ -12,6 +13,7 @@ import type { PlanView } from "@/lib/calc/use-plan";
  */
 export function AloneField({ view, id }: { view: PlanView; id: string }) {
   const t = useTranslations("calc.items");
+  const includes = useIncludes(id);
   const field = view.plan.aloneMonthly[id];
   const result = view.result.aloneItems.find((item) => item.id === id);
   if (!field || result?.applicable === false) return null;
@@ -25,6 +27,7 @@ export function AloneField({ view, id }: { view: PlanView; id: string }) {
       guideItemId={hasGuide(id) ? id : undefined}
       invalid={result?.invalid}
       needsRate={result?.needsRate}
+      includes={includes}
     />
   );
 }
