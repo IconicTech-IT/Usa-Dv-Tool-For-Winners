@@ -1,60 +1,47 @@
 import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Sans_Arabic, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-
-import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
-
-import { routing, DIRECTION } from "@/i18n/routing";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Header } from "@/components/Header";
-import { AppBackground } from "@/components/AppBackground";
-import { Footer } from "@/components/Footer";
-import { ServiceWorker } from "@/components/ServiceWorker";
 import { Analytics } from "@vercel/analytics/next";
+
+import { PrivacyStrip } from "@/components/PrivacyStrip";
+import { ServiceWorker } from "@/components/ServiceWorker";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SkipLink } from "@/components/SkipLink";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { DIRECTION, routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/site";
 import "@/styles/globals.css";
 
 /**
- * ⚠️ الخطوط من Google Fonts بقرار من صاحب الموقع.
- * البريف (قسم ٢-ب) كان طالب خطوط محلية عشان الموقع يشتغل offline بالكامل
- * ومن غير أي خدمة خارجية. `next/font/google` بينزّل الملفات وقت الـbuild
- * ويقدّمها من نفس الدومين، فمفيش طلب وقت التشغيل لجوجل ومفيش تتبع —
- * بس الملفات نفسها بتيجي من عندهم وقت البناء.
+ * Fonts are downloaded at build time and served from our own domain, so the browser
+ * makes no request to Google and the site still works offline.
  */
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-plex-sans",
-  display: "swap",
-});
-
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const plexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "700"],
+  subsets: ["arabic", "latin"],
+  weight: ["400", "600", "700"],
   variable: "--font-plex-arabic",
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
-  display: "swap",
-});
+interface LayoutProps {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Pick<LayoutProps, "params">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
     manifest: "/manifest.json",
@@ -64,59 +51,36 @@ export async function generateMetadata({
 export function generateViewport(): Viewport {
   return {
     themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "#F4F6F5" },
-      { media: "(prefers-color-scheme: dark)", color: "#0C1620" },
+      { media: "(prefers-color-scheme: light)", color: "#F4F6F8" },
+      { media: "(prefers-color-scheme: dark)", color: "#0F1417" },
     ],
   };
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-
   setRequestLocale(locale);
-  const dir = DIRECTION[locale];
 
   return (
     <html
       lang={locale}
-      dir={dir}
+      dir={DIRECTION[locale]}
+      className={`${inter.variable} ${plexArabic.variable}`}
       suppressHydrationWarning
-      className={`${plexSans.variable} ${plexArabic.variable} ${plexMono.variable}`}
     >
       <body>
         <ThemeProvider>
           <NextIntlClientProvider>
-            <AppBackground />
-            <Header />
-            <main className="measure mx-auto px-4 py-10">{children}</main>
-            <Footer />
+            <SkipLink />
+            <SiteHeader />
+            <PrivacyStrip />
+            <div className="wrap">
+              <main id="main">{children}</main>
+              <SiteFooter />
+            </div>
             <ServiceWorker />
-            {/**
-             * تحليلات Vercel — بقرار من صاحب الموقع.
-             *
-             * الغرض منها سؤال واحد: فيه حد بيدخل الموقع ولا لأ؟ يعني عدّاد
-             * زيارات، مش تتبع أفراد. Vercel Web Analytics بتعمل ده من غير
-             * كوكيز، ومن غير معرّف ثابت للزائر، ومن غير تتبع بينها وبين أي
-             * موقع تاني — الـIP بيتعمله hash ومبيتخزنش.
-             *
-             * ⚠️ برضه دي **أول حاجة في الموقع بتبعت أي حاجة لبرّه جهاز
-             * المستخدم**. ونصوص زي "مفيش أي بيانات بتتجمع" في صفحة "عن
-             * الموقع" والفوتر اتسابت زي ما هي بقرار من صاحب الموقع. لو حد
-             * جه يعدّل النصوص دي بعدين، ياخد باله إن العدّاد ده شغال.
-             *
-             * مجانية على خطة Hobby في حدود الاستخدام، وفوق كده بتقف العد
-             * ومفيش فاتورة — فشرط "تكلفة التشغيل صفر" لسه قايم.
-             *
-             * ⚠️ الحزمة لوحدها مش كفاية: لازم تتفعّل كمان من تبويب Analytics
-             * في إعدادات المشروع على Vercel.
-             */}
+            {/* Visit counter only: no cookies and no personal data. The privacy line says so. */}
             <Analytics />
           </NextIntlClientProvider>
         </ThemeProvider>

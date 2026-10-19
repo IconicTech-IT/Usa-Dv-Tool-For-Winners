@@ -92,6 +92,17 @@ describe("messages", () => {
         expect(Object.keys(branch(tree, "groups")).sort()).toEqual(groups);
       });
 
+      it("has a hint for every calculator group, and the timeline has text for every stage", () => {
+        const groupIds = Object.keys(branch(tree, "groups")).filter((id) => id !== "monthlyCosts");
+        expect(Object.keys(branch(tree, "groupHints")).sort()).toEqual(groupIds.sort());
+        expect(Object.keys(branch(tree, "timeline")).sort()).toEqual([...STAGES].sort());
+      });
+
+      it("has a hint for every runway scenario", () => {
+        const expected = SCENARIO_START_MONTHS.map((n) => `start${n}`).sort();
+        expect(Object.keys(branch(tree, "scenarioHints")).sort()).toEqual(expected);
+      });
+
       it("has a label for every scaling kind", () => {
         expect(Object.keys(branch(tree, "scaling")).sort()).toEqual([...SCALINGS].sort());
       });

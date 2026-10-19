@@ -1,117 +1,61 @@
-@import "tailwindcss";
-@import "./tokens.css";
+@import "./design.css";
 
-/* الثيم بيتحط كـclass على <html> عن طريق next-themes */
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme inline {
-  --color-paper: var(--paper);
-  --color-ink: var(--ink);
-  --color-slate: var(--slate);
-  --color-seal: var(--seal);
-  --color-signal: var(--signal);
-  --color-alert: var(--alert);
-  --font-mono: var(--font-mono);
-}
-
-html {
+/* Basics every page needs on top of the design: focus, skip link, reduced motion. */
+:root {
   color-scheme: light;
 }
-html.dark {
+.dark {
   color-scheme: dark;
 }
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-sans-en);
-  -webkit-font-smoothing: antialiased;
-}
-
-html[lang="ar"] body {
-  font-family: var(--font-sans-ar);
-}
-
-/* عمود القراية */
-.measure {
-  max-width: var(--measure);
-}
-
-/* focus ظاهر في كل حتة — شرط في WCAG AA */
-:where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--signal);
+:focus-visible {
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
-
-/* ---------- البادچات: ٣ بس ----------
-   verified  → من غير بادج (المصدر في الفوتنوت)
-   judgment  → من غير بادج (بيتعرض كوصف مش رقم)
-   estimated → "تقديري"
-   NEEDS_VERIFICATION → "محتاج تأكيد" */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
-  font-size: 0.75rem;
-  line-height: 1;
-  padding: 0.3em 0.6em;
-  border-radius: 999px;
-  border: 1px solid currentColor;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
   white-space: nowrap;
+  border: 0;
 }
-.badge--estimated {
-  color: var(--badge-estimated-fg);
-  border-color: color-mix(in srgb, var(--slate) 55%, transparent);
-  background: color-mix(in srgb, var(--slate) 8%, transparent);
+.skip {
+  position: absolute;
+  inset-inline-start: 8px;
+  inset-block-start: -100px;
+  z-index: 10;
+  padding: 10px 14px;
+  border: 2px solid var(--pr);
+  border-radius: 10px;
+  background: var(--sf);
+  color: var(--pr);
+  font-weight: 700;
+  text-decoration: none;
 }
-.badge--needs-verification {
-  color: var(--badge-needs-fg);
-  border-color: color-mix(in srgb, var(--signal) 65%, transparent);
-  background: color-mix(in srgb, var(--signal) 10%, transparent);
+.skip:focus {
+  inset-block-start: 8px;
 }
-
-/* نص تحذيري داخل المحتوى. مش --signal مباشرة لنفس سبب البادج:
-   --signal مظبوط كإطار (٣:١) وواقع كنص (٣.٣:١ على خلفية فاتحة). */
-.text-warn {
-  color: var(--badge-needs-fg);
+a.icbtn,
+a.btn,
+a.lnk,
+a.calc,
+a.brand {
+  text-decoration: none;
 }
-
-/* ---------- شريط الخطة ---------- */
-.plan-bar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 0.55rem 1rem;
-  font-size: 0.9rem;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-block-end: 1px solid var(--glass-border);
+.btn:disabled,
+.icbtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
-.plan-bar__sep {
-  color: var(--slate);
-  opacity: 0.6;
-}
-
-/* ---------- عناصر الإدخال ----------
-   ⚠️ كانت كلها `bg-transparent`. الشكل المقفول كان تمام لأن الكارت
-   وراه، بس قايمة الـ<select> لما بتفتح المتصفح بيرسمها بخلفية النظام
-   وبيسيب لون النص زي ما هو — فالنص الفاتح بتاع الدارك كان بيقع على
-   أبيض. دلوقتي الخلفية واللون صريحين في الثيمين، وللـoption كمان
-   عشان القايمة المفتوحة متعتمدش على المتصفح. */
-select option,
-select optgroup {
-  background-color: var(--field-bg);
-  color: var(--ink);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--slate);
-  opacity: 1; /* فايرفوكس بيخففها لـ0.54 فالتباين بيقع */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

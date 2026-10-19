@@ -4,48 +4,313 @@
     "description": "A free site for anyone thinking about the DV lottery: type your own costs and work out how much you need before you start."
   },
   "header": {
+    "otherLanguage": "عربي",
+    "switchLanguage": "Arabic",
+    "toggleTheme": "Toggle light and dark mode",
     "brand": "DV Compass",
-    "toggleTheme": "Toggle theme"
+    "skipToContent": "Skip to content"
   },
-  "home": {
-    "title": "DV Compass",
-    "lead": "A free site to work out the cost of moving through the DV lottery. You type every amount; the site does the maths.",
-    "building": "The new calculator is being built."
+  "privacy": {
+    "line": "General visit statistics only, no personal data. The numbers you type stay on your device."
   },
   "footer": {
-    "contactBefore": "For any complaint, suggestion or problem with the calculator, email me: ",
-    "email": "usalottery2027@gmail.com",
-    "legal": "This site is not affiliated with the U.S. government and is not legal or financial advice."
+    "mailBefore": "For any complaint, suggestion or problem with the calculator, email me at:",
+    "line": "A free site. No ads, no sign-up.",
+    "offline": "Works offline after the first visit.",
+    "legal": "This site is not affiliated with the US government and is not legal or financial advice.",
+    "about": "About",
+    "privacy": "Privacy",
+    "sources": "Official sources",
+    "scam": "Beware of scams",
+    "pagesLabel": "Site pages"
+  },
+  "common": {
+    "back": "Back to the calculator",
+    "next": "Next",
+    "edit": "edit",
+    "fill": "Fill",
+    "totalSoFar": "Total so far",
+    "close": "Close",
+    "guide": "How do I find this price?",
+    "perPerson": "per person",
+    "perChild": "per child",
+    "one": "per person",
+    "all": "whole family",
+    "usdAria": "In dollars",
+    "localAria": "In your local currency",
+    "cumulative": "Up to here",
+    "stageTotal": "Stage total"
+  },
+  "mode": {
+    "quick": "Quick",
+    "detailed": "Detailed",
+    "help": "Quick: 5 big categories. Detailed: every item on its own."
+  },
+  "rate": {
+    "label": "Current exchange rate",
+    "currencyLabel": "Your local currency",
+    "pickTitle": "Choosing the local currency",
+    "pickLead": "The full ISO 4217 list with names and codes, searchable, common Arab currencies first. EGP is the default.",
+    "pickSearch": "Search by name or code",
+    "pickArab": "Common Arab currencies",
+    "pickAll": "All currencies",
+    "aria": "Exchange rate: pounds per dollar",
+    "google": "Check the rate on Google",
+    "hint": "You type the rate. Every pound amount is converted with it.",
+    "empty": "Type the exchange rate first so we can show the pound amounts too.",
+    "short": "at the rate you typed",
+    "note": "Pound amounts use the exchange rate you typed above."
+  },
+  "home": {
+    "title": "Work out the real cost of immigrating, step by step",
+    "lead": "A free site for anyone thinking about the DV lottery. You type every amount; we show you where to find the real price.",
+    "rule": "Nothing here is our number: no fees, rents or estimates.",
+    "start": "Start: who is travelling with you?",
+    "calculators": "Calculators",
+    "note": "Next to every expense field there is a \"How do I find this price?\" button that opens a page with official or real links so you find the price yourself.",
+    "pages": "Useful pages",
+    "scamBanner": "Entering the lottery is free and only on the official site. Never pay an agent or an \"office\".",
+    "scamMore": "Know the scam signs",
+    "cards": {
+      "fees": {
+        "title": "Paperwork and fees",
+        "text": "Every stage from applying to arrival, with its fees"
+      },
+      "moving": {
+        "title": "Moving and settling",
+        "text": "Flights, first housing, furniture, a car, insurance…"
+      },
+      "runway": {
+        "title": "Runway: how much do you need?",
+        "text": "If the job starts on day 1, or after 1, 2 or 3 months, with your income and savings"
+      },
+      "results": {
+        "title": "Results summary",
+        "text": "All your numbers on one page, print or save as PDF"
+      },
+      "charge": {
+        "title": "The new public charge rule",
+        "text": "Explained from official sources only, with a simple self-check"
+      },
+      "english": {
+        "title": "Learn English",
+        "text": "Resources by goal, and a ready prompt to learn with"
+      },
+      "scam": {
+        "title": "Beware of scams",
+        "text": "Entry is free and only on the official site. Know the scam signs"
+      },
+      "compare": {
+        "title": "Compare two plans",
+        "text": "Alone and with family side by side, from two saved files"
+      }
+    }
+  },
+  "setup": {
+    "title": "Who is travelling with you?",
+    "lead": "We use this to multiply \"per person\" costs by the number of people. Nothing is stored with us.",
+    "who": "Travelling",
+    "alone": "Alone",
+    "family": "With family",
+    "adults": "Adults",
+    "adultsHelp": "You and anyone over 21",
+    "kids": "Children",
+    "kidsHelp": "Under 21",
+    "agesHelp": "Enter each child's age (some fees and costs depend on it)",
+    "child": "Child",
+    "note": "You can change this at any time; the calculators update on their own.",
+    "next": "Next: paperwork and fees"
+  },
+  "fees": {
+    "title": "Paperwork and fees",
+    "lead": "Type each fee as you find it on the official source. The total adds itself up.",
+    "note": "Fields marked \"per person\" are multiplied by the number of people from the household setup."
+  },
+  "moving": {
+    "title": "Moving and settling",
+    "lead": "The first period after arrival. Fill what applies to you and leave the rest empty.",
+    "note": "The guide links take you to real sites (rental and grocery sites, for example) so you see the price yourself."
+  },
+  "runway": {
+    "title": "Runway: how much do you need?",
+    "lead": "Type your monthly costs; we show the savings needed if the job starts on day 1 or is delayed by 1, 2 or 3 months.",
+    "monthlyHeading": "Monthly costs",
+    "monthlyTotal": "Monthly total",
+    "incomeHeading": "Income and savings",
+    "incomeLead": "Optional. Lets the scenarios tell you how much more to save after what you already have.",
+    "income": "Expected net monthly income",
+    "spouseIncome": "Spouse income (optional)",
+    "savings": "Savings you hold now",
+    "buffer": "Emergency buffer (months)",
+    "bufferHelp": "You choose the number of months",
+    "stillToSave": "Still to save",
+    "scenariosHeading": "Scenarios",
+    "scenariosLead": "Each scenario = paperwork and fees + moving + (monthly costs × months without income) + buffer − your savings.",
+    "note": "The highlighted scenario is the one we suggest planning for."
+  },
+  "results": {
+    "title": "Results summary",
+    "lead": "All your numbers on one page. Print or save as PDF from the browser.",
+    "household": "Household",
+    "monthly": "Monthly costs",
+    "oneOff": "Total one-off costs",
+    "print": "Print / save PDF",
+    "reset": "Start over",
+    "note": "These figures come from your own inputs. Check the sources before deciding.",
+    "timelineHeading": "How much, and by when?",
+    "timelineLead": "Every cost has a due stage. This is the cash that must be ready at each stage, and the running total up to it.",
+    "forgotHeading": "What did you forget?",
+    "forgotLead": "The empty fields in each stage. You need not fill them all; just make sure nothing is missing.",
+    "planHeading": "Save your plan",
+    "planLead": "A small file on your device, no account. Open it later or compare it with another plan.",
+    "savePlan": "Save plan as a file",
+    "openPlan": "Open a saved plan",
+    "compare": "Compare two plans",
+    "whatsapp": "Share on WhatsApp",
+    "savings": "Savings held"
+  },
+  "quick": {
+    "title": "Quick mode",
+    "lead": "Just 5 big categories. For the details, switch to \"Detailed\".",
+    "paperwork": "All paperwork and fees",
+    "travel": "Travel",
+    "housing": "First housing and set-up",
+    "car": "Car and insurance",
+    "monthly": "Costs for one month",
+    "note": "Quick and detailed figures are kept separately. The mode you choose is what the summary shows."
+  },
+  "compare": {
+    "title": "Compare two plans",
+    "lead": "Open two saved plans (for example alone and with family) and see the difference side by side.",
+    "planA": "Plan A",
+    "planB": "Plan B",
+    "openFile": "Open file",
+    "household": "Household",
+    "oneOff": "One-off costs",
+    "monthly": "Monthly",
+    "scenario3": "Job after 3 months",
+    "savings": "Savings held",
+    "needed": "Still to save",
+    "note": "Both files stay on your device. Nothing is sent."
+  },
+  "scam": {
+    "title": "Beware of scams",
+    "lead": "Everything official in the lottery is free and only on the US government site. Anyone asking for money to \"register you\" or \"guarantee\" you is a scammer.",
+    "banner": "Entering the lottery is free and only on the official site. Never pay an agent or an \"office\".",
+    "factsHeading": "The facts",
+    "facts": {
+      "1": "Entry is 100% free and only at dvprogram.state.gov.",
+      "2": "You check the result yourself on the official Entrant Status Check. No email, message or call tells you that you won.",
+      "3": "There are no approved offices or agents. Nobody can raise your chances.",
+      "4": "Copycat sites look official. Make sure the address ends in .gov."
+    },
+    "signsHeading": "Scam signs",
+    "signs": {
+      "1": "Asks for money to register you or to \"guarantee\" a win.",
+      "2": "Tells you that you won by message, email or phone.",
+      "3": "Asks for a money transfer, card details or your passport before you check the official site.",
+      "4": "The address does not end in .gov, or the tone is urgent and threatening."
+    },
+    "linksHeading": "Official links only",
+    "links": {
+      "entry": "Official entry site",
+      "status": "Entrant Status Check (results)",
+      "instructions": "State Department lottery instructions",
+      "fraud": "State Department fraud warning"
+    },
+    "note": "This site is not affiliated with the US government. We only point you to the official pages."
+  },
+  "guide": {
+    "title": "How do I find the price of food?",
+    "lead": "We will not give you a number. We show you where to see it yourself, in the city you plan to live in.",
+    "how": "The method",
+    "step1": "Open a supermarket site from the links below and pick a store in your intended city.",
+    "step2": "Build a one-week basket of what you actually buy and read the total.",
+    "step3": "Multiply by 4 and type the number into the calculator. Repeat now and then; prices change.",
+    "links": "Real links",
+    "note": "These are external sites. We do not set prices and are not responsible for them.",
+    "backToCalculator": "Type the number into the calculator"
+  },
+  "guideHealth": {
+    "title": "How do I find the price of health insurance?",
+    "lead": "We will not give you a number. The price depends on the state, your age, household size and income, and you see it yourself on the official US government site.",
+    "step1": "Open HealthCare.gov, enter the ZIP code of your intended city, and your household members and ages.",
+    "step2": "Browse the plans and the monthly premium of each one, and check whether a subsidy applies to your expected income.",
+    "step3": "Type the monthly premium into the calculator. For children, check Medicaid.gov and the CHIP programme; they may be covered at lower cost.",
+    "state": "Some states run their own marketplace; HealthCare.gov sends you there automatically. We do not set prices."
+  },
+  "charge": {
+    "title": "The new public charge rule",
+    "lead": "A plain explanation of the \"public charge\" rule from official sources only. We relay what the official page says and add nothing of our own.",
+    "stamp": "Checked against the official source on",
+    "legal": "This is not legal advice. Decisions rest with the embassy and the authorities, and every case is different.",
+    "section1": "What is the rule?",
+    "section2": "Who does it affect?",
+    "section3": "What counts and what does not?",
+    "links": "Official sources",
+    "link1": "USCIS public charge page",
+    "link2": "The rule text in the Federal Register",
+    "link3": "State Department page for immigrants",
+    "checkHeading": "Simple self-check (optional)",
+    "checkLead": "Type the numbers exactly as they appear on the official page. We only compare; we set no threshold.",
+    "threshold": "The threshold shown on the official page for your household size",
+    "whereThreshold": "Where is this threshold on the official page?",
+    "yourAmount": "Your yearly income or savings",
+    "householdSize": "Household size",
+    "householdHelp": "From the household setup",
+    "result": "Result",
+    "resultEmpty": "Type both numbers",
+    "resultNote": "The result only says whether your number is above or below the threshold you typed. It is not a judgement on your case."
+  },
+  "english": {
+    "title": "Learn English",
+    "lead": "Free resources grouped by your goal, and a ready prompt to paste into any assistant that will teach you step by step.",
+    "promptHeading": "Ready prompt",
+    "copy": "Copy",
+    "copyAria": "Copy the prompt",
+    "promptHelp": "Copy it into any assistant and change your level in the brackets.",
+    "note": "All links go to free external sites. Know a better one? Send it to the email below."
+  },
+  "errors": {
+    "notFoundTitle": "This page does not exist",
+    "notFoundText": "The link may be old or mistyped. Go back to the home page and continue from there.",
+    "errorTitle": "Something went wrong",
+    "errorText": "Try loading the page again.",
+    "retry": "Try again",
+    "goHome": "Home"
   },
   "calc": {
-    "sections": {
-      "fees": "Paperwork and fees",
-      "moving": "Moving and settling",
-      "monthly": "Monthly costs",
-      "runway": "How much you need before income starts",
-      "results": "Results",
-      "quick": "Quick",
-      "detailed": "Detailed"
-    },
     "stages": {
-      "beforeInterview": "Before the interview",
-      "atInterview": "At the interview",
-      "beforeTravel": "Before travel",
-      "firstMonth": "First month there",
-      "monthly": "Every month"
+      "beforeInterview": "before the interview",
+      "atInterview": "at the interview",
+      "beforeTravel": "before travel",
+      "firstMonth": "first month there",
+      "monthly": "monthly"
     },
     "groups": {
-      "entry": "Entering the lottery",
-      "documents": "Documents",
-      "interview": "The interview",
-      "afterVisa": "After the visa",
+      "entry": "Applying",
+      "documents": "After selection",
+      "interview": "Interview",
+      "afterVisa": "Before travel",
       "travel": "Travel",
-      "housing": "Housing",
-      "household": "Household",
-      "connectivity": "Phone and services",
+      "housing": "First housing",
+      "household": "Setting up home",
+      "connectivity": "Utilities",
       "car": "Car",
-      "healthFamily": "Health and family",
+      "healthFamily": "Health and children",
       "monthlyCosts": "Monthly costs"
+    },
+    "groupHints": {
+      "entry": "Lottery entry and photos",
+      "documents": "Exam and documents",
+      "interview": "Fees and travel to the embassy",
+      "afterVisa": "USCIS fee and anything else",
+      "travel": "Tickets, bags, insurance",
+      "housing": "Until you get the lease",
+      "household": "Furniture, clothes, basics",
+      "connectivity": "Power, internet, phone",
+      "car": "Licence, purchase, insurance",
+      "healthFamily": "Health insurance and childcare"
     },
     "scaling": {
       "total": "For the whole household",
@@ -55,27 +320,27 @@
     },
     "toggle": {
       "label": "Counted",
-      "household": "Whole household",
-      "perPerson": "Per person"
+      "household": "whole family",
+      "perPerson": "per person"
     },
     "items": {
-      "medicalExam": "Medical exam",
+      "entryPhotos": "Photos to the lottery spec",
+      "entryHelp": "Help with the entry (if any)",
+      "medicalExam": "Medical exam and vaccines",
       "policeCertificate": "Police certificate",
-      "translation": "Certified translations",
-      "civilCertificates": "Birth, marriage and civil records",
-      "militaryCertificate": "Military service record (if required)",
-      "entryPhotos": "Entry photos",
-      "entryHelp": "Help with the entry (if you used any)",
+      "translation": "Translation and certification",
+      "civilCertificates": "Birth, marriage and education certificates",
+      "militaryCertificate": "Military certificate",
       "visaPhotos": "Visa photos",
-      "otherPaperwork": "Other paperwork",
       "visaFee": "Visa fee",
-      "interviewTravel": "Getting to the interview",
+      "interviewTravel": "Travel to Cairo and interview hotel",
       "passportCourier": "Passport courier",
       "immigrantFee": "USCIS immigrant fee",
-      "ticket": "Flight tickets",
-      "excessBaggage": "Extra baggage",
-      "travelInsurance": "Travel insurance",
-      "temporaryStay": "Temporary stay on arrival",
+      "otherPaperwork": "Other",
+      "ticket": "Flight ticket",
+      "excessBaggage": "Excess baggage",
+      "travelInsurance": "Travel insurance for the first weeks",
+      "temporaryStay": "Temporary stay until the lease",
       "applicationFees": "Rental application fees",
       "securityDeposit": "Security deposit",
       "firstMonthRent": "First month's rent",
@@ -83,78 +348,69 @@
       "winterClothes": "Winter clothes",
       "householdBasics": "Household basics",
       "utilityDeposits": "Utility and internet deposits",
-      "phoneLine": "Phone line setup",
-      "licenseTests": "Driving tests and licence",
+      "phoneLine": "Phone line",
+      "licenseTests": "Driver licence tests",
       "carPurchase": "Car purchase",
-      "carInsuranceStart": "Car insurance (first payment)",
-      "carRegistration": "Car registration and plates",
-      "healthInsuranceStart": "Health insurance (first payment)",
-      "childcareStart": "Childcare (sign-up or first payment)",
-      "otherMoving": "Other moving costs",
+      "carInsuranceStart": "Car insurance",
+      "carRegistration": "Registration",
+      "healthInsuranceStart": "Health insurance (first month)",
+      "childcareStart": "Childcare or daycare",
+      "otherMoving": "Other",
       "rent": "Rent",
-      "utilities": "Electricity, water and gas",
+      "utilities": "Utilities",
       "internet": "Internet",
-      "phone": "Mobile phone",
+      "phone": "Phone",
       "food": "Food",
-      "transport": "Transport",
+      "transport": "Transport or fuel",
       "healthInsurance": "Health insurance",
       "carInsurance": "Car insurance",
       "childcare": "Childcare",
-      "otherMonthly": "Other monthly costs",
+      "otherMonthly": "Other",
       "quickPaperwork": "All paperwork and fees",
       "quickTravel": "Travel",
       "quickHousing": "First housing and set-up",
       "quickCar": "Car and insurance",
-      "quickMonthly": "One month of costs"
+      "quickMonthly": "Costs for one month"
     },
-    "household": {
-      "title": "Your household",
-      "adults": "Number of adults",
-      "children": "Number of children",
-      "childAge": "Age of child {n} (optional)"
+    "timeline": {
+      "beforeInterview": {
+        "title": "Before the interview",
+        "text": "Exam, documents, photos"
+      },
+      "atInterview": {
+        "title": "At the interview",
+        "text": "Visa fee and travel to the embassy"
+      },
+      "beforeTravel": {
+        "title": "Before travel",
+        "text": "USCIS fee, tickets, insurance"
+      },
+      "firstMonth": {
+        "title": "First month there",
+        "text": "Housing, set-up, car, health insurance"
+      },
+      "monthly": {
+        "title": "Monthly",
+        "text": "Your monthly costs × months without income"
+      }
     },
-    "fields": {
-      "amount": "Amount",
-      "currency": "Currency",
-      "usd": "US dollar",
-      "local": "My currency",
-      "rate": "Dollar rate in your currency",
-      "rateHelp": "Type how many units of your currency equal one US dollar. You type the rate.",
-      "rateLink": "Look up today's dollar rate",
-      "income": "Your monthly income once you work",
-      "spouseIncome": "Your spouse's monthly income",
-      "savings": "Your savings now",
-      "bufferMonths": "Emergency buffer in months (optional)"
+    "scenarios": {
+      "start0": "Job from day 1",
+      "start1": "Job after 1 month",
+      "start2": "Job after 2 months",
+      "start3": "Job after 3 months"
     },
-    "guide": {
-      "button": "How do I find this price?",
-      "title": "How to find the price yourself",
-      "back": "Back to the calculator",
-      "notice": "We do not quote prices. These sources show the real price, and you type it.",
-      "official": "Official source",
-      "watch": "Watch out",
-      "noLinks": "There is no specific source for this item. Type the amount you know."
+    "scenarioHints": {
+      "start0": "0 months without income",
+      "start1": "1 month without income",
+      "start2": "2 months without income",
+      "start3": "Safest: 3 months without income"
     },
     "errors": {
       "empty": "Type the amount",
-      "invalid": "Type a valid number",
+      "invalid": "Numbers only, please.",
       "negative": "The number must be zero or more",
       "needsRate": "Type the dollar rate first"
-    },
-    "results": {
-      "oneTime": "One-time costs",
-      "monthly": "Monthly costs",
-      "required": "Amount needed",
-      "shortfall": "You are short by",
-      "surplus": "You have extra",
-      "forgot": "Did you forget something?",
-      "partial": "The total is partial: some amounts are in your currency and no dollar rate was typed."
-    },
-    "scenarios": {
-      "start0": "Income starts on day one",
-      "start1": "Income starts after one month",
-      "start2": "Income starts after two months",
-      "start3": "Income starts after three months"
     },
     "plan": {
       "save": "Save my plan as a file",
