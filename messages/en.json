@@ -73,7 +73,7 @@
     "calculators": "Calculators",
     "note": "Next to every expense field there is a \"How do I find this price?\" button that opens a page with official or real links so you find the price yourself.",
     "pages": "Useful pages",
-    "scamBanner": "Entering the lottery is free and only on the official site. Never pay an agent or an \"office\".",
+    "scamBanner": "Registering for the lottery has an official fee of just one dollar ($1), set by the US State Department. Any extra money is the office's service charge.",
     "scamMore": "Know the scam signs",
     "cards": {
       "fees": {
@@ -102,7 +102,7 @@
       },
       "scam": {
         "title": "Beware of scams",
-        "text": "Entry is free and only on the official site. Know the scam signs"
+        "text": "Protect yourself from scams: know the official fee and the scam signs"
       },
       "compare": {
         "title": "Compare two plans",
@@ -199,19 +199,20 @@
     "note": "Both files stay on your device. Nothing is sent."
   },
   "scam": {
-    "title": "Beware of scams",
-    "lead": "Everything official in the lottery is free and only on the US government site. Anyone asking for money to \"register you\" or \"guarantee\" you is a scammer.",
-    "banner": "Entering the lottery is free and only on the official site. Never pay an agent or an \"office\".",
+    "title": "Protect yourself from scams",
+    "lead": "People run scams in the name of the lottery. Know the official fee and check every step yourself.",
+    "banner": "Registering for the lottery has an official fee of just one dollar ($1), set by the US State Department. Any extra money is the office's service charge.",
     "factsHeading": "The facts",
     "facts": {
-      "1": "Entry is 100% free and only at dvprogram.state.gov.",
-      "2": "You check the result yourself on the official Entrant Status Check. No email, message or call tells you that you won.",
-      "3": "There are no approved offices or agents. Nobody can raise your chances.",
-      "4": "Copycat sites look official. Make sure the address ends in .gov."
+      "1": "You can register yourself on the official site that the US State Department announces.",
+      "2": "If you use an office, make sure it registers on the official site only, and that you personally keep the confirmation number.",
+      "3": "Nobody can guarantee a win or raise your chances.",
+      "4": "You check the result yourself, only on the official Entrant Status Check. No email or message tells you that you won.",
+      "5": "Copycat sites look official. Make sure the address ends in .gov, and beware of anyone who asks for money to \"win\"."
     },
     "signsHeading": "Scam signs",
     "signs": {
-      "1": "Asks for money to register you or to \"guarantee\" a win.",
+      "1": "Asks for money to \"guarantee\" a win or raise your chances.",
       "2": "Tells you that you won by message, email or phone.",
       "3": "Asks for a money transfer, card details or your passport before you check the official site.",
       "4": "The address does not end in .gov, or the tone is urgent and threatening."
@@ -223,7 +224,9 @@
       "instructions": "State Department lottery instructions",
       "fraud": "State Department fraud warning"
     },
-    "note": "This site is not affiliated with the US government. We only point you to the official pages."
+    "note": "This site is not affiliated with the US government. We only point you to the official pages.",
+    "fee": "Registering for the lottery has an official fee of just one dollar ($1), set by the US State Department. Do not let anyone take more than that as the government fee; any extra money is the office's service charge.",
+    "feeSource": "Source: the final rule published in the Federal Register on 16 September 2025"
   },
   "guide": {
     "title": "How do I find the price of food?",
