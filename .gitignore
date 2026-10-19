@@ -7,3 +7,7 @@ node_modules/
 
 # ملف بناء — مش بيتتبع
 tsconfig.tsbuildinfo
+
+# browser test output
+test-results/
+playwright-report/

@@ -157,8 +157,18 @@ html[dir="rtl"] .back svg {
   flex: 1;
 }
 .table-wrap {
-  overflow-x: auto;
   margin-top: 10px;
+}
+.doc-table {
+  table-layout: fixed;
+}
+.doc-table th:first-child,
+.doc-table td:first-child {
+  width: 36%;
+}
+.doc-table th,
+.doc-table td {
+  overflow-wrap: anywhere;
 }
 .doc-table th {
   padding-block: 8px;
@@ -179,7 +189,6 @@ html[dir="rtl"] .back svg {
 }
 .doc-table td:first-child {
   font-weight: 700;
-  white-space: nowrap;
 }
 
 /* Print (and "save as PDF" from the browser): the numbers only, on white */
@@ -240,4 +249,24 @@ html[dir="rtl"] .back svg {
 .update .btn {
   width: auto;
   height: 40px;
+}
+
+/* Contrast: small grey text on the tinted highlight, and dark text on the WhatsApp green */
+.sc.hi small {
+  color: var(--tx2);
+}
+.btn.wa {
+  color: #052e16;
+}
+
+/* Headings that stay in order (h1, then h2) but keep the look of the design */
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Small help text on the tinted prompt box needs the stronger grey to stay readable in dark mode */
+.prompt .help {
+  color: var(--tx2);
 }

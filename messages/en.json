@@ -11,7 +11,8 @@
     "skipToContent": "Skip to content"
   },
   "privacy": {
-    "line": "General visit statistics only, no personal data. The numbers you type stay on your device."
+    "line": "General visit statistics only, no personal data. The numbers you type stay on your device.",
+    "label": "Privacy"
   },
   "footer": {
     "mailBefore": "For any complaint, suggestion or problem with the calculator, email me at:",
@@ -202,7 +203,8 @@
     "scenario3": "Job after 3 months",
     "savings": "Savings held",
     "needed": "Still to save",
-    "note": "Both files stay on your device. Nothing is sent."
+    "note": "Both files stay on your device. Nothing is sent.",
+    "rowHeader": "Item"
   },
   "scam": {
     "title": "Protect yourself from scams",

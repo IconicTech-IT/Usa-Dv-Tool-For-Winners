@@ -53,7 +53,9 @@ export function CompareTable({ first, second }: CompareTableProps) {
       <table className="cmp">
         <thead>
           <tr>
-            <th />
+            <th scope="col">
+              <span className="sr-only">{t("rowHeader")}</span>
+            </th>
             <th className="n">{first?.name ?? t("planA")}</th>
             <th className="n">{second?.name ?? t("planB")}</th>
           </tr>

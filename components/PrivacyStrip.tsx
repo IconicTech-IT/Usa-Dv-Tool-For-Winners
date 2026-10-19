@@ -6,9 +6,9 @@ import { Icon } from "@/components/Icon";
 export async function PrivacyStrip() {
   const t = await getTranslations("privacy");
   return (
-    <div className="privacy">
+    <section className="privacy" aria-label={t("label")}>
       <Icon name="lock" />
       {t("line")}
-    </div>
+    </section>
   );
 }

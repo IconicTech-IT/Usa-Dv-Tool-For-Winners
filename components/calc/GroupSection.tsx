@@ -30,7 +30,7 @@ export function GroupSection({ group, position, view, children }: GroupSectionPr
 
   return (
     <section className={isOpen ? "stage" : "stage closed"}>
-      <h3 className="stage-title">
+      <h2 className="stage-title">
         <button
           type="button"
           className="hd"
@@ -49,7 +49,7 @@ export function GroupSection({ group, position, view, children }: GroupSectionPr
           </span>
           <Icon name="chevronUp" />
         </button>
-      </h3>
+      </h2>
       <div className="bd" id={bodyId} hidden={!isOpen}>
         {children}
         <div className="subtot">

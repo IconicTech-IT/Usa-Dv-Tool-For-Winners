@@ -32,9 +32,9 @@ export function RunwayScreen() {
       <p className="lead">{t("lead")}</p>
       <ModeSwitch current="detailed" detailedHref="/runway" />
       <section className="card" style={{ marginTop: 14 }}>
-        <h3>
+        <h2 className="card-title">
           {t("monthlyHeading")} · <b className="when">{stages("monthly")}</b>
-        </h3>
+        </h2>
         {MONTHLY_ITEMS.map((item) => (
           <ItemField key={item.id} view={view} id={item.id} kind="item" />
         ))}
