@@ -63,6 +63,18 @@ describe("guide links", () => {
     }
   });
 
+  it("uses the addresses a person opened in a real browser, not the ones that answer 404", () => {
+    const urls = allGuideUrls().map((entry) => entry.url);
+    // www.moi.gov.eg answers "404 Not Found"; the same site without "www." is the ministry's home page.
+    expect(urls).toContain("https://moi.gov.eg/");
+    expect(urls).not.toContain("https://www.moi.gov.eg/");
+    // The State Department's fee page is "fees-visa-services", not "fees-for-visa-services".
+    expect(urls).toContain(
+      "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html",
+    );
+    expect(urls.filter((url) => url.includes("fees-for-visa-services"))).toEqual([]);
+  });
+
   it("is not marked as checked in a browser until a person did that", () => {
     // Change this test together with linksLastChecked when someone has opened every link.
     expect(data.linksLastChecked).toBeNull();

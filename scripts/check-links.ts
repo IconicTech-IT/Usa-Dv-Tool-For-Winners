@@ -5,7 +5,8 @@
  *
  * ok      the page answered.
  * blocked the site refuses robots or was too slow: open it in a browser by hand.
- * broken  the page is gone or the address does not exist: fix the link.
+ * broken  the page is gone (404, 410) or the address does not exist: fix the link. When a "www." address
+ *         is gone but the same address without "www." answers, the report says so.
  *
  * The exit code is 1 only when something is broken. A blocked link is not a failure, but it is
  * not proof either: `linksLastChecked` in content/guide-links.json changes only when a person has
@@ -53,15 +54,34 @@ interface Result {
   detail: string;
 }
 
+async function statusOf(url: string): Promise<number> {
+  const response = await fetch(url, {
+    redirect: "follow",
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+    headers: { "user-agent": BROWSER_LIKE, accept: "text/html,application/pdf,*/*" },
+  });
+  await response.body?.cancel();
+  return response.status;
+}
+
+/** The same address without "www." when it answers, for an address that is gone: a common cause of a 404. */
+async function withoutWww(url: string): Promise<string | null> {
+  const parsed = new URL(url);
+  if (!parsed.hostname.startsWith("www.")) return null;
+  parsed.hostname = parsed.hostname.slice(4);
+  try {
+    return classifyStatus(await statusOf(parsed.href)) === "ok" ? parsed.href : null;
+  } catch {
+    return null;
+  }
+}
+
 async function check(url: string): Promise<Result> {
   try {
-    const response = await fetch(url, {
-      redirect: "follow",
-      signal: AbortSignal.timeout(TIMEOUT_MS),
-      headers: { "user-agent": BROWSER_LIKE, accept: "text/html,application/pdf,*/*" },
-    });
-    await response.body?.cancel();
-    return { url, verdict: classifyStatus(response.status), detail: String(response.status) };
+    const status = await statusOf(url);
+    const verdict = classifyStatus(status);
+    const bare = verdict === "broken" ? await withoutWww(url) : null;
+    return { url, verdict, detail: bare === null ? String(status) : `${status} (answers at ${bare})` };
   } catch (error) {
     const cause = (error as { cause?: { code?: string } }).cause;
     return { url, verdict: classifyFailure(error), detail: cause?.code ?? "no answer" };

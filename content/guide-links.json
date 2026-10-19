@@ -31,7 +31,7 @@
         "ar": "رسوم خدمات الفيزا: وزارة الخارجية",
         "en": "Fees for visa services: US State Department"
       },
-      "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-for-visa-services.html",
+      "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html",
       "what": {
         "ar": "جدول الرسوم الرسمي. اقرا الرسم من هنا وأكّده من خطاب موعدك.",
         "en": "The official fee table. Read the fee here and confirm it against your appointment letter."
@@ -614,7 +614,7 @@
         "ar": "وزارة الداخلية المصرية",
         "en": "Egyptian Ministry of Interior"
       },
-      "url": "https://www.moi.gov.eg/",
+      "url": "https://moi.gov.eg/",
       "what": {
         "ar": "الموقع الرسمي لوزارة الداخلية: خدمات الجوازات والهجرة والجنسية.",
         "en": "The ministry's official site: passport, immigration and nationality services."
