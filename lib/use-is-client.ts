@@ -10,5 +10,9 @@ function subscribe(): () => void {
  * Use it to render a neutral first paint when the real value is only known in the browser.
  */
 export function useIsClient(): boolean {
-  return useSyncExternalStore(subscribe, () => true, () => false);
+  return useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 }

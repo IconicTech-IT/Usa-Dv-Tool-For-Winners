@@ -13,7 +13,14 @@ import {
   type FieldPatch,
   type TopField,
 } from "@/lib/calc/plan-actions";
-import { clearPlan, defaultStorage, loadPlan, savePlan, STORAGE_KEY, type StorageLike } from "@/lib/calc/storage";
+import {
+  clearPlan,
+  defaultStorage,
+  loadPlan,
+  savePlan,
+  STORAGE_KEY,
+  type StorageLike,
+} from "@/lib/calc/storage";
 
 /**
  * One store for the plan, kept on this device only. It is shaped for

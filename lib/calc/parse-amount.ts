@@ -13,9 +13,7 @@
 
 export type ParseFailure = "empty" | "invalid" | "negative";
 
-export type ParseResult =
-  | { ok: true; value: number }
-  | { ok: false; reason: ParseFailure };
+export type ParseResult = { ok: true; value: number } | { ok: false; reason: ParseFailure };
 
 const ARABIC_INDIC_ZERO = 0x0660;
 const PERSIAN_ZERO = 0x06f0;
@@ -104,11 +102,7 @@ export function amountOrNull(input: string): number | null {
 export type NumberLocale = "ar" | "en";
 
 /** Formats for display: Arabic-Indic digits for Arabic, Latin digits for English. */
-export function formatNumber(
-  value: number,
-  locale: NumberLocale,
-  maximumFractionDigits = 2,
-): string {
+export function formatNumber(value: number, locale: NumberLocale, maximumFractionDigits = 2): string {
   const tag = locale === "ar" ? "ar-EG" : "en-US";
   return new Intl.NumberFormat(tag, { maximumFractionDigits }).format(value);
 }

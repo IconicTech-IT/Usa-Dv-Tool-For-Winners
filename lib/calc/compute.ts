@@ -139,9 +139,7 @@ function parseBufferMonths(raw: string): number {
 }
 
 function sumStage(items: ItemResult[], stage: Stage): number {
-  return items
-    .filter((i) => i.stage === stage)
-    .reduce((total, i) => total + (i.usd ?? 0), 0);
+  return items.filter((i) => i.stage === stage).reduce((total, i) => total + (i.usd ?? 0), 0);
 }
 
 export function computePlan(state: PlanState): PlanResult {

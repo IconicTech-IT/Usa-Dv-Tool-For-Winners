@@ -635,182 +635,45 @@
     }
   },
   "items": {
-    "medicalExam": [
-      "stateImmigrantVisaProcess",
-      "usEmbassies",
-      "stateDvPage"
-    ],
-    "policeCertificate": [
-      "reciprocity",
-      "stateImmigrantVisaProcess",
-      "usEmbassies"
-    ],
-    "translation": [
-      "reciprocity",
-      "usEmbassies"
-    ],
-    "civilCertificates": [
-      "reciprocity",
-      "stateImmigrantVisaProcess"
-    ],
-    "militaryCertificate": [
-      "reciprocity",
-      "usEmbassies"
-    ],
-    "photos": [
-      "statePhotos",
-      "stateDvPage"
-    ],
-    "otherPaperwork": [
-      "stateImmigrantVisaProcess"
-    ],
-    "visaFee": [
-      "stateFees",
-      "stateDvPage",
-      "usEmbassies"
-    ],
-    "interviewTravel": [
-      "googleMaps",
-      "usEmbassies"
-    ],
-    "passportCourier": [
-      "usEmbassies",
-      "aramex"
-    ],
-    "immigrantFee": [
-      "uscisImmigrantFee",
-      "uscisFees"
-    ],
-    "ticket": [
-      "googleFlights",
-      "skyscanner"
-    ],
-    "excessBaggage": [
-      "googleFlights",
-      "skyscanner"
-    ],
-    "travelInsurance": [
-      "squaremouth",
-      "insureMyTrip"
-    ],
-    "temporaryStay": [
-      "googleHotels",
-      "booking",
-      "airbnb"
-    ],
-    "applicationFees": [
-      "apartments",
-      "zillow"
-    ],
-    "securityDeposit": [
-      "apartments",
-      "zillow"
-    ],
-    "firstMonthRent": [
-      "apartments",
-      "zillow",
-      "trulia",
-      "hotpads",
-      "padmapper"
-    ],
-    "furniture": [
-      "ikea",
-      "walmart",
-      "goodwill",
-      "habitatRestore",
-      "offerUp",
-      "facebookMarketplace"
-    ],
-    "winterClothes": [
-      "walmart",
-      "target",
-      "goodwill",
-      "weatherGov"
-    ],
-    "householdBasics": [
-      "walmart",
-      "target",
-      "costco"
-    ],
-    "utilityDeposits": [
-      "energySage",
-      "eiaElectricity"
-    ],
-    "phoneLine": [
-      "mintMobile",
-      "visible",
-      "tMobile"
-    ],
-    "licenseTests": [
-      "usaMotorVehicle"
-    ],
-    "carPurchase": [
-      "facebookMarketplace",
-      "carsCom",
-      "kbb",
-      "edmunds",
-      "nhtsaRecalls",
-      "nmvtis"
-    ],
-    "carInsuranceStart": [
-      "naicStateInsurance",
-      "theZebra"
-    ],
-    "carRegistration": [
-      "usaMotorVehicle"
-    ],
-    "healthInsuranceStart": [
-      "healthcareSeePlans",
-      "healthcareGov"
-    ],
-    "childcareStart": [
-      "childCareAware"
-    ],
+    "medicalExam": ["stateImmigrantVisaProcess", "usEmbassies", "stateDvPage"],
+    "policeCertificate": ["reciprocity", "stateImmigrantVisaProcess", "usEmbassies"],
+    "translation": ["reciprocity", "usEmbassies"],
+    "civilCertificates": ["reciprocity", "stateImmigrantVisaProcess"],
+    "militaryCertificate": ["reciprocity", "usEmbassies"],
+    "photos": ["statePhotos", "stateDvPage"],
+    "otherPaperwork": ["stateImmigrantVisaProcess"],
+    "visaFee": ["stateFees", "stateDvPage", "usEmbassies"],
+    "interviewTravel": ["googleMaps", "usEmbassies"],
+    "passportCourier": ["usEmbassies", "aramex"],
+    "immigrantFee": ["uscisImmigrantFee", "uscisFees"],
+    "ticket": ["googleFlights", "skyscanner"],
+    "excessBaggage": ["googleFlights", "skyscanner"],
+    "travelInsurance": ["squaremouth", "insureMyTrip"],
+    "temporaryStay": ["googleHotels", "booking", "airbnb"],
+    "applicationFees": ["apartments", "zillow"],
+    "securityDeposit": ["apartments", "zillow"],
+    "firstMonthRent": ["apartments", "zillow", "trulia", "hotpads", "padmapper"],
+    "furniture": ["ikea", "walmart", "goodwill", "habitatRestore", "offerUp", "facebookMarketplace"],
+    "winterClothes": ["walmart", "target", "goodwill", "weatherGov"],
+    "householdBasics": ["walmart", "target", "costco"],
+    "utilityDeposits": ["energySage", "eiaElectricity"],
+    "phoneLine": ["mintMobile", "visible", "tMobile"],
+    "licenseTests": ["usaMotorVehicle"],
+    "carPurchase": ["facebookMarketplace", "carsCom", "kbb", "edmunds", "nhtsaRecalls", "nmvtis"],
+    "carInsuranceStart": ["naicStateInsurance", "theZebra"],
+    "carRegistration": ["usaMotorVehicle"],
+    "healthInsuranceStart": ["healthcareSeePlans", "healthcareGov"],
+    "childcareStart": ["childCareAware"],
     "otherMoving": [],
-    "rent": [
-      "apartments",
-      "zillow",
-      "trulia",
-      "hotpads",
-      "padmapper",
-      "roomies",
-      "spareroom"
-    ],
-    "utilities": [
-      "energySage",
-      "eiaElectricity"
-    ],
-    "internet": [
-      "fccBroadbandMap"
-    ],
-    "phone": [
-      "mintMobile",
-      "visible",
-      "tMobile"
-    ],
-    "food": [
-      "walmart",
-      "costco",
-      "aldi",
-      "kroger",
-      "samsClub",
-      "usdaFoodPlans"
-    ],
-    "transport": [
-      "googleMaps",
-      "fuelEconomy"
-    ],
-    "healthInsurance": [
-      "healthcareSeePlans",
-      "healthcareGov"
-    ],
-    "carInsurance": [
-      "naicStateInsurance",
-      "theZebra"
-    ],
-    "childcare": [
-      "childCareAware"
-    ],
+    "rent": ["apartments", "zillow", "trulia", "hotpads", "padmapper", "roomies", "spareroom"],
+    "utilities": ["energySage", "eiaElectricity"],
+    "internet": ["fccBroadbandMap"],
+    "phone": ["mintMobile", "visible", "tMobile"],
+    "food": ["walmart", "costco", "aldi", "kroger", "samsClub", "usdaFoodPlans"],
+    "transport": ["googleMaps", "fuelEconomy"],
+    "healthInsurance": ["healthcareSeePlans", "healthcareGov"],
+    "carInsurance": ["naicStateInsurance", "theZebra"],
+    "childcare": ["childCareAware"],
     "otherMonthly": []
   }
 }

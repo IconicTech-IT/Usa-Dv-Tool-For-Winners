@@ -1,12 +1,6 @@
 import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import { isValidCurrencyCode } from "@/lib/calc/currency";
-import {
-  MAX_ADULTS,
-  MAX_RAW_LENGTH,
-  withChildren,
-  type AmountField,
-  type PlanState,
-} from "@/lib/calc/model";
+import { MAX_ADULTS, MAX_RAW_LENGTH, withChildren, type AmountField, type PlanState } from "@/lib/calc/model";
 
 /**
  * Pure changes to a plan. Each function returns the SAME state object when nothing

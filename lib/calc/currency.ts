@@ -36,8 +36,23 @@ export const DEFAULT_LOCAL_CURRENCY = "EGP";
 
 /** Common Arab currencies first, in this order (design note s2). */
 export const ARAB_CURRENCY_CODES = [
-  "EGP", "MAD", "DZD", "TND", "SAR", "AED", "JOD", "IQD", "SYP",
-  "LBP", "SDG", "YER", "KWD", "QAR", "OMR", "BHD", "LYD",
+  "EGP",
+  "MAD",
+  "DZD",
+  "TND",
+  "SAR",
+  "AED",
+  "JOD",
+  "IQD",
+  "SYP",
+  "LBP",
+  "SDG",
+  "YER",
+  "KWD",
+  "QAR",
+  "OMR",
+  "BHD",
+  "LYD",
 ] as const;
 
 export interface CurrencyOption {

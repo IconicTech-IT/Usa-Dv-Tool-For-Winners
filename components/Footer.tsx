@@ -9,11 +9,7 @@ export async function Footer() {
         <p>{t("legal")}</p>
         <p>
           {t("contactBefore")}
-          <a
-            href={`mailto:${t("email")}`}
-            className="underline underline-offset-4"
-            dir="ltr"
-          >
+          <a href={`mailto:${t("email")}`} className="underline underline-offset-4" dir="ltr">
             {t("email")}
           </a>
         </p>

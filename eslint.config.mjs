@@ -27,7 +27,6 @@ export default tseslint.config(
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
 
-
       complexity: ["error", 10],
       "max-params": ["error", 4],
       "max-lines-per-function": ["error", { max: 60, skipBlankLines: true, skipComments: true }],

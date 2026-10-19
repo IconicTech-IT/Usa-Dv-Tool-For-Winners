@@ -1,5 +1,11 @@
 import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
-import { emptyField, PLAN_VERSION, PlanStateSchema, type AmountField, type PlanState } from "@/lib/calc/model";
+import {
+  emptyField,
+  PLAN_VERSION,
+  PlanStateSchema,
+  type AmountField,
+  type PlanState,
+} from "@/lib/calc/model";
 
 /**
  * Save and open a plan as a file (a JSON download and upload). No account, nothing
@@ -11,9 +17,7 @@ export const MAX_PLAN_FILE_CHARS = 200_000;
 
 export type OpenFailure = "too-large" | "not-json" | "wrong-format" | "invalid";
 
-export type OpenResult =
-  | { ok: true; state: PlanState }
-  | { ok: false; reason: OpenFailure };
+export type OpenResult = { ok: true; state: PlanState } | { ok: false; reason: OpenFailure };
 
 export function serializePlan(state: PlanState, now: Date = new Date()): string {
   return JSON.stringify(
@@ -45,7 +49,10 @@ export function normalizePlan(state: PlanState): PlanState {
     quick: fillFields(QUICK_ITEMS, state.quick),
     household: {
       ...state.household,
-      childAges: Array.from({ length: state.household.children }, (_, i) => state.household.childAges[i] ?? ""),
+      childAges: Array.from(
+        { length: state.household.children },
+        (_, i) => state.household.childAges[i] ?? "",
+      ),
     },
   };
 }
@@ -60,7 +67,11 @@ export function parsePlanFile(text: string): OpenResult {
     return { ok: false, reason: "not-json" };
   }
 
-  if (typeof data !== "object" || data === null || (data as { format?: unknown }).format !== PLAN_FILE_FORMAT) {
+  if (
+    typeof data !== "object" ||
+    data === null ||
+    (data as { format?: unknown }).format !== PLAN_FILE_FORMAT
+  ) {
     return { ok: false, reason: "wrong-format" };
   }
 

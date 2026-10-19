@@ -4,12 +4,7 @@
  * Labels and guide links live in the messages and the guide pages.
  */
 
-export type Stage =
-  | "beforeInterview"
-  | "atInterview"
-  | "beforeTravel"
-  | "firstMonth"
-  | "monthly";
+export type Stage = "beforeInterview" | "atInterview" | "beforeTravel" | "firstMonth" | "monthly";
 
 /** Order matters: the cumulative timeline follows it. */
 export const STAGES: readonly Stage[] = [
@@ -52,7 +47,12 @@ interface ItemOptions {
   toggle?: boolean;
 }
 
-function define(calculator: Calculator, id: string, where: { group: GroupId; stage: Stage }, options: ItemOptions): ItemDef {
+function define(
+  calculator: Calculator,
+  id: string,
+  where: { group: GroupId; stage: Stage },
+  options: ItemOptions,
+): ItemDef {
   const { scaling = "total", toggle = false } = options;
   const base = { id, calculator, group: where.group, stage: where.stage, scaling };
   return toggle ? { ...base, toggle } : base;
@@ -120,10 +120,22 @@ export const ITEMS: readonly ItemDef[] = [
  * total for that stage (a quick estimate typed by the user).
  */
 export const QUICK_ITEMS: readonly ItemDef[] = [
-  { id: "quickBeforeInterview", calculator: "fees", group: "paperwork", stage: "beforeInterview", scaling: "total" },
+  {
+    id: "quickBeforeInterview",
+    calculator: "fees",
+    group: "paperwork",
+    stage: "beforeInterview",
+    scaling: "total",
+  },
   { id: "quickAtInterview", calculator: "fees", group: "paperwork", stage: "atInterview", scaling: "total" },
   { id: "quickBeforeTravel", calculator: "fees", group: "travel", stage: "beforeTravel", scaling: "total" },
-  { id: "quickFirstMonth", calculator: "moving", group: "housingStart", stage: "firstMonth", scaling: "total" },
+  {
+    id: "quickFirstMonth",
+    calculator: "moving",
+    group: "housingStart",
+    stage: "firstMonth",
+    scaling: "total",
+  },
   { id: "quickMonthly", calculator: "monthly", group: "monthlyCosts", stage: "monthly", scaling: "total" },
 ];
 

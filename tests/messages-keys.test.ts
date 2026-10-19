@@ -25,7 +25,8 @@ function flatten(tree: Tree, prefix = ""): Record<string, string> {
 
 function branch(tree: Tree, name: string): Tree {
   const node = (tree["calc"] as Tree)[name];
-  if (typeof node === "string" || node === undefined) throw new Error(`calc.${name} is missing or not a group`);
+  if (typeof node === "string" || node === undefined)
+    throw new Error(`calc.${name} is missing or not a group`);
   return node;
 }
 
@@ -34,7 +35,12 @@ const EN = load("en");
 
 // If a type gains a value, the next lines stop compiling until the list below is updated.
 const PARSE_FAILURES = ["empty", "invalid", "negative"] as const satisfies readonly ParseFailure[];
-const OPEN_FAILURES = ["too-large", "not-json", "wrong-format", "invalid"] as const satisfies readonly OpenFailure[];
+const OPEN_FAILURES = [
+  "too-large",
+  "not-json",
+  "wrong-format",
+  "invalid",
+] as const satisfies readonly OpenFailure[];
 const SCALINGS = ["total", "perPerson", "perAdult", "perChild"] as const satisfies readonly Scaling[];
 type _AllScaling = Exclude<Scaling, (typeof SCALINGS)[number]> extends never ? true : never;
 const _scalingCheck: _AllScaling = true;

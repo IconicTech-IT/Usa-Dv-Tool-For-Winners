@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 
 import { emptyPlan, withChildren } from "@/lib/calc/model";
-import { MAX_PLAN_FILE_CHARS, normalizePlan, parsePlanFile, planFileName, serializePlan } from "@/lib/calc/plan-file";
+import {
+  MAX_PLAN_FILE_CHARS,
+  normalizePlan,
+  parsePlanFile,
+  planFileName,
+  serializePlan,
+} from "@/lib/calc/plan-file";
 import { clearPlan, loadPlan, savePlan, STORAGE_KEY, type StorageLike } from "@/lib/calc/storage";
 
 function memoryStorage(): StorageLike & { data: Map<string, string> } {
