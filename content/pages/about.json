@@ -6,15 +6,15 @@
         "blocks": [
           {
             "type": "p",
-            "text": "**DV Compass** حاسبة مجانية لأي حد بيفكر في قرعة الهجرة لأمريكا. إنت اللي بتكتب كل مبلغ، وإحنا بنجمعهم ونوريك محتاج كام ولحد إمتى."
+            "text": "**DV Compass** (حاسبة قرعة الهجرة) حاسبة مجانية لأي حد بيفكر في قرعة الهجرة لأمريكا. إنت اللي بتكتب كل مبلغ، وإحنا بنجمعهم ونوريك هتدفع كام ومتى."
           },
           {
             "type": "list",
             "items": [
               "حاسبة للأوراق والرسوم.",
               "حاسبة للانتقال والاستقرار.",
-              "حاسبة المدّة: محتاج معاك كام لو الشغل بدأ أول يوم أو اتأخر شهر أو اتنين أو تلاتة.",
-              "صفحة عن البابليك تشارج، وصفحة لتعلّم الإنجليزي، وصفحة للتحذير من النصب."
+              "حاسبة «فلوسك تكفي كام شهر؟»: تعرف محتاج تجمع كام لو لقيت شغل بعد شهر أو شهرين أو 3 شهور.",
+              "صفحة عن قاعدة «العبء على الحكومة» (Public Charge)، وصفحة لتعلّم الإنجليزي، وصفحة للتحذير من النصب."
             ]
           }
         ]
@@ -68,15 +68,15 @@
         "blocks": [
           {
             "type": "p",
-            "text": "**DV Compass** is a free calculator for anyone thinking about the US diversity visa lottery. You type every amount; we add them up and show you how much you need and by when."
+            "text": "**DV Compass** is a free calculator for anyone thinking about the US diversity visa lottery. You type every amount; we add them up and show you how much you pay and when."
           },
           {
             "type": "list",
             "items": [
               "A calculator for paperwork and fees.",
               "A calculator for moving and settling.",
-              "A runway calculator: how much you need if the job starts on day one or is delayed by one, two or three months.",
-              "A page on public charge, a page for learning English, and a page warning about scams."
+              "A “how many months does your money last?” calculator: how much to save if you find a job after 1, 2 or 3 months.",
+              "A page on the “public charge” rule, a page for learning English, and a page warning about scams."
             ]
           }
         ]

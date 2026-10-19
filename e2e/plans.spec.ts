@@ -33,7 +33,7 @@ test("named plans: make, switch, rename, duplicate, delete, compare by name, sav
   const firstBox = page.locator(".input input").first();
   await firstBox.fill("77");
   await open(page, "/ar/plans");
-  await page.getByRole("button", { name: /افتح: تكساس/ }).click();
+  await page.getByRole("button", { name: /افتح الخطة: تكساس/ }).click();
   await open(page, "/ar/fees");
   await expect(page.locator(".input input").first()).toHaveValue("");
 
@@ -43,16 +43,16 @@ test("named plans: make, switch, rename, duplicate, delete, compare by name, sav
   await page.getByRole("textbox", { name: "غيّر الاسم" }).fill("تكساس - الأساسية");
   await page.keyboard.press("Enter");
   await expect(page.locator(".plan-row").first()).toContainText("تكساس - الأساسية");
-  await page.getByRole("button", { name: /انسخ: تكساس - الأساسية/ }).click();
+  await page.getByRole("button", { name: /اعمل نسخة منها: تكساس - الأساسية/ }).click();
   await expect(page.locator(".plan-row")).toHaveCount(3);
   await expect(page.locator(".plan-row.on")).toContainText("تكساس - الأساسية (2)");
 
   // Delete asks first; saying no keeps the plan, saying yes removes it.
   page.once("dialog", (dialog) => void dialog.dismiss());
-  await page.getByRole("button", { name: /امسح: تكساس - الأساسية \(2\)/ }).click();
+  await page.getByRole("button", { name: /امسح الخطة: تكساس - الأساسية \(2\)/ }).click();
   await expect(page.locator(".plan-row")).toHaveCount(3);
   page.once("dialog", (dialog) => void dialog.accept());
-  await page.getByRole("button", { name: /امسح: تكساس - الأساسية \(2\)/ }).click();
+  await page.getByRole("button", { name: /امسح الخطة: تكساس - الأساسية \(2\)/ }).click();
   await expect(page.locator(".plan-row")).toHaveCount(2);
 
   // The comparison picks two plans by name and shows the names as the column titles.
@@ -66,7 +66,7 @@ test("named plans: make, switch, rename, duplicate, delete, compare by name, sav
   // The saved file carries the plan name.
   await open(page, "/ar/results");
   const download = page.waitForEvent("download");
-  await page.getByRole("button", { name: "احفظ الخطة كملف" }).click();
+  await page.getByRole("button", { name: "احفظ الخطة على جهازك (ملف)" }).click();
   expect((await download).suggestedFilename()).toMatch(/^dv-compass-.*تكساس.*\.json$/);
 });
 

@@ -12,7 +12,10 @@
             "type": "p",
             "text": "**آخر فحص للروابط: 19 أكتوبر 2026.** لو رابط اتغير أو مابقاش بيفتح، ابحث باسم المصدر."
           },
-          { "type": "p", "text": "**مش استشارة قانونية، ومفيش أي حاجة هنا بتضمنلك نتيجة.**" }
+          {
+            "type": "p",
+            "text": "**مش استشارة قانونية، ومفيش أي حاجة هنا بتضمنلك نتيجة.**"
+          }
         ]
       },
       {
@@ -36,7 +39,7 @@
             "type": "list",
             "ordered": true,
             "items": [
-              "**اعرف مستواك:** اعمل اختبار المستوى مع المساعد (البروميت تحت).",
+              "**اعرف مستواك:** اعمل اختبار المستوى مع المساعد (النص الجاهز تحت).",
               "**اتمرن كل يوم حاجة صغيرة:** 15 لـ20 دقيقة أحسن من ساعتين مرة في الأسبوع.",
               "**اتكلم بصوت عالي:** حتى لو لوحدك. سجّل نفسك واسمعها."
             ]
@@ -78,7 +81,7 @@
           },
           {
             "type": "p",
-            "text": "**للمقابلة بالذات:** استخدم البروميت اللي تحت وخلّي المساعد يمثّل دور القنصل."
+            "text": "**للمقابلة بالذات:** استخدم النص الجاهز اللي تحت وخلّي المساعد يمثّل دور القنصل."
           }
         ]
       },
@@ -162,13 +165,16 @@
         ]
       },
       {
-        "heading": "بروميت جاهز: اتعلّم إنجليزي مع مساعد ذكاء اصطناعي",
+        "heading": "نص جاهز (prompt): اتعلّم إنجليزي مع مساعد ذكاء اصطناعي",
         "blocks": [
           {
             "type": "p",
-            "text": "**الفكرة:** تنسخ البروميت كله، تلصقه في أي مساعد ذكاء اصطناعي، وهو يتحوّل لمدرّس صبور بياخدك خطوة خطوة."
+            "text": "**الفكرة:** تنسخ النص الجاهز كله، تلصقه في أي مساعد ذكاء اصطناعي، وهو يتحوّل لمدرّس صبور بياخدك خطوة خطوة."
           },
-          { "type": "p", "text": "**تنبيه مهم:**" },
+          {
+            "type": "p",
+            "text": "**تنبيه مهم:**"
+          },
           {
             "type": "list",
             "items": [
@@ -177,7 +183,9 @@
               "لو بتكلمه بالصوت أحسن، لو المساعد بيدعم ده."
             ]
           },
-          { "type": "prompt" }
+          {
+            "type": "prompt"
+          }
         ]
       },
       {
@@ -220,7 +228,10 @@
                 "label": "الخارجية الأمريكية: برنامج قرعة الهجرة",
                 "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html"
               },
-              { "label": "USCIS", "url": "https://www.uscis.gov/" }
+              {
+                "label": "USCIS",
+                "url": "https://www.uscis.gov/"
+              }
             ]
           }
         ]
@@ -241,7 +252,10 @@
             "type": "p",
             "text": "**Links last checked: 19 October 2026.** If a link changed or no longer opens, search for the name of the source."
           },
-          { "type": "p", "text": "**Not legal advice, and nothing here guarantees a result.**" }
+          {
+            "type": "p",
+            "text": "**Not legal advice, and nothing here guarantees a result.**"
+          }
         ]
       },
       {
@@ -397,7 +411,10 @@
             "type": "p",
             "text": "**The idea:** copy the whole prompt, paste it into any AI assistant, and it becomes a patient teacher who takes you step by step. The prompt is written in Egyptian Arabic, for Arabic-speaking learners."
           },
-          { "type": "p", "text": "**Important:**" },
+          {
+            "type": "p",
+            "text": "**Important:**"
+          },
           {
             "type": "list",
             "items": [
@@ -406,7 +423,9 @@
               "Talking to it by voice is better, if the assistant supports it."
             ]
           },
-          { "type": "prompt" }
+          {
+            "type": "prompt"
+          }
         ]
       },
       {
@@ -449,7 +468,10 @@
                 "label": "US State Department: the diversity visa program",
                 "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html"
               },
-              { "label": "USCIS", "url": "https://www.uscis.gov/" }
+              {
+                "label": "USCIS",
+                "url": "https://www.uscis.gov/"
+              }
             ]
           }
         ]

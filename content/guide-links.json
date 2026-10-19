@@ -129,8 +129,8 @@
       },
       "url": "https://www.nhtsa.gov/recalls",
       "what": {
-        "ar": "اكتب رقم الشاسيه (VIN) وشوف لو العربية عليها عيب مصنعي.",
-        "en": "Enter the VIN and see whether the car has an open safety recall."
+        "ar": "اكتب رقم الشاسيه (VIN، الرقم المطبوع على العربية) وشوف لو العربية عليها عيب مصنعي.",
+        "en": "Type the chassis number (the VIN, the number printed on the car) and see whether the car has a manufacturer defect."
       },
       "official": true
     },
@@ -605,8 +605,8 @@
       },
       "url": "https://www.aramex.com/",
       "what": {
-        "ar": "شركة شحن. شوف سعر ومواعيد توصيل الجواز من فرعك.",
-        "en": "A courier company. Check the delivery price and times for your branch."
+        "ar": "شركة شحن. في سفارة القاهرة رجوع الجواز لمكتب أرامكس مجاني. اتأكد من خطاب موعدك، وشوف السعر هنا لو سفارتك مش القاهرة.",
+        "en": "A courier company. At the Cairo embassy, sending the passport back to an Aramex office is free. Check your appointment letter, and look at the price here if your embassy is not Cairo."
       }
     },
     "egyptMoi": {

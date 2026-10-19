@@ -166,7 +166,7 @@ describe("official notes on the guide pages", () => {
     expect(note?.source.url).toBe(
       "https://travel.state.gov/content/travel/en/us-visas/Supplements/Supplements_by_Post/CRO-Cairo.html",
     );
-    expect(notesForItem("visaFee", "ar")[0]?.text).toContain("غير قابلة للاسترداد");
+    expect(notesForItem("visaFee", "ar")[0]?.text).toContain("مش بترجع");
   });
 
   it("ties the visa's expiry to the medical exam, not to the day the visa is issued", () => {

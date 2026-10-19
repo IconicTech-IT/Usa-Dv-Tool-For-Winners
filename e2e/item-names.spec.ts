@@ -22,7 +22,7 @@ test("the English page names the same boxes plainly", async ({ page }) => {
   await page.goto("/en/moving");
   await page.waitForLoadState("networkidle");
   const box = page.locator(".field", { has: page.getByText("Home supplies on arrival", { exact: true }) });
-  await expect(box.locator(".includes")).toContainText("Includes: kitchen items, bed linen and blankets");
+  await expect(box.locator(".includes")).toContainText("Includes: Kitchen items, bed linen and blankets");
   await expect(box.locator(".includes")).toContainText("Food is not here");
 
   await page.goto("/en/runway");

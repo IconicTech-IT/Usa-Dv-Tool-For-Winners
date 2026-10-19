@@ -72,7 +72,8 @@ describe("health guide", () => {
   it("warns that HealthCare.gov may offer a subsidy the new immigrant must not take, and links the public-charge page", () => {
     expect(ar.guideHealth.subsidyWarning).toContain("متاخدش الدعم ده");
     expect(en.guideHealth.subsidyWarning).toContain("do not take this subsidy");
-    expect(ar.guideHealth.subsidyWarningLink).toContain("البابليك تشارج");
+    expect(ar.guideHealth.subsidyWarningLink).toContain("العبء على الحكومة");
+    expect(ar.guideHealth.subsidyWarningLink).toContain("Public Charge");
     expect(en.guideHealth.subsidyWarningLink.toLowerCase()).toContain("public charge");
   });
 });

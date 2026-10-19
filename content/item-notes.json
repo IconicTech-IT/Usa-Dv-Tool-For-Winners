@@ -2,33 +2,33 @@
   "_note": "Official rules and tips shown on the guide pages. Every rule carries its official source. A tip is advice, not a rule, and is shown highlighted.",
   "sources": {
     "dvInstructions": {
-      "ar": "تعليمات الـDV الرسمية (Federal Register)",
-      "en": "The official DV instructions (Federal Register)",
+      "ar": "تعليمات الـDV الرسمية (في الجريدة الرسمية الأمريكية، Federal Register)",
+      "en": "The official DV instructions (in the US official gazette, the Federal Register)",
       "url": "https://www.govinfo.gov/content/pkg/FR-2024-10-01/html/2024-22482.htm"
     },
     "passportRule": {
-      "ar": "قاعدة الخارجية للباسبور والصور (Federal Register)",
-      "en": "The State Department rule on the passport and photos (Federal Register)",
+      "ar": "قاعدة الخارجية للباسبور والصور (في الجريدة الرسمية الأمريكية، Federal Register)",
+      "en": "The State Department rule on the passport and photos (in the US official gazette, the Federal Register)",
       "url": "https://www.federalregister.gov/documents/2026/03/11/2026-04737"
     },
     "feeRule": {
-      "ar": "قرار رسم التسجيل (Federal Register)",
-      "en": "The registration fee rule (Federal Register)",
+      "ar": "قرار رسم التسجيل (في الجريدة الرسمية الأمريكية، Federal Register)",
+      "en": "The registration fee rule (in the US official gazette, the Federal Register)",
       "url": "https://www.govinfo.gov/content/pkg/FR-2025-09-16/html/2025-17851.htm"
     },
     "passportValidity": {
-      "ar": "شروط الباسبور للفيزا (22 CFR 42.64)",
-      "en": "Passport requirements for the visa (22 CFR 42.64)",
+      "ar": "شروط الباسبور للفيزا (اللائحة الأمريكية 22 CFR 42.64)",
+      "en": "Passport requirements for the visa (US regulation 22 CFR 42.64)",
       "url": "https://www.ecfr.gov/current/title-22/section-42.64"
     },
     "medicalRule": {
-      "ar": "الكشف الطبي للفيزا (22 CFR 42.66)",
-      "en": "The medical examination for the visa (22 CFR 42.66)",
+      "ar": "الكشف الطبي للفيزا (اللائحة الأمريكية 22 CFR 42.66)",
+      "en": "The medical examination for the visa (US regulation 22 CFR 42.66)",
       "url": "https://www.ecfr.gov/current/title-22/section-42.66"
     },
     "uscisFee": {
-      "ar": "رسم USCIS للمهاجرين",
-      "en": "The USCIS immigrant fee",
+      "ar": "رسم الجرين كارد (USCIS)",
+      "en": "The green card fee (USCIS)",
       "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee"
     },
     "cairoSupplement": {
@@ -53,13 +53,13 @@
     "passportAtRegistration": {
       "kind": "rule",
       "source": "passportRule",
-      "ar": "وقت التسجيل: لازم الباسبور يكون ساري ومش منتهي. المطلوب باسبور المتقدم الأساسي بس، وبترفع صورة صفحة البيانات وصفحة التوقيع (JPEG مش PDF، وحجمها ما يزيدش عن 5MB).",
-      "en": "At registration the passport must be valid and not expired. Only the main applicant's passport is needed, and you upload a scan of the data page and the signature page (JPEG, not PDF, and no larger than 5 MB)."
+      "ar": "وقت التسجيل: لازم الباسبور يكون ساري ومش منتهي. المطلوب باسبور المتقدم الأساسي بس. بترفع صورة صفحة البيانات وصفحة التوقيع بصيغة JPEG (مش PDF)، وحجمها 5 ميجا أو أقل.",
+      "en": "At registration the passport must be valid and not expired. Only the main applicant's passport is needed. You upload a scan of the data page and the signature page as a JPEG (not a PDF), 5 MB or smaller."
     },
     "passportExemptions": {
       "kind": "rule",
       "source": "passportRule",
-      "ar": "فيه 3 استثناءات بس من شرط الباسبور: عديمو الجنسية، ومواطنو دولة شيوعية مش قادرين ياخدوا باسبور من حكومتهم، ومن عنده أو متوقع له إعفاء فردي معتمد. والظروف المادية لوحدها مش سبب للإعفاء.",
+      "ar": "فيه 3 استثناءات بس من شرط الباسبور: الناس اللي من غير جنسية، ومواطني دولة شيوعية مش قادرين ياخدوا باسبور من حكومتهم، ومن عنده إعفاء فردي معتمد أو متوقع ياخده. الظروف المادية لوحدها مش سبب للإعفاء.",
       "en": "There are only 3 exceptions to the passport requirement: stateless people, nationals of a Communist-controlled country who cannot get a passport from their government, and people who have or expect an approved individual waiver. Money problems alone are not a reason for an exception."
     },
     "passportSixMonths": {
@@ -107,13 +107,13 @@
     "panelPhysician": {
       "kind": "rule",
       "source": "medicalRule",
-      "ar": "الكشف الطبي بيبقى عند الدكتور أو الجهة اللي السفارة بتحددها (panel physician)، مش أي دكتور. السعر اسأل عنه العيادة نفسها. لو مش في مصر: صفحة السفارة الأمريكية في بلدك فيها الأطباء المعتمدين.",
-      "en": "The medical exam is done by the doctor or clinic the embassy designates (a panel physician), not any doctor. Ask that clinic directly for the price. If you are not in Egypt, your country's US embassy page lists its approved doctors."
+      "ar": "الكشف الطبي بيبقى عند الدكتور أو العيادة اللي السفارة بتحددها (الدكتور المعتمد، panel physician)، مش أي دكتور. اسأل العيادة نفسها عن السعر. لو مش في مصر: صفحة السفارة الأمريكية في بلدك فيها الأطباء المعتمدين.",
+      "en": "The medical exam is done by the doctor or clinic the embassy designates (the approved doctor, a panel physician), not any doctor. Ask that clinic directly for the price. If you are not in Egypt, your country's US embassy page lists its approved doctors."
     },
     "immigrantFee": {
       "kind": "rule",
       "source": "uscisFee",
-      "ar": "رسم الجرين كارد (USCIS Immigrant Fee) بتدفعه أونلاين بعد ما الفيزا تتصدر وتستلمها وقبل السفر، وده مستحسن بشدة. بيغطي معالجة ملف الهجرة وطباعة الجرين كارد، وبيتدفع عن كل شخص. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع.",
+      "ar": "رسم الجرين كارد (USCIS Immigrant Fee) بتدفعه أونلاين بعد ما الفيزا تتصدر وتستلمها وقبل السفر، والأفضل بشدة إنك تدفعه في الوقت ده. بيغطي معالجة ملف الهجرة وطباعة الجرين كارد، وبيتدفع عن كل شخص. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع.",
       "en": "You are strongly encouraged to pay the green card fee (the USCIS Immigrant Fee) online after the visa is issued and you collect it, and before you travel. It pays for processing your immigrant visa packet and producing your green card, and it is paid for each person. You can also pay after you arrive, but the green card is not sent until it is paid."
     },
     "visaExpiry": {
@@ -125,13 +125,13 @@
     "visaFeeInterview": {
       "kind": "rule",
       "source": "cairoSupplement",
-      "ar": "رسوم المقابلة (رسوم الـDV) بتتدفع في السفارة يوم المقابلة لو مكنتش اتدفعت قبلها، وبتتدفع عن كل متقدم. هي غير قابلة للاسترداد: لو اتقرر إنك غير مؤهل للفيزا، الرسم مبيرجعش.",
+      "ar": "رسوم المقابلة (رسوم الـDV) بتتدفع في السفارة يوم المقابلة لو مكنتش اتدفعت قبلها، وبتتدفع عن كل متقدم. مش بترجع: لو اتقرر إنك غير مؤهل للفيزا، الرسم مبيرجعش.",
       "en": "The interview fee (the DV fee) is paid at the embassy on the interview day if it was not paid before, and it is paid for each applicant. It is non-refundable: if you are found ineligible for the visa, it is not returned."
     },
     "photoSpecs": {
       "kind": "rule",
       "source": "dvInstructions",
-      "ar": "حسب تعليمات DV-2026، هتتحدّث لما تعليمات DV-2027 تنزل. مواصفات الصورة الرقمية: 600 × 600 بكسل، بصيغة JPEG، حجمها 240 كيلوبايت أو أقل. وش مواجه للكاميرا، والراس من 22 لـ35 مم (حوالي 50 لـ69% من طول الصورة)، خلفية بيضاء أو off-white سادة، من غير نضارة. ممنوع غطا راس بيخبّي الشعر أو خط الشعر، إلا لو بتلبسه كل يوم لسبب ديني. ممنوع أي تعديل على الصورة.",
+      "ar": "حسب تعليمات DV-2026، هتتحدّث لما تعليمات DV-2027 تنزل. مواصفات الصورة الرقمية: 600 × 600 بكسل، بصيغة JPEG، حجمها 240 كيلوبايت أو أقل. وش مواجه للكاميرا، والراس من 22 لـ35 مم (حوالي 50 لـ69% من طول الصورة)، خلفية بيضاء أو بيضاء مايلة للرمادي (off-white) سادة، من غير نضارة. ممنوع غطا راس بيخبّي الشعر أو خط الشعر، إلا لو بتلبسه كل يوم لسبب ديني. ممنوع أي تعديل على الصورة.",
       "en": "According to the DV-2026 instructions; this will be updated when the DV-2027 instructions come out. The digital photo specifications: 600 × 600 pixels, JPEG format, 240 kilobytes or less. Face the camera directly, head 22 to 35 mm (about 50 to 69% of the photo height), plain white or off-white background, no eyeglasses. No hat or head covering that hides the hair or hairline, unless worn every day for a religious reason. No editing of the photo."
     }
   },

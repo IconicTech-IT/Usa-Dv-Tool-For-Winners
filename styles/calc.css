@@ -556,6 +556,12 @@ dialog.sheet-dialog .warn {
   }
 }
 
+/* The one sentence about the savings above the job cards */
+.cover {
+  margin-block: 0 12px;
+  font-weight: 700;
+}
+
 /* The line under an item's name that says what it covers */
 .field .includes {
   margin-block: 0 8px;

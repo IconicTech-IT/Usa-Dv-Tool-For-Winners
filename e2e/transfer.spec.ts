@@ -11,7 +11,7 @@ async function makeLink(page: Page): Promise<string> {
   await seedPlan(page);
   await page.goto("/ar/results");
   await page.waitForLoadState("networkidle");
-  await page.getByRole("button", { name: "انقل لجهاز تاني" }).click();
+  await page.getByRole("button", { name: "ابعت الخطة لجهاز تاني" }).click();
   const dialog = page.getByRole("dialog");
   await expect(dialog.locator("#transfer-link")).toBeVisible();
   await expect(dialog.getByText("اللينك ده فيه أرقامك، ما تبعتهوش لحد.")).toBeVisible();

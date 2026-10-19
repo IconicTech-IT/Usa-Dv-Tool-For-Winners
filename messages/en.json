@@ -28,18 +28,18 @@
   "common": {
     "back": "Back to the calculator",
     "next": "Next",
-    "edit": "edit",
-    "fill": "Fill",
+    "edit": "Change",
+    "fill": "Type it",
     "totalSoFar": "Total so far",
     "close": "Close",
     "guide": "How do I find this price?",
     "perPerson": "per person",
     "perChild": "per child",
-    "one": "per person",
-    "all": "whole family",
+    "one": "one person",
+    "all": "the whole family",
     "usdAria": "In dollars",
     "localAria": "In your local currency",
-    "cumulative": "Up to here",
+    "cumulative": "Total up to here",
     "stageTotal": "Stage total",
     "decrease": "Decrease",
     "increase": "Increase"
@@ -48,17 +48,17 @@
     "quick": "Quick",
     "detailed": "Detailed",
     "help": "Quick: 5 big categories. Detailed: every item on its own.",
-    "label": "Entry mode"
+    "label": "How you type the numbers"
   },
   "rate": {
-    "label": "Current exchange rate",
+    "label": "Dollar rate in your currency (exchange rate)",
     "currencyLabel": "Your local currency",
     "pickTitle": "Choosing the local currency",
-    "pickLead": "The full ISO 4217 list with names and codes, searchable, common Arab currencies first. EGP is the default.",
+    "pickLead": "The list of all the world's currencies with their names and codes (like EGP for the Egyptian pound). You can search it, and the Arab currencies come first. The default is the Egyptian pound.",
     "pickSearch": "Search by name or code",
     "pickArab": "Common Arab currencies",
     "pickAll": "All currencies",
-    "aria": "Exchange rate: units of your local currency per dollar",
+    "aria": "Dollar rate: how much of your currency one dollar costs",
     "google": "Check the rate on Google",
     "hint": "You type the rate. Every amount in your local currency is converted with it.",
     "empty": "Type the exchange rate first so we can show amounts in your local currency too.",
@@ -83,23 +83,23 @@
       },
       "moving": {
         "title": "Moving and settling",
-        "text": "Flights, first housing, furniture, a car, insurance…"
+        "text": "Flights, first rented home, furniture, a car, insurance…"
       },
       "runway": {
-        "title": "Runway: how much do you need?",
-        "text": "If the job starts on day 1, or after 1, 2 or 3 months, with your income and savings"
+        "title": "How many months does your money last?",
+        "text": "Find out how much to save if you find a job from day one, or after 1, 2 or 3 months"
       },
       "results": {
         "title": "Results summary",
-        "text": "All your numbers on one page, print or save as PDF"
+        "text": "All your numbers on one page. Print them or save them as a PDF file"
       },
       "charge": {
-        "title": "The new public charge rule",
-        "text": "An explanation from the official sources only"
+        "title": "The new “public charge” rule (not becoming a burden on the government)",
+        "text": "A simple explanation from official sources only"
       },
       "english": {
         "title": "Learn English",
-        "text": "Resources by goal, and a ready prompt to learn with"
+        "text": "Free resources by goal, and a ready text to paste into an AI assistant so it teaches you"
       },
       "scam": {
         "title": "Beware of scams",
@@ -117,14 +117,14 @@
   },
   "setup": {
     "title": "Who is travelling with you?",
-    "lead": "We use this to multiply \"per person\" costs by the number of people. Nothing is stored with us.",
+    "lead": "We ask so we can work out the \"per person\" costs correctly, by the number of people and their ages. Nothing is stored with us.",
     "who": "Travelling",
     "alone": "Alone",
     "family": "With family",
     "adults": "Adults",
     "adultsHelp": "You and anyone over 21",
     "kids": "Children",
-    "kidsHelp": "Under 21",
+    "kidsHelp": "Children under 21",
     "agesHelp": "Type each child's age in years (type 0 under one year). The age matters for the police certificate, the medical exam, the tickets and childcare.",
     "child": "Child",
     "note": "You can change this at any time; the calculators update on their own.",
@@ -155,21 +155,21 @@
     "note": "The guide links take you to real sites (rental and grocery sites, for example) so you see the price yourself."
   },
   "runway": {
-    "title": "Runway: how much do you need?",
-    "lead": "Type your monthly costs; we show the savings needed if the job starts on day 1 or is delayed by 1, 2 or 3 months.",
+    "title": "How many months does your money last?",
+    "lead": "Type your monthly costs and we show how much to save if you find a job from day one, or after 1, 2 or 3 months.",
     "monthlyHeading": "Monthly costs",
-    "monthlyTotal": "Monthly total",
+    "monthlyTotal": "Total costs per month",
     "incomeHeading": "Income and savings",
-    "incomeLead": "Optional. Lets the scenarios tell you how much more to save after what you already have.",
+    "incomeLead": "Optional. Lets the numbers tell you how much more to save after what you already have.",
     "income": "Expected net monthly income",
     "spouseIncome": "Spouse income (optional)",
     "savings": "Savings you hold now",
-    "buffer": "Emergency buffer (months)",
-    "bufferHelp": "You choose the number of months",
+    "buffer": "Spare money in case of an emergency (in months)",
+    "bufferHelp": "Choose how many months of costs you want to keep as a spare",
     "stillToSave": "Still to save",
-    "scenariosHeading": "Scenarios",
-    "scenariosLead": "Each scenario = paperwork and fees + moving + (monthly costs × months without income) + buffer − your savings.",
-    "note": "The highlighted scenario is the one we suggest planning for.",
+    "scenariosHeading": "If you find a job after how many months?",
+    "scenariosLead": "Each number = paperwork and fees + moving + (monthly costs × the months without income) + the spare − your savings.",
+    "note": "The coloured card is the safest, and the one we suggest you plan for.",
     "surplus": "Above what you need",
     "monthlyAlone": "Monthly costs while you are alone",
     "monthlyFamily": "Monthly costs once the family arrives",
@@ -178,27 +178,30 @@
     "aloneHeading": "Monthly, while you are alone",
     "aloneHint": "Type each amount for one person, just you, from when you arrive until the family arrives.",
     "familyHeading": "Monthly, with the family",
-    "familyHint": "Type the whole family's costs. They start the month after the family arrives."
+    "familyHint": "Type the whole family's costs. They start the month after the family arrives.",
+    "coverMonths": "Your savings last about {count, plural, one {1 month} other {{shown} months}} after you pay all the one-off costs.",
+    "coverUnderMonth": "Your savings cover the one-off costs, but not one full month after them.",
+    "coverShort": "Your savings are not enough even for the one-off costs. You still need to save {amount}."
   },
   "results": {
     "title": "Results summary",
-    "lead": "All your numbers on one page. Print or save as PDF from the browser.",
+    "lead": "All your numbers on one page. You can print them or save them as a PDF file.",
     "household": "Household",
     "monthly": "Monthly costs",
     "oneOff": "Total one-off costs",
-    "print": "Print / save PDF",
-    "reset": "Start over",
+    "print": "Print the plan or save it as a PDF file",
+    "reset": "Clear this plan's numbers and start over",
     "note": "These figures come from your own inputs. Check the sources before deciding.",
-    "timelineHeading": "How much, and by when?",
-    "timelineLead": "Every cost has a due stage. This is the cash that must be ready at each stage, and the running total up to it.",
+    "timelineHeading": "How much do you pay, and when?",
+    "timelineLead": "Every cost has a time. This is the money that must be ready at each stage, and the total up to that stage.",
     "forgotHeading": "What did you forget?",
     "forgotLead": "The empty fields in each stage. You need not fill them all; just make sure nothing is missing.",
     "planHeading": "Save your plan",
-    "planLead": "A small file on your device, no account. Open it later or compare it with another plan.",
-    "savePlan": "Save plan as a file",
-    "openPlan": "Open a saved plan",
+    "planLead": "A small file saved on your device, with no account or sign-up. Open it later or compare it with another plan.",
+    "savePlan": "Save the plan on your device (a file)",
+    "openPlan": "Open a plan you saved before",
     "compare": "Compare two plans",
-    "whatsapp": "Share on WhatsApp",
+    "whatsapp": "Send the summary on WhatsApp",
     "savings": "Savings held",
     "householdValue": "{adults} adults, {children} children",
     "resetConfirm": "Clear the numbers of this plan and start again? Your other plans are not touched.",
@@ -230,7 +233,7 @@
     "household": "Household",
     "oneOff": "One-off costs",
     "monthly": "Monthly",
-    "scenario3": "Job after 3 months",
+    "scenario3": "If you find a job after 3 months",
     "savings": "Savings held",
     "needed": "Still to save",
     "note": "Both files stay on your device. Nothing is sent.",
@@ -248,7 +251,7 @@
       "1": "You can register yourself on the official site that the US State Department announces.",
       "2": "If you use an office, make sure it registers on the official site only, and that you personally keep the confirmation number.",
       "3": "Nobody can guarantee a win or raise your chances.",
-      "4": "You check the result yourself, only on the official Entrant Status Check. No email or message tells you that you won.",
+      "4": "You check the result yourself, only on the official result page (Entrant Status Check). No email or message tells you that you won.",
       "5": "Copycat sites look official. Make sure the address ends in .gov, and beware of anyone who asks for money to \"win\"."
     },
     "signsHeading": "Scam signs",
@@ -261,21 +264,21 @@
     "linksHeading": "Official links only",
     "links": {
       "entry": "Official lottery page (registration and instructions)",
-      "status": "Entrant Status Check (results)",
+      "status": "The official result page (Entrant Status Check)",
       "fraud": "State Department fraud warning",
-      "fee": "The official decision on the registration fee (Federal Register)"
+      "fee": "The official decision on the registration fee (in the US official gazette, the Federal Register)"
     },
     "note": "This site is not affiliated with the US government. We only point you to the official pages.",
     "fee": "Registering for the lottery has an official fee of just one dollar ($1), set by the US State Department. Do not let anyone take more than that as the government fee; any extra money is the office's service charge.",
-    "feeSource": "Source: the final rule published in the Federal Register on 16 September 2025"
+    "feeSource": "Source: the final rule published in the US official gazette (the Federal Register) on 16 September 2025"
   },
   "guide": {
-    "title": "How do I find the price of food?",
+    "title": "How do I find the price of food and groceries?",
     "lead": "We will not give you a number. We show you where to see it yourself, in the city you plan to live in.",
     "how": "The method",
     "step1": "Open a supermarket site from the links below and pick a store in your intended city.",
     "step2": "Build a one-week basket of what you actually buy and read the total.",
-    "step3": "Multiply by 4 and type the number into the calculator. Repeat now and then; prices change.",
+    "step3": "Multiply by 4 (the weeks in a month) and type the number into the calculator. Repeat now and then; prices change.",
     "links": "Real links",
     "note": "These are external sites. We do not set prices and are not responsible for them.",
     "backToCalculator": "Type the number into the calculator",
@@ -290,27 +293,27 @@
   "guideHealth": {
     "title": "How do I find the price of health insurance?",
     "lead": "We will not give you a number. The price depends on the state, your age, household size and income, and you see it yourself on the official US government site.",
-    "step1": "Open HealthCare.gov, enter the ZIP code of your intended city, and your household members and ages.",
-    "step2": "Browse the plans and the monthly premium of each plan.",
+    "step1": "Open the government health insurance site (HealthCare.gov), enter the ZIP code (postal code) of your intended city, and your household members and ages.",
+    "step2": "Browse the plans and the monthly premium of each plan (the premium is what you pay the insurer every month).",
     "step3": "Type the monthly premium into the calculator. If you have children, include them in the household size so the premium covers them.",
     "state": "Some states run their own marketplace; HealthCare.gov sends you there automatically. We do not set prices.",
     "subsidyWarning": "HealthCare.gov may offer you a subsidy on the premium based on your income. As a new immigrant, do not take this subsidy; work out the full price without it.",
-    "subsidyWarningLink": "Read the public charge page"
+    "subsidyWarningLink": "Read the “public charge” page (not becoming a burden on the government)"
   },
   "charge": {
-    "title": "The new public charge rule",
-    "lead": "A plain explanation of the \"public charge\" rule from official sources only. We relay what the official page says and add nothing of our own.",
+    "title": "The new “public charge” rule (not becoming a burden on the government)",
+    "lead": "A plain explanation of the “public charge” rule from official sources only. We relay what the official page says and add nothing of our own.",
     "stamp": "Checked against the official sources on",
     "stampDate": "10 October 2026",
     "legal": "This is not legal advice. Decisions rest with the embassy and the authorities, and every case is different."
   },
   "english": {
     "title": "Learn English",
-    "lead": "Free resources grouped by your goal, and a ready prompt to paste into any assistant that will teach you step by step.",
-    "promptHeading": "Ready prompt",
-    "copy": "Copy",
-    "copyAria": "Copy the prompt",
-    "promptHelp": "Copy it into any assistant and change your level in the brackets.",
+    "lead": "Free resources grouped by your goal, and a ready text (a prompt) to paste into any AI assistant that will teach you step by step.",
+    "promptHeading": "A ready text to paste into the assistant (a prompt)",
+    "copy": "Copy the text",
+    "copyAria": "Copy the ready text",
+    "promptHelp": "Copy the text into any AI assistant, and change your level in the brackets.",
     "note": "All links go to free external sites. Know a better one? Send it to the email below.",
     "copied": "Copied.",
     "copyFailed": "We could not copy. Select the text and copy it by hand."
@@ -354,7 +357,7 @@
       "entry": "Registration fee and photos",
       "documents": "Family passports, medical exam and documents",
       "interview": "Fees and travel to the embassy",
-      "afterVisa": "USCIS fee and anything else",
+      "afterVisa": "The green card fee (USCIS) and anything else",
       "travel": "Tickets, bags, insurance",
       "housing": "Until you get the lease",
       "household": "Furniture, clothes, home supplies",
@@ -389,9 +392,9 @@
       "infants": "× {shown} {count, plural, one {infant} other {infants}}"
     },
     "toggle": {
-      "label": "Counted",
-      "household": "whole family",
-      "perPerson": "per person"
+      "label": "The amount you type is for",
+      "household": "the whole family",
+      "perPerson": "one person"
     },
     "items": {
       "entryPhotos": "Entry photos",
@@ -460,7 +463,7 @@
       },
       "beforeTravel": {
         "title": "Before travel",
-        "text": "USCIS fee, tickets, insurance"
+        "text": "The green card fee (USCIS), tickets and insurance"
       },
       "firstMonth": {
         "title": "First month there",
@@ -488,16 +491,16 @@
       }
     },
     "scenarios": {
-      "start0": "Job from day 1",
-      "start1": "Job after 1 month",
-      "start2": "Job after 2 months",
-      "start3": "Job after 3 months"
+      "start0": "If you find a job from day one",
+      "start1": "If you find a job after 1 month",
+      "start2": "If you find a job after 2 months",
+      "start3": "If you find a job after 3 months"
     },
     "scenarioHints": {
-      "start0": "0 months without income",
+      "start0": "No months without income",
       "start1": "1 month without income",
       "start2": "2 months without income",
-      "start3": "Safest: 3 months without income"
+      "start3": "The safest: 3 months without income"
     },
     "errors": {
       "empty": "Type the amount",
@@ -506,9 +509,9 @@
       "needsRate": "Type the dollar rate first"
     },
     "plan": {
-      "save": "Save my plan as a file",
+      "save": "Save my plan on my device",
       "open": "Open a saved plan",
-      "clear": "Clear everything",
+      "clear": "Clear all the numbers",
       "cantSave": "This browser is not letting the site save here. Save your plan as a file so you do not lose it.",
       "privacy": "The numbers you type stay on your device.",
       "openFailures": {
@@ -522,51 +525,60 @@
     "laterShare": "{amount} of it when the family arrives",
     "includesLabel": "Includes:",
     "itemIncludes": {
-      "entryPhotos": "one photo for each person on the entry: you, your spouse and the children",
-      "entryHelp": "a fee for any office or person who fills in the entry for you",
-      "familyPassports": "the spouse's passport and each child's, not yours",
-      "medicalExam": "the examination, X-ray, blood test and vaccinations. X-rays and blood tests start at age 15",
-      "translation": "a certified translator's fee and any stamp or attestation on documents",
-      "civilCertificates": "getting new originals: birth, marriage, degree and transcript",
-      "militaryCertificate": "the fee to get the military status or exemption certificate",
-      "visaPhotos": "the printed photos each person brings to the interview, separate from the entry photos",
-      "interviewTravel": "transport, a night's stay and meals around the interview, if you live outside Cairo",
-      "passportCourier": "sending the passport back to an Aramex office you choose: free at the Cairo embassy. Type an amount only if your embassy charges",
-      "otherPaperwork": "any paperwork or fee before travel that has no box above",
-      "travelInsurance": "trip and medical cover for the first weeks, before your health insurance starts",
-      "temporaryStay": "a hotel or a furnished short stay until you move into your rented flat",
-      "applicationFees": "the fee to apply and for the background and credit check",
-      "securityDeposit": "a sum paid to the landlord with the first rent, returned when you leave if nothing is damaged. A rental, not a purchase; not health or car insurance",
-      "furniture": "beds, a sofa, a table, a TV and any large appliances",
-      "winterClothes": "coats, boots and warm clothes, for each person",
-      "householdBasics": "kitchen items, bed linen and blankets, cleaning and bathroom supplies. Food is not here: it is in the monthly costs",
-      "utilityDeposits": "a sum utility companies sometimes ask for when you open a new account with no credit history",
-      "phoneLine": "a SIM and activating the line, for each adult. The monthly plan is in the monthly costs",
-      "licenseTests": "test fees and getting the licence, for adults only",
-      "carPurchase": "the price of the car only. Insurance and registration have their own boxes",
-      "carInsuranceStart": "the first insurance payment before you drive",
-      "carRegistration": "registration, plates and title transfer fees",
-      "healthInsuranceStart": "the first month's premium, before the monthly costs start",
-      "childcareStart": "enrolment and the first payment, for children under 5 (our analysis). The monthly cost is in the monthly costs",
-      "otherMoving": "any moving cost that has no box above",
-      "rent": "the month's rent only. Power and water have their own box",
-      "phone": "the monthly mobile plan",
-      "food": "groceries, supermarket and home cooking, for each person",
-      "healthInsurance": "the monthly premium once the insurance has started",
-      "carInsurance": "the monthly car insurance premium",
-      "childcare": "daycare every month, for children under 5 (our analysis: the age of kindergarten in the US)",
-      "otherMonthly": "any monthly cost that has no box above",
-      "familyAbroadMonthly": "rent, food and any cost of the family at home during this time",
-      "quickPaperwork": "registration, medical, documents and every fee up to the green card",
-      "quickTravel": "tickets, bags and travel insurance",
-      "quickHousing": "temporary stay, rental deposit, first rent, furniture and home supplies",
-      "quickCar": "purchase, insurance, registration and licence",
-      "quickMonthly": "rent, utilities, food, transport and health insurance for one month",
-      "medicalExamChild": "the general examination and vaccinations. Usually no X-ray or blood test under 15",
-      "policeCertificate": "the police certificate for each person aged 16 or older. Younger children do not need one",
-      "ticket": "a ticket for each adult (12 or older). This is the usual airline pattern (unconfirmed): ask your airline",
-      "ticketChild": "a ticket for each child aged 2 to 11, usually cheaper than an adult's (unconfirmed). Ask your airline",
-      "ticketInfant": "a ticket for each infant under 2, usually a small share of the adult fare (unconfirmed)"
+      "entryPhotos": "Taking the photos the registration needs. You pay before registering and it does not come back. For each person on the entry: you, your spouse and the children.",
+      "entryHelp": "A fee for any office or person who fills in the registration for you, if you use one. You pay it at registration and it does not come back. For the whole family.",
+      "familyPassports": "Getting the passports of your spouse and children (not yours). You pay before the interview and it does not come back. For each family member.",
+      "medicalExam": "The examination, X-ray, blood test and vaccinations at the embassy's doctor. You pay the doctor before the interview and it does not come back. For each adult and anyone 15 or older. X-rays and blood tests start at 15.",
+      "translation": "A certified translator's fee and any stamp or attestation on documents, if you need it. You pay before the interview and it does not come back. For the whole family.",
+      "civilCertificates": "Getting new originals of the birth certificates, the marriage certificate, the degree and the transcript. You pay before the interview and it does not come back. For the whole family.",
+      "militaryCertificate": "The fee to get the military status or exemption certificate (for men). You pay before the interview and it does not come back. Type the total for the family if more than one person needs it.",
+      "visaPhotos": "The printed photos each person brings to the interview. These are separate from the registration photos. You pay before the interview and it does not come back. For each person.",
+      "interviewTravel": "Transport, a night's stay and meals around the interview, if you live outside Cairo. You pay around the interview day and it does not come back. For the whole family.",
+      "passportCourier": "Sending the passport back to an Aramex office you choose after the interview: free at the Cairo embassy. Type an amount only if your embassy charges. For each person.",
+      "otherPaperwork": "Any paperwork or fee before travel that has no box above. You pay it before you travel and it does not come back. Type the total for the whole family.",
+      "travelInsurance": "Trip and medical cover for the first weeks, before your health insurance starts. You pay before you travel and it does not come back. Choose \"one person\" or \"the whole family\" above.",
+      "temporaryStay": "A hotel or a furnished short stay until you move into your rented flat. You pay in the first days after you arrive and it does not come back. For the whole family.",
+      "applicationFees": "The fee to apply for a flat and for the background and credit check. You pay when you apply and it does not come back. For the whole family.",
+      "securityDeposit": "A sum you pay the landlord with the first rent. It comes back when you leave the flat if nothing is damaged. This is a rental, not a purchase, and not health or car insurance. For the whole flat.",
+      "furniture": "Beds, a sofa, a table, a TV and any large appliances. You buy them in the first month and the money does not come back. For the whole family.",
+      "winterClothes": "Coats, boots and warm clothes. You buy them in the first month and the money does not come back. For each person.",
+      "householdBasics": "Kitchen items, bed linen and blankets, cleaning and bathroom supplies. You buy them when you arrive and the money does not come back. For the whole family. Food is not here: it is in the monthly costs.",
+      "utilityDeposits": "A sum utility companies sometimes ask for when you open a new account with no credit history. You pay when you open the account. Ask the company whether it comes back. For the whole flat.",
+      "phoneLine": "A SIM and activating the line for the first time. You pay in the first month and it does not come back. For each adult. The monthly plan is in the monthly costs.",
+      "licenseTests": "Test fees and getting the driving licence. You pay in the first months and it does not come back. For adults only.",
+      "carPurchase": "The price of the car only. You pay when you buy and it does not come back. Insurance and registration have their own boxes. For one car.",
+      "carInsuranceStart": "The first insurance payment on the car before you drive. You pay it once, then monthly, and it does not come back. For the car.",
+      "carRegistration": "Registration, plates and title transfer fees. You pay when you register the car and it does not come back. For the car.",
+      "healthInsuranceStart": "The first month's health insurance premium, before the monthly costs start. You pay in the first month and it does not come back. Choose \"one person\" or \"the whole family\" above.",
+      "childcareStart": "Enrolment and the first payment for daycare, for each child under 5 (our analysis). You pay when you enrol the child and it does not come back. The monthly cost is in the monthly costs.",
+      "otherMoving": "Any moving cost that has no box above. You pay in the first month and it does not come back. Type the total for the whole family.",
+      "rent": "The month's rent only. You pay it every month and it does not come back. Power and water have their own box. For the whole flat.",
+      "phone": "The monthly mobile plan. You pay every month and it does not come back. For the whole family.",
+      "food": "Groceries, supermarket and home cooking. An ordinary cost you pay every month and it does not come back. For each person.",
+      "healthInsurance": "The monthly health insurance premium once it has started. You pay every month and it does not come back. Choose \"one person\" or \"the whole family\" above.",
+      "carInsurance": "The monthly car insurance premium. You pay every month and it does not come back. For the car.",
+      "childcare": "Daycare every month, for children under 5 (our analysis: the age of kindergarten in the US). You pay every month and it does not come back. For each child.",
+      "otherMonthly": "Any monthly cost that has no box above. You pay it every month and it does not come back. Type the total for the whole family.",
+      "familyAbroadMonthly": "Rent, food and any cost of the family at home during this time. You pay every month until the family arrives and it does not come back. For the whole family.",
+      "quickPaperwork": "Registration, medical, documents and every fee up to the green card. You pay from registration until you travel, and most of it does not come back. Type the total for the whole family.",
+      "quickTravel": "Tickets, bags and travel insurance. You pay before you travel, and it usually does not come back. Type the total for the whole family.",
+      "quickHousing": "Temporary stay, the rental deposit (it comes back), first rent, furniture and home supplies. You pay in the first month. Type the total for the whole family.",
+      "quickCar": "Buying the car, insuring it, registering it and the licence. You pay in the first month and it does not come back. Type the total for the whole family.",
+      "quickMonthly": "Rent, utilities, food, transport and health insurance for one month. You pay every month and it does not come back. Type the total for the whole family.",
+      "medicalExamChild": "The general examination and vaccinations at the embassy's doctor. You pay the doctor before the interview and it does not come back. For each child under 15. Usually no X-ray or blood test.",
+      "policeCertificate": "Getting the police certificate. You pay before the interview and it does not come back. For each person aged 16 or older; younger children do not need one.",
+      "ticket": "A flight ticket for each adult (12 or older). You pay before you travel, and it usually does not come back (it depends on the fare). This split is the usual airline pattern (unconfirmed): ask your airline.",
+      "ticketChild": "A flight ticket for each child aged 2 to 11. You pay before you travel, and it usually does not come back. Usually cheaper than an adult's (unconfirmed): ask your airline.",
+      "ticketInfant": "A flight ticket for each infant under 2. You pay before you travel, and it usually does not come back. Usually a small share of the adult fare (unconfirmed).",
+      "passport": "Getting or renewing your own passport. You pay it before registering and it does not come back. For the main applicant only.",
+      "registrationFee": "The official fee to register for the lottery. You pay it online when you register. It is per entry: one entry if only you register.",
+      "excessBaggage": "Fees for extra weight or extra bags. You pay before you travel or at the airport and it does not come back. For the whole family.",
+      "firstMonthRent": "The first month's rent. You pay it before you move in and it does not come back. For the whole flat.",
+      "utilities": "The power, water and gas bills. You pay every month and it does not come back. For the whole flat.",
+      "internet": "The home internet subscription. You pay every month and it does not come back. For the whole flat.",
+      "transport": "Public transport or fuel. You pay every month and it does not come back. For the whole family.",
+      "visaFee": "The interview fee (the visa fee). You pay it at the embassy on the interview day if it was not paid before. It does not come back even if the visa is refused. For each applicant.",
+      "immigrantFee": "The green card fee (the USCIS fee). You pay it online after the visa is issued and before you travel. It covers processing the file and printing the green card. For each person, children too."
     },
     "agesNudge": "A child has no age yet, so we count them as a child aged 2 to 11.",
     "agesNudgeLink": "Type the ages"
@@ -595,7 +607,7 @@
   },
   "pwa": {
     "updateReady": "A new version of the site is ready.",
-    "update": "Update now"
+    "update": "Update the site now"
   },
   "offline": {
     "title": "No internet right now",
@@ -617,10 +629,10 @@
     "current": "Plan",
     "manage": "My plans",
     "active": "Open now",
-    "open": "Open",
+    "open": "Open the plan",
     "rename": "Rename",
-    "duplicate": "Duplicate",
-    "delete": "Delete",
+    "duplicate": "Make a copy",
+    "delete": "Delete the plan",
     "deleteConfirm": "Delete the plan “{name}”? This cannot be undone.",
     "newHeading": "New plan",
     "nameLabel": "Plan name",
@@ -638,7 +650,7 @@
     "orFile": "Or open a file"
   },
   "transfer": {
-    "open": "Move to another device",
+    "open": "Send the plan to another device",
     "title": "Move your plan to another device",
     "lead": "This link carries your plan inside it. Open it on the other device and the plan opens there, with nothing sent to any server.",
     "warning": "This link contains your numbers. Do not send it to anyone.",
@@ -648,8 +660,8 @@
     "copyFailed": "We could not copy. Select the link and copy it by hand.",
     "whatsapp": "Send it to yourself on WhatsApp",
     "whatsappText": "My plan from DV Compass. This link contains my numbers:",
-    "qrHeading": "Or scan this code with the other device",
-    "qrLabel": "A QR code with the link to your plan",
+    "qrHeading": "Or scan this code with the other device's camera",
+    "qrLabel": "A QR code (a square picture you scan with a camera) holding the link to your plan",
     "qrTooBig": "The plan is too big for a QR code. Use the link.",
     "preparing": "Preparing the link...",
     "tooBig": "The plan is too big for a link. Use “Save the plan as a file” and open the file on the other device.",
@@ -662,7 +674,7 @@
     "offerOneOff": "One-off costs",
     "offerMonthly": "Monthly",
     "fromOtherDevice": "Plan from another device",
-    "add": "Add the plan",
+    "add": "Add the plan to my plans",
     "dismiss": "No, do not add it",
     "added": "The plan was added as “{name}” and opened.",
     "broken": "This link does not work, or part of it was cut off. Ask the sender to send it again.",
@@ -679,7 +691,7 @@
     "rateNone": "not typed yet",
     "stagesHeading": "Costs stage by stage",
     "stagesNone": "No amount has been typed yet.",
-    "runwayHeading": "Monthly costs and scenarios",
+    "runwayHeading": "Monthly costs, and what if you find a job after some months",
     "site": "Free calculator at:"
   }
 }

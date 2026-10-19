@@ -10,8 +10,9 @@ import en from "@/messages/en.json";
  */
 
 const ALL_IDS = [...ITEMS, ...QUICK_ITEMS].map((item) => item.id);
-const ONE_LINE = 125;
-const ONE_LINE_EN = 150;
+/** A caption of four lines at most on a phone: what it is, when you pay, whether it comes back, who it counts. */
+const CAPTION_MAX = 230;
+const CAPTION_MAX_EN = 300;
 
 describe.each([
   ["ar", ar],
@@ -56,11 +57,11 @@ describe("the 'Includes' lines", () => {
     for (const id of Object.keys(arLines)) expect(ALL_IDS, id).toContain(id);
   });
 
-  it("are one line, and name no amount of money (ages are fine)", () => {
+  it("are short enough to read as a caption, and name no amount of money (ages are fine)", () => {
     // English takes more letters than Arabic for the same line.
     for (const [lines, limit] of [
-      [arLines, ONE_LINE],
-      [enLines, ONE_LINE_EN],
+      [arLines, CAPTION_MAX],
+      [enLines, CAPTION_MAX_EN],
     ] as const) {
       for (const [id, text] of Object.entries(lines)) {
         expect(text.length, id).toBeLessThanOrEqual(limit);
@@ -112,7 +113,7 @@ describe("the deposit boxes", () => {
     expect(ar.calc.itemIncludes.securityDeposit).toContain("بيرجعلك لما تسيب الشقة");
     expect(ar.calc.itemIncludes.securityDeposit).toContain("ده إيجار مش شرا");
     expect(en.calc.items.securityDeposit).toBe("Rental security deposit (refundable)");
-    expect(en.calc.itemIncludes.securityDeposit).toContain("A rental, not a purchase");
+    expect(en.calc.itemIncludes.securityDeposit).toContain("rental, not a purchase");
     expect(ar.calc.items.utilityDeposits).toBe("تأمين فتح الكهرباء والمياه والنت");
     expect(ar.calc.itemIncludes.utilityDeposits).toContain("من غير تاريخ ائتماني");
     expect(en.calc.items.utilityDeposits).toBe("Utility and internet deposits");

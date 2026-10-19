@@ -7,6 +7,7 @@ import {
   type TimelineStage,
 } from "@/lib/calc/catalog";
 import { ageGroups } from "@/lib/calc/ages";
+import { coverageOf, type Coverage } from "@/lib/calc/coverage";
 import { parseRate, type Rate } from "@/lib/calc/currency";
 import { isZero, type Decimal } from "@/lib/calc/decimal";
 import { addMonths, costOfMonths, type FollowPhases } from "@/lib/calc/follow";
@@ -142,6 +143,8 @@ export interface PlanResult {
   savingsCents: Cents;
   netMonthlyAfterStartCents: Cents;
   scenarios: Scenario[];
+  /** How far the savings go after the costs paid once; null until savings are typed. */
+  coverage: Coverage | null;
   /** How many children have no age typed yet (they are counted as small children until then). */
   agesUnknown: number;
   /** Set only when the family arrives some months after the principal. */
@@ -340,6 +343,20 @@ function phasesOf(months: number | null, stageCents: (stage: TimelineStage) => C
   };
 }
 
+/** What is known when the family follows later; null when everyone travels together. */
+function followResultOf(
+  phases: FollowPhases | null,
+  oneTimeCents: Cents,
+  aloneMonthsCents: Cents,
+): FollowResult | null {
+  if (phases === null) return null;
+  return {
+    months: phases.months,
+    aloneMonthlyCents: phases.aloneMonthlyCents,
+    cashByArrivalCents: oneTimeCents + aloneMonthsCents,
+  };
+}
+
 /** The household as the multipliers see it: the counts, the children by age, the rate and the phases. */
 function contextOf(state: PlanState, rate: Rate | null, followMonths: number | null): HouseholdContext {
   const { adults, children, childAges } = state.household;
@@ -386,6 +403,13 @@ export function computePlan(state: PlanState): PlanResult {
     items,
     aloneItems,
     agesUnknown: context.ages.unknown,
+    coverage: coverageOf({
+      savingsTyped: parseAmount(state.savings.raw).ok && !savings.needsRate,
+      savingsCents: savings.cents,
+      oneTimeCents,
+      monthlyCents,
+      phases,
+    }),
     stages,
     timeline: computeTimeline(stages, phases !== null),
     oneTimeCents,
@@ -401,14 +425,7 @@ export function computePlan(state: PlanState): PlanResult {
       bufferMonths,
       phases,
     }),
-    follow:
-      phases === null
-        ? null
-        : {
-            months: phases.months,
-            aloneMonthlyCents: phases.aloneMonthlyCents,
-            cashByArrivalCents: oneTimeCents + stageCents("aloneMonths"),
-          },
+    follow: followResultOf(phases, oneTimeCents, stageCents("aloneMonths")),
     needsRate:
       items.some((i) => i.needsRate) ||
       aloneItems.some((i) => i.needsRate) ||

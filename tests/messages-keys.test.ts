@@ -66,10 +66,19 @@ const _openCheck: _AllOpen = true;
 
 const ARRIVAL_CARDS = ["arrivalAlone", "arrivalFamily"];
 
+/**
+ * The arguments of a message, such as {count} or {amount}. The words that open a choice of a plural
+ * ("one {month}") are text, not arguments, but an argument inside a choice ("other {{shown} months}") is.
+ */
 function placeholders(text: string): string[] {
-  // The words inside a plural choice are text, not arguments, so a plural counts as its one argument.
-  const withoutChoices = text.replace(/\{(\w+),\s*plural,(?:[^{}]|\{[^{}]*\})*\}/g, "{$1}");
-  return [...withoutChoices.matchAll(/\{(\w+)\}/g)].map((m) => m[1] ?? "").sort();
+  const selector = /(?:zero|one|two|few|many|other|=\d+)\s*$/;
+  const names = new Set<string>();
+  for (let index = 0; index < text.length; index += 1) {
+    if (text[index] !== "{" || selector.test(text.slice(0, index))) continue;
+    const name = /^\{(\w+)\s*[,}]/.exec(text.slice(index))?.[1];
+    if (name !== undefined) names.add(name);
+  }
+  return [...names].sort();
 }
 
 describe("messages", () => {

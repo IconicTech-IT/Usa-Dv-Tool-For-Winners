@@ -8,7 +8,7 @@
             "type": "list",
             "items": [
               "بتتحفظ في متصفحك إنت، على جهازك، عشان تلاقيها لما ترجع.",
-              "مبتتبعتش لأي سيرفر عندنا، وإحنا مبنشوفهاش.",
+              "مبتتبعتش لأي كمبيوتر خدمة (سيرفر) عندنا، وإحنا مبنشوفهاش.",
               "لو مسحت بيانات الموقع من إعدادات المتصفح، الخطة بتتمسح. احفظ خطتك كملف لو عايز نسخة منها."
             ]
           }
@@ -78,7 +78,7 @@
             "type": "list",
             "items": [
               "They are saved in your own browser, on your device, so they are there when you come back.",
-              "They are not sent to any server of ours, and we do not see them.",
+              "They are not sent to any computer of ours (a server), and we do not see them.",
               "If you clear the site's data in the browser settings, the plan is deleted. Save your plan as a file if you want a copy."
             ]
           }
