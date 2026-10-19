@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { Inline } from "@/components/content/Inline";
 import { Icon } from "@/components/Icon";
 import type { Locale } from "@/i18n/routing";
 import official from "@/content/official-links.json";
@@ -42,7 +43,9 @@ export async function ScamScreen({ locale }: { locale: Locale }) {
         {FACT_NUMBERS.map((n) => (
           <div key={n}>
             <Icon name="check" />
-            <span>{t(`facts.${n}`)}</span>
+            <span>
+              <Inline text={t(`facts.${n}`)} />
+            </span>
           </div>
         ))}
       </div>
@@ -51,7 +54,9 @@ export async function ScamScreen({ locale }: { locale: Locale }) {
         {SIGN_NUMBERS.map((n) => (
           <div key={n}>
             <Icon name="cross" />
-            <span>{t(`signs.${n}`)}</span>
+            <span>
+              <Inline text={t(`signs.${n}`)} />
+            </span>
           </div>
         ))}
       </div>
@@ -60,7 +65,7 @@ export async function ScamScreen({ locale }: { locale: Locale }) {
         {officialLinks().map((link) => (
           <a key={link.key} className="lnk" href={link.url} target="_blank" rel="noopener noreferrer">
             <span>
-              {t(`links.${link.key}`)}
+              <Inline text={t(`links.${link.key}`)} />
               <small>{new URL(link.url).hostname.replace(/^www\./, "")}</small>
             </span>
             <Icon name="external" />

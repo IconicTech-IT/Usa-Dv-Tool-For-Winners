@@ -1,3 +1,4 @@
+import { Inline } from "@/components/content/Inline";
 import { Icon } from "@/components/Icon";
 import type { ItemNote } from "@/lib/guide/notes";
 
@@ -14,9 +15,11 @@ export function RuleNote({ note, sourceWord }: RuleNoteProps) {
     <div className={isTip ? "rule tip" : "rule"}>
       {isTip ? <Icon name="warning" /> : null}
       <div>
-        <p>{note.text}</p>
+        <p>
+          <Inline text={note.text} />
+        </p>
         <a className="ilink" href={note.source.url} target="_blank" rel="noopener noreferrer">
-          {sourceWord}: {note.source.label}
+          {sourceWord}: <Inline text={note.source.label} />
         </a>
       </div>
     </div>

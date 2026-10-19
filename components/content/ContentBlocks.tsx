@@ -17,7 +17,11 @@ export function ContentSections({ content }: { content: PageContent }) {
           ))}
         </section>
       ))}
-      {content.footnote ? <div className="note">{content.footnote}</div> : null}
+      {content.footnote ? (
+        <div className="note">
+          <Inline text={content.footnote} />
+        </div>
+      ) : null}
     </>
   );
 }
@@ -79,12 +83,16 @@ function LinksBlock({ block }: { block: BlockOf<"links"> }) {
         <div key={link.url}>
           <a className="lnk" href={link.url} target="_blank" rel="noopener noreferrer">
             <span>
-              {link.label}
+              <Inline text={link.label} />
               <small>{new URL(link.url).hostname.replace(/^www\./, "")}</small>
             </span>
             <Icon name="external" />
           </a>
-          {link.note ? <div className="help">{link.note}</div> : null}
+          {link.note ? (
+            <div className="help">
+              <Inline text={link.note} />
+            </div>
+          ) : null}
         </div>
       ))}
     </div>
@@ -108,7 +116,9 @@ function TableBlock({ block }: { block: BlockOf<"table"> }) {
           {block.rows.map((row) => (
             <tr key={row[0]}>
               {row.map((cell) => (
-                <td key={cell}>{cell}</td>
+                <td key={cell}>
+                  <Inline text={cell} />
+                </td>
               ))}
             </tr>
           ))}

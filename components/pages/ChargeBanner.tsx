@@ -10,7 +10,7 @@ export async function ChargeBanner({ locale }: { locale: Locale }) {
     <>
       <div className="stamp">
         <Icon name="clock" />
-        {t("stamp")} <b className="num">{t("stampDate")}</b>
+        {t("stamp")} <b>{t("stampDate")}</b>
       </div>
       <div className="warn">{t("legal")}</div>
     </>

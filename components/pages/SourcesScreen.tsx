@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { Inline } from "@/components/content/Inline";
 import { Icon } from "@/components/Icon";
 import type { Locale } from "@/i18n/routing";
 import { allGuideSites, GUIDE_LINKS_LAST_CHECKED, type GuideSite } from "@/lib/guide/links";
@@ -48,12 +49,14 @@ function SiteList({ heading, sites, locale }: SiteListProps) {
           <div key={site.id}>
             <a className="lnk" href={site.url} target="_blank" rel="noopener noreferrer">
               <span>
-                {site.name[locale]}
+                <Inline text={site.name[locale]} />
                 <small>{new URL(site.url).hostname.replace(/^www\./, "")}</small>
               </span>
               <Icon name="external" />
             </a>
-            <div className="help">{site.what[locale]}</div>
+            <div className="help">
+              <Inline text={site.what[locale]} />
+            </div>
           </div>
         ))}
       </div>

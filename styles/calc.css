@@ -79,6 +79,8 @@
 
 /* The currency list dialog */
 dialog.sheet-dialog {
+  /* The design reset removes the browser margin that centres a dialog, so it is given back */
+  margin: auto;
   width: min(520px, calc(100vw - 24px));
   max-height: 85vh;
   padding: 0;
@@ -342,4 +344,9 @@ html[dir="rtl"] .back svg {
 }
 html[dir="rtl"] .ilink[target="_blank"]::after {
   content: "\2196";
+}
+
+/* The total bar lines up with the page column (880 pixels wide, 16 pixels of padding each side) */
+.total .in {
+  max-width: 848px;
 }

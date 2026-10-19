@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { Inline } from "@/components/content/Inline";
 import { Icon } from "@/components/Icon";
 import { RuleNote } from "@/components/guide/RuleNote";
 import { Link } from "@/i18n/navigation";
@@ -79,14 +80,20 @@ function SourceLink({ site, locale, officialLabel }: SourceLinkProps) {
     <div>
       <a className="lnk" href={site.url} target="_blank" rel="noopener noreferrer">
         <span>
-          {site.name[locale]}
+          <Inline text={site.name[locale]} />
           {site.official ? ` · ${officialLabel}` : ""}
           <small>{host}</small>
         </span>
         <Icon name="external" />
       </a>
-      <div className="help">{site.what[locale]}</div>
-      {site.watch ? <div className="warn">{site.watch[locale]}</div> : null}
+      <div className="help">
+        <Inline text={site.what[locale]} />
+      </div>
+      {site.watch ? (
+        <div className="warn">
+          <Inline text={site.watch[locale]} />
+        </div>
+      ) : null}
     </div>
   );
 }
