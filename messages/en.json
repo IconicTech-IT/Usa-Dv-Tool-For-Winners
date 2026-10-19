@@ -173,7 +173,11 @@
     "monthlyAlone": "Monthly costs while you are alone",
     "monthlyFamily": "Monthly costs once the family arrives",
     "arrivalTitle": "Until the family arrives (after {months} months)",
-    "arrivalHint": "All the one-off costs and the months you are alone"
+    "arrivalHint": "All the one-off costs and the months you are alone",
+    "aloneHeading": "Monthly, while you are alone",
+    "aloneHint": "Type each amount for one person, just you, from when you arrive until the family arrives.",
+    "familyHeading": "Monthly, with the family",
+    "familyHint": "Type the whole family's costs. They start the month after the family arrives."
   },
   "results": {
     "title": "Results summary",
@@ -213,7 +217,8 @@
     "housing": "First housing and set-up",
     "car": "Car and insurance",
     "monthly": "Costs for one month",
-    "note": "Quick and detailed figures are kept separately. The mode you choose is what the summary shows."
+    "note": "Quick and detailed figures are kept separately. The mode you choose is what the summary shows.",
+    "followNote": "Quick mode counts the family as travelling together. If you will travel first, use the detailed mode."
   },
   "compare": {
     "title": "Compare two plans",

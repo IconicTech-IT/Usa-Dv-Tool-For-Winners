@@ -1,4 +1,4 @@
-import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
+import { ALONE_MONTHLY_ITEMS, ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import {
   defaultField,
   PLAN_VERSION,
@@ -60,6 +60,7 @@ export function normalizePlan(state: PlanState): PlanState {
     ...state,
     items: fillFields(ITEMS, state.items),
     quick: fillFields(QUICK_ITEMS, state.quick),
+    aloneMonthly: fillFields(ALONE_MONTHLY_ITEMS, state.aloneMonthly),
     household: {
       ...state.household,
       childAges: Array.from(

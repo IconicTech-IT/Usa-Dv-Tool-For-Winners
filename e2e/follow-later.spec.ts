@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 import { SAMPLE_PLAN, STORAGE_KEY } from "./helpers";
 
@@ -10,8 +10,9 @@ async function open(page: Page, path: string): Promise<void> {
 }
 
 /** The box with this label, by the text of its label. */
-function box(page: Page, label: string) {
-  return page.locator(".field", { has: page.getByText(label, { exact: true }) });
+function box(scope: Page | Locator, label: string) {
+  const page = "page" in scope && typeof scope.page === "function" ? scope.page() : (scope as Page);
+  return scope.locator(".field", { has: page.getByText(label, { exact: true }) });
 }
 
 const FOLLOW = "Me first, the family follows after … months";
@@ -53,10 +54,29 @@ test("the principal travels first and the family follows: setup, moving, monthly
 
   // The monthly costs: the family's costs back home appear, and there are two monthly totals.
   await open(page, "/en/runway");
-  await box(page, "Rent").locator("input").fill("1000");
-  await box(page, "Your family's monthly costs back home until they join you").locator("input").fill("70");
-  await expect(page.getByText("Monthly costs while you are alone")).toBeVisible();
-  await expect(page.getByText("Monthly costs once the family arrives")).toBeVisible();
+  const alone = page.locator("section.card", {
+    has: page.getByRole("heading", { name: "Monthly, while you are alone" }),
+  });
+  const withFamily = page.locator("section.card", {
+    has: page.getByRole("heading", { name: "Monthly, with the family" }),
+  });
+  await expect(alone).toBeVisible();
+  await expect(withFamily).toBeVisible();
+  // Each card is typed on its own: a room for one while alone, the family's flat later.
+  await box(alone, "Rent").locator("input").fill("400");
+  await box(alone, "Food").locator("input").fill("100");
+  await box(alone, "Your family's monthly costs back home until they join you").locator("input").fill("70");
+  await box(withFamily, "Rent").locator("input").fill("1000");
+  await expect(alone.locator(".subtot")).toContainText("Monthly costs while you are alone");
+  await expect(withFamily.locator(".subtot")).toContainText("Monthly costs once the family arrives");
+  // The family's flat is not counted in the months alone: 400 + 100 + 70, not 1,570.
+  await expect(alone.locator(".subtot")).toContainText("$ 570");
+  await expect(withFamily.locator(".subtot")).toContainText("$ 1,000");
+  // The family's card has no box for the family's costs back home, and the months alone have none for children.
+  await expect(withFamily.getByText("Your family's monthly costs back home until they join you")).toHaveCount(
+    0,
+  );
+  await expect(alone.getByText("Childcare", { exact: false })).toHaveCount(0);
   await expect(page.getByText("Until the family arrives (after 4 months)")).toBeVisible();
 
   // The results page says how the household travels and shows the stages of both phases.
@@ -71,12 +91,35 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await page.getByRole("button", { name: "All together" }).click();
   await open(page, "/en/runway");
   await expect(page.getByText("Your family's monthly costs back home until they join you")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Monthly, while you are alone" })).toHaveCount(0);
   await expect(page.getByText(/Until the family arrives/)).toHaveCount(0);
   await open(page, "/en/results");
   await expect(page.locator(".tl:visible")).not.toContainText("When the family arrives");
   await open(page, "/en/setup");
   await page.getByRole("button", { name: FOLLOW }).click();
   await expect(page.getByLabel(MONTHS)).toHaveValue("4");
+  // What was typed for the months alone is still there.
+  await open(page, "/en/runway");
+  await expect(box(alone, "Rent").locator("input")).toHaveValue("400");
+});
+
+test("quick mode says it counts the family as travelling together, only when the family follows later", async ({
+  page,
+}) => {
+  await open(page, "/en/setup");
+  await page.getByRole("button", { name: "With family" }).click();
+  await open(page, "/en/quick");
+  const note = page.getByText("Quick mode counts the family as travelling together.");
+  await expect(note).toHaveCount(0);
+
+  await open(page, "/en/setup");
+  await page.getByRole("button", { name: FOLLOW }).click();
+  await page.getByLabel(MONTHS).fill("4");
+  await open(page, "/en/quick");
+  await expect(note).toBeVisible();
+
+  await open(page, "/ar/quick");
+  await expect(page.getByText("الوضع السريع بيحسب إن الأسرة مسافرة مع بعض.")).toBeVisible();
 });
 
 test("the Arabic page asks the question and keeps the plan after a reload", async ({ page }) => {
@@ -106,7 +149,7 @@ const FOLLOW_PATHS = ["/setup", "/moving", "/runway", "/results", "/compare"];
 const MARKERS: Record<string, Record<"ar" | "en", string>> = {
   "/setup": { ar: "هتسافروا إزاي؟", en: "How will you travel?" },
   "/moving": { ar: "لما الأسرة توصل", en: "When the family arrives" },
-  "/runway": { ar: "المصاريف الشهرية وإنت لوحدك", en: "Monthly costs while you are alone" },
+  "/runway": { ar: "شهريًا وانت لوحدك", en: "Monthly, while you are alone" },
   "/results": { ar: "الأسرة بعد ٨ شهر", en: "Family after 8 months" },
 };
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];

@@ -46,14 +46,21 @@ export function compactPlan(plan: PlanState): Record<string, unknown> {
   const base = emptyPlan();
   const out: Record<string, unknown> = { v: TRANSFER_VERSION };
   for (const key of Object.keys(base) as (keyof PlanState)[]) {
-    if (key === "items" || key === "quick" || key === "version") continue;
+    if (key === "items" || key === "quick" || key === "aloneMonthly" || key === "version") continue;
     if (differs(plan[key], base[key])) out[key] = plan[key];
   }
   const items = changedFields(plan.items, defaultField);
   const quick = changedFields(plan.quick, () => ({ raw: "", currency: "usd" }));
+  const aloneMonthly = changedFields(plan.aloneMonthly, () => ({ raw: "", currency: "usd" }));
+  if (Object.keys(aloneMonthly).length > 0) out["aloneMonthly"] = aloneMonthly;
   if (Object.keys(items).length > 0) out["items"] = items;
   if (Object.keys(quick).length > 0) out["quick"] = quick;
   return out;
+}
+
+/** The boxes of a new plan with the changed ones of the link laid over them. */
+function withChanged(base: Record<string, AmountField>, changed: unknown): Record<string, unknown> {
+  return { ...base, ...(typeof changed === "object" && changed !== null ? changed : {}) };
 }
 
 /** Puts a compact plan back together with the defaults, then checks it with the plan schema. */
@@ -62,12 +69,13 @@ export function expandPlan(compact: unknown): PlanState | null {
   const data = compact as Record<string, unknown>;
   if (data["v"] !== TRANSFER_VERSION) return null;
   const base = emptyPlan();
-  const { v: _version, items, quick, ...rest } = data;
+  const { v: _version, items, quick, aloneMonthly, ...rest } = data;
   const merged = {
     ...base,
     ...rest,
-    items: { ...base.items, ...(typeof items === "object" && items !== null ? items : {}) },
-    quick: { ...base.quick, ...(typeof quick === "object" && quick !== null ? quick : {}) },
+    items: withChanged(base.items, items),
+    quick: withChanged(base.quick, quick),
+    aloneMonthly: withChanged(base.aloneMonthly, aloneMonthly),
   };
   const parsed = PlanStateSchema.safeParse(merged);
   return parsed.success ? normalizePlan(parsed.data) : null;

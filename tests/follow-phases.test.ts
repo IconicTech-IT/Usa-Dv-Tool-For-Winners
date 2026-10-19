@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { groupsOfCalculator, ITEMS } from "@/lib/calc/catalog";
+import { ALONE_MONTHLY_ITEMS, groupsOfCalculator, ITEMS } from "@/lib/calc/catalog";
 import { computePlan } from "@/lib/calc/compute";
 import {
   emptyField,
@@ -9,8 +9,8 @@ import {
   REGISTRATION_FEE_ITEM,
   type PlanState,
 } from "@/lib/calc/model";
-import { setFollowMonths, setTravelMode } from "@/lib/calc/plan-actions";
-import { parsePlanFile, serializePlan } from "@/lib/calc/plan-file";
+import { patchAloneMonthly, setFollowMonths, setTravelMode } from "@/lib/calc/plan-actions";
+import { normalizePlan, parsePlanFile, serializePlan } from "@/lib/calc/plan-file";
 import { summarizePlan } from "@/lib/calc/compare";
 import { followMonthsOf, isLateArrival } from "@/lib/calc/scaling";
 import { groupSubtotal, stageSections } from "@/lib/calc/summary";
@@ -20,13 +20,22 @@ function usd(dollars: number): bigint {
   return BigInt(dollars) * 100n;
 }
 
+/** What one person costs a month while the principal is alone (typed in the boxes of the months alone). */
+const ALONE = { rent: "400", food: "100" };
+
 /** Two adults and a child; the amounts below are whole dollars typed per box. */
-function family(typed: Record<string, string>, months: string, extra: Partial<PlanState> = {}): PlanState {
+function family(
+  typed: Record<string, string>,
+  months: string,
+  alone: Record<string, string> = ALONE,
+  extra: Partial<PlanState> = {},
+): PlanState {
   const plan = emptyPlan();
   plan.items[REGISTRATION_FEE_ITEM] = emptyField();
   plan.household = { adults: 2, children: 1, childAges: [""] };
   plan.travel = { mode: "follow", followMonths: months };
   for (const [id, raw] of Object.entries(typed)) plan.items[id] = { raw, currency: "usd" };
+  for (const [id, raw] of Object.entries(alone)) plan.aloneMonthly[id] = { raw, currency: "usd" };
   return { ...plan, ...extra };
 }
 
@@ -39,9 +48,9 @@ const TYPED = {
   childcareStart: "300", // per child
   winterClothes: "50", // per person
   healthInsuranceStart: "400", // whole household
-  rent: "1000", // whole household, monthly
-  food: "100", // per person, monthly
-  childcare: "50", // per child, monthly
+  rent: "1000", // the whole family's flat, monthly (from the month after the family arrives)
+  food: "100", // per person, monthly (family)
+  childcare: "50", // per child, monthly (family)
   familyAbroadMonthly: "70", // only while the family is apart
 };
 
@@ -67,11 +76,11 @@ describe("a family that arrives after the principal: the stages", () => {
     expect(stageOf(plan, "firstMonth")).toBe(usd(200 + 20 + 50 + 400));
   });
 
-  it("counts the months alone at the principal's costs plus the family's costs back home", () => {
-    // per month alone: rent 1000, food 100 x1, no childcare, family back home 70
+  it("counts the months alone from their own boxes, plus the family's costs back home", () => {
+    // per month alone: a room for one 400, food 100, the family back home 70: the family's flat is not counted
     const result = computePlan(plan);
-    expect(result.follow?.aloneMonthlyCents).toBe(usd(1000 + 100 + 70));
-    expect(stageOf(plan, "aloneMonths")).toBe(usd((1000 + 100 + 70) * 4));
+    expect(result.follow?.aloneMonthlyCents).toBe(usd(400 + 100 + 70));
+    expect(stageOf(plan, "aloneMonths")).toBe(usd((400 + 100 + 70) * 4));
   });
 
   it("counts the whole family's month after it arrives, without the family's costs back home", () => {
@@ -83,7 +92,7 @@ describe("a family that arrives after the principal: the stages", () => {
     const oneTime = 300 + 600 + (200 + 20 + 50 + 400) + (1200 + 1000 + 20 + 300 + 100);
     expect(result.oneTimeCents).toBe(usd(oneTime));
     expect(result.follow?.months).toBe(4);
-    expect(result.follow?.cashByArrivalCents).toBe(usd(oneTime + 1170 * 4));
+    expect(result.follow?.cashByArrivalCents).toBe(usd(oneTime + 570 * 4));
   });
 
   it("shows the stages in order, ending with one month of the whole family", () => {
@@ -104,7 +113,7 @@ describe("a family that arrives after the principal: the stages", () => {
   });
 
   it("does not list the family items as forgotten under the principal's arrival", () => {
-    const empty = family({}, "4");
+    const empty = family({}, "4", {});
     const result = computePlan(empty);
     const under = (stage: string) => result.stages.find((s) => s.stage === stage)?.emptyIds ?? [];
     expect(under("familyArrival")).toEqual(expect.arrayContaining(["securityDeposit", "childcareStart"]));
@@ -121,7 +130,7 @@ describe("a family that arrives after the principal: the job scenarios", () => {
     return computePlan(plan);
   };
   const oneTime = usd(300 + 600 + 670 + 2620);
-  const alone = usd(1170);
+  const alone = usd(570);
   const together = usd(1350);
 
   it("prices every month alone at the principal's costs while the family is still apart", () => {
@@ -197,7 +206,7 @@ describe("when the family follows later does not apply", () => {
   });
 
   it("is ignored by the quick boxes, which are whole-household totals", () => {
-    const plan = family({}, "4");
+    const plan = family({}, "4", {});
     plan.uiMode = "quick";
     expect(computePlan(plan).follow).toBeNull();
   });
@@ -336,6 +345,7 @@ describe("the plan as printed: stage sections", () => {
       "monthly",
     ]);
     expect(rowsOf("aloneMonths").map((row) => row.id)).toEqual(["rent", "food", "familyAbroadMonthly"]);
+    expect(rowsOf("monthly").map((row) => row.id)).toEqual(["rent", "food", "childcare"]);
   });
 
   it("adds up, row by row, to the total of its stage", () => {
@@ -354,6 +364,81 @@ describe("the plan as printed: stage sections", () => {
     expect(stages).not.toContain("beforeEntry");
     // a new plan holds only the official registration fee, so that is all it prints
     expect(stageSections(computePlan(emptyPlan())).map((s) => s.stage)).toEqual(["beforeEntry"]);
-    expect(stageSections(computePlan(family({}, "4")))).toEqual([]);
+    expect(stageSections(computePlan(family({}, "4", {})))).toEqual([]);
+  });
+});
+
+describe("the monthly boxes of the months alone", () => {
+  it("are one person's costs, typed apart from the family's, and never multiplied", () => {
+    const plan = family({ rent: "1000", food: "100", familyAbroadMonthly: "70" }, "4", {
+      rent: "400",
+      food: "100",
+      transport: "30",
+    });
+    const result = computePlan(plan);
+    // alone: 400 + 100 + 30 + 70 back home; the family's 1000 rent and 3 x 100 food are for later
+    expect(result.follow?.aloneMonthlyCents).toBe(usd(400 + 100 + 30 + 70));
+    expect(result.monthlyCents).toBe(usd(1000 + 300));
+    const rent = result.aloneItems.find((i) => i.id === "rent");
+    expect(rent).toMatchObject({ applicable: true, typed: true, multiplier: 4, cents: usd(400) });
+    expect(rent?.parts).toEqual([{ stage: "aloneMonths", cents: usd(1600), multiplier: 4 }]);
+  });
+
+  it("have no box for children, and the family's costs back home are not among them", () => {
+    const ids = ALONE_MONTHLY_ITEMS.map((i) => i.id);
+    expect(ids).toContain("rent");
+    expect(ids).not.toContain("childcare");
+    expect(ids).not.toContain("familyAbroadMonthly");
+    expect(Object.keys(emptyPlan().aloneMonthly).sort()).toEqual([...ids].sort());
+  });
+
+  it("are not counted when everyone travels together, but what was typed is kept", () => {
+    const plan = family({ rent: "1000" }, "4");
+    plan.travel = { mode: "together", followMonths: "4" };
+    const result = computePlan(plan);
+    expect(result.aloneItems.every((i) => !i.applicable)).toBe(true);
+    expect(result.monthlyCents).toBe(usd(1000));
+    expect(stageOf(plan, "aloneMonths")).toBe(0n);
+    expect(plan.aloneMonthly["rent"]?.raw).toBe("400");
+  });
+
+  it("are listed as forgotten under the months alone until they are typed", () => {
+    const result = computePlan(family({}, "4", {}));
+    const aloneStage = result.stages.find((s) => s.stage === "aloneMonths");
+    expect(aloneStage?.emptyIds).toEqual(expect.arrayContaining(["rent", "food", "familyAbroadMonthly"]));
+  });
+
+  it("can be typed in the local currency, and wait for the rate like every other box", () => {
+    const plan = family({}, "4", {});
+    plan.aloneMonthly["rent"] = { raw: "5000", currency: "local" };
+    expect(computePlan(plan).needsRate).toBe(true);
+    plan.rate = "50";
+    const result = computePlan(plan);
+    expect(result.needsRate).toBe(false);
+    expect(result.follow?.aloneMonthlyCents).toBe(usd(100));
+  });
+
+  it("are filled in for a plan saved before they existed, and survive the file and the link", () => {
+    const { aloneMonthly: _dropped, ...older } = emptyPlan();
+    const parsed = PlanStateSchema.safeParse(older);
+    expect(parsed.success && parsed.data.aloneMonthly).toEqual({});
+    const opened = parsed.success ? normalizePlan(parsed.data) : null;
+    expect(Object.keys(opened?.aloneMonthly ?? {})).toContain("rent");
+
+    const plan = family({}, "4");
+    const viaFile = parsePlanFile(serializePlan(plan));
+    expect(viaFile.ok && viaFile.state.aloneMonthly["rent"]?.raw).toBe("400");
+    const viaLink = expandPlan(JSON.parse(JSON.stringify(compactPlan(plan))));
+    expect(viaLink?.aloneMonthly["food"]?.raw).toBe("100");
+    expect(viaLink && computePlan(viaLink).follow?.aloneMonthlyCents).toBe(usd(500));
+    expect(compactPlan(emptyPlan())["aloneMonthly"]).toBeUndefined();
+  });
+
+  it("change through their own action and ignore an unknown box", () => {
+    const base = emptyPlan();
+    const typed = patchAloneMonthly(base, "rent", { raw: "350" });
+    expect(typed.aloneMonthly["rent"]?.raw).toBe("350");
+    expect(patchAloneMonthly(base, "childcare", { raw: "9" })).toBe(base);
+    expect(patchAloneMonthly(typed, "rent", { raw: "350" })).toBe(typed);
   });
 });

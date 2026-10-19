@@ -30,6 +30,9 @@ export function QuickScreen() {
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>
       <ModeSwitch current="quick" detailedHref="/fees" />
+      {plan.travel.mode === "follow" && plan.household.adults + plan.household.children > 1 ? (
+        <div className="note">{t("followNote")}</div>
+      ) : null}
       <section className="card" style={{ marginTop: 14 }}>
         {ONE_TIME_BOXES.map((id) => (
           <ItemField key={id} view={view} id={id} kind="quick" />

@@ -219,6 +219,16 @@ export function followRuleOf(def: ItemDef): FollowRule {
 }
 
 /**
+ * The monthly boxes the principal types for the months he spends alone, when the family follows later:
+ * the same boxes as the family's monthly costs, each typed for one person. There is no box for children
+ * (none are with him), and the family's costs back home are their own item.
+ */
+export const ALONE_MONTHLY_ITEMS: readonly ItemDef[] = ITEMS.filter(
+  (item) =>
+    item.calculator === "monthly" && item.scaling !== "perChild" && followRuleOf(item) !== "whileApart",
+);
+
+/**
  * Quick mode: five big boxes (all paperwork and fees, travel, first housing and set-up,
  * car and insurance, one month of costs). Each amount is the whole household's total for
  * that box. Savings is the separate field every plan has.

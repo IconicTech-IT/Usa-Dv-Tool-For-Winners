@@ -100,7 +100,7 @@ export function stageSections(result: PlanResult): StageSection[] {
     .map((entry) => ({
       stage: entry.stage,
       cents: entry.stageCents,
-      rows: result.items.flatMap((item) =>
+      rows: [...result.aloneItems, ...result.items].flatMap((item) =>
         item.typed
           ? item.parts
               .filter((part) => part.stage === entry.stage)

@@ -1,4 +1,11 @@
-import { ITEMS, QUICK_ITEMS, TIMELINE_STAGES, type ItemDef, type TimelineStage } from "@/lib/calc/catalog";
+import {
+  ALONE_MONTHLY_ITEMS,
+  ITEMS,
+  QUICK_ITEMS,
+  TIMELINE_STAGES,
+  type ItemDef,
+  type TimelineStage,
+} from "@/lib/calc/catalog";
 import { parseRate, type Rate } from "@/lib/calc/currency";
 import { isZero, type Decimal } from "@/lib/calc/decimal";
 import { addMonths, costOfMonths, type FollowPhases } from "@/lib/calc/follow";
@@ -120,6 +127,11 @@ export interface PlanResult {
   children: number;
   persons: number;
   items: ItemResult[];
+  /**
+   * The boxes of the months the principal spends alone (one person's monthly costs), when the family
+   * follows later. Each one's cents are one month alone; they are not applicable otherwise.
+   */
+  aloneItems: ItemResult[];
   stages: StageResult[];
   timeline: TimelineEntry[];
   oneTimeCents: Cents;
@@ -216,6 +228,34 @@ function computeItem(def: ItemDef, field: AmountField | undefined, context: Hous
   };
 }
 
+/** A box of the months alone: one person's monthly cost, counted once for every month until the family arrives. */
+function computeAloneItem(
+  def: ItemDef,
+  field: AmountField | undefined,
+  context: HouseholdContext,
+): ItemResult {
+  const months = context.followMonths;
+  const base = { id: def.id, stage: "aloneMonths" as const, multiplier: months ?? 1, parts: [], cents: null };
+  const empty = { ...base, typed: false, invalid: false, needsRate: false };
+  if (months === null) return { ...empty, applicable: false };
+  if (!field || field.raw.trim() === "") return { ...empty, applicable: true };
+
+  const parsed = parseAmount(field.raw);
+  if (!parsed.ok) return { ...empty, applicable: true, invalid: true };
+
+  const single = toUsdCents(parsed.amount, field.currency, context.rate);
+  const parts = single === null ? [] : sharesOf(single, [{ stage: "aloneMonths", multiplier: months }]);
+  return {
+    ...base,
+    applicable: true,
+    typed: true,
+    invalid: false,
+    cents: single,
+    parts,
+    needsRate: single === null,
+  };
+}
+
 /** Converts one standalone field (income, savings) to cents; zero when empty. */
 function standaloneCents(field: AmountField, rate: Rate | null): { cents: Cents; needsRate: boolean } {
   const parsed = parseAmount(field.raw);
@@ -287,6 +327,16 @@ function computeScenarios(inputs: ScenarioInputs): Scenario[] {
   });
 }
 
+/** The two phases of a family that follows later, from the stage totals; null when everyone travels together. */
+function phasesOf(months: number | null, stageCents: (stage: TimelineStage) => Cents): FollowPhases | null {
+  if (months === null) return null;
+  return {
+    months,
+    aloneMonthlyCents: stageCents("aloneMonths") / BigInt(months),
+    fullMonthlyCents: stageCents("monthly"),
+  };
+}
+
 export function computePlan(state: PlanState): PlanResult {
   const rate = parseRate(state.rate);
   const { adults, children } = state.household;
@@ -297,21 +347,16 @@ export function computePlan(state: PlanState): PlanResult {
   // The five quick boxes are whole-household totals, so they never split between two phases.
   const followMonths = quick ? null : followMonthsOf(state);
   const { registrations } = state;
-  const items = defs.map((def) =>
-    computeItem(def, fields[def.id], { adults, children, registrations, rate, followMonths }),
+  const context = { adults, children, registrations, rate, followMonths };
+  const items = defs.map((def) => computeItem(def, fields[def.id], context));
+  const aloneItems = ALONE_MONTHLY_ITEMS.map((def) =>
+    computeAloneItem(def, state.aloneMonthly[def.id], context),
   );
-  const stages = computeStages(items);
+  const stages = computeStages([...items, ...aloneItems]);
   const stageCents = (stage: TimelineStage) => stages.find((s) => s.stage === stage)?.cents ?? ZERO_CENTS;
   const oneTimeCents = sumCents(ONE_TIME_STAGES.map(stageCents));
   const monthlyCents = stageCents("monthly");
-  const phases: FollowPhases | null =
-    followMonths === null
-      ? null
-      : {
-          months: followMonths,
-          aloneMonthlyCents: stageCents("aloneMonths") / BigInt(followMonths),
-          fullMonthlyCents: monthlyCents,
-        };
+  const phases = phasesOf(followMonths, stageCents);
 
   const income = standaloneCents(state.income, rate);
   const spouse = standaloneCents(state.spouseIncome, rate);
@@ -324,6 +369,7 @@ export function computePlan(state: PlanState): PlanResult {
     children,
     persons: adults + children,
     items,
+    aloneItems,
     stages,
     timeline: computeTimeline(stages, phases !== null),
     oneTimeCents,
@@ -347,7 +393,12 @@ export function computePlan(state: PlanState): PlanResult {
             aloneMonthlyCents: phases.aloneMonthlyCents,
             cashByArrivalCents: oneTimeCents + stageCents("aloneMonths"),
           },
-    needsRate: items.some((i) => i.needsRate) || income.needsRate || spouse.needsRate || savings.needsRate,
+    needsRate:
+      items.some((i) => i.needsRate) ||
+      aloneItems.some((i) => i.needsRate) ||
+      income.needsRate ||
+      spouse.needsRate ||
+      savings.needsRate,
   };
 }
 

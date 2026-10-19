@@ -1,4 +1,4 @@
-import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
+import { ALONE_MONTHLY_ITEMS, ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import { isValidCurrencyCode } from "@/lib/calc/currency";
 import {
   MAX_ADULTS,
@@ -23,6 +23,7 @@ export type TopField = "income" | "spouseIncome" | "savings";
 
 const ITEM_IDS: ReadonlySet<string> = new Set(ITEMS.map((i) => i.id));
 const QUICK_IDS: ReadonlySet<string> = new Set(QUICK_ITEMS.map((i) => i.id));
+const ALONE_IDS: ReadonlySet<string> = new Set(ALONE_MONTHLY_ITEMS.map((i) => i.id));
 
 function clampRaw(raw: string): string {
   return raw.length > MAX_RAW_LENGTH ? raw.slice(0, MAX_RAW_LENGTH) : raw;
@@ -57,6 +58,14 @@ export function patchQuick(state: PlanState, id: string, patch: FieldPatch): Pla
   if (!current) return state;
   const next = patchField(current, patch);
   return next === current ? state : { ...state, quick: { ...state.quick, [id]: next } };
+}
+
+export function patchAloneMonthly(state: PlanState, id: string, patch: FieldPatch): PlanState {
+  if (!ALONE_IDS.has(id)) return state;
+  const current = state.aloneMonthly[id];
+  if (!current) return state;
+  const next = patchField(current, patch);
+  return next === current ? state : { ...state, aloneMonthly: { ...state.aloneMonthly, [id]: next } };
 }
 
 export function patchTopField(state: PlanState, key: TopField, patch: FieldPatch): PlanState {

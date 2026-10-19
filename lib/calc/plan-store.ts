@@ -10,6 +10,7 @@ import {
 } from "@/lib/calc/library";
 import { emptyPlan, type PlanState } from "@/lib/calc/model";
 import {
+  patchAloneMonthly,
   patchItem,
   patchQuick,
   patchTopField,
@@ -86,6 +87,7 @@ function randomId(): string {
 export interface PlanActions {
   setItem: (id: string, patch: FieldPatch) => void;
   setQuick: (id: string, patch: FieldPatch) => void;
+  setAloneMonthly: (id: string, patch: FieldPatch) => void;
   setTopField: (key: TopField, patch: FieldPatch) => void;
   setAdults: (adults: number) => void;
   setChildren: (children: number) => void;
@@ -141,6 +143,7 @@ function fieldActions(update: Update) {
   return {
     setItem: (id: string, patch: FieldPatch) => update((s) => patchItem(s, id, patch)),
     setQuick: (id: string, patch: FieldPatch) => update((s) => patchQuick(s, id, patch)),
+    setAloneMonthly: (id: string, patch: FieldPatch) => update((s) => patchAloneMonthly(s, id, patch)),
     setTopField: (key: TopField, patch: FieldPatch) => update((s) => patchTopField(s, key, patch)),
     setAdults: (adults: number) => update((s) => setAdults(s, adults)),
     setChildren: (children: number) => update((s) => setChildren(s, children)),

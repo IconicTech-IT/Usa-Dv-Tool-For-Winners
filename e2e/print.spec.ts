@@ -19,6 +19,7 @@ const en = messages("en");
 const PLAN = {
   ...SAMPLE_PLAN,
   travel: { mode: "follow", followMonths: "4" },
+  aloneMonthly: { rent: { raw: "400", currency: "usd" } },
   items: {
     ...SAMPLE_PLAN.items,
     temporaryStay: { raw: "200", currency: "usd" },

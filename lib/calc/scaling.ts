@@ -134,12 +134,10 @@ function monthlyPlacements(
   context: HouseholdContext,
   months: number,
 ): Placement[] {
-  const alone = aloneMultiplier(scaling, context) * months;
+  // The months alone are typed in their own boxes (one person's costs); the family's boxes count from
+  // the month after it arrives. Only the family's costs back home belong to the months alone.
   if (followRuleOf(def) === "whileApart") return [{ stage: "aloneMonths", multiplier: months }];
-  return [
-    { stage: "aloneMonths", multiplier: alone },
-    { stage: "monthly", multiplier: multiplierFor(scaling, context) },
-  ];
+  return [{ stage: "monthly", multiplier: multiplierFor(scaling, context) }];
 }
 
 /**

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
+import { ALONE_MONTHLY_ITEMS, ITEMS, QUICK_ITEMS } from "@/lib/calc/catalog";
 import { DEFAULT_LOCAL_CURRENCY } from "@/lib/calc/currency";
 
 /**
@@ -73,6 +73,8 @@ export const PlanStateSchema = z.object({
   rate: z.string().max(MAX_RAW_LENGTH),
   items: z.record(z.string().max(60), AmountFieldSchema),
   quick: z.record(z.string().max(60), AmountFieldSchema),
+  /** The monthly costs of the months the principal is alone, when the family follows later; each for one person. */
+  aloneMonthly: z.record(z.string().max(60), AmountFieldSchema).default({}),
   income: AmountFieldSchema,
   spouseIncome: AmountFieldSchema,
   savings: AmountFieldSchema,
@@ -97,6 +99,8 @@ export function emptyPlan(): PlanState {
   for (const def of ITEMS) items[def.id] = defaultField(def.id);
   const quick: Record<string, AmountField> = {};
   for (const def of QUICK_ITEMS) quick[def.id] = emptyField();
+  const aloneMonthly: Record<string, AmountField> = {};
+  for (const def of ALONE_MONTHLY_ITEMS) aloneMonthly[def.id] = emptyField();
 
   return {
     version: PLAN_VERSION,
@@ -108,6 +112,7 @@ export function emptyPlan(): PlanState {
     rate: "",
     items,
     quick,
+    aloneMonthly,
     income: emptyField(),
     spouseIncome: emptyField(),
     savings: emptyField(),
