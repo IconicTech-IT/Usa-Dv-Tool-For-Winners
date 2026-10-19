@@ -15,6 +15,8 @@ const Link = z.object({
 export const BlockSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("p"), text: z.string().min(1) }),
   z.object({ type: z.literal("note"), text: z.string().min(1) }),
+  /** The copy-and-paste prompt of the English page (its text is in english-prompt.json). */
+  z.object({ type: z.literal("prompt") }),
   z.object({
     type: z.literal("list"),
     ordered: z.boolean().optional(),

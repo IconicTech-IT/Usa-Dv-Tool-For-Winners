@@ -1,5 +1,6 @@
 import { Icon } from "@/components/Icon";
 import { Inline } from "@/components/content/Inline";
+import { PromptBlock } from "@/components/content/PromptBlock";
 import type { Block, PageContent } from "@/lib/content/schema";
 
 type BlockOf<T extends Block["type"]> = Extract<Block, { type: T }>;
@@ -35,6 +36,8 @@ function BlockView({ block }: { block: Block }) {
           <Inline text={block.text} />
         </div>
       );
+    case "prompt":
+      return <PromptBlock />;
     case "list":
       return <ListBlock block={block} />;
     case "links":

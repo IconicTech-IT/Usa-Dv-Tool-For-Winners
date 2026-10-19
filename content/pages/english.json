@@ -1,0 +1,460 @@
+{
+  "ar": {
+    "sections": [
+      {
+        "heading": "قبل ما تبدأ",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**مجاني بالكامل.** مفيش إعلانات ولا لينكات بتكسب منها، والمصادر دي مجانية وأسماؤها معروفة."
+          },
+          {
+            "type": "p",
+            "text": "**آخر فحص للروابط: 19 أكتوبر 2026.** لو رابط اتغير أو مابقاش بيفتح، ابحث باسم المصدر."
+          },
+          { "type": "p", "text": "**مش استشارة قانونية، ومفيش أي حاجة هنا بتضمنلك نتيجة.**" }
+        ]
+      },
+      {
+        "heading": "ليه الإنجليزي مهم؟",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "ممكن المقابلة تتعمل بالإنجليزي، أو القنصل يطلب منك تتكلم.",
+              "الإنجليزي كمان بيفرق في الشغل والسكن والحياة اليومية بعد ما توصل.",
+              "**أهم حاجة هي الكلام بصوت عالي**، مش بس القراية والحفظ.",
+              "**اتمرن تقول حقيقتك بإنجليزي بسيط وواضح.** ماتحفظش إجابات حد تاني. القنصل بيقارن كلامك بأوراقك، وكلام مش حقيقي ممكن يكلّفك الفيزا."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "ابدأ إزاي (3 خطوات)",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**اعرف مستواك:** اعمل اختبار المستوى مع المساعد (البروميت تحت).",
+              "**اتمرن كل يوم حاجة صغيرة:** 15 لـ20 دقيقة أحسن من ساعتين مرة في الأسبوع.",
+              "**اتكلم بصوت عالي:** حتى لو لوحدك. سجّل نفسك واسمعها."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "مصادر مجانية: مقابلة الفيزا",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "صفحة الخارجية الأمريكية عن مقابلة الـDV",
+                "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry/diversity-visa-interview/diversity-visa-applicant-interview.html",
+                "note": "تعرف المقابلة بتمشي إزاي والأوراق اللي بتتطلب (الرسمي)."
+              },
+              {
+                "label": "6 Minute English (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english",
+                "note": "حلقات قصيرة بيتكلم فيها ناس عن مواضيع مختلفة، مع النص والمفردات."
+              },
+              {
+                "label": "Rachel's English (يوتيوب)",
+                "url": "https://www.youtube.com/@rachelsenglish",
+                "note": "النطق الأمريكي بالتفصيل: إزاي تنطق الحروف والجمل."
+              },
+              {
+                "label": "Speak English With Vanessa (يوتيوب)",
+                "url": "https://www.youtube.com/@SpeakEnglishWithVanessa",
+                "note": "مدرّسة أمريكية، دروس كلام وتعبيرات يومية."
+              },
+              {
+                "label": "ELLLO",
+                "url": "https://elllo.org/",
+                "note": "سماع ناس حقيقيين بلهجات كتير (مع نص وأسئلة)."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**للمقابلة بالذات:** استخدم البروميت اللي تحت وخلّي المساعد يمثّل دور القنصل."
+          }
+        ]
+      },
+      {
+        "heading": "مصادر مجانية: الحياة اليومية في أمريكا",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "USAHello",
+                "url": "https://usahello.org/",
+                "note": "موقع مجاني للمهاجرين: إنجليزي ومعلومات عن الحياة في أمريكا."
+              },
+              {
+                "label": "VOA Learning English",
+                "url": "https://learningenglish.voanews.com/",
+                "note": "أخبار بإنجليزي مبسّط وبطيء، بمستويات."
+              },
+              {
+                "label": "VOA Learning English: المستوى المتوسط",
+                "url": "https://learningenglish.voanews.com/p/5610.html",
+                "note": "نفس الموقع، صفحة المستوى المتوسط."
+              },
+              {
+                "label": "BBC Learning English: كورسات حسب المستوى",
+                "url": "https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate",
+                "note": "دروس مرتبة بالمستوى، مثال: lower-intermediate."
+              },
+              {
+                "label": "British Council LearnEnglish",
+                "url": "https://learnenglish.britishcouncil.org/",
+                "note": "قواعد وسماع وقراية ومفردات مجانية، وتدريب على المحادثة والكتابة."
+              },
+              {
+                "label": "Randall's ESL Cyber Listening Lab",
+                "url": "https://www.esl-lab.com/",
+                "note": "تمارين سماع بأسئلة، بمستويات من السهل للصعب."
+              },
+              {
+                "label": "Duolingo (النسخة المجانية)",
+                "url": "https://www.duolingo.com/",
+                "note": "تمارين يومية قصيرة (النسخة المجانية فيها إعلانات من عندهم، مش من عندنا)."
+              },
+              {
+                "label": "USCIS Citizenship Resource Center",
+                "url": "https://www.uscis.gov/citizenship",
+                "note": "للمستقبل بعد ما تستقر: مواد المواطنة والإنجليزي (مش لازم دلوقتي)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "مصادر مجانية: الإنجليزي في الشغل",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English at Work (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/english-at-work",
+                "note": "إنجليزي المكتب: اجتماعات، إيميلات، مكالمات."
+              },
+              {
+                "label": "The English We Speak (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/the-english-we-speak",
+                "note": "تعبيرات الناس بتستخدمها فعلًا في الكلام اليومي والشغل."
+              },
+              {
+                "label": "CareerOneStop (وزارة العمل الأمريكية)",
+                "url": "https://www.careeronestop.org/",
+                "note": "موقع حكومي مجاني: البحث عن شغل، كتابة السيرة الذاتية، نصايح المقابلات الوظيفية."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**نصيحة للشغل:** اكتب سيرتك الذاتية وخبرتك بإنجليزي بسيط وصح، واتمرن تتكلم عنها 30 ثانية بصوت عالي."
+          }
+        ]
+      },
+      {
+        "heading": "بروميت جاهز: اتعلّم إنجليزي مع مساعد ذكاء اصطناعي",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**الفكرة:** تنسخ البروميت كله، تلصقه في أي مساعد ذكاء اصطناعي، وهو يتحوّل لمدرّس صبور بياخدك خطوة خطوة."
+          },
+          { "type": "p", "text": "**تنبيه مهم:**" },
+          {
+            "type": "list",
+            "items": [
+              "**ماتكتبش بياناتك الشخصية:** اسمك الكامل، رقم الجواز، رقم الحالة (case number)، عنوانك، تليفونك، إيميلك، أو أي بيانات بنك.",
+              "المساعد بيغلط أحيانًا، فراجع أي معلومة عن القانون أو الأوراق من المصادر الرسمية.",
+              "لو بتكلمه بالصوت أحسن، لو المساعد بيدعم ده."
+            ]
+          },
+          { "type": "prompt" }
+        ]
+      },
+      {
+        "heading": "أمثلة لرسايل متابعة (بعد ما تبدأ)",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**مقابلة تجريبية:** «ابدأ مقابلة. اسألني 10 أسئلة عن شغلي وأسرتي وخطتي. ماتصحّحش لحد ما نخلّص، وبعدين قيّمني.»",
+              "**تصحيح نمط متكرر:** «أنا بغلط في الأزمنة (الماضي والـ present perfect). اديني 5 جمل أصلّحها، وبعدين اشرحلي الفرق بمثالين من مواقف مقابلة الفيزا.»",
+              "**ملخص التقدم:** «خلّصنا النهارده. اكتبلي ملخص التقدم بالشكل المتفق عليه، من غير أي بيانات شخصية.»",
+              "**تمرين إجابة معينة (اختياري):** «اسألني سؤال \"What do you do for work?\" 3 مرات بصيغ مختلفة، وخلّيني أجاوب بجمل قصيرة وواضحة، وصحّحلي بعد كل مرة.»"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "تحضير للمقابلة: 4 قواعد بسيطة",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**جاوب بصدق وبكلامك.** مش لازم إجابات مثالية، المهم إنها حقيقية ومتسقة مع أوراقك.",
+              "**جمل قصيرة وواضحة** أحسن من جمل طويلة فيها غلطات.",
+              "**لو ماسمعتش السؤال أو ماعرفتش الإجابة، قول:** \"Could you repeat that, please?\" أو \"I'm not sure.\" ماتخمّنش.",
+              "**اتمرن بصوت عالي** على أسئلة الشغل والأسرة والخطة، كل يوم شوية."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "مصادر رسمية للمقابلة والأوراق",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "الخارجية الأمريكية: برنامج قرعة الهجرة",
+                "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html"
+              },
+              { "label": "USCIS", "url": "https://www.uscis.gov/" }
+            ]
+          }
+        ]
+      }
+    ],
+    "footnote": "لو فيه أي شكوى أو اقتراح، ابعت على الإيميل اللي في آخر الموقع."
+  },
+  "en": {
+    "sections": [
+      {
+        "heading": "Before you start",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**Completely free.** No ads and no links we earn from; these sources are free and well known."
+          },
+          {
+            "type": "p",
+            "text": "**Links last checked: 19 October 2026.** If a link changed or no longer opens, search for the name of the source."
+          },
+          { "type": "p", "text": "**Not legal advice, and nothing here guarantees a result.**" }
+        ]
+      },
+      {
+        "heading": "Why does English matter?",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "The interview may be in English, or the officer may ask you to speak.",
+              "English also matters for work, housing and daily life after you arrive.",
+              "**The most important thing is speaking out loud**, not only reading and memorizing.",
+              "**Practise telling your own truth in simple, clear English.** Do not memorize anyone else's answers. The officer compares what you say with your papers, and an untrue answer can cost you the visa."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "How to start (3 steps)",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**Know your level:** take the level test with the assistant (the prompt below).",
+              "**Practise a little every day:** 15 to 20 minutes is better than two hours once a week.",
+              "**Speak out loud:** even alone. Record yourself and listen."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Free sources: the visa interview",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "US State Department page on the DV interview",
+                "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry/diversity-visa-interview/diversity-visa-applicant-interview.html",
+                "note": "How the interview goes and the papers required (official)."
+              },
+              {
+                "label": "6 Minute English (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english",
+                "note": "Short episodes where people talk about different topics, with the script and vocabulary."
+              },
+              {
+                "label": "Rachel's English (YouTube)",
+                "url": "https://www.youtube.com/@rachelsenglish",
+                "note": "American pronunciation in detail: how to pronounce letters and sentences."
+              },
+              {
+                "label": "Speak English With Vanessa (YouTube)",
+                "url": "https://www.youtube.com/@SpeakEnglishWithVanessa",
+                "note": "An American teacher, speaking lessons and everyday expressions."
+              },
+              {
+                "label": "ELLLO",
+                "url": "https://elllo.org/",
+                "note": "Listening to real people with many accents (with a script and questions)."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**For the interview in particular:** use the prompt below and have the assistant play the officer."
+          }
+        ]
+      },
+      {
+        "heading": "Free sources: daily life in the US",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "USAHello",
+                "url": "https://usahello.org/",
+                "note": "A free site for immigrants: English and information about life in the US."
+              },
+              {
+                "label": "VOA Learning English",
+                "url": "https://learningenglish.voanews.com/",
+                "note": "News in simple, slow English, by level."
+              },
+              {
+                "label": "VOA Learning English: intermediate level",
+                "url": "https://learningenglish.voanews.com/p/5610.html",
+                "note": "The same site, the intermediate level page."
+              },
+              {
+                "label": "BBC Learning English: courses by level",
+                "url": "https://www.bbc.co.uk/learningenglish/english/course/lower-intermediate",
+                "note": "Lessons ordered by level, for example lower-intermediate."
+              },
+              {
+                "label": "British Council LearnEnglish",
+                "url": "https://learnenglish.britishcouncil.org/",
+                "note": "Free grammar, listening, reading and vocabulary, and practice in speaking and writing."
+              },
+              {
+                "label": "Randall's ESL Cyber Listening Lab",
+                "url": "https://www.esl-lab.com/",
+                "note": "Listening exercises with questions, from easy to hard."
+              },
+              {
+                "label": "Duolingo (free version)",
+                "url": "https://www.duolingo.com/",
+                "note": "Short daily exercises (the free version has ads of their own, not ours)."
+              },
+              {
+                "label": "USCIS Citizenship Resource Center",
+                "url": "https://www.uscis.gov/citizenship",
+                "note": "For later, once you have settled: citizenship and English materials (not needed now)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Free sources: English at work",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English at Work (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/english-at-work",
+                "note": "Office English: meetings, emails, calls."
+              },
+              {
+                "label": "The English We Speak (BBC Learning English)",
+                "url": "https://www.bbc.co.uk/learningenglish/english/features/the-english-we-speak",
+                "note": "Expressions people really use in everyday talk and at work."
+              },
+              {
+                "label": "CareerOneStop (US Department of Labor)",
+                "url": "https://www.careeronestop.org/",
+                "note": "A free government site: job search, writing a CV, job interview tips."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**A tip for work:** write your CV and experience in simple, correct English, and practise talking about it for 30 seconds out loud."
+          }
+        ]
+      },
+      {
+        "heading": "A ready prompt: learn English with an AI assistant",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**The idea:** copy the whole prompt, paste it into any AI assistant, and it becomes a patient teacher who takes you step by step. The prompt is written in Egyptian Arabic, for Arabic-speaking learners."
+          },
+          { "type": "p", "text": "**Important:**" },
+          {
+            "type": "list",
+            "items": [
+              "**Do not type your personal data:** your full name, passport number, case number, address, phone, email, or any bank details.",
+              "The assistant sometimes makes mistakes, so check anything about the law or papers against the official sources.",
+              "Talking to it by voice is better, if the assistant supports it."
+            ]
+          },
+          { "type": "prompt" }
+        ]
+      },
+      {
+        "heading": "Examples of follow-up messages (after you start)",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**A practice interview:** “Start an interview. Ask me 10 questions about my work, my family and my plan. Do not correct me until we finish, then assess me.”",
+              "**Fix a repeated pattern:** “I make mistakes with tenses (the past and the present perfect). Give me 5 sentences to fix, then explain the difference with two examples from visa interview situations.”",
+              "**Progress summary:** “We are done for today. Write me the progress summary in the agreed format, with no personal data.”",
+              "**Practise one answer (optional):** “Ask me “What do you do for work?” 3 times in different ways, have me answer in short, clear sentences, and correct me after each one.”"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Interview preparation: 4 simple rules",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**Answer truthfully and in your own words.** The answers do not have to be perfect; what matters is that they are true and match your papers.",
+              "**Short, clear sentences** are better than long sentences with mistakes.",
+              "**If you did not hear the question or do not know the answer, say:** “Could you repeat that, please?” or “I'm not sure.” Do not guess.",
+              "**Practise out loud** on questions about work, family and your plan, a little every day."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Official sources for the interview and papers",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "US State Department: the diversity visa program",
+                "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry.html"
+              },
+              { "label": "USCIS", "url": "https://www.uscis.gov/" }
+            ]
+          }
+        ]
+      }
+    ],
+    "footnote": "If you have a complaint or a suggestion, write to the email at the bottom of the site."
+  }
+}

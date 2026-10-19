@@ -273,7 +273,9 @@
     "copy": "Copy",
     "copyAria": "Copy the prompt",
     "promptHelp": "Copy it into any assistant and change your level in the brackets.",
-    "note": "All links go to free external sites. Know a better one? Send it to the email below."
+    "note": "All links go to free external sites. Know a better one? Send it to the email below.",
+    "copied": "Copied.",
+    "copyFailed": "We could not copy. Select the text and copy it by hand."
   },
   "errors": {
     "notFoundTitle": "This page does not exist",

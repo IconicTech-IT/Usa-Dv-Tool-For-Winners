@@ -1,5 +1,6 @@
 import about from "@/content/pages/about.json";
 import charge from "@/content/pages/charge.json";
+import english from "@/content/pages/english.json";
 import privacy from "@/content/pages/privacy.json";
 import type { Locale } from "@/i18n/routing";
 import { LocalizedPageSchema, type PageContent } from "@/lib/content/schema";
@@ -8,6 +9,7 @@ import { LocalizedPageSchema, type PageContent } from "@/lib/content/schema";
 const PAGES = {
   about: LocalizedPageSchema.parse(about),
   charge: LocalizedPageSchema.parse(charge),
+  english: LocalizedPageSchema.parse(english),
   privacy: LocalizedPageSchema.parse(privacy),
 };
 

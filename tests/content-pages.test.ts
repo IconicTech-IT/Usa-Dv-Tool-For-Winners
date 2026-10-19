@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { contentPage, type ContentPageName } from "@/lib/content/pages";
 
-const NAMES: ContentPageName[] = ["about", "charge", "privacy"];
+const NAMES: ContentPageName[] = ["about", "charge", "english", "privacy"];
 
 describe("text pages", () => {
   it.each(NAMES)("%s has the same structure in Arabic and English", (name) => {
