@@ -32,7 +32,7 @@ function family(
 ): PlanState {
   const plan = emptyPlan();
   plan.items[REGISTRATION_FEE_ITEM] = emptyField();
-  plan.household = { adults: 2, children: 1, childAges: [""] };
+  plan.household = { adults: 2, children: 1, childAges: ["4"] };
   plan.travel = { mode: "follow", followMonths: months };
   for (const [id, raw] of Object.entries(typed)) plan.items[id] = { raw, currency: "usd" };
   for (const [id, raw] of Object.entries(alone)) plan.aloneMonthly[id] = { raw, currency: "usd" };
@@ -40,8 +40,10 @@ function family(
 }
 
 const TYPED = {
-  medicalExam: "100", // per person, paperwork: the same for everyone
-  ticket: "600", // per person
+  medicalExam: "100", // adults and anyone 15 or older, paperwork: the same for everyone
+  medicalExamChild: "100", // the child of 4
+  ticket: "600", // each adult
+  ticketChild: "600", // the child of 4
   temporaryStay: "200", // the principal's arrival
   securityDeposit: "1000", // the family's arrival
   phoneLine: "20", // per adult
@@ -326,12 +328,21 @@ describe("the plan as printed: stage sections", () => {
   const rowsOf = (stage: string) => sections.find((s) => s.stage === stage)?.rows ?? [];
 
   it("lists each stage with the boxes that have an amount, each with how many times it counts", () => {
-    expect(rowsOf("beforeInterview")).toEqual([{ id: "medicalExam", multiplier: 3, cents: usd(300) }]);
+    expect(rowsOf("beforeInterview")).toEqual([
+      { id: "medicalExam", multiplier: 2, cents: usd(200) },
+      { id: "medicalExamChild", multiplier: 1, cents: usd(100) },
+    ]);
     expect(rowsOf("beforeTravel")).toEqual([{ id: "ticket", multiplier: 1, cents: usd(600) }]);
+    // the spouse's ticket (an adult) and the child's
     expect(rowsOf("familyArrival").find((row) => row.id === "ticket")).toEqual({
       id: "ticket",
-      multiplier: 2,
-      cents: usd(1200),
+      multiplier: 1,
+      cents: usd(600),
+    });
+    expect(rowsOf("familyArrival").find((row) => row.id === "ticketChild")).toEqual({
+      id: "ticketChild",
+      multiplier: 1,
+      cents: usd(600),
     });
   });
 

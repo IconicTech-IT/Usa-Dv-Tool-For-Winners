@@ -46,7 +46,7 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await expect(page.getByRole("heading", { name: /When you arrive alone/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: /When the family arrives/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: /First housing/ })).toHaveCount(0);
-  const ticket = box(page, "Flight ticket");
+  const ticket = box(page, "Flight ticket: adult (12 or older)");
   await ticket.locator("input").fill("600");
   await expect(ticket).toContainText("× 2 people = $");
   await expect(ticket).toContainText("of it when the family arrives");

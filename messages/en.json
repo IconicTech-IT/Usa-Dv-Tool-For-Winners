@@ -125,7 +125,7 @@
     "adultsHelp": "You and anyone over 21",
     "kids": "Children",
     "kidsHelp": "Under 21",
-    "agesHelp": "Enter each child's age (some fees and costs depend on it)",
+    "agesHelp": "Type each child's age in years (type 0 under one year). The age matters for the police certificate, the medical exam, the tickets and childcare.",
     "child": "Child",
     "note": "You can change this at any time; the calculators update on their own.",
     "next": "Next: paperwork and fees",
@@ -139,7 +139,8 @@
       "monthsMissing": "Type the number of months so we can work the plan out in two phases.",
       "tooLong": "A visa usually expires about six months after the medical exam, so the real time from the interview is less than six months. If the family will arrive after a wait this long, check the date printed on the visa and ask the embassy. The calculation here carries on with what you typed.",
       "same": "The paperwork and fees are the same for the whole family: you all get your visas together. What changes is the travel, the arrival and the monthly costs."
-    }
+    },
+    "agesNudge": "One or more children have no age yet. Until you type it, we count them as children aged 2 to 11."
   },
   "fees": {
     "title": "Paperwork and fees",
@@ -368,17 +369,24 @@
       "total": "For the whole household",
       "perPerson": "Per person",
       "perAdult": "Per adult",
-      "perChild": "Per child",
       "perEntrant": "applicant, spouse and children",
       "applicantOnly": "main applicant only",
       "perFamilyMember": "spouse and children",
-      "perRegistration": "× number of entries"
+      "perRegistration": "× number of entries",
+      "perAge16Plus": "Per person aged 16 or older",
+      "perAge15Plus": "Per person aged 15 or older",
+      "perUnder15": "Per child under 15",
+      "perUnderSchool": "Per child under 5",
+      "perAdultFare": "Per adult (12 or older)",
+      "perChildFare": "Per child aged 2 to 11",
+      "perInfantFare": "Per infant under 2"
     },
     "multiplier": {
       "people": "× {shown} {count, plural, one {person} other {people}}",
       "adults": "× {shown} {count, plural, one {adult} other {adults}}",
       "children": "× {shown} {count, plural, one {child} other {children}}",
-      "entries": "× {shown} {count, plural, one {entry} other {entries}}"
+      "entries": "× {shown} {count, plural, one {entry} other {entries}}",
+      "infants": "× {shown} {count, plural, one {infant} other {infants}}"
     },
     "toggle": {
       "label": "Counted",
@@ -388,7 +396,7 @@
     "items": {
       "entryPhotos": "Entry photos",
       "entryHelp": "Help with the entry (if any)",
-      "medicalExam": "Medical exam (at the doctor or clinic the embassy designates)",
+      "medicalExam": "Medical exam: adults and anyone 15 or older",
       "policeCertificate": "Police certificate",
       "translation": "Translation and certification",
       "civilCertificates": "Birth, marriage and education certificates",
@@ -399,7 +407,7 @@
       "passportCourier": "Passport courier",
       "immigrantFee": "Green card fee (USCIS Immigrant Fee)",
       "otherPaperwork": "Other paperwork and fees",
-      "ticket": "Flight ticket",
+      "ticket": "Flight ticket: adult (12 or older)",
       "excessBaggage": "Excess baggage",
       "travelInsurance": "Travel insurance for the first weeks",
       "temporaryStay": "Temporary stay until the lease",
@@ -436,7 +444,10 @@
       "passport": "Get or renew the passport (main applicant)",
       "registrationFee": "Official registration fee",
       "familyPassports": "Passports for the rest of the family",
-      "familyAbroadMonthly": "Your family's monthly costs back home until they join you"
+      "familyAbroadMonthly": "Your family's monthly costs back home until they join you",
+      "medicalExamChild": "Medical exam: children under 15",
+      "ticketChild": "Flight ticket: child aged 2 to 11",
+      "ticketInfant": "Flight ticket: infant under 2"
     },
     "timeline": {
       "beforeInterview": {
@@ -514,13 +525,13 @@
       "entryPhotos": "one photo for each person on the entry: you, your spouse and the children",
       "entryHelp": "a fee for any office or person who fills in the entry for you",
       "familyPassports": "the spouse's passport and each child's, not yours",
-      "medicalExam": "the examination, X-ray, blood test and vaccinations",
+      "medicalExam": "the examination, X-ray, blood test and vaccinations. X-rays and blood tests start at age 15",
       "translation": "a certified translator's fee and any stamp or attestation on documents",
       "civilCertificates": "getting new originals: birth, marriage, degree and transcript",
       "militaryCertificate": "the fee to get the military status or exemption certificate",
       "visaPhotos": "the printed photos each person brings to the interview, separate from the entry photos",
       "interviewTravel": "transport, a night's stay and meals around the interview, if you live outside Cairo",
-      "passportCourier": "the courier's fee for sending the passport back after the interview, if there is one",
+      "passportCourier": "sending the passport back to an Aramex office you choose: free at the Cairo embassy. Type an amount only if your embassy charges",
       "otherPaperwork": "any paperwork or fee before travel that has no box above",
       "travelInsurance": "trip and medical cover for the first weeks, before your health insurance starts",
       "temporaryStay": "a hotel or a furnished short stay until you move into your rented flat",
@@ -531,27 +542,34 @@
       "householdBasics": "kitchen items, bed linen and blankets, cleaning and bathroom supplies. Food is not here: it is in the monthly costs",
       "utilityDeposits": "a sum utility companies sometimes ask for when you open a new account with no credit history",
       "phoneLine": "a SIM and activating the line, for each adult. The monthly plan is in the monthly costs",
-      "licenseTests": "test fees and getting the licence",
+      "licenseTests": "test fees and getting the licence, for adults only",
       "carPurchase": "the price of the car only. Insurance and registration have their own boxes",
       "carInsuranceStart": "the first insurance payment before you drive",
       "carRegistration": "registration, plates and title transfer fees",
       "healthInsuranceStart": "the first month's premium, before the monthly costs start",
-      "childcareStart": "enrolment and the first payment. The monthly cost is in the monthly costs",
+      "childcareStart": "enrolment and the first payment, for children under 5 (our analysis). The monthly cost is in the monthly costs",
       "otherMoving": "any moving cost that has no box above",
       "rent": "the month's rent only. Power and water have their own box",
       "phone": "the monthly mobile plan",
       "food": "groceries, supermarket and home cooking, for each person",
       "healthInsurance": "the monthly premium once the insurance has started",
       "carInsurance": "the monthly car insurance premium",
-      "childcare": "daycare or childcare every month",
+      "childcare": "daycare every month, for children under 5 (our analysis: the age of kindergarten in the US)",
       "otherMonthly": "any monthly cost that has no box above",
       "familyAbroadMonthly": "rent, food and any cost of the family at home during this time",
       "quickPaperwork": "registration, medical, documents and every fee up to the green card",
       "quickTravel": "tickets, bags and travel insurance",
       "quickHousing": "temporary stay, rental deposit, first rent, furniture and home supplies",
       "quickCar": "purchase, insurance, registration and licence",
-      "quickMonthly": "rent, utilities, food, transport and health insurance for one month"
-    }
+      "quickMonthly": "rent, utilities, food, transport and health insurance for one month",
+      "medicalExamChild": "the general examination and vaccinations. Usually no X-ray or blood test under 15",
+      "policeCertificate": "the police certificate for each person aged 16 or older. Younger children do not need one",
+      "ticket": "a ticket for each adult (12 or older). This is the usual airline pattern (unconfirmed): ask your airline",
+      "ticketChild": "a ticket for each child aged 2 to 11, usually cheaper than an adult's (unconfirmed). Ask your airline",
+      "ticketInfant": "a ticket for each infant under 2, usually a small share of the adult fare (unconfirmed)"
+    },
+    "agesNudge": "A child has no age yet, so we count them as a child aged 2 to 11.",
+    "agesNudgeLink": "Type the ages"
   },
   "guideNotes": {
     "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country."

@@ -18,7 +18,7 @@ test("a person alone does not see the family items, and a family does, with its 
   await page.getByRole("button", { name: "Alone" }).click();
 
   await open(page, "/en/fees");
-  await expect(box(page, "Medical exam (at the doctor or clinic the embassy designates)")).toBeVisible();
+  await expect(box(page, "Medical exam: adults and anyone 15 or older")).toBeVisible();
   await expect(page.getByText("Passports for the rest of the family")).toHaveCount(0);
 
   // Add a spouse and type an amount: the box shows and counts it once.
@@ -50,7 +50,7 @@ test("a per-person box shows what its amount is multiplied by and the line total
   await page.getByRole("button", { name: "With family" }).click();
   await open(page, "/en/fees");
 
-  const medical = box(page, "Medical exam (at the doctor or clinic the embassy designates)");
+  const medical = box(page, "Medical exam: adults and anyone 15 or older");
   await expect(medical).not.toContainText("×");
   await medical.locator("input").fill("100");
   await expect(medical).toContainText("× 2 people = $");
@@ -67,7 +67,7 @@ test("the Arabic page says the same in Arabic", async ({ page }) => {
   await open(page, "/ar/fees");
 
   await expect(page.getByText("رسوم المقابلة (رسوم الـDV)", { exact: true })).toBeVisible();
-  const medical = box(page, "الكشف الطبي (عند الدكتور أو الجهة اللي السفارة بتحددها)");
+  const medical = box(page, "الكشف الطبي: للكبار وأي حد 15 سنة أو أكبر");
   await medical.locator("input").fill("100");
   await expect(medical).toContainText("× ٢ فردين = $");
 });

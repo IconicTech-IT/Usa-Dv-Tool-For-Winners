@@ -1,5 +1,6 @@
 "use client";
 
+import { AgesNudge } from "@/components/calc/AgesNudge";
 import { GroupSection } from "@/components/calc/GroupSection";
 import { ItemField } from "@/components/calc/ItemField";
 import { groupsOfCalculator, type Calculator } from "@/lib/calc/catalog";
@@ -14,6 +15,7 @@ interface CalculatorGroupsProps {
 export function CalculatorGroups({ view, calculator }: CalculatorGroupsProps) {
   return (
     <>
+      <AgesNudge view={view} />
       {groupsOfCalculator(calculator, view.result.follow !== null).map((group, index) => (
         <GroupSection key={group.id} group={group} position={index + 1} view={view}>
           {group.items.map((item) => (

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
+import { AgesNudge } from "@/components/calc/AgesNudge";
 import { MonthlyCards } from "@/components/calc/MonthlyCards";
 import { ModeSwitch } from "@/components/calc/ModeSwitch";
 import { RatePanel } from "@/components/calc/RatePanel";
@@ -28,6 +29,7 @@ export function RunwayScreen() {
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>
       <ModeSwitch current="detailed" detailedHref="/runway" />
+      <AgesNudge view={view} />
       <MonthlyCards view={view} />
       <h2>{t("incomeHeading")}</h2>
       <p className="muted">{t("incomeLead")}</p>

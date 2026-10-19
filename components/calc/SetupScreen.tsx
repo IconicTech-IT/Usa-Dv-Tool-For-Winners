@@ -98,6 +98,7 @@ function ChildAges({ view }: { view: PlanView }) {
   return (
     <div className="field">
       <div className="help">{t("agesHelp")}</div>
+      {view.result.agesUnknown > 0 ? <div className="note">{t("agesNudge")}</div> : null}
       <div className="chips">
         {childAges.map((age, index) => (
           // The list is positional (child 1, child 2, ...), so the index is the identity.
@@ -117,11 +118,16 @@ function ChildAges({ view }: { view: PlanView }) {
   );
 }
 
-/** The official rule about who must be listed on the entry, shown where the household is set up. */
+/** The official rules about who must be listed on the entry, and what happens when someone is left out. */
 function FamilyListingRule() {
   const t = useTranslations();
   const locale = useLocale() === "en" ? "en" : "ar";
-  const note = noteById("familyListing", locale);
-  if (!note) return null;
-  return <RuleNote note={note} sourceWord={t("guide.source")} />;
+  return (
+    <>
+      {["familyListing", "familyListingDenial"].map((id) => {
+        const note = noteById(id, locale);
+        return note ? <RuleNote key={id} note={note} sourceWord={t("guide.source")} /> : null;
+      })}
+    </>
+  );
 }

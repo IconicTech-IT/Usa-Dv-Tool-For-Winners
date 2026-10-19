@@ -56,7 +56,7 @@ describe("the 'Includes' lines", () => {
     for (const id of Object.keys(arLines)) expect(ALL_IDS, id).toContain(id);
   });
 
-  it("are one line, and name no amount of money", () => {
+  it("are one line, and name no amount of money (ages are fine)", () => {
     // English takes more letters than Arabic for the same line.
     for (const [lines, limit] of [
       [arLines, ONE_LINE],
@@ -64,7 +64,8 @@ describe("the 'Includes' lines", () => {
     ] as const) {
       for (const [id, text] of Object.entries(lines)) {
         expect(text.length, id).toBeLessThanOrEqual(limit);
-        expect(text, id).not.toMatch(/[$]|[0-9٠-٩]/);
+        // ages are numbers and are fine; an amount of money is not
+        expect(text, id).not.toMatch(/[$]|[0-9٠-٩]s?(USD|EGP|SAR|جنيه|دولار|ريال|dollars?|pounds?)/i);
       }
     }
   });

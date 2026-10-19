@@ -41,6 +41,6 @@ test("every box that has an 'Includes' line shows it on the fees page, in one li
   expect(await lines.count()).toBeGreaterThan(5);
   for (const text of await lines.allInnerTexts()) {
     expect(text.startsWith("يشمل:")).toBe(true);
-    expect(text).not.toMatch(/[$]|[0-9٠-٩]/);
+    expect(text).not.toMatch(/[$]|[0-9٠-٩]\s?(USD|EGP|جنيه|دولار)/);
   }
 });

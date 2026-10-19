@@ -83,8 +83,14 @@ describe("what a multiplier counts", () => {
       perEntrant: "people",
       perFamilyMember: "people",
       perAdult: "adults",
-      perChild: "children",
       perRegistration: "entries",
+      perAge16Plus: "people",
+      perAge15Plus: "people",
+      perAdultFare: "people",
+      perUnder15: "children",
+      perUnderSchool: "children",
+      perChildFare: "children",
+      perInfantFare: "infants",
     };
     for (const [scaling, unit] of Object.entries(expected)) {
       expect(countUnitOf(scaling as Scaling), scaling).toBe(unit);
@@ -94,13 +100,14 @@ describe("what a multiplier counts", () => {
 
   it("reports the multiplier that the line under the box shows", () => {
     const family = planWith(2, 2, { medicalExam: "100", phoneLine: "20", childcare: "50" });
-    expect(itemOf(family, "medicalExam")).toMatchObject({ multiplier: 4, cents: usd(400) });
+    // the two children have no age yet: they count as small children, so the adults' box is x2
+    expect(itemOf(family, "medicalExam")).toMatchObject({ multiplier: 2, cents: usd(200) });
     expect(itemOf(family, "phoneLine")).toMatchObject({ multiplier: 2, cents: usd(40) });
     expect(itemOf(family, "childcare")).toMatchObject({ multiplier: 2, cents: usd(100) });
   });
 
   it("has a message for every unit in both languages, written with the same placeholders", () => {
-    const units: CountUnit[] = ["people", "adults", "children", "entries"];
+    const units: CountUnit[] = ["people", "adults", "children", "infants", "entries"];
     for (const messages of [ar, en]) {
       expect(Object.keys(messages.calc.multiplier).sort()).toEqual([...units].sort());
       for (const unit of units) {

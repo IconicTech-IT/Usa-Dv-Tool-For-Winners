@@ -41,8 +41,14 @@
     "familyListing": {
       "kind": "rule",
       "source": "dvInstructions",
-      "ar": "لازم تكتب الزوج/الزوجة وكل الأولاد غير المتزوجين تحت 21 سنة حتى لو مش هيسافروا. عدم كتابتهم ممكن يخليك غير مؤهل. الزوج/الزوجة المنفصل لازم يتكتب، إلا لو الانفصال رسمي بحكم محكمة.",
-      "en": "You must list your spouse and all unmarried children under 21, even if they will not travel. Not listing them may make you ineligible. A separated spouse must be listed, unless the separation is legal, by a court order."
+      "ar": "لازم تكتب الزوج/الزوجة وكل الأولاد غير المتزوجين تحت 21 سنة حتى لو مش هيسافروا. الزوج/الزوجة المنفصل لازم يتكتب، إلا لو الانفصال رسمي بحكم محكمة.",
+      "en": "You must list your spouse and all unmarried children under 21, even if they will not travel. A separated spouse must be listed, unless the separation is legal, by a court order."
+    },
+    "familyListingDenial": {
+      "kind": "rule",
+      "source": "cairoSupplement",
+      "ar": "لو ماكتبتش زوج/زوجة أو طفل كان موجود وقت التسجيل في القرعة، ده هيتسبب في رفض فيزتك وفيزات أسرتك كلها. والرسوم اللي اتدفعت للحكومة الأمريكية مش بترجع. ولو نسيت طفل اتولد فعلًا أو زوج/زوجة، ماتكملش في طلب الفيزا.",
+      "en": "Failing to list a spouse or child who already existed when you entered the lottery will result in the denial of your visa and your family's visas. Any fees paid to the US government are nonrefundable. If you left out a child who had already been born, or a spouse, you should not proceed with the visa application."
     },
     "passportAtRegistration": {
       "kind": "rule",
@@ -57,10 +63,10 @@
       "en": "There are only 3 exceptions to the passport requirement: stateless people, nationals of a Communist-controlled country who cannot get a passport from their government, and people who have or expect an approved individual waiver. Money problems alone are not a reason for an exception."
     },
     "passportSixMonths": {
-      "kind": "tip",
-      "source": "passportValidity",
-      "ar": "نصيحة مهمة: خلي الباسبور صالح لمدة 6 شهور على الأقل. التأشيرة نفسها بتحتاج الباسبور يكون صالح 60 يوم بعد مدة التأشيرة، والتجديد بياخد وقت، فمتستناش لآخر لحظة.",
-      "en": "Important tip: keep the passport valid for at least 6 months. The visa itself needs a passport valid for 60 days beyond the visa's validity, and renewing takes time, so do not wait until the last moment."
+      "kind": "rule",
+      "source": "cairoSupplement",
+      "ar": "وقت المقابلة: الباسبور لازم يكون ساري 6 شهور بعد التاريخ اللي ناوي تدخل فيه أمريكا. ده لكل متقدم في الأسرة، كبير وطفل. وقت التسجيل بس: ساري ومش منتهي.",
+      "en": "At the interview, the passport must be valid for 6 months beyond the date you plan to enter the United States. This applies to every applicant in the family, adult or child. At registration it only has to be valid and not expired."
     },
     "familyPassports": {
       "kind": "rule",
@@ -91,6 +97,12 @@
       "source": "dvInstructions",
       "ar": "كل شخص يقدّم استمارة واحدة بس: أكتر من استمارة بيلغي كل استمارات الشخص ده. والزوجين يقدروا يقدّموا، كل واحد استمارته.",
       "en": "Each person may submit one entry only: more than one entry cancels all of that person's entries. Spouses may each submit their own entry."
+    },
+    "medicalAge15": {
+      "kind": "rule",
+      "source": "cairoSupplement",
+      "ar": "الأشعة وتحاليل الدم غالبًا مش مطلوبة لأقل من 15 سنة، وهي مطلوبة لأي حد 15 سنة أو أكتر.",
+      "en": "Blood tests and X-rays are generally not required of people under 15, but they are required for everyone else."
     },
     "panelPhysician": {
       "kind": "rule",
@@ -125,10 +137,17 @@
   },
   "byItem": {
     "passport": ["passportAtRegistration", "passportExemptions", "passportSixMonths"],
-    "familyPassports": ["familyPassports"],
-    "entryPhotos": ["photosWhoNeeds", "photosSixMonths", "photoSpecs", "familyListing"],
+    "familyPassports": ["familyPassports", "passportSixMonths"],
+    "entryPhotos": [
+      "photosWhoNeeds",
+      "photosSixMonths",
+      "photoSpecs",
+      "familyListing",
+      "familyListingDenial"
+    ],
     "registrationFee": ["registrationFee", "oneEntryPerPerson"],
-    "medicalExam": ["panelPhysician"],
+    "medicalExam": ["panelPhysician", "medicalAge15"],
+    "medicalExamChild": ["panelPhysician", "medicalAge15"],
     "immigrantFee": ["immigrantFee"],
     "visaFee": ["visaFeeInterview"]
   }

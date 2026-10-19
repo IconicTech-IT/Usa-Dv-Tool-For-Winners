@@ -27,31 +27,32 @@ function put(p: PlanState, id: string, raw: string, options: PutOptions = {}) {
 
 describe("stage totals and per-person items", () => {
   const family = plan((p) => {
-    p.household = { adults: 2, children: 2, childAges: ["", ""] };
-    put(p, "medicalExam", "100"); // per person: x4
-    put(p, "policeCertificate", "10"); // per person: x4
+    p.household = { adults: 2, children: 2, childAges: ["4", "9"] };
+    put(p, "medicalExam", "100"); // adults and anyone 15 or older: x2
+    put(p, "medicalExamChild", "40"); // children under 15: x2
+    put(p, "policeCertificate", "10"); // 16 or older: only the two adults
     put(p, "translation", "50"); // whole household
     put(p, "visaFee", "30"); // per person at the interview
     put(p, "phoneLine", "20"); // per adult in the first month: x2
     put(p, "rent", "1,000");
     put(p, "food", "٥٠٠"); // per person every month: x4
-    put(p, "childcare", "100"); // per child every month: x2
+    put(p, "childcare", "100"); // children under school age every month: x1 (the child of 4)
   });
   const result = computePlan(family);
   const stage = (s: string) => result.stages.find((x) => x.stage === s);
 
   it("multiplies per-person, per-adult and per-child items by the household", () => {
-    expect(stage("beforeInterview")?.cents).toBe(usd(100 * 4 + 10 * 4 + 50));
+    expect(stage("beforeInterview")?.cents).toBe(usd(100 * 2 + 40 * 2 + 10 * 2 + 50));
     expect(stage("atInterview")?.cents).toBe(usd(120));
     expect(stage("firstMonth")?.cents).toBe(usd(20 * 2));
   });
 
   it("sums the monthly items, reading Arabic digits and thousand marks", () => {
-    expect(result.monthlyCents).toBe(usd(1000 + 500 * 4 + 100 * 2));
+    expect(result.monthlyCents).toBe(usd(1000 + 500 * 4 + 100));
   });
 
   it("builds the one-time total from the four non-monthly stages", () => {
-    expect(result.oneTimeCents).toBe(usd(490 + 120 + 40));
+    expect(result.oneTimeCents).toBe(usd(350 + 120 + 40));
   });
 
   it("lists items nobody typed as empty for 'what did I forget'", () => {
@@ -61,7 +62,7 @@ describe("stage totals and per-person items", () => {
 
   it("keeps a running total over the stages in order", () => {
     const cumulative = result.timeline.map((t) => t.cumulativeCents);
-    expect(cumulative).toEqual([0n, usd(490), usd(610), usd(610), usd(650), usd(650 + 3200)]);
+    expect(cumulative).toEqual([0n, usd(350), usd(470), usd(470), usd(510), usd(510 + 3100)]);
   });
 });
 

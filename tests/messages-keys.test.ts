@@ -45,11 +45,17 @@ const SCALINGS = [
   "total",
   "perPerson",
   "perAdult",
-  "perChild",
   "perEntrant",
   "applicantOnly",
   "perFamilyMember",
   "perRegistration",
+  "perAge16Plus",
+  "perAge15Plus",
+  "perUnder15",
+  "perUnderSchool",
+  "perAdultFare",
+  "perChildFare",
+  "perInfantFare",
 ] as const satisfies readonly Scaling[];
 type _AllScaling = Exclude<Scaling, (typeof SCALINGS)[number]> extends never ? true : never;
 const _scalingCheck: _AllScaling = true;

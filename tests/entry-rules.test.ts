@@ -91,20 +91,53 @@ describe("official notes on the guide pages", () => {
     expect(noteById("passportAtRegistration", "en")?.text).not.toMatch(/6 months|six months/i);
   });
 
-  it("shows the six-month passport point only as a highlighted tip", () => {
-    const tip = noteById("passportSixMonths", "ar");
-    expect(tip?.kind).toBe("tip");
-    expect(tip?.text).toContain("نصيحة");
+  it("states the passport at the interview as an official rule for every applicant: six months beyond the entry date", () => {
+    const rule = noteById("passportSixMonths", "ar");
+    expect(rule?.kind).toBe("rule");
+    expect(rule?.text).toContain("وقت المقابلة");
+    expect(rule?.text).toContain("لكل متقدم في الأسرة، كبير وطفل");
+    expect(rule?.source.url).toContain("CRO-Cairo.html");
+    const en = noteById("passportSixMonths", "en");
+    expect(en?.text).toContain("6 months beyond the date you plan to enter");
+    expect(en?.text).toContain("every applicant in the family, adult or child");
+    expect(en?.text).toContain("At registration it only has to be valid and not expired");
     const sixMonthNotes = NOTE_INDEX.notes.filter((id) => noteById(id, "ar")?.text.includes("6 شهور"));
-    // The photo rule is the only rule that carries the number; the passport one is a tip.
+    // Two rules carry the number: the passport at the interview and the age of the photos.
     expect(sixMonthNotes.sort()).toEqual(["passportSixMonths", "photosSixMonths"]);
     expect(noteById("photosSixMonths", "ar")?.kind).toBe("rule");
+    // The family's passports show the same rule.
+    expect(notesForItem("familyPassports", "ar").map((n) => n.id)).toEqual([
+      "familyPassports",
+      "passportSixMonths",
+    ]);
   });
 
-  it("says not listing the family 'may' make the applicant ineligible, never that it always does", () => {
-    const ar = noteById("familyListing", "ar")?.text ?? "";
-    expect(ar).toContain("ممكن يخليك غير مؤهل");
-    expect(noteById("familyListing", "en")?.text).toContain("may make you ineligible");
+  it("says leaving out a spouse or child will result in the denial, not that it may", () => {
+    const denial = noteById("familyListingDenial", "en");
+    expect(denial?.kind).toBe("rule");
+    expect(denial?.text).toContain("will result in the denial of your visa and your family's visas");
+    expect(denial?.text).toContain("nonrefundable");
+    expect(denial?.text).toContain("should not proceed");
+    expect(denial?.source.url).toContain("CRO-Cairo.html");
+    const arabic = noteById("familyListingDenial", "ar")?.text ?? "";
+    expect(arabic).toContain("هيتسبب في رفض فيزتك وفيزات أسرتك كلها");
+    expect(arabic).toContain("مش بترجع");
+    // Neither language softens it any more.
+    for (const language of ["ar", "en"] as const) {
+      expect(noteById("familyListing", language)?.text).not.toMatch(
+        /ممكن يخليك غير مؤهل|may make you ineligible/,
+      );
+      expect(noteById("familyListingDenial", language)?.text).not.toMatch(/ممكن|\bmay\b/);
+    }
+    expect(notesForItem("entryPhotos", "en").map((n) => n.id)).toContain("familyListingDenial");
+  });
+
+  it("says the X-ray and blood tests start at 15, for the adults' box and the children's box", () => {
+    const en = noteById("medicalAge15", "en");
+    expect(en?.kind).toBe("rule");
+    expect(en?.text).toContain("not required of people under 15");
+    expect(en?.source.url).toContain("CRO-Cairo.html");
+    expect(noteById("medicalAge15", "ar")?.text).toContain("15 سنة");
   });
 
   it("says the USCIS fee is strongly encouraged before travel, not required", () => {
@@ -155,7 +188,11 @@ describe("official notes on the guide pages", () => {
       "passportExemptions",
       "passportSixMonths",
     ]);
-    expect(notesForItem("medicalExam", "ar")).toHaveLength(1);
+    expect(notesForItem("medicalExam", "ar").map((n) => n.id)).toEqual(["panelPhysician", "medicalAge15"]);
+    expect(notesForItem("medicalExamChild", "ar").map((n) => n.id)).toEqual([
+      "panelPhysician",
+      "medicalAge15",
+    ]);
     expect(notesForItem("rent", "ar")).toEqual([]);
   });
 

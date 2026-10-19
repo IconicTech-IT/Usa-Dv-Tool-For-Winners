@@ -45,27 +45,51 @@ export const TIMELINE_STAGES: readonly TimelineStage[] = [
  * - applicantOnly: the main applicant alone.
  * - perFamilyMember: the spouse (if any) and all children, without the applicant.
  * - perRegistration: the number of entries made (one, or two when the spouse also enters).
+ * - The age groups (see ages.ts): the adults plus the children from 16 (police certificate) or from 15
+ *   (full medical exam); the children under 15; the children under school age; the adult, child and infant
+ *   fares of a flight. The adults always count with the older group.
  */
 export type Scaling =
   | "total"
   | "perPerson"
   | "perAdult"
-  | "perChild"
   | "perEntrant"
   | "applicantOnly"
   | "perFamilyMember"
-  | "perRegistration";
+  | "perRegistration"
+  | "perAge16Plus"
+  | "perAge15Plus"
+  | "perUnder15"
+  | "perUnderSchool"
+  | "perAdultFare"
+  | "perChildFare"
+  | "perInfantFare";
+
+/** Items of these scalings count nobody but the family, so the principal alone never counts in them. */
+export const FAMILY_ONLY_SCALINGS: readonly Scaling[] = [
+  "perFamilyMember",
+  "perUnder15",
+  "perUnderSchool",
+  "perChildFare",
+  "perInfantFare",
+];
 
 /** What the multiplier of a scaled item counts, for the line under its box ("× 3 people"). */
-export type CountUnit = "people" | "adults" | "children" | "entries";
+export type CountUnit = "people" | "adults" | "children" | "infants" | "entries";
 
 const COUNT_UNITS: Partial<Record<Scaling, CountUnit>> = {
   perPerson: "people",
   perEntrant: "people",
   perFamilyMember: "people",
   perAdult: "adults",
-  perChild: "children",
   perRegistration: "entries",
+  perAge16Plus: "people",
+  perAge15Plus: "people",
+  perAdultFare: "people",
+  perUnder15: "children",
+  perUnderSchool: "children",
+  perChildFare: "children",
+  perInfantFare: "infants",
 };
 
 /** The unit an item's multiplier counts; null when the amount is not multiplied (whole household, applicant only). */
@@ -154,8 +178,9 @@ export const ITEMS: readonly ItemDef[] = [
 
   /* Fees: documents */
   fees("familyPassports", "documents", "beforeInterview", { scaling: "perFamilyMember" }),
-  fees("medicalExam", "documents", "beforeInterview", { scaling: "perPerson" }),
-  fees("policeCertificate", "documents", "beforeInterview", { scaling: "perPerson" }),
+  fees("medicalExam", "documents", "beforeInterview", { scaling: "perAge15Plus" }),
+  fees("medicalExamChild", "documents", "beforeInterview", { scaling: "perUnder15" }),
+  fees("policeCertificate", "documents", "beforeInterview", { scaling: "perAge16Plus" }),
   fees("translation", "documents", "beforeInterview"),
   fees("civilCertificates", "documents", "beforeInterview"),
   fees("militaryCertificate", "documents", "beforeInterview"),
@@ -171,7 +196,9 @@ export const ITEMS: readonly ItemDef[] = [
   fees("otherPaperwork", "afterVisa", "beforeTravel"),
 
   /* Moving: travel */
-  moving("ticket", "travel", "beforeTravel", { scaling: "perPerson", follow: "split" }),
+  moving("ticket", "travel", "beforeTravel", { scaling: "perAdultFare", follow: "split" }),
+  moving("ticketChild", "travel", "beforeTravel", { scaling: "perChildFare", follow: "split" }),
+  moving("ticketInfant", "travel", "beforeTravel", { scaling: "perInfantFare", follow: "split" }),
   moving("excessBaggage", "travel", "beforeTravel"),
   moving("travelInsurance", "travel", "beforeTravel", { toggle: true, follow: "split" }),
 
@@ -187,14 +214,14 @@ export const ITEMS: readonly ItemDef[] = [
   moving("phoneLine", "connectivity", "firstMonth", { scaling: "perAdult", follow: "split" }),
 
   /* Moving: car */
-  moving("licenseTests", "car", "firstMonth", { scaling: "perPerson", follow: "split" }),
+  moving("licenseTests", "car", "firstMonth", { scaling: "perAdult", follow: "split" }),
   moving("carPurchase", "car", "firstMonth"),
   moving("carInsuranceStart", "car", "firstMonth"),
   moving("carRegistration", "car", "firstMonth"),
 
   /* Moving: health and family */
   moving("healthInsuranceStart", "healthFamily", "firstMonth", { toggle: true, follow: "split" }),
-  moving("childcareStart", "healthFamily", "firstMonth", { scaling: "perChild", follow: "split" }),
+  moving("childcareStart", "healthFamily", "firstMonth", { scaling: "perUnderSchool", follow: "split" }),
   moving("otherMoving", "healthFamily", "firstMonth"),
 
   /* Monthly running costs */
@@ -206,7 +233,7 @@ export const ITEMS: readonly ItemDef[] = [
   monthly("transport", "monthlyCosts", "monthly"),
   monthly("healthInsurance", "monthlyCosts", "monthly", { toggle: true }),
   monthly("carInsurance", "monthlyCosts", "monthly"),
-  monthly("childcare", "monthlyCosts", "monthly", { scaling: "perChild" }),
+  monthly("childcare", "monthlyCosts", "monthly", { scaling: "perUnderSchool" }),
   monthly("otherMonthly", "monthlyCosts", "monthly"),
   // Only when the family follows later: what the family spends back home until it joins the principal.
   monthly("familyAbroadMonthly", "monthlyCosts", "monthly", { follow: "whileApart" }),
@@ -225,7 +252,9 @@ export function followRuleOf(def: ItemDef): FollowRule {
  */
 export const ALONE_MONTHLY_ITEMS: readonly ItemDef[] = ITEMS.filter(
   (item) =>
-    item.calculator === "monthly" && item.scaling !== "perChild" && followRuleOf(item) !== "whileApart",
+    item.calculator === "monthly" &&
+    !FAMILY_ONLY_SCALINGS.includes(item.scaling) &&
+    followRuleOf(item) !== "whileApart",
 );
 
 /**
@@ -272,9 +301,6 @@ function catalogGroups(calculator: Calculator): GroupDef[] {
   }
   return groups;
 }
-
-/** Items of these scalings count nobody but the family, so on their own they belong to the family's arrival. */
-const FAMILY_ONLY_SCALINGS: readonly Scaling[] = ["perChild", "perFamilyMember"];
 
 function isFamilyArrivalItem(def: ItemDef): boolean {
   const rule = followRuleOf(def);

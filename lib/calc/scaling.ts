@@ -1,3 +1,4 @@
+import type { AgeGroups } from "@/lib/calc/ages";
 import { followRuleOf, type ItemDef, type Scaling, type TimelineStage } from "@/lib/calc/catalog";
 import type { Rate } from "@/lib/calc/currency";
 import {
@@ -20,6 +21,8 @@ export interface HouseholdContext {
   adults: number;
   children: number;
   registrations: number;
+  /** How many of the children fall in each age group; see ages.ts. */
+  ages: AgeGroups;
   rate: Rate | null;
   /** Months the family arrives after the principal; null when everyone travels together. */
   followMonths: number | null;
@@ -30,44 +33,50 @@ export function spouseCount(adults: number): number {
   return adults > 1 ? 1 : 0;
 }
 
-/** How many times an amount counts for the whole household. */
+type Count = (context: HouseholdContext) => number;
+
+/** How many times an amount counts for the whole household, by how it scales. */
+const WHOLE_HOUSEHOLD: Record<Scaling, Count> = {
+  total: () => 1,
+  perPerson: ({ adults, children }) => adults + children,
+  perAdult: ({ adults }) => adults,
+  perEntrant: ({ adults, children }) => 1 + spouseCount(adults) + children,
+  applicantOnly: () => 1,
+  perFamilyMember: ({ adults, children }) => spouseCount(adults) + children,
+  perRegistration: ({ registrations }) => registrations,
+  perAge16Plus: ({ adults, ages }) => adults + ages.from16,
+  perAge15Plus: ({ adults, ages }) => adults + ages.from15,
+  perUnder15: ({ ages }) => ages.under15,
+  perUnderSchool: ({ ages }) => ages.underSchool,
+  perAdultFare: ({ adults, ages }) => adults + ages.adultFare,
+  perChildFare: ({ ages }) => ages.childFare,
+  perInfantFare: ({ ages }) => ages.infants,
+};
+
 export function multiplierFor(scaling: Scaling, context: HouseholdContext): number {
-  const { adults, children, registrations } = context;
-  switch (scaling) {
-    case "total":
-      return 1;
-    case "perPerson":
-      return adults + children;
-    case "perAdult":
-      return adults;
-    case "perChild":
-      return children;
-    case "perEntrant":
-      return 1 + spouseCount(adults) + children;
-    case "applicantOnly":
-      return 1;
-    case "perFamilyMember":
-      return spouseCount(adults) + children;
-    case "perRegistration":
-      return registrations;
-  }
+  return WHOLE_HOUSEHOLD[scaling](context);
 }
 
-/** How many times an amount counts while the principal is alone (the children and the spouse are not there). */
+/** How many times an amount counts while the principal is alone: the spouse and the children are not there. */
+const PRINCIPAL_ALONE: Record<Scaling, Count> = {
+  total: () => 1,
+  perPerson: () => 1,
+  perAdult: () => 1,
+  perEntrant: () => 1,
+  applicantOnly: () => 1,
+  perFamilyMember: () => 0,
+  perRegistration: ({ registrations }) => registrations,
+  perAge16Plus: () => 1,
+  perAge15Plus: () => 1,
+  perUnder15: () => 0,
+  perUnderSchool: () => 0,
+  perAdultFare: () => 1,
+  perChildFare: () => 0,
+  perInfantFare: () => 0,
+};
+
 function aloneMultiplier(scaling: Scaling, context: HouseholdContext): number {
-  switch (scaling) {
-    case "perChild":
-    case "perFamilyMember":
-      return 0;
-    case "perRegistration":
-      return context.registrations;
-    case "total":
-    case "perPerson":
-    case "perAdult":
-    case "perEntrant":
-    case "applicantOnly":
-      return 1;
-  }
+  return PRINCIPAL_ALONE[scaling](context);
 }
 
 /** What the family adds on top of the principal; a whole-household amount is counted once, not again. */

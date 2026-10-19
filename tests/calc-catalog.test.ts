@@ -10,25 +10,24 @@ function scalingOf(id: string): string | undefined {
 
 describe("catalog follows the approved design", () => {
   it("scales these items by every person in the household", () => {
-    for (const id of [
-      "medicalExam",
-      "policeCertificate",
-      "visaPhotos",
-      "visaFee",
-      "passportCourier",
-      "immigrantFee",
-      "ticket",
-      "winterClothes",
-      "licenseTests",
-      "food",
-    ]) {
+    for (const id of ["visaPhotos", "visaFee", "passportCourier", "immigrantFee", "winterClothes", "food"]) {
       expect(scalingOf(id), id).toBe("perPerson");
     }
   });
 
-  it("scales childcare by the number of children, in the first month and every month", () => {
-    expect(scalingOf("childcareStart")).toBe("perChild");
-    expect(scalingOf("childcare")).toBe("perChild");
+  it("counts each cost for the people it is for, by age", () => {
+    expect(scalingOf("policeCertificate")).toBe("perAge16Plus");
+    expect(scalingOf("licenseTests")).toBe("perAdult");
+    expect(scalingOf("medicalExam")).toBe("perAge15Plus");
+    expect(scalingOf("medicalExamChild")).toBe("perUnder15");
+    expect(scalingOf("ticket")).toBe("perAdultFare");
+    expect(scalingOf("ticketChild")).toBe("perChildFare");
+    expect(scalingOf("ticketInfant")).toBe("perInfantFare");
+  });
+
+  it("counts childcare for the children under school age, in the first month and every month", () => {
+    expect(scalingOf("childcareStart")).toBe("perUnderSchool");
+    expect(scalingOf("childcare")).toBe("perUnderSchool");
   });
 
   it("lets the user switch health and travel insurance between the household and each person", () => {

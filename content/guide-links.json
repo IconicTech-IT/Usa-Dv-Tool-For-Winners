@@ -661,6 +661,9 @@
   "items": {
     "medicalExam": ["usCairoIvInstructions", "usEmbassies", "stateImmigrantVisaProcess"],
     "policeCertificate": ["reciprocity", "stateImmigrantVisaProcess", "usEmbassies"],
+    "medicalExamChild": ["usCairoIvInstructions", "usEmbassies", "stateImmigrantVisaProcess"],
+    "ticketChild": ["googleFlights", "skyscanner"],
+    "ticketInfant": ["googleFlights", "skyscanner"],
     "translation": ["reciprocity", "usEmbassies"],
     "civilCertificates": ["reciprocity", "stateImmigrantVisaProcess"],
     "militaryCertificate": ["reciprocity", "usEmbassies"],

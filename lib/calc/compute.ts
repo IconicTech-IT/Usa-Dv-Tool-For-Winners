@@ -6,6 +6,7 @@ import {
   type ItemDef,
   type TimelineStage,
 } from "@/lib/calc/catalog";
+import { ageGroups } from "@/lib/calc/ages";
 import { parseRate, type Rate } from "@/lib/calc/currency";
 import { isZero, type Decimal } from "@/lib/calc/decimal";
 import { addMonths, costOfMonths, type FollowPhases } from "@/lib/calc/follow";
@@ -141,6 +142,8 @@ export interface PlanResult {
   savingsCents: Cents;
   netMonthlyAfterStartCents: Cents;
   scenarios: Scenario[];
+  /** How many children have no age typed yet (they are counted as small children until then). */
+  agesUnknown: number;
   /** Set only when the family arrives some months after the principal. */
   follow: FollowResult | null;
   /** A local-currency amount exists but no valid rate was typed, so totals are partial. */
@@ -337,6 +340,19 @@ function phasesOf(months: number | null, stageCents: (stage: TimelineStage) => C
   };
 }
 
+/** The household as the multipliers see it: the counts, the children by age, the rate and the phases. */
+function contextOf(state: PlanState, rate: Rate | null, followMonths: number | null): HouseholdContext {
+  const { adults, children, childAges } = state.household;
+  return {
+    adults,
+    children,
+    registrations: state.registrations,
+    ages: ageGroups(childAges, children),
+    rate,
+    followMonths,
+  };
+}
+
 export function computePlan(state: PlanState): PlanResult {
   const rate = parseRate(state.rate);
   const { adults, children } = state.household;
@@ -346,8 +362,7 @@ export function computePlan(state: PlanState): PlanResult {
 
   // The five quick boxes are whole-household totals, so they never split between two phases.
   const followMonths = quick ? null : followMonthsOf(state);
-  const { registrations } = state;
-  const context = { adults, children, registrations, rate, followMonths };
+  const context = contextOf(state, rate, followMonths);
   const items = defs.map((def) => computeItem(def, fields[def.id], context));
   const aloneItems = ALONE_MONTHLY_ITEMS.map((def) =>
     computeAloneItem(def, state.aloneMonthly[def.id], context),
@@ -370,6 +385,7 @@ export function computePlan(state: PlanState): PlanResult {
     persons: adults + children,
     items,
     aloneItems,
+    agesUnknown: context.ages.unknown,
     stages,
     timeline: computeTimeline(stages, phases !== null),
     oneTimeCents,
