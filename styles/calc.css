@@ -449,3 +449,11 @@ dialog.sheet-dialog .warn {
 .offer dd {
   font-weight: 700;
 }
+
+/* Keeps the place of the first plan until the saved plans are read, so the page does not jump */
+.plan-skeleton {
+  min-height: 132px;
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  background: var(--sf);
+}

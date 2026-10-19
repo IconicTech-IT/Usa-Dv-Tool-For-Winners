@@ -26,7 +26,9 @@ const plexArabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
   weight: ["400", "600", "700"],
   variable: "--font-plex-arabic",
-  display: "swap",
+  // "optional": the page never jumps when the font arrives (no layout shift). On a slow first visit the
+  // system Arabic font is used for that page view; the font is cached for the next one.
+  display: "optional",
 });
 
 interface LayoutProps {

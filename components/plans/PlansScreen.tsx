@@ -23,6 +23,7 @@ export function PlansScreen() {
       <h1>{t("title")}</h1>
       <p className="lead">{t("lead")}</p>
       <ul className="plan-list" aria-label={t("listLabel")}>
+        {view.plans.length === 0 ? <li className="plan-skeleton" aria-hidden="true" /> : null}
         {view.plans.map((entry, index) => (
           <PlanRow key={entry.id} view={view} index={index} onMessage={setMessage} />
         ))}
