@@ -11,7 +11,7 @@ export interface StorageLike {
   removeItem(key: string): void;
 }
 
-function defaultStorage(): StorageLike | null {
+export function defaultStorage(): StorageLike | null {
   try {
     return typeof window !== "undefined" ? window.localStorage : null;
   } catch {

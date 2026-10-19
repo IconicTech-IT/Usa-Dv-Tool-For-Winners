@@ -10,9 +10,9 @@ import { DEFAULT_LOCAL_CURRENCY } from "@/lib/calc/currency";
 
 export const PLAN_VERSION = 1 as const;
 
-const MAX_RAW_LENGTH = 40;
-const MAX_CHILDREN = 20;
-const MAX_ADULTS = 10;
+export const MAX_RAW_LENGTH = 40;
+export const MAX_CHILDREN = 20;
+export const MAX_ADULTS = 10;
 
 export const AmountFieldSchema = z.object({
   raw: z.string().max(MAX_RAW_LENGTH),
