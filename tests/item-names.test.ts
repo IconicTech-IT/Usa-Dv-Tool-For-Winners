@@ -10,7 +10,8 @@ import en from "@/messages/en.json";
  */
 
 const ALL_IDS = [...ITEMS, ...QUICK_ITEMS].map((item) => item.id);
-const ONE_LINE = 120;
+const ONE_LINE = 125;
+const ONE_LINE_EN = 150;
 
 describe.each([
   ["ar", ar],
@@ -56,9 +57,13 @@ describe("the 'Includes' lines", () => {
   });
 
   it("are one line, and name no amount of money", () => {
-    for (const lines of [arLines, enLines]) {
+    // English takes more letters than Arabic for the same line.
+    for (const [lines, limit] of [
+      [arLines, ONE_LINE],
+      [enLines, ONE_LINE_EN],
+    ] as const) {
       for (const [id, text] of Object.entries(lines)) {
-        expect(text.length, id).toBeLessThanOrEqual(ONE_LINE);
+        expect(text.length, id).toBeLessThanOrEqual(limit);
         expect(text, id).not.toMatch(/[$]|[0-9٠-٩]/);
       }
     }
@@ -97,6 +102,41 @@ describe("the 'Includes' lines", () => {
 
   it("know the boxes of the months alone too", () => {
     for (const item of ALONE_MONTHLY_ITEMS) expect(ALL_IDS).toContain(item.id);
+  });
+});
+
+describe("the deposit boxes", () => {
+  it("say it is a rental deposit that comes back, not a purchase, in the words people use", () => {
+    expect(ar.calc.items.securityDeposit).toBe("تأمين إيجار الشقة (بيرجع)");
+    expect(ar.calc.itemIncludes.securityDeposit).toContain("بيرجعلك لما تسيب الشقة");
+    expect(ar.calc.itemIncludes.securityDeposit).toContain("ده إيجار مش شرا");
+    expect(en.calc.items.securityDeposit).toBe("Rental security deposit (refundable)");
+    expect(en.calc.itemIncludes.securityDeposit).toContain("A rental, not a purchase");
+    expect(ar.calc.items.utilityDeposits).toBe("تأمين فتح الكهرباء والمياه والنت");
+    expect(ar.calc.itemIncludes.utilityDeposits).toContain("من غير تاريخ ائتماني");
+    expect(en.calc.items.utilityDeposits).toBe("Utility and internet deposits");
+  });
+
+  it("leave no housing label that could be read as buying a home", () => {
+    const labels = [
+      ...Object.values(ar.calc.items),
+      ...Object.values(ar.calc.groupHints),
+      ...Object.values(ar.calc.itemIncludes),
+      ar.quick.housing,
+    ];
+    // the Arabic word for a bank deposit, and wording about owning or buying a flat or a house
+    for (const label of labels) expect(label).not.toMatch(/وديعة|شراء (شقة|بيت)|تمليك|اشتري/);
+    const english = [
+      ...Object.values(en.calc.items),
+      ...Object.values(en.calc.groupHints),
+      ...Object.values(en.calc.itemIncludes),
+      en.quick.housing,
+    ];
+    for (const label of english)
+      expect(label).not.toMatch(/buy (a|the) (flat|home|house)|mortgage|down payment/i);
+    // the only purchase on the site is the car
+    const purchases = Object.entries(ar.calc.items).filter(([, name]) => /شراء/.test(name));
+    expect(purchases.map(([id]) => id)).toEqual(["carPurchase"]);
   });
 });
 

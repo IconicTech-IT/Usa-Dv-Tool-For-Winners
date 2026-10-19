@@ -50,7 +50,7 @@ test("the principal travels first and the family follows: setup, moving, monthly
   await ticket.locator("input").fill("600");
   await expect(ticket).toContainText("× 2 people = $");
   await expect(ticket).toContainText("of it when the family arrives");
-  await box(page, "Security deposit").locator("input").fill("1000");
+  await box(page, "Rental security deposit (refundable)").locator("input").fill("1000");
 
   // The monthly costs: the family's costs back home appear, and there are two monthly totals.
   await open(page, "/en/runway");
