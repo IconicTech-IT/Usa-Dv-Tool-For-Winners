@@ -65,12 +65,10 @@ for (const path of PAGES) {
     await page.waitForTimeout(1_500);
     const vitals = await page.evaluate(() => (globalThis as unknown as { __vitals: Vitals }).__vitals);
 
-    test
-      .info()
-      .annotations.push({
-        type: "vitals",
-        description: `${path}: LCP ${Math.round(vitals.lcp)} ms, CLS ${vitals.cls.toFixed(3)}`,
-      });
+    test.info().annotations.push({
+      type: "vitals",
+      description: `${path}: LCP ${Math.round(vitals.lcp)} ms, CLS ${vitals.cls.toFixed(3)}`,
+    });
     expect(vitals.lcp, `LCP of ${path}`).toBeGreaterThan(0);
     expect(vitals.lcp, `LCP of ${path} in ms`).toBeLessThanOrEqual(LCP_LIMIT_MS);
     expect(vitals.cls, `CLS of ${path}`).toBeLessThanOrEqual(CLS_LIMIT);
