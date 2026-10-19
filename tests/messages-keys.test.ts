@@ -59,7 +59,9 @@ const _parseCheck: _AllParse = true;
 const _openCheck: _AllOpen = true;
 
 function placeholders(text: string): string[] {
-  return [...text.matchAll(/\{(\w+)\}/g)].map((m) => m[1] ?? "").sort();
+  // The words inside a plural choice are text, not arguments, so a plural counts as its one argument.
+  const withoutChoices = text.replace(/\{(\w+),\s*plural,(?:[^{}]|\{[^{}]*\})*\}/g, "{$1}");
+  return [...withoutChoices.matchAll(/\{(\w+)\}/g)].map((m) => m[1] ?? "").sort();
 }
 
 describe("messages", () => {

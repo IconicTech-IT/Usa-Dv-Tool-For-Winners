@@ -343,6 +343,12 @@
       "perFamilyMember": "الزوج/ة والأولاد",
       "perRegistration": "× عدد التسجيلات"
     },
+    "multiplier": {
+      "people": "× {shown} {count, plural, one {فرد} two {فردين} few {أفراد} many {فرد} other {فرد}}",
+      "adults": "× {shown} {count, plural, one {بالغ} two {بالغين} few {بالغين} many {بالغ} other {بالغ}}",
+      "children": "× {shown} {count, plural, one {طفل} two {طفلين} few {أطفال} many {طفل} other {طفل}}",
+      "entries": "× {shown} {count, plural, one {تسجيل} two {تسجيلين} few {تسجيلات} many {تسجيل} other {تسجيل}}"
+    },
     "toggle": {
       "label": "الحساب",
       "household": "للأسرة كلها",
@@ -357,10 +363,10 @@
       "civilCertificates": "شهادات الميلاد والزواج والتعليم",
       "militaryCertificate": "شهادة الموقف من التجنيد",
       "visaPhotos": "صور شخصية للتأشيرة",
-      "visaFee": "رسوم التأشيرة",
+      "visaFee": "رسوم المقابلة (رسوم الـDV)",
       "interviewTravel": "السفر للقاهرة وفندق المقابلة",
       "passportCourier": "شحن الجواز بعد المقابلة",
-      "immigrantFee": "رسوم المهاجر (USCIS)",
+      "immigrantFee": "رسوم الجرين كارد (USCIS Immigrant Fee)",
       "otherPaperwork": "أخرى",
       "ticket": "تذكرة الطيران",
       "excessBaggage": "وزن زيادة أو شنط إضافية",
@@ -407,7 +413,7 @@
       },
       "atInterview": {
         "title": "يوم المقابلة",
-        "text": "رسوم التأشيرة والسفر للسفارة"
+        "text": "رسوم المقابلة والسفر للسفارة"
       },
       "beforeTravel": {
         "title": "قبل السفر",

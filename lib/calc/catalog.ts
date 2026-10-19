@@ -38,6 +38,23 @@ export type Scaling =
   | "perFamilyMember"
   | "perRegistration";
 
+/** What the multiplier of a scaled item counts, for the line under its box ("× 3 people"). */
+export type CountUnit = "people" | "adults" | "children" | "entries";
+
+const COUNT_UNITS: Partial<Record<Scaling, CountUnit>> = {
+  perPerson: "people",
+  perEntrant: "people",
+  perFamilyMember: "people",
+  perAdult: "adults",
+  perChild: "children",
+  perRegistration: "entries",
+};
+
+/** The unit an item's multiplier counts; null when the amount is not multiplied (whole household, applicant only). */
+export function countUnitOf(scaling: Scaling): CountUnit | null {
+  return COUNT_UNITS[scaling] ?? null;
+}
+
 /** Which calculator an item belongs to. */
 export type Calculator = "fees" | "moving" | "monthly";
 

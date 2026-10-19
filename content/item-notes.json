@@ -30,6 +30,11 @@
       "ar": "رسم USCIS للمهاجرين",
       "en": "The USCIS immigrant fee",
       "url": "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee"
+    },
+    "cairoSupplement": {
+      "ar": "ملحق السفارة الأمريكية في القاهرة لفيزا الهجرة والـDV (وزارة الخارجية)",
+      "en": "US Embassy Cairo immigrant visa and DV supplement (State Department)",
+      "url": "https://travel.state.gov/content/travel/en/us-visas/Supplements/Supplements_by_Post/CRO-Cairo.html"
     }
   },
   "notes": {
@@ -96,8 +101,14 @@
     "immigrantFee": {
       "kind": "rule",
       "source": "uscisFee",
-      "ar": "رسم USCIS مستحسن بشدة تدفعه بعد ما تستلم الفيزا وقبل السفر. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع. الدفع أونلاين بس.",
-      "en": "You are strongly encouraged to pay the USCIS fee after you collect the visa and before you travel. You can also pay after you arrive, but the green card is not sent until it is paid. Payment is online only."
+      "ar": "رسم الجرين كارد (USCIS Immigrant Fee) بتدفعه أونلاين بعد ما الفيزا تتصدر وتستلمها وقبل السفر، وده مستحسن بشدة. بيغطي معالجة ملف الهجرة وطباعة الجرين كارد، وبيتدفع عن كل شخص. تقدر تدفعه بعد الوصول كمان، لكن الجرين كارد مش بيوصل إلا بعد الدفع.",
+      "en": "You are strongly encouraged to pay the green card fee (the USCIS Immigrant Fee) online after the visa is issued and you collect it, and before you travel. It pays for processing your immigrant visa packet and producing your green card, and it is paid for each person. You can also pay after you arrive, but the green card is not sent until it is paid."
+    },
+    "visaFeeInterview": {
+      "kind": "rule",
+      "source": "cairoSupplement",
+      "ar": "رسوم المقابلة (رسوم الـDV) بتتدفع في السفارة يوم المقابلة لو مكنتش اتدفعت قبلها، وبتتدفع عن كل متقدم. هي غير قابلة للاسترداد: لو اتقرر إنك غير مؤهل للفيزا، الرسم مبيرجعش.",
+      "en": "The interview fee (the DV fee) is paid at the embassy on the interview day if it was not paid before, and it is paid for each applicant. It is non-refundable: if you are found ineligible for the visa, it is not returned."
     },
     "photoSpecs": {
       "kind": "rule",
@@ -112,6 +123,7 @@
     "entryPhotos": ["photosWhoNeeds", "photosSixMonths", "photoSpecs", "familyListing"],
     "registrationFee": ["registrationFee", "oneEntryPerPerson"],
     "medicalExam": ["panelPhysician"],
-    "immigrantFee": ["immigrantFee"]
+    "immigrantFee": ["immigrantFee"],
+    "visaFee": ["visaFeeInterview"]
   }
 }

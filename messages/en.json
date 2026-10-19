@@ -343,6 +343,12 @@
       "perFamilyMember": "spouse and children",
       "perRegistration": "× number of entries"
     },
+    "multiplier": {
+      "people": "× {shown} {count, plural, one {person} other {people}}",
+      "adults": "× {shown} {count, plural, one {adult} other {adults}}",
+      "children": "× {shown} {count, plural, one {child} other {children}}",
+      "entries": "× {shown} {count, plural, one {entry} other {entries}}"
+    },
     "toggle": {
       "label": "Counted",
       "household": "whole family",
@@ -357,10 +363,10 @@
       "civilCertificates": "Birth, marriage and education certificates",
       "militaryCertificate": "Military certificate",
       "visaPhotos": "Visa photos",
-      "visaFee": "Visa fee",
+      "visaFee": "Interview fee (DV fee)",
       "interviewTravel": "Travel to Cairo and interview hotel",
       "passportCourier": "Passport courier",
-      "immigrantFee": "USCIS immigrant fee",
+      "immigrantFee": "Green card fee (USCIS Immigrant Fee)",
       "otherPaperwork": "Other",
       "ticket": "Flight ticket",
       "excessBaggage": "Excess baggage",
@@ -407,7 +413,7 @@
       },
       "atInterview": {
         "title": "At the interview",
-        "text": "Visa fee and travel to the embassy"
+        "text": "Interview fee and travel to the embassy"
       },
       "beforeTravel": {
         "title": "Before travel",

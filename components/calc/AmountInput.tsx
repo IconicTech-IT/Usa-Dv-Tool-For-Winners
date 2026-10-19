@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
 import { Icon } from "@/components/Icon";
@@ -23,11 +23,14 @@ interface AmountInputProps {
   guideItemId?: string | undefined;
   invalid?: boolean | undefined;
   needsRate?: boolean | undefined;
+  /** A line shown under the box, such as what the amount is multiplied by. */
+  note?: ReactNode;
 }
 
 /** One money box: label, dollar/local switch, the number, and the "how do I know the price?" button. */
 export function AmountInput(props: AmountInputProps) {
-  const { label, field, localCode, onChange, scaling, hasToggle, guideItemId, invalid, needsRate } = props;
+  const { label, field, localCode, onChange, scaling, hasToggle, guideItemId, invalid, needsRate, note } =
+    props;
   const t = useTranslations();
   const inputId = useId();
   const messageId = `${inputId}-message`;
@@ -63,6 +66,7 @@ export function AmountInput(props: AmountInputProps) {
           onChange={(event) => onChange({ raw: event.target.value })}
         />
       </div>
+      {note}
       {guideItemId === undefined ? null : (
         <Link className="guide" href={`/guide/${guideItemId}`}>
           <Icon name="guide" />

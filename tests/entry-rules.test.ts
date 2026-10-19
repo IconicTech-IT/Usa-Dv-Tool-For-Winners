@@ -113,6 +113,29 @@ describe("official notes on the guide pages", () => {
     expect(en).not.toMatch(/must pay/i);
   });
 
+  it("says the green card fee is paid online after the visa, before travel, for each person", () => {
+    const en = noteById("immigrantFee", "en")?.text ?? "";
+    expect(en).toContain("after the visa is issued");
+    expect(en).toContain("producing your green card");
+    expect(en).toContain("each person");
+    expect(noteById("immigrantFee", "ar")?.text).toContain("كل شخص");
+    expect(noteById("immigrantFee", "en")?.source.url).toBe(
+      "https://www.uscis.gov/forms/filing-fees/uscis-immigrant-fee",
+    );
+  });
+
+  it("says the interview fee is paid at the embassy on the interview day, for each applicant, and is not refunded", () => {
+    const [note] = notesForItem("visaFee", "en");
+    expect(note?.kind).toBe("rule");
+    expect(note?.text).toContain("on the interview day");
+    expect(note?.text).toContain("each applicant");
+    expect(note?.text).toContain("non-refundable");
+    expect(note?.source.url).toBe(
+      "https://travel.state.gov/content/travel/en/us-visas/Supplements/Supplements_by_Post/CRO-Cairo.html",
+    );
+    expect(notesForItem("visaFee", "ar")[0]?.text).toContain("غير قابلة للاسترداد");
+  });
+
   it("shows the passport, photos and medical notes on those items' guides", () => {
     expect(notesForItem("passport", "ar").map((n) => n.id)).toEqual([
       "passportAtRegistration",

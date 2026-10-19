@@ -33,6 +33,11 @@ const ONE_TIME_STAGES: readonly Stage[] = [
 export interface ItemResult {
   id: string;
   stage: Stage;
+  /**
+   * False when the item counts nobody in this household (the family items of a person alone). Such an
+   * item is hidden, adds nothing whatever was typed in it before, and is not listed as forgotten.
+   */
+  applicable: boolean;
   /** The user typed a valid amount (zero counts as typed). */
   typed: boolean;
   /** Text is there but is not a valid non-negative number. */
@@ -121,26 +126,56 @@ function multiplierFor(scaling: Scaling, context: HouseholdContext): number {
   }
 }
 
-function effectiveScaling(def: ItemDef, field: AmountField): Scaling {
+/** The scaling an item uses now: a toggle item follows the box's "per person" switch. */
+export function effectiveScaling(def: ItemDef, field: AmountField): Scaling {
   if (def.toggle) return field.perPerson ? "perPerson" : "total";
   return def.scaling;
 }
 
 function computeItem(def: ItemDef, field: AmountField | undefined, context: HouseholdContext): ItemResult {
   const base = { id: def.id, stage: def.stage };
+  const multiplier = multiplierFor(field ? effectiveScaling(def, field) : def.scaling, context);
+  if (multiplier === 0) {
+    // The typed text stays in the plan, so the item comes back with its value when the family is added.
+    return {
+      ...base,
+      applicable: false,
+      typed: false,
+      invalid: false,
+      multiplier,
+      cents: null,
+      needsRate: false,
+    };
+  }
   if (!field || field.raw.trim() === "") {
-    return { ...base, typed: false, invalid: false, multiplier: 1, cents: null, needsRate: false };
+    return {
+      ...base,
+      applicable: true,
+      typed: false,
+      invalid: false,
+      multiplier: 1,
+      cents: null,
+      needsRate: false,
+    };
   }
 
   const parsed = parseAmount(field.raw);
-  const multiplier = multiplierFor(effectiveScaling(def, field), context);
   if (!parsed.ok) {
-    return { ...base, typed: false, invalid: true, multiplier, cents: null, needsRate: false };
+    return {
+      ...base,
+      applicable: true,
+      typed: false,
+      invalid: true,
+      multiplier,
+      cents: null,
+      needsRate: false,
+    };
   }
 
   const single = toUsdCents(parsed.amount, field.currency, context.rate);
   return {
     ...base,
+    applicable: true,
     typed: true,
     invalid: false,
     multiplier,
@@ -173,7 +208,7 @@ function computeStages(items: ItemResult[]): StageResult[] {
     return {
       stage,
       cents: sumCents(stageItems.map((i) => i.cents)),
-      emptyIds: stageItems.filter((i) => !i.typed).map((i) => i.id),
+      emptyIds: stageItems.filter((i) => i.applicable && !i.typed).map((i) => i.id),
       incomplete: stageItems.some((i) => i.needsRate),
     };
   });
