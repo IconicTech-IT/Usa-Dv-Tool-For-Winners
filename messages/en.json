@@ -219,10 +219,10 @@
     },
     "linksHeading": "Official links only",
     "links": {
-      "entry": "Official entry site",
+      "entry": "Official lottery page (registration and instructions)",
       "status": "Entrant Status Check (results)",
-      "instructions": "State Department lottery instructions",
-      "fraud": "State Department fraud warning"
+      "fraud": "State Department fraud warning",
+      "fee": "The official decision on the registration fee (Federal Register)"
     },
     "note": "This site is not affiliated with the US government. We only point you to the official pages.",
     "fee": "Registering for the lottery has an official fee of just one dollar ($1), set by the US State Department. Do not let anyone take more than that as the government fee; any extra money is the office's service charge.",
@@ -256,25 +256,9 @@
   "charge": {
     "title": "The new public charge rule",
     "lead": "A plain explanation of the \"public charge\" rule from official sources only. We relay what the official page says and add nothing of our own.",
-    "stamp": "Checked against the official source on",
-    "legal": "This is not legal advice. Decisions rest with the embassy and the authorities, and every case is different.",
-    "section1": "What is the rule?",
-    "section2": "Who does it affect?",
-    "section3": "What counts and what does not?",
-    "links": "Official sources",
-    "link1": "USCIS public charge page",
-    "link2": "The rule text in the Federal Register",
-    "link3": "State Department page for immigrants",
-    "checkHeading": "Simple self-check (optional)",
-    "checkLead": "Type the numbers exactly as they appear on the official page. We only compare; we set no threshold.",
-    "threshold": "The threshold shown on the official page for your household size",
-    "whereThreshold": "Where is this threshold on the official page?",
-    "yourAmount": "Your yearly income or savings",
-    "householdSize": "Household size",
-    "householdHelp": "From the household setup",
-    "result": "Result",
-    "resultEmpty": "Type both numbers",
-    "resultNote": "The result only says whether your number is above or below the threshold you typed. It is not a judgement on your case."
+    "stamp": "Checked against the official sources on",
+    "stampDate": "10 October 2026",
+    "legal": "This is not legal advice. Decisions rest with the embassy and the authorities, and every case is different."
   },
   "english": {
     "title": "Learn English",
@@ -452,5 +436,24 @@
   "guideNotes": {
     "passport": "These links are for Egypt. If you hold another nationality, use the official passport authority of your country.",
     "charge": "If you are thinking about any government benefit, read the public charge page first"
+  },
+  "pages": {
+    "about": {
+      "title": "About the site",
+      "lead": "A free calculator for the diversity visa lottery. You type every number."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "lead": "What is kept and where, and what is never sent to anyone."
+    },
+    "sources": {
+      "title": "Official sources",
+      "lead": "The sites we send you to. We do not state prices: you see them there and type them yourself.",
+      "official": "Official sites",
+      "others": "Other sites we send you to",
+      "lastChecked": "The last time a person opened every link in a browser:",
+      "neverChecked": "The links have not been checked by hand yet. If you find a broken link, tell us.",
+      "note": "These links go to external sites. We do not set prices and are not responsible for them."
+    }
   }
 }

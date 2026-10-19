@@ -1,0 +1,416 @@
+{
+  "ar": {
+    "sections": [
+      {
+        "heading": "يعني إيه «البابليك تشارج»؟",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**Public Charge** معناها إن الحكومة الأمريكية بتسأل: هل الشخص ده غالبًا هيعتمد على المساعدات الحكومية في أي وقت؟ لو الموظف المختص شايف إن الإجابة «أيوه»، من حقه يرفض الفيزا أو الجرين كارد. ده موجود في **المادة 212(a)(4) من قانون الهجرة**."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "نص القانون: 8 U.S.C. 1182(a)(4)",
+                "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1182&num=0&edition=prelim"
+              }
+            ]
+          },
+          { "type": "p", "text": "القانون نفسه بيحدد **العوامل** اللي لازم تتراجع:" },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": ["السن", "الصحة", "حالة الأسرة", "الأصول والموارد والوضع المالي", "التعليم والمهارات"]
+          }
+        ]
+      },
+      {
+        "heading": "إيه الجديد؟",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**قاعدة وزارة الأمن الداخلي (DHS / USCIS):** «Public Charge Ground of Inadmissibility»، قاعدة نهائية اتنشرت في الـFederal Register يوم 20 يوليو 2026 (91 FR 45324، وثيقة رقم 2026-14539). **بدأ تطبيقها يوم 18 سبتمبر 2026.**"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "نص القاعدة في الـFederal Register",
+                "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-20/html/2026-14539.htm"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "بتنطبق على طلبات تعديل الوضع (I-485) جوه أمريكا اللي اتقدمت من 18 سبتمبر 2026 وبعده، وعلى طلبات الدخول."
+          },
+          { "type": "p", "text": "**اللي اتغير:**" },
+          {
+            "type": "list",
+            "items": [
+              "لغت قاعدة 2022 القديمة، ومحطتش معيار جديد محدد بدالها.",
+              "بقى الموظف يقدّر الحالة بنفسه على أساس العوامل اللي في القانون.",
+              "أي مساعدة حكومية مبنية على الدخل ممكن تتاخد في الاعتبار، سواء كانت فلوس أو مساعدة عينية. قبل كده كان بيتحسب أنواع محددة بس.",
+              "القاعدة مش بتدي وزن محدد لأي عامل، ومفيش عامل واحد بيرفض الطلب لوحده أوتوماتيك."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "المهم لمتقدمي الـDV من بره أمريكا",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**القاعدة دي بتاعة DHS/USCIS، ومش هي اللي بتحكم مقابلة السفارة.** القاعدة نفسها بتقول إنها مابتغيّرش معايير وإجراءات وزارة الخارجية (هامش 17)."
+          },
+          {
+            "type": "p",
+            "text": "**اللي بيحكم القنصل في السفارة** هو دليل وزارة الخارجية (Foreign Affairs Manual)، القسم 9 FAM 302.8، وتعليمات الخارجية للسفارات."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "9 FAM 302.8",
+                "url": "https://fam.state.gov/fam/09FAM/09FAM030208.html",
+                "note": "الموقع ده ماكانش بيفتح وقت المراجعة. غير مؤكد إن النسخة اللي قريناها هي الحالية."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**مستند رسمي في ملف محكمة:** في سبتمبر 2026 الخارجية بعتت تعليمات للسفارات بإن فيه **استمارة تقييم Public Charge إجبارية** يملاها الموظف في كل حالات فيزات الهجرة، **ومنها الـDV**، مع مراجعة إضافية من الإدارة لعينة من الحالات. المستند ده مقدّم في قضية فيدرالية (CLINIC v. Rubio)، فهو **مستند رسمي من ملف محكمة، مش منشور على موقع الخارجية**."
+          }
+        ]
+      },
+      {
+        "heading": "مين من مهاجري الـDV بيتأثر؟",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "**كل متقدم DV في السفارة:** القنصل بيراجع العوامل الخمسة اللي فوق، وده كان موجود قبل القاعدة الجديدة كمان.",
+              "**اللي في أمريكا بفيزا تانية وبيقدّم تعديل وضع (I-485) على الـDV:** دول بتنطبق عليهم قاعدة DHS الجديدة مباشرة، لو قدّموا من 18 سبتمبر 2026.",
+              "فيه فئات معفية من الـPublic Charge بنص القانون، زي اللاجئين. **متقدمي الـDV مش منهم.**"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "الاستمارات والمستندات",
+        "blocks": [
+          {
+            "type": "table",
+            "head": ["الاستمارة", "وضعها في الـDV"],
+            "rows": [
+              ["I-864 (تعهد إعالة ملزم)", "مش مطلوبة في الـDV. تعليمات الاستمارة نفسها بتستثني الـDV."],
+              [
+                "I-134 (تعهد مالي)",
+                "فيه تعليمات من الخارجية (مستند في ملف محكمة، قضية CLINIC v. Rubio) بتقول إن القنصل مايدّيهاش أي وزن في حالات الـDV. غير مؤكد إن ده لسه ساري النهارده."
+              ],
+              [
+                "I-944 (إقرار الاكتفاء الذاتي)",
+                "USCIS وقّفتها في مارس 2021. غير مؤكد إذا كانت القاعدة الجديدة رجّعت استمارة شبهها، فارجع لصفحة USCIS. (اتراجعت يوم 19 أكتوبر 2026.)"
+              ]
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "تعليمات الاستمارة I-864 (USCIS)",
+                "url": "https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              },
+              {
+                "label": "صفحة USCIS عن الـPublic Charge",
+                "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge"
+              }
+            ]
+          },
+          { "type": "p", "text": "**مستندات بتفيد في المقابلة عادةً** (حسب العوامل اللي في القانون):" },
+          {
+            "type": "list",
+            "items": [
+              "إثبات شغلك ودخلك، زي خطاب العمل ومفردات المرتب.",
+              "كشف حساب بنكي.",
+              "إثبات الأصول، زي عقود الملكية وتقييمها.",
+              "الشهادات الدراسية وخطابات الخبرة.",
+              "أي عرض شغل في أمريكا، لو موجود."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "خط الفقر الأمريكي",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "القنصل والموظفين بيستخدموا **خط الفقر الأمريكي** كمرجع في حالات كتير. الأرقام بتتغير كل سنة، فإحنا مش بنكتبها هنا. شوفها من مصدرها:"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "وزارة الصحة الأمريكية (HHS): إرشادات خط الفقر",
+                "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines"
+              },
+              { "label": "جدول USCIS (I-864P)", "url": "https://www.uscis.gov/i-864p" }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "خطوات عملية",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**جهّز دليل الفلوس بإسمك:** كشف حساب بحركة منتظمة أحسن من مبلغ اتحط مرة واحدة.",
+              "**الأصول:** لو عندك عقار أو أصول، جهّز ورقها الرسمي. ملحق سفارة القاهرة الرسمي بيقول ماتبيعش أملاكك ولا تسيب شغلك قبل ما الفيزا تطلع.",
+              "**الشغل والمهارات:** خطابات خبرة وشهادات واضحة، وبالإنجليزي لو ينفع.",
+              "**الإنجليزي:** القانون بيحسب «التعليم والمهارات»، والإنجليزي جزء منهم في تعليمات الخارجية. كمان حسّن إنجليزيك قبل المقابلة.",
+              "**الصحة:** الكشف الطبي الرسمي جزء من الملف، فاتبع تعليمات السفارة بالحرف.",
+              "**المساعدات الحكومية:** جاوب بصدق على أي سؤال عن مساعدات أخدتها، في أمريكا أو في بلدك.",
+              "**لو اترفضت:** القنصل لازم يقولك السبب القانوني. الرفض تحت 221(g) معناه ورق ناقص، أما 212(a)(4) فده رفض بسبب الـPublic Charge. في الحالتين اسأل إزاي تكمّل. **مهم:** فيزات الـDV مابتتصدرش بعد 30 سبتمبر من سنة البرنامج، فماتتأخرش في تقديم أي ورق ناقص."
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              { "label": "22 CFR 42.81", "url": "https://www.ecfr.gov/current/title-22/section-42.81" }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "القضايا ضد القاعدة الجديدة",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "فيه 3 قضايا اترفعت ضد قاعدة DHS في محكمة نيويورك الفيدرالية (S.D.N.Y.)، ومنها قضية رفعتها 22 ولاية مع واشنطن العاصمة.",
+              "**حالتها في 10 أكتوبر 2026:** القاعدة **سارية**. مفيش أمر بوقفها، وجدول القضايا ممتد لحد مارس 2027.",
+              "**غير مؤكد:** إيه اللي ممكن يتغير بعد كده. تابع المصادر الرسمية."
+            ]
+          }
+        ]
+      }
+    ],
+    "footnote": "المصادر الرسمية: نص القانون (uscode.house.gov)، واللوائح (ecfr.gov)، والـFederal Register (govinfo.gov)، وUSCIS (uscis.gov)، ووزارة الخارجية (fam.state.gov وtravel.state.gov)، ووزارة الصحة الأمريكية (aspe.hhs.gov). ومستندات من ملفات المحاكم الفيدرالية متعلّم عليها في مكانها."
+  },
+  "en": {
+    "sections": [
+      {
+        "heading": "What is “public charge”?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**Public Charge** means the US government asks: is this person likely to depend on government assistance at any time? If the officer decides the answer is “yes”, they may refuse the visa or the green card. It is in **section 212(a)(4) of the Immigration and Nationality Act**."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "The law: 8 U.S.C. 1182(a)(4)",
+                "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1182&num=0&edition=prelim"
+              }
+            ]
+          },
+          { "type": "p", "text": "The law itself lists the **factors** that must be considered:" },
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "Age",
+              "Health",
+              "Family status",
+              "Assets, resources and financial status",
+              "Education and skills"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What is new?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**The Department of Homeland Security rule (DHS / USCIS):** “Public Charge Ground of Inadmissibility”, a final rule published in the Federal Register on 20 July 2026 (91 FR 45324, document 2026-14539). **It took effect on 18 September 2026.**"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "The rule in the Federal Register",
+                "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-20/html/2026-14539.htm"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "It applies to applications to adjust status (I-485) inside the US filed on or after 18 September 2026, and to applications for admission."
+          },
+          { "type": "p", "text": "**What changed:**" },
+          {
+            "type": "list",
+            "items": [
+              "It cancelled the old 2022 rule and did not put a fixed standard in its place.",
+              "The officer now judges each case on the factors in the law.",
+              "Any government assistance based on income may be taken into account, whether money or help in kind. Before, only certain types counted.",
+              "The rule gives no fixed weight to any factor, and no single factor refuses an application automatically."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Important for DV applicants outside the US",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**This is a DHS/USCIS rule, and it is not what governs the embassy interview.** The rule itself says it does not change the State Department's standards and procedures (footnote 17)."
+          },
+          {
+            "type": "p",
+            "text": "**What binds the consular officer at the embassy** is the State Department's Foreign Affairs Manual, section 9 FAM 302.8, and the department's instructions to embassies."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "9 FAM 302.8",
+                "url": "https://fam.state.gov/fam/09FAM/09FAM030208.html",
+                "note": "This site did not open when we checked. Unconfirmed that the version we read is the current one."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**An official document in a court file:** in September 2026 the State Department sent embassies instructions that a **mandatory public-charge assessment form** is filled in by the officer in every immigrant visa case, **including DV**, with an extra review by management of a sample of cases. This document was filed in a federal case (CLINIC v. Rubio), so it is **an official document from a court file, not published on the State Department's site**."
+          }
+        ]
+      },
+      {
+        "heading": "Which DV immigrants are affected?",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "**Every DV applicant at an embassy:** the officer reviews the five factors above, and that was true before the new rule too.",
+              "**People in the US on another visa who apply to adjust status (I-485) on the DV:** the new DHS rule applies to them directly, if they applied on or after 18 September 2026.",
+              "Some groups are exempt from public charge by law, such as refugees. **DV applicants are not among them.**"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Forms and documents",
+        "blocks": [
+          {
+            "type": "table",
+            "head": ["Form", "Status for the DV"],
+            "rows": [
+              [
+                "I-864 (binding affidavit of support)",
+                "Not required for the DV. The form's own instructions exclude the DV."
+              ],
+              [
+                "I-134 (financial sponsor letter)",
+                "State Department instructions (a document in a court file, CLINIC v. Rubio) say the officer gives it no weight in DV cases. Unconfirmed that this still applies today."
+              ],
+              [
+                "I-944 (self-sufficiency declaration)",
+                "USCIS stopped it in March 2021. Unconfirmed whether the new rule brought back a similar form, so check the USCIS page. (Reviewed on 19 October 2026.)"
+              ]
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Form I-864 instructions (USCIS)",
+                "url": "https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf"
+              },
+              {
+                "label": "USCIS page on public charge",
+                "url": "https://www.uscis.gov/green-card/green-card-processes-and-procedures/public-charge"
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "**Documents that usually help at the interview** (following the factors in the law):"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Proof of your work and income, such as an employment letter and salary statements.",
+              "A bank statement.",
+              "Proof of assets, such as ownership deeds and valuations.",
+              "Education certificates and experience letters.",
+              "Any job offer in the US, if you have one."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The US poverty line",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Officers use the **US poverty line** as a reference in many cases. The figures change every year, so we do not write them here. See them at the source:"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "US Department of Health and Human Services: poverty guidelines",
+                "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines"
+              },
+              { "label": "USCIS table (I-864P)", "url": "https://www.uscis.gov/i-864p" }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Practical steps",
+        "blocks": [
+          {
+            "type": "list",
+            "ordered": true,
+            "items": [
+              "**Prepare proof of money in your own name:** a bank statement with regular activity is better than one sum put in once.",
+              "**Assets:** if you own property or assets, prepare the official papers. The official Cairo embassy supplement says do not sell your property or leave your job before the visa is issued.",
+              "**Work and skills:** clear experience letters and certificates, in English if possible.",
+              "**English:** the law counts “education and skills”, and English is part of them in the State Department's instructions. Also improve your English before the interview.",
+              "**Health:** the official medical exam is part of the file, so follow the embassy's instructions exactly.",
+              "**Government assistance:** answer truthfully any question about assistance you received, in the US or in your country.",
+              "**If you are refused:** the officer must give you the legal reason. A refusal under 221(g) means missing papers; 212(a)(4) is a refusal for public charge. In both cases ask how to continue. **Important:** DV visas cannot be issued after 30 September of the program year, so do not delay any missing paper."
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              { "label": "22 CFR 42.81", "url": "https://www.ecfr.gov/current/title-22/section-42.81" }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "The cases against the new rule",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "Three cases were filed against the DHS rule in the federal court in New York (S.D.N.Y.), including one filed by 22 states with Washington, D.C.",
+              "**Status on 10 October 2026:** the rule is **in force**. There is no order stopping it, and the case schedule runs to March 2027.",
+              "**Unconfirmed:** what may change after that. Follow the official sources."
+            ]
+          }
+        ]
+      }
+    ],
+    "footnote": "Official sources: the statute (uscode.house.gov), the regulations (ecfr.gov), the Federal Register (govinfo.gov), USCIS (uscis.gov), the State Department (fam.state.gov and travel.state.gov), and the US Department of Health and Human Services (aspe.hhs.gov). Documents from federal court files are marked where they appear."
+  }
+}

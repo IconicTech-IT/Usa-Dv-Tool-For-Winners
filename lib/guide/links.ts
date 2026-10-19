@@ -54,3 +54,10 @@ export function allGuideUrls(): { id: string; url: string }[] {
 
 /** Ids of the items that have a guide page. */
 export const GUIDE_ITEM_IDS: readonly string[] = Object.keys(data.items).filter(hasGuide);
+
+/** Every source the site sends people to, official ones first, for the sources page. */
+export function allGuideSites(): GuideSite[] {
+  return Object.entries(data.sites)
+    .map(([id, site]): GuideSite => ({ id, ...site }))
+    .sort((a, b) => Number(Boolean(b.official)) - Number(Boolean(a.official)));
+}

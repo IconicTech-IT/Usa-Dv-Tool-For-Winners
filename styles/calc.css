@@ -144,3 +144,40 @@ html[dir="rtl"] .back svg {
   color: var(--pr);
   font-weight: 600;
 }
+
+/* Text pages: bullet lists and the forms table */
+.bullets {
+  margin: 8px 0 0;
+  padding-inline-start: 22px;
+}
+.bullets li {
+  margin-top: 6px;
+}
+.steps > div > span {
+  flex: 1;
+}
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+.doc-table th {
+  padding-block: 8px;
+  padding-inline: 0 10px;
+  text-align: start;
+  font-size: 13px;
+  color: var(--tx3);
+  border-bottom: 1px solid var(--bd);
+}
+.doc-table td {
+  padding-block: 10px;
+  padding-inline: 0 10px;
+  vertical-align: top;
+}
+.doc-table td:last-child {
+  text-align: start;
+  font-weight: 400;
+}
+.doc-table td:first-child {
+  font-weight: 700;
+  white-space: nowrap;
+}

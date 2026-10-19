@@ -1,0 +1,126 @@
+{
+  "ar": {
+    "sections": [
+      {
+        "heading": "إيه هو الموقع ده؟",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**DV Compass** حاسبة مجانية لأي حد بيفكر في قرعة الهجرة لأمريكا. إنت اللي بتكتب كل مبلغ، وإحنا بنجمعهم ونوريك محتاج كام ولحد إمتى."
+          },
+          {
+            "type": "list",
+            "items": [
+              "حاسبة للأوراق والرسوم.",
+              "حاسبة للانتقال والاستقرار.",
+              "حاسبة المدّة: محتاج معاك كام لو الشغل بدأ أول يوم أو اتأخر شهر أو اتنين أو تلاتة.",
+              "صفحة عن البابليك تشارج، وصفحة لتعلّم الإنجليزي، وصفحة للتحذير من النصب."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "ليه مفيش أسعار من عندنا؟",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "الأسعار والرسوم بتتغير، وبتختلف من مدينة لمدينة ومن حالة لحالة. أي رقم نكتبه ممكن يبقى قديم أو غلط. عشان كده إنت اللي بتكتب كل رقم من مصدره، وجنب كل خانة زرار «إزاي أعرف السعر؟» بيوريك فين تدوّر."
+          },
+          {
+            "type": "p",
+            "text": "الاستثناء الوحيد هو رسم تسجيل القرعة الرسمي، لأنه قرار رسمي منشور. هتلاقيه في صفحة «احمي نفسك من النصب» ومعاه مصدره."
+          }
+        ]
+      },
+      {
+        "heading": "الاستقلالية",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "الموقع مش تابع للحكومة الأمريكية ولا لأي شركة. مفيش إعلانات ولا تسجيل ولا اشتراكات. اللي بتشوفه هنا مش استشارة قانونية أو مالية."
+          }
+        ]
+      },
+      {
+        "heading": "الأرقام بتاعتك",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "الأرقام اللي بتكتبها بتفضل على جهازك. التفاصيل في صفحة الخصوصية."
+          }
+        ]
+      },
+      {
+        "heading": "ابعتلنا",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "لو لقيت غلطة أو رابط مش شغال أو عندك اقتراح، ابعت على usalottery2027@gmail.com."
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "sections": [
+      {
+        "heading": "What is this site?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "**DV Compass** is a free calculator for anyone thinking about the US diversity visa lottery. You type every amount; we add them up and show you how much you need and by when."
+          },
+          {
+            "type": "list",
+            "items": [
+              "A calculator for paperwork and fees.",
+              "A calculator for moving and settling.",
+              "A runway calculator: how much you need if the job starts on day one or is delayed by one, two or three months.",
+              "A page on public charge, a page for learning English, and a page warning about scams."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Why are there no prices from us?",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Prices and fees change, and differ from city to city and case to case. Any number we wrote could be old or wrong. So you type every number from its source, and next to each box there is a “How do I find this price?” button that shows you where to look."
+          },
+          {
+            "type": "p",
+            "text": "The only exception is the official lottery registration fee, because it is a published official decision. You will find it on the “Protect yourself from scams” page with its source."
+          }
+        ]
+      },
+      {
+        "heading": "Independence",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "This site is not affiliated with the US government or any company. There are no ads, no sign-up and no subscriptions. What you see here is not legal or financial advice."
+          }
+        ]
+      },
+      {
+        "heading": "Your numbers",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "The numbers you type stay on your device. The details are on the privacy page."
+          }
+        ]
+      },
+      {
+        "heading": "Write to us",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "If you find a mistake or a broken link, or have a suggestion, write to usalottery2027@gmail.com."
+          }
+        ]
+      }
+    ]
+  }
+}

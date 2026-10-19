@@ -1,0 +1,142 @@
+{
+  "ar": {
+    "sections": [
+      {
+        "heading": "الأرقام اللي بتكتبها",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "بتتحفظ في متصفحك إنت، على جهازك، عشان تلاقيها لما ترجع.",
+              "مبتتبعتش لأي سيرفر عندنا، وإحنا مبنشوفهاش.",
+              "لو مسحت بيانات الموقع من إعدادات المتصفح، الخطة بتتمسح. احفظ خطتك كملف لو عايز نسخة منها."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "اللي بنحفظه على جهازك",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "خطتك: الأرقام اللي كتبتها، وعدد الأفراد، والعملة، وسعر الصرف اللي إنت كتبته.",
+              "اختيارك للشكل الفاتح أو الغامق.",
+              "نسخة من صفحات الموقع، عشان يشتغل من غير نت بعد أول زيارة."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "إحصائية الزيارات",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "فيه إحصائية زيارات عامة من غير أي بيانات شخصية، والأرقام اللي بتكتبها بتفضل على جهازك. الإحصائية بتعد الزيارات والصفحات اللي اتفتحت بس."
+          }
+        ]
+      },
+      {
+        "heading": "الروابط الخارجية",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "الروابط للمواقع الرسمية وغيرها بتفتح مواقع تانية ليها سياسة خصوصية خاصة بيها. إحنا مبنبعتلهاش أي رقم من أرقامك."
+          },
+          {
+            "type": "p",
+            "text": "زرار «اعرف السعر من جوجل» بيفتح بحث جوجل عن سعر العملة بس، من غير أي رقم من أرقامك."
+          }
+        ]
+      },
+      {
+        "heading": "الحفظ والمشاركة",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "ملف الخطة اللي بتحفظه بيتحفظ على جهازك إنت. ولو بعتّه أو شاركت ملخصك مع حد، فده بإيدك إنت."
+          }
+        ]
+      },
+      {
+        "heading": "ابعتلنا",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "لو عندك سؤال عن الخصوصية، ابعت على usalottery2027@gmail.com."
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "sections": [
+      {
+        "heading": "The numbers you type",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "They are saved in your own browser, on your device, so they are there when you come back.",
+              "They are not sent to any server of ours, and we do not see them.",
+              "If you clear the site's data in the browser settings, the plan is deleted. Save your plan as a file if you want a copy."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What we keep on your device",
+        "blocks": [
+          {
+            "type": "list",
+            "items": [
+              "Your plan: the numbers you typed, the number of people, the currency, and the exchange rate you typed.",
+              "Your choice of light or dark.",
+              "A copy of the site's pages, so it works without internet after the first visit."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Visit statistics",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "There are general visit statistics with no personal data, and the numbers you type stay on your device. The statistics only count visits and which pages were opened."
+          }
+        ]
+      },
+      {
+        "heading": "External links",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Links to official and other sites open other websites, which have their own privacy policies. We do not send them any of your numbers."
+          },
+          {
+            "type": "p",
+            "text": "The “Check the rate on Google” button opens a Google search for the currency rate only, with none of your numbers."
+          }
+        ]
+      },
+      {
+        "heading": "Saving and sharing",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "The plan file you save is kept on your own device. If you send it or share your summary with someone, that is up to you."
+          }
+        ]
+      },
+      {
+        "heading": "Write to us",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "If you have a question about privacy, write to usalottery2027@gmail.com."
+          }
+        ]
+      }
+    ]
+  }
+}
